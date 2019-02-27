@@ -1,0 +1,176 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<title>Parameter Usage Modes</title>
+<!--   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert"></script> -->
+	<link href="../codePrettyPrint/src/C343-dark.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="../codePrettyPrint/src/run_prettify.js?skin=desert"></script>
+</head>
+
+<body>
+
+<table border="0" width="100%">
+	<tr>
+		<td>
+		<p align="center"><b>Parameter Passing Basics</b></td>
+		<td width="407">
+		<p align="right"><em>Last Updated: 01/12/2016<</em></td>
+	</tr>
+</table>
+
+<hr>
+
+<p><b>How Parameters are <u>Passed</u></b></p>
+<ul>
+  <li>In most common, commercial programming languages available today, there
+    are two mechanisms supported for passing parameters:
+    <ol>
+      <li><i>pass by value</i> - in general means that the formal parameter gets
+        a copy of the value stored in the actual parameter</li>
+      <li><i>pass by reference</i> - in general means that the formal parameter
+        has direct access to the actual parameter's storage area, and any
+        changes made to formal parameter are really changes to the value stored
+        in the actual parameter.</li>
+    </ol>
+  </li>
+  <li>C++ supports Pass by Value and Pass by Reference.
+    <ul>
+      <li>A formal parameter without the &amp; sign means Pass by Value.</li>
+      <li>A formal parameter with the &amp; sign means Pass by Reference.</li>
+    </ul>
+  </li>
+  <li>The C programming language only supported Pass by Value.</li>
+</ul>
+<hr>
+
+<p><b>How Parameters are <u>Used</u> - aka as Parameter Usage Modes</b></p>
+
+<ul>
+  <li>We also need to talk about how the calling operation is going make use of
+    the actual parameter.</li>
+  <li>For that we use the four parameter usage modes listed below.</li>
+  <li><i>parameter usage mode</i> - describes how the actual parameter is to be
+    used by the called operation, it does not describe how the parameter will be
+    passed, just how it will be used.</li>
+</ul>
+
+<dl>
+  <dt><i>alters</i></dt>
+  <dd>A parameter usage mode that indicates that the actual parameter supplied in a call to an
+    operation has potential to have its value altered by the called operation.&nbsp;
+    The called operation is not obligated to make a change, but <i>alters</i>
+    indicates that its computation may make a change. </dd>
+</dl>
+
+<dl>
+  <dt><i>consumes</i></dt>
+  <dd>A parameter usage mode that indicates that the value of the actual parameter supplied in
+    a call to an operation may be used by that operation. Also, the value of the
+    actual parameter after the call will be the <i> initial value</i> based on the actual parameter's
+    data type.&nbsp; For example, the initial value for an Integer object is
+    zero, i.e., 0.&nbsp; If an object of type Integer is consumed by an
+    operation, then that object will have value 0 stored in it after the called
+    operation returns. </dd>
+  <dt>&nbsp;</dt>
+  <dt><i>preserves</i></dt>
+  <dd>A parameter usage mode that indicates that the value of the actual parameter supplied in
+    a call to an operation may be used by that operation.&nbsp; That is, <i>preserves</i>
+    says that the called operation has the right involve the actual parameter's
+    value in its computation, but is not obligated to use its value.&nbsp;&nbsp;
+    Also, the conceptual value of the
+    actual parameter after the call will be equal to its value prior to the call. </dd>
+  <dt><br>
+    <i>produces</i></dt>
+  <dd>A parameter usage mode that indicates that the value of the actual parameter supplied in
+    a call to an operation will not be used by that operation.&nbsp; That is, <i>produces</i>
+    says that the called operation will ignore the value stored in the actual
+    parameter.&nbsp; Also, the called operation will create a new value through
+    its computation and will store this new value in the actual parameter. </dd>
+</dl>
+
+<hr>
+
+<p><b>Adding Pseudo Keywords to C++</b></p>
+<ul>
+  <li>Through the use of preprocessor macros, software engineers can add <i>pseudo</i>
+    keywords to the C++ language.</li>
+  <li><i>pseudo keyword</i> - is a keyword that can be embedded in the software
+    code, but is not a keyword recognized nor is it used by the C++
+    compiler.&nbsp; They are created as a means of conveying information about
+    the program to software engineers who read the code sometime in the future.</li>
+  <li>Pseudo keywords can be created by using the preprocessor macro #define,
+    below is an example of how the parameter usage modes are created.</li>
+</ul>
+<div align="center">
+  <center>
+  <table border="1" width="90%">
+    <tr>
+      <td width="100%"><pre class="prettyprint">#define alters
+#define consumes
+#define preserves
+#define produces
+
+void op1 (alters Integer&amp; x, preserves Queue&amp; q1)
+{
+   ...
+}</pre></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<ul>
+  <li>Continuing the example, after the C Preprocessor would process the example
+    code above, the code below is what would be given to the C++ compiler:</li>
+</ul>
+<div align="center">
+  <center>
+  <table border="1" width="90%">
+    <tr>
+      <td width="100%"><pre class="prettyprint">void op1 (Integer&amp; x, Queue&amp; q1)
+{
+  ...
+}</pre></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<hr>
+<p>Below is the #define explanation:</p>
+<div align="center">
+  <center>
+  <table border="1" width="90%">
+    <tr>
+      <td width="100%">
+        <h1>#define</h1>
+        <p>The <b>#define</b> directive assigns the given value to the specified
+        name. All subsequent occurrences of the name are replaced by the value.</p>
+        <h4>Syntax</h4>
+        <pre><code><b>#define</b> <i>name</i> <i>value</i>
+<i> </i></code></pre>
+        <h4>Parameters</h4>
+        <dl>
+          <dt><i>name</i>
+          <dd>Specifies the name to be defined. This value is any combination of
+            letters, digits, and punctuation.
+          <dt><i>value</i>
+          <dd>Specifies any integer, character string, or line of text.&nbsp; If
+            the value is empty, i.e., nothing, then the preprocessor will
+            replace all subsequent occurrences of the name with nothing.</dd>
+        </dl>
+        <h4>Example</h4>
+        <p>This example assigns values to the names <code>NONZERO</code> and <code>USERCLASS;
+        it assigns nothing to the name object</code>:</p>
+<pre  class="prettyprint">#define     NONZERO     1
+#define     USERCLASS   &quot;MyControlClass&quot;
+#define     alters
+</pre>
+        <p>&nbsp;</td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+<p>&nbsp;</p>
+</body>
+</html>

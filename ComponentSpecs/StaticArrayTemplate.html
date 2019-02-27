@@ -1,0 +1,67 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Dr. Holly">
+   <title>StaticArray Template</title>
+	<!--   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert"></script> -->
+	<link href="../codePrettyPrint/src/C343-dark.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="../codePrettyPrint/src/run_prettify.js?skin=desert"></script>
+</head>
+<body>
+<table border="0" width="100%">
+	<tr>
+		<td>
+		<p align="center"><b>StaticArray Template</b></td>
+		<td width="335">
+		<p align="right"><i>Last Updated: 21 July 2016</i></td>
+	</tr>
+</table>
+
+<hr>
+<table align="center" BORDER="1" width="85%">
+<tr>
+<td>
+<pre class="prettyprint">template &lt;class T, int lowerBound, int upperBound&gt;
+class StaticArray1
+   //! is modeled by function from integer to T
+   //! constraint: &forall; i: integer
+   //!    ((i &lt; lowerBound) or (i &gt; upperBound) 
+   //!       &rarr; (self(i) = T.init))
+   //! exemplar self
+{
+public: // Standard Operations
+   StaticArray1 ();
+      //! replaces self
+      //! ensures: &forall; i: integer
+      //!    ((i &ge; lowerBound) and (i &le; upperBound) 
+      //!       &rarr; (self(i) = T.init))
+   ~StaticArray1 ();
+   void clear (void);
+      //! clears self
+   void transferFrom (StaticArray1&amp; source);
+      //! replaces self
+      //! clears source
+      //! ensures: self = #source
+   StaticArray1&amp; operator = (StaticArray1&amp; rhs);
+      //! replaces self
+      //! restores rhs
+      //! ensures: self = rhs
+
+   // StaticArray1 Specific Operations
+   void getBounds (Integer&amp; lower, Integer&amp; upper);
+      //! restores self
+      //! replaces lower, upper
+      //! ensures: lower = lowerBound  and  upper = upperBound
+   T&amp; operator [] (Integer index);
+      //! restores self, index
+      //! requires: index &ge; lowerBound  and  index &le; upperBound
+      //! ensures: operator [] = self(index)
+
+private: // Representation
+}</pre>
+</td>
+</tr>
+</table>
+</body>
+</html>

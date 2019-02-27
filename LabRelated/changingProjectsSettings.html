@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META NAME="Author" CONTENT="Dr. Holly">
+<title>Changing a Project's Settings</title>
+</head>
+
+<body>
+<h2>Changing a Project's Settings</h2>
+<hr />
+<p>Each time a new project is created, you must change its specific settings. You only need to do this once for each project you create. Failure to successfully change the settings will usually cause <em>millions</em> of compiler errors to be generated.</p>
+<p>To change a project's settings, do the following:</p>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td width="72%">From Visual Studio Solution Explorer, with your project open, right click <strong>L1 </strong>(or LX, depending on the project - See the screen shot to the right) and from the popup menu choose Properties, this will cause the "Property Pages" dialog to appear.</td>
+<td width="28%">
+<img border="0" src="../../images/SlnExpVS12Lab1Num1.png" width="238" height="227"></td>
+</tr>
+<tr>
+<td colspan="2" width="100%">
+<p>From the Property Pages dialog do the following:</p>
+<ol>
+<li>Choose <span style="text-decoration: underline;"> All Configurations</span> from the drop down box at the top of the dialog</li>
+<li>Select the C/C++ folder, and then select the <span style="text-decoration: underline;">General</span> category</li>
+<li>Then on the right hand side of the dialog add the following path names to Additional Include Directories:<br /><code>..\wrapper\include;..\components\include</code></li>
+<li>Next, select <span style="text-decoration: underline;">Precompiled Headers</span> category&nbsp; (Note: there is no screen shot for this step)
+<ul>
+<li>then on the right side select from the drop down box&nbsp;"Create/Use Precompiled Header":<br /><code>Not Using Precompiled Headers</code></li>
+</ul>
+</li>
+</ol></td>
+</tr>
+<tr>
+<td colspan="2" width="100%">
+<p>
+<img border="0" src="../../images/SlnExpVS12Lab1Num6.png" width="848" height="240"></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>&nbsp;</p>
+<p>To finish, click the OK button at the bottom of the Property Pages dialog.</p>
+</body>
+
+</html>

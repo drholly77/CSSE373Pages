@@ -1,0 +1,81 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+   <title>CeramicArray Template</title>
+   
+	<meta name="Author" content="Dr. Holly">   
+    <!--   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert"></script> -->
+    <link href="../codePrettyPrint/src/C343-dark.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="../codePrettyPrint/src/run_prettify.js?skin=desert"></script>
+</head>
+<body>
+<table border="0" width="100%">
+   <tr>
+      <td>
+      <p align="center"><b>CeramicArray Template</b></td>
+      <td width="335">
+      <p align="right"><i>Last Updated: 21 July 2016</i></td>
+   </tr>
+</table>
+
+<hr>
+<table align="center" BORDER="1" width="85%">
+<tr>
+<td><pre class="prettyprint">template &lt;class T&gt;
+class CeramicArray1
+   //! is modeled by (
+   //!      contents: function from integer to T
+   //!      lowerBound: integer
+   //!      upperBound: integer
+   //!   )
+   //! constraint: &forall; i: integer 
+   //!    ((i < self.lowerBound) or (i > self.upperBound)
+   //!       &rarr; (self.contents(i) = T.init))
+   //! exemplar self
+{
+
+public: // Standard Operations
+   CeramicArray1 ();
+      //! alters self
+      //! ensures: self.lowerBound = 0  and  self.upperBound = 0  and
+      //!       self.contents(0) = T.init
+   ~CeramicArray1 ();
+   void clear (void);
+      //! clears self
+   void transferFrom (CeramicArray1& source);
+      //! replaces self
+      //! clears source
+      //! ensures: self = #source
+   CeramicArray1& operator = (CeramicArray1& rhs);
+      //! replaces self
+      //! restores rhs
+      //! ensures: self = rhs
+
+   // CeramicArray1 Specific Operations
+   void setBounds (Integer lower, Integer upper);
+      //! updates self
+      //! restores lower, upper
+      //! requires: lower <= upper
+      //! ensures: self.lowerBound = lower  and  self.upperBound = upper  and
+      //!          &forall; i: integer
+      //!                 ((i &ge; self.lowerBound) and (i &le; self.upperBound) 
+      //!                 &rarr; (self.contents(i) = T.init))
+   void getBounds (Integer& lower, Integer& upper);
+      //! restores self
+      //! replaces lower, upper
+      //! ensures: lower = self.lowerBound  and  upper = self.upperBound
+   T& operator [] (Integer index);
+      //! restores self, index
+      //! requires: index >= self.lowerBound  and  index <= self.upperBound
+      //! ensures: operator [] = self.contents(index)
+
+private: // Representation
+};</pre>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

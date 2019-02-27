@@ -1,0 +1,94 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Dr. Holly">
+   <title>SortingMachine Template</title>
+	<!--   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert"></script> -->
+	<link href="../codePrettyPrint/src/C343-dark.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="../codePrettyPrint/src/run_prettify.js?skin=desert"></script>
+</head>
+<body>
+<table border="0" width="100%">
+	<tr>
+		<td>
+		<p align="center"><b>SortingMachine Template</b></td>
+		<td width="335">
+		<p align="right"><i>Last Updated: 22 July 2016</i></td>
+	</tr>
+</table>
+
+<hr>
+<table align="center" BORDER="1" width="85%">
+<tr>
+<td>
+<pre class="prettyprint">
+template &lt;class T, class TCallback&gt;
+class SortingMachine1
+   //! is modeled by (
+   //!      contents: FiniteMultiSet of T
+   //!      inserting: boolean
+   //!   )
+   //! exemplar self
+
+   //! math operation IS_FIRST (s: FiniteMultiSet(T), x: T): boolean
+   //!      definition
+   //!          x &isin; s  and
+   //!          &forall; y: Item (y &isin; s &rarr; areOrdered (x, y))
+
+   //! TCallback required to have an areOrdered operation:
+   //! 
+   //! Boolean areOrdered (T&amp; lhs, T&amp; rhs)
+   //! restores lhs, rhs
+   //!   areOrdered returns true iff the two items compared
+   //!      are in order relative to each other.
+   //!   lhs stands for left hand side
+   //!   rhs stands for right hand side
+
+{
+public: // Standard Operations
+   SortingMachine1 ();
+      //! replaces self
+      //! ensures: self = ({},true)
+   ~SortingMachine1 ();
+   void clear (void);
+      //! clears self
+   void transferFrom (SortingMachine1&amp; source);
+      //! replaces self
+      //! clears source
+      //! ensures: self = #source
+   SortingMachine1&amp; operator = (SortingMachine1&amp; rhs);
+      //! replaces self
+      //! restores rhs
+      //! ensures: self = rhs
+
+   // SortingMachine1 Specific Operations
+   void add (T&amp; x);
+      //! updates self.contents
+      //! clears x
+      //! requires: self.inserting
+      //! ensures: self = (#self.contents &cup; {#x},#self.inserting)
+   void changeToExtractionMode (void);
+      //! updates self.inserting
+      //! requires: self.inserting
+      //! ensures: self = (#self.contents,false)
+   void removeFirst (T&amp; x);
+      //! updates self.contents
+      //! replaces x
+      //! requires: not self.inserting  and  |self.contents| &gt; 0
+      //! ensures: IS_FIRST (#self.contents, x)  and
+      //!          self = (#self.contents \ {x},#self.inserting)
+   Integer size (void);
+      //! restores self
+      //! ensures: size = |self.contents|
+   Boolean isInInsertionMode (void);
+      //! restores self
+      //! ensures: isInInsertionMode = self.inserting
+         
+private: // Representation
+};</pre>
+</td>
+</tr>
+</table>
+</body>
+</html>

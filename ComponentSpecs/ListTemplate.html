@@ -1,0 +1,102 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Dr. Holly">
+   <title>List Template</title>
+	<!--   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert"></script> -->
+	<link href="../codePrettyPrint/src/C343-dark.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="../codePrettyPrint/src/run_prettify.js?skin=desert"></script>
+</head>
+<body onLoad="prettyPrint()">
+
+<table border="0" width="100%">
+	<tr>
+		<td>
+		<p align="center"><b>List Template</b></td>
+		<td width="335">
+		<p align="right"><i>Last Updated: 25 July 2016</i></td>
+	</tr>
+</table>
+
+<hr>
+<table align="center" BORDER="1" width="85%">
+<tr>
+<td>
+
+<pre class="prettyprint">
+template &lt;class T&gt;
+class List1
+   //! is modeled by (
+   //!      left: string of T
+   //!      right: string of T
+   //!   )
+   //! exemplar self
+{
+public: // Standard Operations
+   List1 ();
+      //! replaces self
+      //! ensures: self = (&lt;&gt;,&lt;&gt;)
+   ~List1 ();
+   void clear (void);
+      //! clears self
+   void transferFrom (List1&amp; source);
+      //! replaces self
+      //! clears source
+      //! ensures: self = #source
+   List1&amp; operator = (List1&amp; rhs);
+      //! replaces self
+      //! restores rhs
+      //! ensures: self = rhs
+
+   // List1 Specific Operations
+   void moveToStart (void);
+      //! updates self
+      //! ensures: self = (&lt;&gt;,#self.left * #self.right)
+   void moveToFinish (void);
+      //! updates self
+      //! ensures: self = (#self.left * #self.right,&lt;&gt;)
+   void advance (void);
+      //! updates self
+      //! requires: self.right /= &lt;&gt;
+      //! ensures: self.left * self.right = #self.left * #self.right and
+      //!          |self.left| = |#self.left| + 1
+   void addRightFront (T&amp; x);
+      //! updates self.right
+      //! clears x
+      //! ensures: self = (#self.left,&lt;#x&gt; * #self.right)
+   void removeRightFront (T&amp; x);
+      //! updates self.right
+      //! replaces x
+      //! requires: self.right /= &lt;&gt;
+      //! ensures: &lt;x&gt; is prefix of #self.right  and
+      //!          self = (#self.left,#self.right[1,|#self.right|)) 
+   T&amp; rightFront (void);
+      //! restores self
+      //! requires: self.right /= &lt;&gt;
+      //! ensures: &lt;rightFront&gt; is prefix of self.right
+   void replaceRightFront (T&amp; x);
+      //! updates self.right, x
+      //! requires: self.right /= &lt;&gt;
+      //! ensures: &lt;x&gt; is prefix of #self.right  and
+      //!          self = (#self.left,&lt;#x&gt; * #self.right[1,|#self.right|)) 
+   void swapRights (List1&amp; otherS);
+      //! updates self.right, otherS.right
+      //! ensures: self = (#self.left,#otherS.right)  and
+      //!          otherS = (#otherS.left,#self.right)
+   Integer leftLength (void);
+      //! restores self
+      //! ensures: leftLength = |self.left|
+   Integer rightLength (void);
+      //! restores self
+      //! ensures: rightLength = |self.right|
+
+private: // representation
+
+};</pre>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

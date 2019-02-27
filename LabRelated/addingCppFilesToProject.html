@@ -1,0 +1,79 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<META NAME="Author" CONTENT="Dr. Holly">
+<title>Adding .cpp Files to a Project</title>
+</head>
+
+<body>
+<h2>Adding .cpp Files to a Project</h2>
+<hr />
+<h3>1. Adding the Lab's .cpp files to the Workspace</h3>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td width="72%">Any time after a Project Solution has been created, you may add source code files.<ol>
+<li>Right click on the <strong>Source Files</strong> folder icon and choose Add | Add Existing Item ...
+<ul>
+<li>Add the desired .cpp files.<br />For example, if you're working on Lab 1, add <em>all</em> the .cpp files from the C:\CppDev\L1 folder.&nbsp; Do not add .H files, only .cpp files.<br>
+  <br>
+</li>
+</ul>
+</li>
+<li>Most labs will not require additional header files (i.e., .H or .HPP files), but if a lab does require them, do the following:
+<ul>
+<li>Right click the <strong>Header Files</strong> icon and choose Add | Add Existing Item ...</li>
+<li>Add the desired .H and/or .HPP files.</li>
+</ul>
+</li>
+</ol></td>
+<td width="28%">
+<img border="0" src="../../images/SlnExpVS12Lab1Num1.png" width="238" height="227"></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4>2. Creating a Wrapper Filter for holding C++ Wrapper Classes Types</h4>
+<p>After a project has been created, you must add a <em>filter</em> subordinate to the "Source Files" folder.&nbsp;&nbsp; The <em>filter</em> folder will initially be empty, however, you will then add .cpp files for the Standard C++ Wrapper Classes (Boolean, Character, File, Integer, Long, and Text). You must do this only once for each project you create, and you must add these before trying to compile your project.</p>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td width="72%"><ol>
+<li>Right click the <strong>Source Files</strong> folder icon and choose Add | New Filter ... 
+<img border="0" src="../../images/NewFilterVS12.png" width="94" height="20"></li>
+<li>Name the new filter <span style="text-decoration: underline;">wrapper</span></li>
+<li>Now, right click the wrapper filter (looks like a folder) and choose Add | Add Existing Item ...<br /> We're going to add files to the wrapper filter.</li>
+</ol></td>
+<td width="28%">
+<img border="0" src="../../images/SlnExpVS12Lab1Num2.png" width="236" height="241"></td>
+</tr>
+</tbody>
+</table>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td width="58%"><ol start="4">
+<li>From the "Add Existing Item" dialog you must navigate to the C:\CppDev\wrapper\class folder <br /> (see screen shot to right).</li>
+<li>Select all the .cpp files that appear in the C:\CppDev\wrapper\class folder, then click OK</li>
+</ol>
+<p>&nbsp;</p>
+</td>
+<td width="41%"><img src="../../images/SlnExpVS12Lab1Fa15Num3.png" width="429" height="363" alt="Add Existing Ittem"></td>
+</tr>
+</tbody>
+</table>
+<h4>3. When you are finished</h4>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td valign="top" width="58%">Your project solution window should look <em>similar</em> to the screen shot to the right:</td>
+<td width="41%">
+<img border="0" src="../../images/SlnExpVS12Lab1Num4.png" width="236" height="363"></td>
+</tr>
+</tbody>
+</table>
+</body>
+
+</html>

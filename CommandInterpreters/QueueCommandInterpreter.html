@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Dr. Holly">
+<title>Queue Command Interpreter</title>
+</head>
+
+<body>
+
+<table border="0" width="100%">
+	<tr>
+		<td width="416">
+		<p align="center"><b>Queue Command Interpreter</b></td>
+		<td>
+		<p align="right"><i>Last Updated: 12/17/2015
+</i></td>
+	</tr>
+</table>
+<hr />
+<p><strong>Testing Harness</strong> - the Queue Command Interpreter serves as a harness that allows a software developer to exercise each of the Queue's exported operations by permitting the user to make explicit calls to these exported operations</p>
+<p><strong>Each <em>do</em> Operation</strong>:</p>
+<ul>
+  <li>Takes keyboard input from the user and then calls one of the Queue's exported operations</li>
+</ul>
+<ul>
+  <li><em>doClear</em> calls <em>clear</em></li>
+  <li><em>doTransferFrom</em> calls <em>transferFrom</em></li>
+  <li><em>doCopy</em> calls <em>operator =</em></li>
+  <li><em>doEnqueue</em> calls <em>enqueue</em></li>
+  <li><em>doDequeue</em> calls <em>dequeue</em></li>
+  <li><em>doReplaceFront</em> calls <em>replaceFront</em></li>
+  <li><em>doLength</em> calls <em>length</em></li>
+  <li><em>doFront</em> calls <em>front</em></li>
+</ul>
+<p><strong>Example: <em>doLength</em></strong></p>
+<p><em><strong>doLength</strong></em><strong> works as follows - see implementation below</strong>:</p>
+<ul>
+  <li> allows the user to query the length of either q1 or q2</li>
+  <li>then to obtain a queue's length, it calls <em>q1.length()</em> or <em>q2.length()</em>, depending on the user's choice</li>
+  <li>then it displays a message to the user with the user selected queue's length</li>
+</ul>
+<p><strong>The other <em>do</em> operations work similarly</strong></p>
+<p><img src="../../images/queueCommandInterpreter.png" width="830" height="740" alt="Queue Command Interpreter" /></p>
+</body>
+</html>

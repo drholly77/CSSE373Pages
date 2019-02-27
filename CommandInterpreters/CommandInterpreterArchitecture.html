@@ -1,0 +1,227 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="author" content="Dr. Holly">
+<title>Command Interpreter Architecture</title>
+<meta name="description" content="architecture of a command-line command interpreter">
+</head>
+
+<body>
+
+<table border="0" width="100%">
+	<tr>
+		<td width="416">
+		<p align="center"><b>Command Interpreter Architecture</b></td>
+		<td>
+		<p align="right"><i>Last Updated: 12/17/2015
+</i></td>
+	</tr>
+</table>
+<hr />
+<h3>A command interpreter does the following:</h3>
+<ol>
+<li>Command Input - Takes commands as input from the outside world</li>
+<li>Command Decoder - Interprets or decodes the command</li>
+<li>Command Dispatcher - Dispatches the command to a <em>do</em> operation</li>
+<li><em>do</em> Operation - An Operation specifically written to handle a command; often one do operation per command. These operations usually produce some kind of output or response back to the outside world</li>
+<li>Command Controller - Repeats Steps 1 - 4 forever, or until a special command tells it to quit processing commands</li>
+</ol>
+<p><strong>Command-Line Programs</strong></p>
+<ul>
+<li>These are programs executed from a command prompt, e.g., a DOS prompt</li>
+<li>Sometimes they display a menu of the legal commands</li>
+<li>Typically take input from the keyboard</li>
+<li>Input can be single characters or it can be word commands</li>
+<li>Output is usually sent back to the display for the user to see</li>
+<li>Executed command may cause some permanent side-effect, e.g., data to be stored in a file on disk</li>
+</ul>
+<hr>
+<h3>A Command Interpreter's Architecture</h3>
+<p>The following shows the sections that appear in the .cpp source code file for a command interpreter.</p>
+<p>&nbsp;</p>
+<table style="width: 95%;" border="1">
+<tbody>
+<tr>
+<td valign="top" width="50%">
+<pre><code>#<strong>include</strong> "wrapper.h"</code></pre>
+</td>
+<td valign="top" width="50%">The #include Section
+<ul>
+<li>Always include the "wrapper.h" file to get all the standard wrapper classes for the built-in types</li>
+<li>#include files that provide software components, e.g., Queue, Stack, List, etc.</li>
+<li>#include files that provide functions that need to be called</li>
+<li>The C Preprocessor handles all commands beginning with a # sign - in this case the Preprocessor finds the named file and inserts its contents at the point where the #include is located</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<table style="width: 95%;" border="1">
+<tbody>
+<tr>
+<td width="50%">
+<pre><code><strong>void</strong> displayMenu ( ... )<br /> {<br /> &nbsp;&nbsp; cout &lt;&lt;&nbsp;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Legal Commands Are:" &lt;&lt;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; endl;<br /> &nbsp;&nbsp; cout &lt;&lt;&nbsp;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " ... " &lt;&lt;&nbsp;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; endl;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...<br /> &nbsp;&nbsp; cout &lt;&lt;&nbsp;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Type 'q' to Quit" &lt;&lt;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; endl;<br /> }</code></pre>
+</td>
+<td valign="top" width="50%">Display Menu Section
+<ul>
+<li>It can be helpful to display a menu of legal commands for the user</li>
+<li>If the number of commands is large, however, this approach may not work very well</li>
+<li>The <em>displayMenu</em> operation is called from the <em>commandController</em> operation (see below)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<table style="width: 95%;" border="1">
+<tbody>
+<tr>
+<td width="50%">
+<table style="width: 80%;" border="1">
+<tbody>
+<tr>
+<td width="100%">
+<pre><code><strong>void</strong> doOp1 ( ... ) { ... }</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<table style="width: 80%;" border="1">
+<tbody>
+<tr>
+<td width="100%">
+<pre><code><strong>void</strong> doOp2 ( ... ) { ... }</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<pre><code>&nbsp;&nbsp; <span style="font-size: x-large;">...</span></code></pre>
+<table style="width: 80%;" border="1">
+<tbody>
+<tr>
+<td width="100%">
+<pre><code><strong>void</strong> doOpN ( ... ) { ... }</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td valign="top" width="50%">The <em>do</em> Operations Section
+<ul>
+<li>Are specifically written to handle one command.</li>
+<li>One <em>do</em> Operation per command</li>
+<li>A <em>do</em>&nbsp; Operation might produce output to the user</li>
+<li>They might cause a permanent change to a data structure</li>
+<li>They might cause a change to the environment, e.g., a file to be written to</li>
+<li>These <em>do</em> operations are called from the <em>dispatchCommand</em> operation (see below)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<table style="width: 95%;" border="1">
+<tbody>
+<tr>
+<td width="50%">
+<pre><code><strong>void</strong> dispatchCommand (Character command)<br /> {<br /> &nbsp;&nbsp; <strong>switch</strong> (command) {<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>case</strong> command_1:<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; doOp1 (...);<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>break</strong>;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>case</strong> command_2:<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>default</strong>:<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt;&nbsp;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "No such command" &lt;&lt;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; endl;<br /> &nbsp;&nbsp; } // end switch<br /> }</code></pre>
+</td>
+<td valign="top" width="50%">The Decoder/Dispatcher Section
+<ul>
+<li>This example decodes the command (by switching on the parameter command) and based on this decoding, it calls (dispatches) to the correct <em>do</em> operation</li>
+<li>A C++ switch statement is often used for the decoding. C++ if statements may also be used</li>
+<li>A default case (in the switch) is used to handle incorrect commands entered by the user</li>
+<li>The <em>dispatchCommand</em> operation is called from the <em>commandController</em> operation (see below)</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<table style="width: 95%;" border="1">
+<tbody>
+<tr>
+<td width="50%">
+<pre><code><strong>void</strong> commandController ( ... )<br /> {<br /> &nbsp;&nbsp; Character command;<br /><br /> &nbsp;&nbsp; <strong>do</strong> {<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; displayMenu ( ... );<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cin &gt;&gt; command;<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dispatchCommand (command);<br /> &nbsp;&nbsp; <strong>while</strong> (command != 'q');<br /> }</code></pre>
+</td>
+<td valign="top" width="50%">The commandController Section
+<ul>
+<li>Calls <em>displayMenu</em> to cause a menu of commands to be displayed to the user</li>
+<li>Inputs a command</li>
+<li>Calls <em>dispatchCommand</em> in order to decode and execute the command</li>
+<li>Keeps looping until user requests an exit</li>
+<li>The <em>commandController</em> operation is called from <em>main</em> (see below)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<table style="width: 95%;" border="1">
+<tbody>
+<tr>
+<td valign="top" width="50%">
+<pre><code>int main (int argc, char* argv[])<br /> {<br /> &nbsp;&nbsp; T x1, x2;<br /><br /> &nbsp;&nbsp; commandController (x1, x2, ... );<br /><br /> &nbsp;&nbsp; <strong>return</strong> 0;<br /> }</code></pre>
+</td>
+<td valign="top" width="50%">The main Operation Section
+<ul>
+<li>Declares variables that need to live the lifetime of the program</li>
+<li>In this example, type T would have come from one of the #include files</li>
+<li>Passes those variables to the <em>commandController</em> as parameters so rest of program can use them</li>
+<li>Calls <em>commandController</em> to begin looping</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3>The Ordering of the Sections in the File</h3>
+<ul>
+<li>The ordering of the Sections in the file <em>is important</em>, here is the ordering used above:
+<ol>
+<li>#include Section</li>
+<li>Display Menu Section</li>
+<li><em>do</em> Operations Section</li>
+<li>Decoder/Dispatcher Section</li>
+<li>Command Controller Section</li>
+<li>main Program Section<br /> &nbsp;</li>
+</ol>
+</li>
+</ul>
+  <table width="100%" border="0">
+    <tr>
+      <td>
+      <ul>
+<li>Why is the ordering of these sections within the file important?<br />
+Answer: because there are rules for compiling a file and these rules require a certain ordering to be observed<br>
+<br />
+</li>
+
+
+<li><em>Rules for Compiling a File</em><ol>
+<li>#include of another file cause that other file to be inserted at the point where the #include appears</li>
+<li>The compiler reads and compiles the file from left to right, top to bottom</li>
+<li>When the compiler sees the declaration of an variable from some class, the compiler must already have seen and compiled this class</li>
+<li>When the compiler compiles a piece of code that makes a procedure/function call to another operation, the compiler must have already seen and compiled the operation's header for every operation that is being called by that piece of code<br /> &nbsp;</li>
+</ol></li>
+<li>Explanation of the ordering shown above:<ol>
+<li>#include Section - needs to appear 1st because the operations that directly follow in the file declare variables from the wrapped types Boolean, Character, Integer and Text which are defined by "wrapper.h"</li>
+<li>Display Menu Section - The <em>displayMenu</em> operation gets called by the <em>commandController</em> operation, therefore displayMenu needs to be seen and compiled prior to <em>commandController</em></li>
+<li><em>do</em> Operations Section - The <em>do</em> operations get called by <em>dispatchCommand</em>, therefore all these operations need to be seen and compiled prior to <em>dispatchCommand</em></li>
+<li>Decoder/Dispatcher Section - <em>dispatchCommand</em> gets called by <em>commandController</em>, therefore <em>dispatchCommand</em> needs to be seen and compiled prior to <em>commandController</em></li>
+<li>commandController Section - <em>commandController</em> gets called by <em>main</em>, therefore <em>commandController</em> needs to be seen and compiled prior to <em>main</em></li>
+<li><em>main</em> Program Section - The operating system is responsible for invoking <em>main</em> at program start-up, the operating system can find <em>main</em> no matter where it is located in the file.&nbsp; Since no other operations call <em>main</em>, it can appear at the bottom of the file, after all other operations</li>
+</ol></li>
+</ul></td>
+      <td valign="top" align="center"><img src="../../images/leftToRightTopToBottomCompiling.png" width="258" height="376" alt="left to right, top to bottom"><p>Left to Right, Top to Bottom</p></td>
+      
+    </tr>
+  </table>
+
+
+</body>
+
+</html>

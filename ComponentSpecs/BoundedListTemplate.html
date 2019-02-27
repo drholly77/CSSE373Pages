@@ -1,0 +1,113 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Dr. Holly">
+   <title>BoundedList Template</title>
+	<!--   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert"></script> -->
+	<link href="../codePrettyPrint/src/C343-dark.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="../codePrettyPrint/src/run_prettify.js?skin=desert"></script>
+</head>
+<body onLoad="prettyPrint()">
+
+<table border="0" width="100%">
+	<tr>
+		<td>
+		<p align="center"><b>BoundedList Template</b></td>
+		<td width="335">
+		<p align="right"><i>Last Updated: 21 July 2016</i></td>
+	</tr>
+</table>
+
+<hr>
+<table align="center" BORDER="1" width="85%">
+<tr>
+<td>
+
+<pre class="prettyprint">
+template &lt;class T, int maxLength&gt;
+class BoundedList1
+   //! requires: 1 &le; maxLength
+    
+   //! is modeled by (
+   //!      left: string of T
+   //!      right: string of T
+   //!   )
+   //! exemplar self
+   //! constraint |self.left| + |self.right| &le; maxLength
+{
+public: // Standard Operations
+   BoundedList1 ();
+      //! replaces self
+      //! ensures: self = (&lt;&gt;,&lt;&gt;)
+   ~BoundedList1 ();
+   void clear(void);
+      //! clears self
+   void transferFrom (BoundedList1&amp; source);
+      //! replaces self
+      //! clears source
+      //! ensures: self = #source
+   BoundedList1&amp; operator = (BoundedList1&amp; rhs);
+      //! replaces self
+      //! restores rhs
+      //! ensures: self = rhs
+
+   // BoundedList1 Specific Operations
+   void moveToStart (void);
+      //! updates self
+      //! ensures: self.left = &lt;&gt;  and  self.right = #self.left * #self.right
+   void moveToFinish (void);
+      //! updates self
+      //! ensures: self.right = &lt;&gt;  and  self.left = #self.left * #self.right
+   void advance (void);
+      //! updates self
+      //! requires: self.right /= &lt;&gt;
+      //! ensures: self.left * self.right = #self.left * #self.right and
+      //!          |self.left| = |#self.left| + 1
+   void addRightFront (T&amp; x);
+      //! updates self.right
+      //! clears x
+      //! requires: |self.left| + |self.right| + 1 &le; maxLength
+      //! ensures: self.left = #self.left  and  self.right = &lt;#x&gt; * #self.right
+   void removeRightFront (T&amp; x);
+      //! updates self.right
+      //! replaces x
+      //! requires: self.right /= &lt;&gt;
+      //! ensures: self.left = #self.left  and
+      //!          &lt;x&gt; is prefix of #self.right  and 
+      //!          self.right = #self.right[1,|#self.right|)
+   T&amp; rightFront (void);
+      //! restores self
+      //! requires: self.right /= &lt;&gt;
+      //! ensures: &lt;rightFront&gt; is prefix of self.right
+   void replaceRightFront (T&amp; x);
+      //! updates self.right, x
+      //! requires: self.right /= &lt;&gt;
+      //! ensures: self.left = #self.left  and  
+      //!          &lt;x&gt; is prefix of #self.right and 
+      //!          self.right = &lt;#x&gt; * #self.right[1,|#self.right|)
+   void swapRights (BoundedList1&amp; otherS);
+      //! updates self.right, otherS.right
+      //! requires: |self.left| + |otherS.right| &le; maxLength  and
+      //!           |otherS.left| + |self.right| &le; maxLength
+      //! ensures: self.left = #self.left  and  otherS.left = #otherS.left  and
+      //!          otherS.right = #self.right  and  self.right = #otherS.right
+   Integer leftLength (void);
+      //! restores self
+      //! ensures: leftLength = |self.left|
+   Integer rightLength (void);
+      //! restores self
+      //! ensures: rightLength = |self.right|
+   Integer remainingCapacity (void);
+      //! restores self
+      //! ensures: remainingCapacity = maxLength - (|self.left| + |self.right|)
+      
+private: // representation
+
+};</pre>
+</td>
+</tr>
+</table>
+
+</body>
+</html>
