@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>A Static Array of Queues</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<h1>A Static Array of Queues</h1>
+<table border="0" width="100%" id="table1">
+
+<div align="center">
+  <center>
+  <table border="0" width="85%">
+    <tr>
+      <td width="20%" align="center">0</td>
+      <td width="20%" align="center">1</td>
+      <td width="20%" align="center">2</td>
+      <td width="20%" align="center">3</td>
+      <td width="20%" align="center">4</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<div align="center">
+  <center>
+  <table border="1" width="85%">
+    <tr>
+      <td width="20%" align="center">&lt; &gt;</td>
+      <td width="20%" align="center">&lt; &quot;CSSE437&quot;&gt;</td>
+      <td width="20%" align="center">&lt;&quot;CSSE230&quot;,&quot;CSSE477&quot;&gt;</td>
+      <td width="20%" align="center">&lt;&quot;CSSE376&quot;,&quot;CSSE333&quot;&gt;</td>
+      <td width="20%" align="center">&lt;&quot;CSSE220&quot;&gt;</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<hr>
+<b>1. Command Interpreter Using an Array</b>
+<p>Make a command interpreter that works with an array of Queues instead of
+just two Queues.&nbsp; This permits the user to work with more than two 
+Queues, and it actually reduces the amount of code in our command interpreter
+(see below).</p>
+<p><i>Steps:</i></p>
+<ul>
+  <li>Create a new folder called E1, make it subordinate to the CppDev13 folder.</li>
+	<li>Copy (don't move) your completed driver.cpp from Lab1 folder to the new 
+	E1 folder.</li>
+	<li>Create a new project called E1.&nbsp; Do this just like you did for 
+	Lab1, except the working folder will be the CppDev13\E1 folder.</li>
+  <li>Using Visual Studio, modify project E1's driver.cpp as follows:
+    <ul>
+          <li>At the top of driver.cpp:<ul>
+      <li>#include &quot;StaticArray\StaticArray1.hpp&quot;&nbsp; and&nbsp; </li>
+		<li>Use a <b>typedef</b> command to create a Static Array of QueueOfText using the 
+	StaticArray template component (see Part 2 below for how to typedef new 
+		Static Arrays).&nbsp; </li>
+		<li>Call the new class instance: QueueArray.</li>
+    </ul>
+		</li>
+		<li>In main:
+        <ul>
+          <li>Declare 1 object called 'qa' of type QueueArray </li>
+          <li>Eliminate plain old QueueOfText s1 and s2</li>
+          <li>Pass 'qa' to commandController, and then on to commandDispatcher, 
+			and then to the &quot;do&quot; operations.</li>
+			<li>See qample code below.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<div align="center">
+  <center>
+  <table border="1" width="90%">
+    <tr>
+      <td width="100%"><code><font size="2"><b>int</b> main (int argc, char* 
+		argv[])<br>
+        {<br>
+        &nbsp;&nbsp; Boolean showMenu = true;<br>
+        &nbsp;&nbsp; QueueArray qa;<br>
+        <br>
+        &nbsp;&nbsp; commandController (qa, showMenu);<br>
+        <br>
+        &nbsp;&nbsp; cout &lt;&lt; "end program" &lt;&lt; endl;<br>
+&nbsp;&nbsp; <b>return</b> 0;<br>
+        }	// end main</font></code></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<blockquote>
+    <ul type="circle">
+      <li>Change all operations in driver.cpp that take s1 and s2 as parameters:
+        <ul type="square">
+          <li>Eliminate s1 and s2 as parameters</li>
+          <li>Replace s1 and s2 with the parameter: <code>QueueArray&amp; qa</code>&nbsp; </li>
+          <li>Change the body of the operation so that it works with the QueueArray
+            instead of s1 and s2.&nbsp; Eliminate all the 'if'
+            statements that have to do with selecting s1 or s2.</li>
+			<li>See sample doAddRightFront below.</li>
+			<li>Special note - it is illegal to transferFrom the a list to 
+			itself. The same goes for assignment and swapRights. So make your 
+			&quot;do&quot; operations for these List operations ask for a second list, but 
+			do not allow the second list to be the same as the first list.</li>
+        </ul>
+      </li>
+    </ul>
+</blockquote>
+<div align="center">
+  <center>
+  <table border="1" width="95%">
+    <tr>
+      <td width="100%"><code><font size="2"><b>void</b> doAddRightFront (alters 
+		QueueArray&amp;
+        qa)<br>
+        {<br>
+        &nbsp;&nbsp; Integer i;<br>
+        &nbsp;&nbsp; Text x;<br>
+        <br>
+        &nbsp;&nbsp; cout &lt;&lt; "Add right to ";<br>
+        &nbsp;&nbsp; i = getIndex(qa);<br>
+        &nbsp;&nbsp; getText (x);<br>
+        &nbsp;&nbsp; qa[i].addRightFront(x);<br>
+        &nbsp;&nbsp; cout &lt;&lt; endl &lt;&lt; "s" &lt;&lt; i &lt;&lt; &quot;.addRightFront(x); executed." &lt;&lt; endl;<br>
+        &nbsp;&nbsp; cout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; endl;<br>
+        }	// doAddRightFront<br>
+        </font></code></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<blockquote>
+    <ul type="circle">
+      <li>Change getIndex so that it lets the user type in a
+        number that can legally index into the QueueArray, but not allow indices 
+		outside the bounds of the array.<ul type="square">
+          <li>In getIndex, use <a target="_blank" href="../../notes/Specs/qaRCpp.htm">StaticArray</a>'s 
+			getBounds operation to determine the number of
+            locations in the array 'qa'<br>
+            <code>Integer lowerB, upperB;<br>
+            qa.getBounds (lowerB, upperB);<br>
+            // use lowerB and upperB to tell the user what the bounds
+            are&nbsp;<br>
+            // and to check to make sure the user supplied a good index</code></li>
+        </ul>
+      </li>
+    </ul>
+</blockquote>
+<hr>
+<p><b>2. Example: Creating a StaticArray of Queues of Integers</b></p>
+<ul>
+  <li>Use the following example as a guide to creating an Array of Queues.</li>
+</ul>
+<div align="center">
+  <center>
+<table border="1" width="95%">
+  <tr>
+    <td width="44%" valign="top">
+		<p align="center"><b>Unchecked Version</b></p></td>
+    <td width="54%" valign="top">
+	<p align="center"><b>Checked Version</b></p></td>
+  </tr>
+  <tr>
+    <td width="44%" valign="top"><code><font size="1">// Array of List &lt;Integer&gt;<br>
+      // Date: 9/11<br>
+      <br>
+      #<b>include</b> &quot;List\List1.hpp&quot;<br>
+      #<b>include</b> &quot;StaticArray\StaticArray1.hpp&quot;<br>
+      <br>
+      enum {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
+      <b>typedef</b> List1 &lt;Integer&gt; IntList;<br>
+      <br>
+	//Create a class called QueueArray, which is indexed from 0..4<br>
+      <b>typedef</b> StaticArray1 &lt;IntList, lowerBound, upperBound&gt; 
+	QueueArray;</font></code></td>
+    <td width="54%" valign="top"><code><font size="1">// Array of List &lt;Integer&gt;<br>
+      // Date: 9/11<br>
+      <br>
+      #<b>include</b> &quot;List\List1.hpp&quot;<br>
+	#include &quot;List\ListChecking.hpp&quot;<br>
+      #<b>include</b> &quot;StaticArray\StaticArray1.hpp&quot;<br>
+	#include &quot;StaticArray\StaticArrayChecking.hpp&quot;<br>
+	<br>
+      enum {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
+      typedef ListChecking1&lt;List1, Integer&gt; IntList;<br>
+      <br>
+	//Create checked QueueArray, which is indexed from 0..4<br>
+      typedef StaticArrayChecking1&lt;StaticArray1, IntList, lowerBound, upperBound&gt; 
+	QueueArray;</font></code></td>
+  </tr>
+</table>
+  </center>
+</div>
+<hr>
+<p><b>3. Enrichment Points<br>
+</b>You may obtain 10 enrichment points (extra credit) by doing the following:&nbsp;</p>
+<ul>
+  <li>Performing the steps outlined above in Part 1.</li>
+	<li>FC compare your E1.exe output with the output from E1Sol.exe found in 
+	E1Sol.zip in the C343 Oncourse site's Resources tool LabRelated folder.</li>
+  <li>Create a zip file named &quot;E1.ZIP&quot; constructed the same way as instructed to 
+	do so in Section 4 of the Lab 1 Instructions, with the following exception:<ul>
+      <li>Everywhere in the Lab 1 instructions where it says &quot;Lab1&quot; it should 
+		say &quot;E1&quot; for this submission.</li>
+    </ul>
+  </li>
+  <li>Upload your &quot;E1.ZIP&quot; file to your C343 Oncourse Drop Box.<ul>
+		<li>Send me an email telling me that you have completed Enrichment 1</li>
+    </ul>
+  </li>
+  <li>Submit it by 23:00 Friday, 20 September.</li>
+</ul>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>
