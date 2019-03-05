@@ -14,9 +14,7 @@
 <table border="0" width="100%">
    <tr>
       <td>
-      <p align="center"><b>CeramicArray Template</b></td>
-      <td width="335">
-      <p align="right"><i>Last Updated: 21 July 2016</i></td>
+      <p align="center"><b>CeramicArray Template</b></p></td>
    </tr>
 </table>
 
@@ -31,7 +29,7 @@ class CeramicArray1
    //!      upperBound: integer
    //!   )
    //! constraint: &forall; i: integer 
-   //!    ((i < self.lowerBound) or (i > self.upperBound)
+   //!    ((i &lt; self.lowerBound) or (i &gt; self.upperBound)
    //!       &rarr; (self.contents(i) = T.init))
    //! exemplar self
 {
@@ -44,11 +42,11 @@ public: // Standard Operations
    ~CeramicArray1 ();
    void clear (void);
       //! clears self
-   void transferFrom (CeramicArray1& source);
+   void transferFrom (CeramicArray1&amp; source);
       //! replaces self
       //! clears source
       //! ensures: self = #source
-   CeramicArray1& operator = (CeramicArray1& rhs);
+   CeramicArray1&amp; operator = (CeramicArray1&amp; rhs);
       //! replaces self
       //! restores rhs
       //! ensures: self = rhs
@@ -57,18 +55,18 @@ public: // Standard Operations
    void setBounds (Integer lower, Integer upper);
       //! updates self
       //! restores lower, upper
-      //! requires: lower <= upper
+      //! requires: lower &lt;= upper
       //! ensures: self.lowerBound = lower  and  self.upperBound = upper  and
       //!          &forall; i: integer
       //!                 ((i &ge; self.lowerBound) and (i &le; self.upperBound) 
       //!                 &rarr; (self.contents(i) = T.init))
-   void getBounds (Integer& lower, Integer& upper);
+   void getBounds (Integer&amp; lower, Integer&amp; upper);
       //! restores self
       //! replaces lower, upper
       //! ensures: lower = self.lowerBound  and  upper = self.upperBound
-   T& operator [] (Integer index);
+   T&amp; operator [] (Integer index);
       //! restores self, index
-      //! requires: index >= self.lowerBound  and  index <= self.upperBound
+      //! requires: index &gt;= self.lowerBound  and  index &lt;= self.upperBound
       //! ensures: operator [] = self.contents(index)
 
 private: // Representation
