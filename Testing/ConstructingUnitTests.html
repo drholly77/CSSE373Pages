@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Unit Testing</title>
+<style type="text/css">
+.yellowColor {
+	background-color: #FF0;
+}
+.lightBlueColor {
+	background-color: #0FF;
+}
+.lightGrayColor {
+	background-color: #CCC;
+}
+</style>
+</head>
+
+<body>
+<table border="0" width="100%">
+	<tr>
+	  <td align="center">
+		<h2>Constructing Unit Tests</h2></td>
+		<td width="218">
+		<p align="right"><i>Last Updated: 02/25/2019</i></td>
+	</tr>
+</table>
+
+<hr />
+<h3>The 8 Sections of a Unit Test: </h3>
+<ol>
+  <li>Unit Test Name</li>
+  <li>Variable Declaration</li>
+  <li>Logger::WriteMessage</li>
+  <li>Test Setup</li>
+  <li>Execute Operation</li>
+  <li>Verify Ensures</li>
+  <li>Verify Clears Parameter Mode</li>
+  <li>Verify Restores Parameter Mode </li>
+</ol>
+<p>The 8 sections listed above must appear in each unit test, in the order listed, with the following exceptions</p>
+<ul>
+  <li>Section #4 appears only if a variable involved in the test requires a value other than its default initial value</li>
+  <li>Section #7 appears only if there is a <em>clears</em> parameter mode in the tested operation</li>
+  <li>Section #8 appears only if there is a <em>restores</em> parameter mode in the tested operation</li>
+</ul>
+<hr />
+<h3>Unit Tests for Queue() - the constructor</h3>
+<table width="100%" border="1">
+  <tr>
+    <td width="50%" valign="top"><pre>// -----------------------------------------------------
+// Queue1()
+// -----------------------------------------------------
+//! replaces self
+//! ensures: self = &lt;&gt;
+// -----------------------------------------------------
+TEST_METHOD(<span class="yellowColor">UT01ConstructorV1</span>)
+{
+<span class="lightBlueColor">   IntegerQueue q1;
+   Text x1;</span>
+
+   Logger::WriteMessage(L"UT01ConstructorV1: Queue1();");
+   Logger::WriteMessage(L"\toutgoing: q1 = &lt;&gt;");
+
+   // Verify ensures: self = <>
+   toText(q1, x1);
+   Assert::IsTrue(x1 == "&lt;&gt;", L"q1 = &lt;&gt;");
+} // UT01ConstructorV1</pre></td>
+    <td width="50%" valign="top">
+    <p class="yellowColor"><em>Explanation of the Unit Test Name - UT01ConstructorV1: </em></p>
+    <ul>
+      <li><em>UT</em> in the name stands for Unit Test</li>
+      <li><em>01</em> is a unique number for the unit test, the next unit test will be given the number <em>02</em>, the next <em>03</em>, etc.</li>
+      <li><em>Constructor</em> is used for the name when writing the unit test for constructor, when writing unit tests for all the other member functions, use their exact name, e.g., <em>clear</em></li>
+      <li><em>V1</em> for Version 1 - other member functions will require a <em>V2</em>, <em>V3</em>, etc., but the constructor only needs a <em>V1</em></li>
+      </ul>
+    <p class="lightBlueColor"><em>Explanation of the Variable Declaration section:</em></p>
+    <ul>
+      <li>Always appears at the very top of the unit test</li>
+      <li>Contains declarations for all variables involved in the unit test</li>
+    </ul>
+    <hr />
+        <p><em>UT01ConstructorV1's Logger Output</em>:</p>
+    <pre class="lightGrayColor">UT01ConstructorV1: Queue1();
+	outgoing: q1 = &lt;&gt;</pre>
+    </td>
+  </tr>
+  
+
+</table>
+<p>&nbsp;</p>
+<h3>Unit Tests for Clear</h3>
+
+
+<table width="100%" border="1">
+  <tr>
+    <td width="50%" valign="top"><pre>// -----------------------------------------------------
+// clear
+// -----------------------------------------------------
+//! clears self
+// -----------------------------------------------------
+TEST_METHOD(UT02ClearV1)
+{
+   IntegerQueue q1;
+   Text x1;
+
+<span class="yellowColor">   Logger::WriteMessage(L"UT02ClearV1: q1.clear();");
+   Logger::WriteMessage(L"\tincoming: q1 = &lt;&gt;");
+   Logger::WriteMessage(L"\toutgoing: q1 = &lt;&gt;");</span>
+
+   // Execute operation: clear
+   q1.clear();
+
+   // Verify parameter mode clears: clears self
+   toText(q1, x1);
+   Assert::IsTrue(x1 == "&lt;&gt;", L"q1 = &lt;&gt;");
+} // UT02ClearV1
+</pre></td>
+    <td width="50%" valign="top">
+    <p class="yellowColor"><em>Explanation of the Logger::WriteMessage</em> <em>section</em>:</p>
+    <ul>
+      <li><em>Message #1</em>: Must output the Unit Test name followed by a colon and an example of the call to the member function<br />
+        <br />
+        In this unit test <em>UT02ClearV1</em> is output for the name, followed by <em>:</em> followed by <em>q1.clear();</em> for the member function to be called<br />
+        <br />
+      </li>
+      <li><em>Message #2</em>: Must output the incoming values of all variables involved with the member function being called<br />
+        <br />
+        In this unit test <em>q1</em> is the only incoming variable to the <em>clear()</em> member function<br />
+        <br />
+      </li>
+      <li><em>Message #3</em>: Must output the expected outgoing values of all variables mentioned in Message #2<br />
+        <br />
+        In this unit test, <em>q1</em> is the only outgoing variable that appears with its corresponding expected outgoing value <br />
+        <br />
+      </li>
+      <li>In Messages #2 and #3, the <em>\t</em> appearing at the front of the quoted string of characters outputs a tab character, this provides indentation on the output of the 2nd and 3rd lines (see below)</li>
+    </ul>
+    <hr />
+    <p><em>UT02ClearV1's Logger Output</em>:</p>
+<pre class="lightGrayColor">UT02ClearV1: q1.clear();
+	incoming: q1 = &lt;&gt;
+	outgoing: q1 = &lt;&gt;</pre>
+</td>
+  </tr>
+  <tr>
+    <td valign="top"><pre>TEST_METHOD(UT02ClearV2)
+{
+   IntegerQueue q1;
+   Text x1;
+   Integer k;
+
+   Logger::WriteMessage(L"UT02ClearV2: q1.clear();");
+   Logger::WriteMessage(L"\tincoming: q1 = &lt;10&gt;");
+   Logger::WriteMessage(L"\toutgoing: q1 = &lt;&gt;");
+
+<span class="yellowColor">   // Test set up
+   k = 10;
+   q1.enqueue(k);</span>
+
+   // Execute operation: clear
+   q1.clear();
+
+   // Verify clears parameter mode: clears self
+   toText(q1, x1);
+   Assert::IsTrue(x1 == "&lt;&gt;", L"q1 = &lt;&gt;");
+} // UT02ClearV2</pre></td>
+    <td valign="top">
+<p class="yellowColor"><em>Explanation of the Test Set Up section</em>: </p>
+<ul>
+  <li>The purpose of the test set up section is to give the variables involved in the test their <em>incoming</em> values</li>
+  <li>The test test up in this unit test consists of 2 lines of code</li>
+  <li>If you look at Message #2, you see the incoming <em>q1 = &lt;10&gt;</em></li>
+  <li>To achieve the test setup up, <em>k</em> is assigned 10, and then <em>q1.enqueue(k)</em> is called</li>
+</ul>
+<hr />
+    <p><em>UT02ClearV2's Logger Output</em>:</p>
+<pre>UT02ClearV2: q1.clear();
+	incoming: q1 = &lt;10&gt;
+	outgoing: q1 = &lt;&gt;
+</pre>
+
+</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h3>Unit Tests for transferFrom</h3>
+<table width="100%" border="1">
+  <tr>
+    <td width="50%" valign="top"><pre>// -----------------------------------------------------
+// transferFrom
+// -----------------------------------------------------
+//! replaces self
+//! clears source
+//! ensures: self = #source
+// -----------------------------------------------------
+TEST_METHOD(UT03TransferFromV1)
+{
+   IntegerQueue q1, q2;
+   Text x1, x2;
+
+   Logger::WriteMessage(L"UT03TransferFromV1: q1.transferFrom(q2);");
+   Logger::WriteMessage(L"\tincoming: q1 = &lt;&gt; and q2 = &lt;&gt;");
+   Logger::WriteMessage(L"\toutgoing: q1 = &lt;&gt; and q2 = &lt;&gt;");
+
+<span class="yellowColor">   // Execute operation: transferFrom
+   q1.transferFrom(q2);</span>
+
+   // Verify ensures: self = #source
+   toText(q1, x1);
+   Assert::IsTrue(x1 == "&lt;&gt;", L"q1 = &lt;&gt;");
+
+   // Verify clears parameter mode: clears source
+   toText(q2, x2);
+   Assert::IsTrue(x2 == "&lt;&gt;", L"q2 = &lt;&gt;");
+} // UT03TransferFromV1</pre></td>
+    <td width="50%" valign="top"><p class="yellowColor"><em>Explanation of the Execute Operation section</em>:</p>
+      <ul>
+        <li>This section is for executing the operation under test</li>
+        <li>The execution of the operation always occurs after the test set up section</li>
+        <li>In this unit test, there is not a test set up section because both variables involved in the test (<em>q1</em> and <em>q2</em>) only require initial values</li>
+      </ul>
+      <hr />
+      <p><em>UT03TransferFromV1's Logger Output</em>:</p>
+      <pre class="lightGrayColor">UT03TransferFromV1: q1.transferFrom(q2);
+	incoming: q1 = &lt;&gt; and q2 = &lt;&gt;
+	outgoing: q1 = &lt;&gt; and q2 = &lt;&gt;</pre></td>
+  </tr>
+  <tr>
+    <td valign="top"><pre>TEST_METHOD(UT03TransferFromV2)
+{
+   IntegerQueue q1, q2;
+   Text x1, x2;
+   Integer k;
+
+   Logger::WriteMessage(L"UT03TransferFromV2: q1.transferFrom(q2);");
+   Logger::WriteMessage(L"\tincoming: q1 = &lt;&gt; and q2 = &lt;17&gt;");
+   Logger::WriteMessage(L"\toutgoing: q1 = &lt;17&gt; and q2 = &lt;&gt;");
+
+   // Test set up
+   k = 17;
+   q2.enqueue(k);
+
+   // Execute operation: transferFrom
+   q1.transferFrom(q2);
+
+<span class="yellowColor">   // Verify ensures: self = #source
+   toText(q1, x1);
+   Assert::IsTrue(x1 == "&lt;17&gt;", L"q1 = &lt;17&gt;");</span>
+
+   // Verify clears parameter mode: clears source
+   toText(q2, x2);
+   Assert::IsTrue(x2 == "&lt;&gt;", L"q2 = &lt;&gt;");
+} // UT03TransferFromV2</pre></td>
+    <td valign="top"><p class="yellowColor"><em>Explanation of the Verify Ensures section</em>: </p>
+      <ul>
+        <li>The purpose of this section is to verify that that the tested operation actually did the right thing, i.e., it satisfied its own ensures clause</li>
+        <li>When writing the unit test, we must know what the outgoing values are from the tested operation, we use this section to verify that actual outgoing values match our expectations</li>
+      </ul>
+      <p><em>The toText operation:</em></p>
+      <ul>
+        <li><em>toText</em> is a helper operation that is available from the Text wrapper type</li>
+        <li>toText is used to convert a variable's value into a string of characters and store those characters in a Text variable</li>
+        <li>The 1st parameter is <em>restored</em>, and the second parameter is <em>replaced</em></li>
+      </ul>
+      <p><em>The Assert::IsTrue operation:</em></p>
+      <ul>
+        <li><em>Assert::IsTrue</em> is a helper operation that is proved by the Visual Studio unit test project</li>
+        <li>Assert::IsTrue requires 2 actual parameters</li>
+        <li>1st parameter - is a expression that evaluates to true or false</li>
+        <li>2nd parameter - is a string of characters enclosed in double quotes, and because we are using Unicode, an <em>L</em> must appear before the first double quote</li>
+        <li>Both parameters are <em>restored</em></li>
+      </ul>
+      <p><em>In this unit test:</em></p>
+      <ul>
+        <li>The call to toText converts <em>q1</em>'s value to characters which are stored in Text variable <em>x1</em></li>
+        <li>Then the call to Assert::IsTrue verifies that <em>x1</em> equals the  expected outgoing value for variable <em>q1</em></li>
+        <li>If the assertion fails, that is, the expression in the 1st parameter evaluates to false, then the quoted string in the 2nd parameter is displayed as the result of the test, telling the human perfoming the test that the expected result failed to materialize</li>
+        <li>Write the quoted string for the 2nd parameter so that it uses the actual variable was tested in the Execute Operation section (in this example <em>q1</em>)</li>
+      </ul>
+      <hr />
+      <p><em>UT03TransferFromV2's Logger Output</em>:</p>
+      <pre class="lightGrayColor">UT03TransferFromV2: q1.transferFrom(q2);
+	incoming: q1 = &lt;&gt; and q2 = &lt;17&gt;
+	outgoing: q1 = &lt;17&gt; and q2 = &lt;&gt;</pre></td>
+  </tr>
+
+  <tr>
+    <td valign="top"><pre>TEST_METHOD(UT03TransferFromV4)
+{
+   IntegerQueue q1, q2;
+   Text x1, x2;
+   Integer k;
+
+   Logger::WriteMessage(L"UT03TransferFromV4: q1.transferFrom(q2);");
+   Logger::WriteMessage(L"\tincoming: q1 = &lt;10&gt; and q2 = &lt;25&gt;");
+   Logger::WriteMessage(L"\toutgoing: q1 = &lt;25&gt; and q2 = &lt;&gt;");
+
+   // Test set up
+   k = 10;
+   q1.enqueue(k);
+   k = 25;
+   q2.enqueue(k);
+
+   // Execute operation: transferFrom
+   q1.transferFrom(q2);
+
+   // Verify ensures: self = #source
+   toText(q1, x1);
+   Assert::IsTrue(x1 == "&lt;25&gt;", L"q1 = &lt;25&gt;");
+
+<span class="yellowColor">   // Verify clears parameter mode: clears source
+   toText(q2, x2);
+   Assert::IsTrue(x2 == "&lt;&gt;", L"q2 = &lt;&gt;");</span>
+} // UT03TransferFromV4</pre></td>
+    <td valign="top"><p class="yellowColor"><em>Explanation of the Clears Parameter Mode section</em>: </p>
+      <ul>
+        <li>This section appears in the unit test <em>only if</em> the tested operation has a <em>clears</em> parameter mode for one of its parameters</li>
+        <li>Its purpose is to verify that that the tested operation actually cleared the value of the parameter, i.e., reset the value of the parameter back to its initial value      </li>
+      </ul>
+      <p><em>In this unit test:</em></p>
+      <ul>
+        <li>The call to toText converts <em>q2</em>'s value to characters which are stored in Text variable <em>x2</em></li>
+        <li>Then the call to Assert::IsTrue verifies that <em>x2</em> equals an empty queue<em></em></li>
+      </ul>
+      <hr />
+      <p><em>UT03TransferFromV4's Logger Output</em>:</p>
+      <pre class="lightGrayColor">UT03TransferFromV4: q1.transferFrom(q2);
+	incoming: q1 = &lt;10&gt; and q2 = &lt;25&gt;
+	outgoing: q1 = &lt;25&gt; and q2 = &lt;&gt;</pre></td>
+  </tr>
+</table>
+<p></p>
+<h3>Unit Tests for operator =</h3>
+<table width="100%" border="1">
+  <tr>
+    <td width="50%" valign="top"><pre>// -----------------------------------------------------
+// operator =
+// -----------------------------------------------------
+//! replaces self<br />//! restores rhs<br />//! ensures: self = rhs&gt;
+// -----------------------------------------------------
+TEST_METHOD(UT04AssignmentV2)
+{
+   IntegerQueue q1, q2;
+   Text x1, x2;
+   Integer k;
+
+   Logger::WriteMessage(L"UT04AssignmentV2: q1 = q2;");
+   Logger::WriteMessage(L"\tincoming: q1 = &lt;&gt; and q2 = &lt;27&gt;");
+   Logger::WriteMessage(L"\toutgoing: q1 = &lt;27&gt; and q2 = &lt;27&gt;");
+
+   // Test set up
+   k = 27;
+   q2.enqueue(k);
+
+   // Execute operation: operator =
+   q1 = q2;
+
+   // Verify ensures: self = rhs
+   toText(q1, x1);
+   toText(q2, x2);
+   Assert::IsTrue(x1 == x2, L"q1 = q2");
+
+<span class="yellowColor">   // Verify restores parameter mode: restores rhs
+   toText(q1, x1);
+   Assert::IsTrue(x1 == "&lt;27&gt;", L"q1 = &lt;27&gt;");</span>
+} // UT04AssignmentV2</pre></td>
+    <td width="50%" valign="top">
+    <p class="yellowColor"><em>Explanation of the Restores Parameter Mode section</em>: </p>
+    <ul>
+      
+        <li>This section appears in the unit test <em>only if</em> the tested operation has a <em>restores</em> parameter mode for one of its parameters</li>
+        <li>Its purpose is to verify that that the tested operation actually restores this parameter's value, i.e., that the outgoing value = the incoming value</li>
+    </ul>
+    <p><em>In this unit test:</em></p>
+    <ul>
+      <li>The call to toText converts <em>q1</em>'s value to characters which are stored in Text variable <em>x1</em></li>
+      <li>Then the call to Assert::IsTrue verifies that <em>x1</em> equals the original incoming value of <em>q1</em> prior to the call to operation =</li>
+    </ul>
+    <hr />
+      <p><em>UT04AssignmentV2's Logger Output</em>:</p>
+    <pre class="lightGrayColor">UT04AssignmentV2: q1 = q2;
+	incoming: q1 = &lt;&gt; and q2 = &lt;27&gt;
+	outgoing: q1 = &lt;27&gt; and q2 = &lt;27&gt;</pre>
+    </td>
+  </tr>
+  
+
+</table>
+<p>&nbsp;</p>
+
+<h3>Unit Tests for dequeue</h3>
+<table width="100%" border="1">
+  <tr>
+    <td width="50%" valign="top"><pre>// -----------------------------------------------------
+// dequeue
+// -----------------------------------------------------
+//! updates self
+//! replaces x
+//! requires: self /= &lt;&gt;
+//! ensures: &lt;x&gt; is prefix of #self  and  self = #self[1, |#self|)
+// -----------------------------------------------------
+TEST_METHOD(UT06DequeueV2)
+{
+   IntegerQueue q1;
+   Text x1;
+   Integer k;
+
+   Logger::WriteMessage(L"UT06DequeueV2: q1.dequeue(k);");
+   Logger::WriteMessage(L"\tincoming: q1 = &lt;25,30&gt; and k = 0");
+   Logger::WriteMessage(L"\toutgoing: q1 = &lt;30&gt; and k = 25");
+
+   // Test set up
+   k = 25;
+   q1.enqueue(k);
+   k = 30;
+   q1.enqueue(k);
+
+   // Execute operation: dequeue
+   q1.dequeue(k);
+
+<span class="yellowColor">   // Verify ensures: &lt;x&gt; is prefix of #self
+   Assert::IsTrue(k == 25, L"k = 25");
+
+   // Verify ensures: self = #self[1, |#self|)
+   toText(q1, x1);
+   Assert::IsTrue(x1 == "&lt;30&gt;", L"q1 = &lt;30&gt;");</span>
+} // UT06DequeueV2
+</pre></td>
+    <td width="50%" valign="top">
+    <p class="yellowColor"><em>Explanation of the Verify Ensures section - when there are multiple conjuncts</em>: </p>
+    <p><em>In this unit test:</em></p>
+    <ul>
+      <li>There are two conjuncts to the ensures clause</li>
+      <li><em>Conjunct #1</em>: x is prefix of #self</li>
+      <li><em>Conjunct #2</em>: self = #self[1, |#self|]</li>
+      <li>Both conjuncts must be verified, so there are 2 sections of the Verify ensures</li>
+      </ul>
+    <p>&nbsp;</p>
+    <hr />
+      <p><em>UT06DequeueV2's Logger Output</em>:</p>
+    <pre class="lightGrayColor">UT06DequeueV2: q1.dequeue(k);
+	incoming: q1 = &lt;25,30&gt; and k = 0
+	outgoing: q1 = &lt;30&gt; and k = 25</pre>
+    </td>
+  </tr>
+
+</table>
+</body>
+</html>

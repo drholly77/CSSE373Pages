@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+
+
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Dr. Holly">
+
+<title>Testing with a Test Script</title>
+</head>
+
+<body>
+<h2>Testing - With a Test Script</h2>
+<hr />
+<p><strong>Overview</strong></p>
+<ul>
+<li>Command Interpreter&nbsp;software application&nbsp;takes its input from the user through keystrokes made by the user on&nbsp;the keyboard.</li>
+<li>Any app that takes input in this manner can easily be tested with a test script.</li>
+<li>From a Command Prompt (i.e., <code>C:\CppDevSp19\L1\Release&gt;</code> ) you can use what is known as&nbsp;<em>file redirection</em> to tell your L1.EXE to take its input from a file, rather than having a user type in all the commands. This means you can enter the commands into a text file (using Notepad), save the text file, and then reuse this text file over and over again to test your app.</li>
+<li>In this screen shot,&nbsp;&nbsp; <code>L1.exe &lt; enqueueQ1.txt</code>&nbsp;&nbsp; has been typed in at the command prompt:
+  <ul>
+<li><strong>&lt;</strong>&nbsp; - i.e., the less than symbol, tells L1.EXE app to take its&nbsp;input from the file that follows, instead of from the keyboard (this is called file redirection)</li>
+<li><strong>enqueueQ1.txt</strong> - is the name of the file from where L1.EXE will obtain its input</li>
+</ul>
+</li>
+</ul>
+<p align="center"><img src="L1AndFileRedirectionInOnly.png" width="460" height="152" alt=""/></p>
+<p><strong>Capturing the Output</strong></p>
+<ul>
+  <li>Capturing the output from L1.EXE.
+<ul>
+<li>Additionally, you can use file redirection to capture the output coming from the app, and have it placed into a file.</li>
+<li>By capturing the output in a file,&nbsp;you can examine the file's contents to make sure that L1.EXE did all it was supposed to do.</li>
+<li>You can then use Notepad (for example) to examine the contents of the file.</li>
+<li>Here is a screen shot&nbsp;showing how to redirect the output to a file called: testOutput.txt.&nbsp; Here you'll see toward the end of the line the characters "&gt; testOutput.txt", the greater than sign tells the operating system to redirect the output to the file named "testOutput.txt".</li>
+</ul>
+</li>
+</ul>
+<p align="center"><img src="L1AndFileRedirectionInOut.png" width="571" height="132" alt=""/></p>
+<p><strong>Using FC to Compare</strong></p>
+<ul>
+<li>FC is a utility app that can be run from the&nbsp;command prompt. FC compares the contents (character by character) from to two different files.</li>
+<li>To get help on the FC command, type FC /? at a command prompt.</li>
+</ul>
+<p>How to use FC when testing your software app:</p>
+<ul>
+<li>Run the test script on your version of a program and use redirection to capture the output in a file.</li>
+<li>Run the same test script on the corresponding program in the CppDevSp19\Samples folder (or if you have a solution .exe elsewhere, then use that .exe) and capture its output.</li>
+<li>Then use FC to compare output from your app with the output from the app found in the Samples folder.&nbsp; If the output from the two apps is the same, FC will report <em>no differences encountered</em>.</li>
+<li>No differences encountered means that each and every character of the two files being compared are exactly the same and in exactly the same location. This includes white space such as spaces and return characters.</li>
+<li>In the screen shot below, the file "testOutput1.txt" was captured by running a test script on the application being developed. "testOutput2.txt" was captured by running the very same test script on the corresponding app from the Samples folder.</li>
+</ul>
+<p align="center"><img src="FCCompare.png" width="522" height="123" alt=""/></p>
+<ul>
+<li>To obtain "no differences encountered" requires a lot of work. When there are differences, FC will show you the lines that are different. Use FC's output to determine where in your program that you must make changes in order to make your app work like the already completed app found in the Samples folder. After making changes to your software, rerun the test script, then rerun FC to see if you get "no differences encountered". Follow this process over and over again until you finally obtain "no differences encountered".</li>
+</ul>
+<p><strong>Tutorial on the Command Prompt</strong></p>
+<ul>
+<li>Use your favorite search engine and search for "windows command prompt tutorial"</li>
+<li>Minimum commands that you should learn:
+  <ul>
+    <li>dir - list the files in the current folder</li>
+    <li>cd - change directory (folder)</li>
+    </ul>
+</li>
+</ul>
+</body>
+
+</html>
