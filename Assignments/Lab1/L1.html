@@ -102,7 +102,7 @@ Queues, and it actually reduces the amount of code in our command interpreter.</
       #<b>include</b> &quot;Queue/Queue1.hpp&quot;<br>
       #<b>include</b> &quot;StaticArray/StaticArray1.hpp&quot;<br>
       <br>
-      enum {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
+      <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
       <b>typedef</b> Queue1 &lt;Integer&gt; IntQueue;<br>
       <br>
 	//Create a class called QueueArray, which is indexed from 0..4<br>
@@ -112,15 +112,15 @@ Queues, and it actually reduces the amount of code in our command interpreter.</
       // Date: 3/19<br>
       <br>
       #<b>include</b> &quot;Queue/Queue1.hpp&quot;<br>
-	#include &quot;Queue/QueueChecking.hpp&quot;<br>
+	#<strong>include</strong> &quot;Queue/QueueChecking.hpp&quot;<br>
       #<b>include</b> &quot;StaticArray/StaticArray1.hpp&quot;<br>
-	#include &quot;StaticArray/StaticArrayChecking.hpp&quot;<br>
+	#<strong>include</strong> &quot;StaticArray/StaticArrayChecking.hpp&quot;<br>
 	<br>
-      enum {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
-      typedef QueueChecking1&lt;Queue1, Integer&gt; IntQueue;<br>
+      <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
+      <strong>typedef</strong> QueueChecking1&lt;Queue1, Integer&gt; IntQueue;<br>
       <br>
 	//Create checked QueueArray, which is indexed from 0..4<br>
-      typedef StaticArrayChecking1&lt;StaticArray1, IntQueue, lowerBound, upperBound&gt; 
+      <strong>typedef</strong> StaticArrayChecking1&lt;StaticArray1, IntQueue, lowerBound, upperBound&gt; 
 	IntQueueArray;</font></code></td>
   </tr>
 </table>
