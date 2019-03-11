@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>L2</title>
+</head>
+
+<body>
+<h3>0. Reference material</h3>
+	<ul>
+	<li><a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">Visual Studio Specific Topics</a></li>
+	<li><a href="https://drholly77.github.io/CSSE373Pages/Testing/ConstructingUnitTests.html" target="_blank">Constructing Unit Tests</a></li>
+	<li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/ListTemplate.html" target="_blank">List spec</a></li>
+	<li><a href="https://drholly77.github.io/CSSE373Pages/LabRelated/howToTurnInLabAssignment.html" target="_blank">How To Turn In A Lab Assignment</a></li>
+	</ul>
+
+<hr>
+	
+<h3>1. Creating a unit test driver</h3>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td valign="top">
+  <h4>Setup Part 1) </h4>
+  <p>Create  a VS2017 <em>unit test </em>project called:<em> L2</em></p>
+  <ol>
+    <li>Navigate to the CSSE373 Moodle site - click on the Resource: <em>Visual Studio Related Topics</em></li>
+    <li>Follow the instructions in the two web pages under: <em>Creating unit test projects</em></li>
+    <li>Set Up the Wrapper Folder by the instructions in the web page: <em>Adding .cpp Files to a Project</em> </li>
+</ol>
+  <p>When you are finished with the 3 steps above your L2 unit test project should look like the screen shot to the right</p>
+</td>
+<td width="250"><img src="L2Sp19SolExp.png" width="231" height="172" alt="L2 Solution" /></td>
+</tr>
+<tr>
+  <td valign="top">
+    <h4>Setup Part 2) </h4>
+    <p>Create  <em>IntegerList.h</em></p>
+    <ol>
+      <li>Find the folder CppDevSp19\Queue1UnitTest and copy a file named <em>IntegerQueue.h</em> from that folder to the folder CppDevSp19\L2</li>
+      <li>Rename <em>IntegerQueue.h</em> to <em>IntegerList.h</em></li>
+    </ol></td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td valign="top"><h4>Setup Part 3) </h4>
+    <p>In Visual Studio, add the <em>IntegerList.h</em> file to the Header Files folder</p>
+    <ol>
+      <li>Right click the Header Files folder in the Solution</li>
+      <li>Click &quot;Add Existing Item&quot; to add the <em>IntegerList.h</em> file to the Header Files solution folder</li>
+    </ol>
+    <p>When you are finished with the 3 steps above your L2 unit test project should look like the screen shot to the right</p></td>
+  <td><img src="L2Sp19SolExpFinal.png" width="287" height="258" alt="VS Solution"/></td>
+</tr>
+<tr>
+  <td valign="top"><h4>Setup Part 4) </h4>
+    <p>Edit the file <em>IntegerList.h </em></p>
+    <ol>
+      <li>While in Visual Studio, double click the IntegerList.h file name found in the Header Files folder</li>
+      <li>Edit this file by changing the following:
+        <ul>
+          <li>#include <em>List\List1.hpp</em> instead of Queue\Queue1</li>
+          <li>typedef <em>IntegerList</em> from <em>List1</em> instead of IntegerQueue from Queue1</li>
+        </ul>
+      </li>
+      </ol></td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td valign="top"><h4>Setup Part 5) </h4>
+    <p>Edit the top of the file <em>unittest1.cpp</em> by adding the following 2 #include lines</p>
+    <ol>
+      <li>#include &quot;Wrapper.h&quot;</li>
+      <li>#include &quot;IntegerList.h&quot;</li>
+      </ol>
+    <p>When you are finished, the file should look like unittest1.cpp file should look like the following:</p></td>
+  <td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<table border="1" width="70%">
+<tbody>
+<tr>
+<td><pre>#<strong>include</strong> "stdafx.h"
+#<strong>include</strong> "CppUnitTest.h"
+#<strong>include</strong> "Wrapper.h"
+#<strong>include</strong> "IntegerList.h"
+
+<strong>using</strong> <strong>namespace</strong> Microsoft::VisualStudio::CppUnitTestFramework;
+
+namespace L2
+{      
+   TEST_CLASS(UnitTest1)
+   {
+   <strong>public</strong>:
+      
+      TEST_METHOD(TestMethod1)
+      {
+         // TODO: Your test code here
+      }
+
+   };
+}</pre></td>
+</tr>
+</tbody>
+</table>
+<h4>Setup Part 6)</h4>
+<p>Build your project</p>
+<ol>
+  <li>Click from the menu bar: Build | Build Solution</li>
+  <li>You should not have any build errors, if you do then one of the steps above was done incorrectly. You'll need to fix it before moving on</li>
+</ol>
+<hr />
+
+<h3>2. Create Test Cases For IntegerList</h3>
+<h4>2.1 Requirements for constructing a unit test procedure </h4>
+<ul>
+  <li>Each unit test that you create must have 8 sections as described in the  reference materal: Constructing Unit Tests</li>
+  <li>It will help you to reference the examples of Queue unit tests which can be found in the file <em>unittest1.cpp</em> in the folder CppDevSp19\Queue1UnitTest</li>
+</ul>
+<h4>2.2 Create the following unit test procedures for IntegerList</h4>
+<ul>
+  <li>Edit the <em>unittest1.cpp</em> file in your L2 project and create unit test procedures</li>
+  <li>Below is a list of 15 unit tests that you must create for this lab</li>
+  <li>Use the name as given in each of the 15 unit tests</li>
+  <li>Make each test use the provided incoming values</li>
+  <li>Make each unit test correctly verify that the operation performed its required function according to the operation's spec</li>
+</ul>
+<pre>UT01ConstructorV1: List1();
+	outgoing: s1 = (&lt;&gt;,&lt;&gt;)
+UT02ClearV1: s1.clear();
+	incoming: s1 = (&lt;&gt;,&lt;&gt;)
+	outgoing: s1 = (&lt;&gt;,&lt;&gt;)
+UT03ClearV2: s1.clear();
+	incoming: s1 = (&lt;&gt;,&lt;33&gt;)
+	outgoing: s1 = (&lt;&gt;,&lt;&gt;)
+UT04TransferFromV1: s1.transferFrom(s2);
+	incoming: s1 = (&lt;&gt;,&lt;&gt;) and s2 = (&lt;&gt;,&lt;44&gt;)
+	outgoing: s1 = (&lt;&gt;,&lt;44&gt;) and s2 = (&lt;&gt;,&lt;&gt;)
+UT05AssignmentV1: s1 = s2;
+	incoming: s1 = &lt;&gt; and s2 = (&lt;&gt;,&lt;17&gt;)
+	outgoing: s1 = (&lt;&gt;,&lt;17&gt;) and s2 = (&lt;&gt;,&lt;17&gt;)
+UT06AddRightFrontV1: s1.addRightFront(k);
+	incoming: s1 = (&lt;&gt;,&lt;21&gt;) and k = 35
+	outgoing: s1 = (&lt;&gt;,&lt;35,21&gt;) and k = 0
+UT07RemoveRightFrontV1: s1.removeRightFront(k);
+	incoming: s1 = (&lt;&gt;,&lt;11,33,55,77,99&gt;) and k = 0
+	outgoing: s1 = (&lt;&gt;,&lt;11,33,55,77,99&gt;) and k = 11
+UT08AdvanceV1: s1.advance();
+	incoming: s1 = (&lt;&gt;,&lt;11,33,55,77,99&gt;)
+	outgoing: s1 = (&lt;11,33&gt;,&lt;55,77,99&gt;)
+UT09MoveToStartV1: s1.moveToStart();
+	incoming: s1 = (&lt;11,33&gt;,&lt;55,77,99&gt;)
+	outgoing: s1 = (&lt;&gt;,&lt;11,33,55,77,99&gt;)
+UT10MoveToFinishV1: s1.moveToFinish();
+	incoming: s1 = (&lt;&gt;,&lt;11,33,55,77,99&gt;)
+	outgoing: s1 = (&lt;11,33,55,77,99&gt;,&lt;&gt;)
+UT11ReplaceRightFrontV1: s1.replaceRightFront(k);
+	incoming: s1 = (&lt;11,33&gt;,&lt;55,77,99&gt;) and k = 200
+	outgoing: s1 = (&lt;11,33&gt;,&lt;200,77,99&gt;) and k = 55
+UT12RightFrontV1: s1.rightFront();
+	incoming: s1 = (&lt;3,7&gt;,&lt;11&gt;)
+	outgoing: s1 = (&lt;3,7&gt;,&lt;11&gt;)
+UT13SwapRightsV1: s1.swapRights(s2);
+	incoming: s1 = (&lt;11,33&gt;,&lt;&gt;) and s2 = (&lt;&gt;,&lt;55,77,99&gt;)
+	outgoing: s1 = (&lt;11,33&gt;,&lt;55,77,99&gt;) and s2 = (&lt;&gt;,&lt;&gt;)
+UT14LeftLengthV1: s1.leftLength();
+	incoming: s1 = (&lt;11,33&gt;,&lt;&gt;)
+	outgoing: s1 = (&lt;11,33&gt;,&lt;&gt;)
+UT15RightLengthV1: s1.rightLength();
+	incoming: s1 = (&lt;11&gt;,&lt;33,55,77&gt;)
+	outgoing: s1 = (&lt;11&gt;,&lt;33,55,77&gt;)</pre>
+    
+ 
+<h4>2.3 Running the Unit Tests</h4>
+
+<p>First open the Test Explorer Window</p>
+<p><img src="ShowUnitTestWindow.png" width="596" height="173" alt="Show Unit Test Window" /></p>
+<p>From the Test Explorer Window, click the Run All link</p>
+<p><img src="L2Sp19TestExplorer.png" width="331" height="489" alt=""/></p>
+<hr />
+<h3>3. Submitting the Lab for Grading</h3>
+<p>Please read and follow the instructions in the reference material:&nbsp;How To Turn In A Lab Assignment</p>
+<p>Upload your L2.zip to this Moodle assignment</p>
+
+</body>
+</html>
