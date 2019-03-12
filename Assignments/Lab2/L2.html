@@ -148,10 +148,10 @@ UT06AddRightFrontV1: s1.addRightFront(k);
 	outgoing: s1 = (&lt;&gt;,&lt;35,21&gt;) and k = 0
 UT07RemoveRightFrontV1: s1.removeRightFront(k);
 	incoming: s1 = (&lt;&gt;,&lt;11,33,55,77,99&gt;) and k = 0
-	outgoing: s1 = (&lt;&gt;,&lt;11,33,55,77,99&gt;) and k = 11
+	outgoing: s1 = (&lt;&gt;,&lt;33,55,77,99&gt;) and k = 11
 UT08AdvanceV1: s1.advance();
 	incoming: s1 = (&lt;&gt;,&lt;11,33,55,77,99&gt;)
-	outgoing: s1 = (&lt;11,33&gt;,&lt;55,77,99&gt;)
+	outgoing: s1 = (&lt;11,33&gt;,&lt;55,77,99&gt;)   // this output is correct, the test exeuctes advance 2 times
 UT09MoveToStartV1: s1.moveToStart();
 	incoming: s1 = (&lt;11,33&gt;,&lt;55,77,99&gt;)
 	outgoing: s1 = (&lt;&gt;,&lt;11,33,55,77,99&gt;)
