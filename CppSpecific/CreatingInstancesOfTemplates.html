@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Dr. Holly">
+<title>Creating Instances of Templates</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<h1>Creating Instances of Templates</h1>
+<h4>Template Facts:</h4>
+<ul>
+<li>C++ variable declarations:
+  <ul>
+    <li>A C++ class can be directly used in a client program to declare variables.</li>
+    <li>A C++ template cannot be used in a client program to declare variables.</li>
+    </ul>
+</li>
+<li>A template class:
+  <ul>
+    <li>Can be considered as a blueprint for a class, the blueprint cannot be directly used by a client to declare variables.</li>
+    <li>Provides the power to capture in one place the essence of a particular component (e.g., a Queue), and then use the component many different ways by instantiating it with different actual template parameters (see below where Queue1 is instantiated with two different types, Integer and Text).</li>
+  </ul>
+</li>
+<li>An instance of the template must first be created.
+  <ul>
+  <li><em>instance</em> - a declaration that permits the client program to explicitly supply the actual parameters for a template's formal parameters</li>
+  </ul>
+</li>
+<li>Once a template is instantiated, it creates a class that can then be used in a client program to declare variables.</li>
+<li><em>Named Instantiation</em> is used to create an instance from a template and to give this instance a name that can be used by the client for declaring variables.
+<ul>
+<li>Used by the software developer to tell the compiler to generate a name for the class and the classes member function prototypes.</li>
+<li>It uses the C++ <code>typedef</code> construct.
+<ul>
+<li>In this case <code>typedef</code> is used to assign meaningful names to an instantiated template - this name is used in the program for declaring variables from the instance</li>
+<li>Syntax: <code><strong>typedef</strong> template-name&lt;template-parameters&gt; meaningful-name</code></li>
+<li>Allows the client program to supply the required template parameters.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4>Named Template Instantiation: </h4>
+
+	<p>Steps to create an instance:</p>
+	<ol>
+<li>In your client program file (e.g., "driver.cpp") #include the .hpp file containing the component (i.e., template) to be instantiated.</li>
+<li>Use <em> named instantiation</em> to create an instance of the template, and to give it a meaningful name.</li>
+</ol>
+<p><em>Example:</em></p>
+<p>Client program that creates two different named instances of Queue1 template (found in file Queue\Queue1.hpp).
+
+</p>
+<table style="width: 90%;" border="1">
+<tbody>
+<tr>
+<td width="100%">
+<pre><code>// Filename: driver.cpp<br /> #<strong>include</strong> "wrapper.h"<br /> #<strong>include</strong> "QUEUE\Queue1.hpp"<br /> <br /> // Create two different named instantiations from the same template<br /> <strong>typedef</strong> Queue1&lt;Integer&gt; IntegerQueue;<br /> <strong>typedef</strong> Queue1&lt;Text&gt; TextQueue;<br /> <br /> // Program that uses the named instances<br /> int main (int argc, char* argv[])<br /> {<br /> &nbsp;&nbsp; // Declare variables using the named instances IntegerQueue and TextQueue<br /> &nbsp;&nbsp; IntegerQueue intQue1, intQue2;<br /> &nbsp;&nbsp; TextQueue textQue1, textQue2;<br>    Integer y1;<br>    Text t1;<br /> <br /> &nbsp;&nbsp; // Example code using the IntegerQueues and TextQueues ...<br>    y1 = 39;<br>    t1 = &quot;control flow&quot;;<br>    intQue2.enqueue(y1);<br>    textQue1.enqueue(t1);<br><br>    // and so on ...<br /> <br /> &nbsp;&nbsp; <strong>return</strong> 0;<br /> } // end main</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<div align="center"></div>
+
+</body>
+
+</html>
