@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta charset="utf-8">
+<title>Implement Traffic Light Activity</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+	<pre>#include "Wrapper.h"
+#include "TrafficLight1.hpp"
+
+//-------------------------------------------------------------------
+// main executable body
+//-------------------------------------------------------------------
+
+int main(int argc, char* argv[])
+{
+	Boolean showMenu = (argc == 1);
+	TrafficLight1 t1, t2;
+	Boolean red, yellow, green;
+
+	wcout &lt;&lt; "t1 = " &lt;&lt; t1 &lt;&lt; endl;
+	t1.changeState();
+	wcout &lt;&lt; "t1 = " &lt;&lt; t1 &lt;&lt; endl;
+
+	t2.transferFrom(t1);
+	wcout &lt;&lt; "t1 = " &lt;&lt; t1 &lt;&lt; endl;
+	wcout &lt;&lt; "t2 = " &lt;&lt; t2 &lt;&lt; endl;
+
+	t2.changeState();
+	wcout &lt;&lt; "t2 = " &lt;&lt; t2 &lt;&lt; endl;
+
+	t2.changeState();
+	t2.getState(red, yellow, green);
+	if (red) {
+		wcout &lt;&lt; "the light is red";
+	}
+	else if (yellow) {
+		wcout &lt;&lt; "the light is yellow";
+	} else {
+		wcout &lt;&lt; "the light is green";
+	} // end if
+	wcout &lt;&lt; endl;
+
+	wcout &lt;&lt; "end program" &lt;&lt; endl;
+	return 0;
+}	// end main</pre>
+
+	<h4>Output from main</h4>
+
+    <table width="100%" border="1">
+      <tbody>
+        <tr>
+          <td><pre>t1 = (true,false,false)
+t1 = (false,true,false)
+t1 = (true,false,false)
+t2 = (false,true,false)
+t2 = (false,false,true)
+the light is red
+end program</pre></td>
+        </tr>
+      </tbody>
+    </table>
+</body>
+
+</html>
