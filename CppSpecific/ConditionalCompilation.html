@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Conditional Compilation in C++</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Conditional Compilation in C++</h1>
+
+<ul>
+<li>The preprocessor directives #ifdef and #ifndef can be used to exclude code from being compiled.</li>
+<li>Code is not compiled when the compiler never sees it.</li>
+<li>We can keep the compiler from seeing the code by telling the preprocessor to not copy it to the .I file that it creates when processing all the # directives.</li>
+</ul>
+<h4>Conditional Compilation Preprocessor Directives</h4>
+<ul>
+  <li>The different directives that are used are:<br />
+<ul>
+      <li>#ifdef directive:
+        <ul>
+          <li><code>#ifdef ... #endif</code>
+          </li>
+          <li><code>#ifdef ... #else ... #endif</code><br />
+          </li>
+        </ul>
+      </li>
+      <li>#ifndef directive
+        <ul>
+          <li><code>#ifndef ... #endif&nbsp;</code></li>
+          <li><code>#ifndef ... #else ... #endif</code></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h4>The _DEBUG identifier&nbsp;</h4>
+<ul>
+  <li>_DEBUG <em>is not</em> automatically defined by Visual Studio when compiling in "Release Configuration"</li>
+  <li>_DEBUG <em>is</em> automatically defined by Visual Studio when compiling in "Debug Configuration"</li>
+  <li>Visual Studio uses the #define preprocessor directive to automatically define _DEBUG  depending on which configuration we are using to do the Build - this is not a standard used by all C++ compilers, but it is standard for Visual Studio, so we're going to take advantage of it</li>
+</ul>
+<h4>Example #1 - Create a Named Instance</h4>
+<ul>
+  <li>How to build a .h file for creating a named instance of a template class</li>
+  <li>When _DEBUG is defined, Visual Studio is in Debug Configuration - we want to use the Checking component</li>
+  <li>When _DEBUG is not defined, Visual Studio is in Release Configuration - we use the template class w/o the Checking component</li>
+  <li>The Checking component for a template class performs additional debugging checks</li>
+</ul>
+<div>
+  <table style="width: 90%;" border="1">
+<tbody>
+<tr>
+<td width="100%">
+<p><strong>Before Preprocessing</strong></p>
+</td>
+</tr>
+<tr>
+<td width="100%"><pre><code>// TextList.h
+#pragma once
+#include &quot;wrapper.h&quot;<br /><br />#<strong>include</strong> "List\List1.hpp"<br /> <br /> #<strong>ifdef</strong> _DEBUG<br /> //<br /> // if _DEBUG is defined, then we are in Debug Configuration<br /> //
+ <br /> #<strong>include</strong> "List\ListChecking.hpp"<br /> <br /> <strong>typedef</strong> ListChecking1&lt;List1, Text&gt; TextList;
+<br /> #<strong>else</strong><br /> //<br /> // else _DEBUG is not defined, then we are in Release Configuration<br /> //<br /><br /> <strong>typedef</strong> List1&lt;Text&gt; TextList;<br /> <br /> #<strong>endif</strong> // _DEBUG<br /> </code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>What the C Preprocess Puts in the .I File</h4>
+<div>
+<table style="width: 90%;" border="1">
+<tbody>
+<tr>
+<td width="100%">
+<p><strong>After Preprocessing<br /> When _DEBUG <em> is </em> Defined<br /> Meaning Visual Studio is compiling in "Debug Configuration"</strong></p>
+</td>
+</tr>
+<tr>
+<td width="100%">
+<pre><code>#<strong>include</strong> "List\List1.hpp"<br />#<strong>include</strong> "List\ListChecking.hpp"<br /> <br /><strong>typedef</strong> ListChecking1&lt;List1, Text&gt; TextList;<br /> <br /> </code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<div>
+<table style="width: 90%;" border="1">
+<tbody>
+<tr>
+<td width="100%">
+<p><strong>After Preprocessing<br /> 
+When _DEBUG <em>is</em> <em>not </em>Defined<br /> Meaning&nbsp; Visual Studio is compiling in "Release Configuration"</strong></p>
+</td>
+</tr>
+<tr>
+<td width="100%">
+<pre><code>#<strong>include</strong> "List\List1.hpp"<br /> <br /><strong>typedef</strong> List1&lt;Text&gt; TextList;<br /> </code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+<p><b>Example #2 - Creating a StaticArray of Lists of Text</b></p>
+<ul>
+  <li>Use the following example as a guide to creating an Array of Lists</li>
+  <li>For an array Queue, Stack, Sequences, etc., the declarations will be similar</li>
+</ul>
+<table width="100%" border="1">
+  <tr>
+    <td><pre><code>// ListArray.h
+#<b>pragma</b> once
+#<b>include</b> &quot;wrapper.h&quot;
+#<b>include</b> "List\List1.hpp"
+#<b>include</b> &quot;StaticArray\StaticArray1.hpp&quot;<br>
+
+//Create a named instance called ListArray, which is indexed from 0..4
+<b>enum</b> {lowerBound = 0, upperBound = 4, arraySize = 5};
+
+#<b>ifdef</b> _DEBUG
+//
+// if _DEBUG is defined, then we are in Debug Configuration
+//
+#<b>include</b> "List\ListChecking.hpp"
+#<b>include</b> &quot;StaticArray\StaticArrayChecking.hpp&quot;
+<b>typedef</b> ListChecking1&lt;List1, Text&gt; TextList;
+<b>typedef</b> StaticArrayChecking1&lt;StaticArray1, TextList, lowerBound, upperBound&gt; ListArray;
+
+#<b>else</b>
+//
+// else _DEBUG is not defined, then we are in Release Configuration
+//
+
+<b>typedef</b> List1&lt;Text&gt; TextList;
+<b>typedef</b> StaticArray1 &lt;TextList, lowerBound, upperBound&gt; ListArray;
+
+#<strong>endif</strong> // _DEBUG
+</code></pre></td>
+  </tr>
+</table>
+<hr>
+</body>
+</html>
