@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Layering a Component</title>
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<h1>Layering a Component</h1>
+	<h3>0. Reference material</h3>  
+	<ul>
+<ul>
+<li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/ListTemplate.html" target="_blank">List Specification</a></li>
+<li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/QueueTemplate.html" target="_blank">Queue Specification</a></li>
+<li><a href="file:///C:/Users/hollings/Documents/Repos-Git/CSSE373Pages/LabRelated/howToTurnInLabAssignment.html" target="_blank">How To Turn In A Lab Assignment</a></li>
+</ul>
+	</ul>
+
+
+<h3>1. Setup</h3>
+  <table border="0" width="100%">
+    <tbody>
+      <tr>
+        <td valign="top"><h4>1.1 Get the L3Starter Download</h4>
+          <ul>
+            <li>Download <em>L3Starter.zip</em>&nbsp;to your machine - to be used on a subsequent step</li>
+          </ul></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td valign="top"><h4>1.2 Create the L3 Project in Visual Studio</h4>
+          <ul>
+            <li>Follow the instructions for creating a Visual Studio console application project - these are the same instructions used for L1</li>
+            <li>Modify the instructions so that the project's name is: L3</li>
+          </ul>
+          <h4>1.3 Add the .cpp files and Build</h4>
+			        <ul>
+            <li>Copy <em>driver.cpp</em> from the downloaded L3Starter.zip to the CppDevSp19/L3 folder</li>
+            <li>Add <em> driver.cpp</em> to the Source File folder in the L3 project</li>
+            <li>Build the L3 project, there should be no compiler errors. If you have compiler errors, then you've not set the project up correctly. Go back and recreate the project again.</li>
+            <li>Run it if you'd like just to make sure the build worked </li>
+          </ul>
+			
+          <h4>1.4 About Driver.cpp in the L3 Project</h4>
+          <ul>
+            <li>You do not have to change driver.cpp, your work is elsewhere as described below</li>
+            <li> This driver is not a good client from design-by-contract point of view. But for what we want to do in this lab, that will be OK. We will run test scripts through this driver that do not include &quot;bad&quot; user input.You can use the <em>driver.cpp</em> found in the downloaded L3 folder to test your program, or if you'd like, you can use L2's List unit tests.</li>
+            <li>I will test your List implementation with test cases that do not violate the <em>requires</em> clause of any of the called List operations
+              
+            </li>
+          </ul></td>
+        <td valign="top"><p><img src="L2Solution.png" width="271" height="179" alt=""/></p></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+<h3>2. L3 Statement of Work</h3>
+<h4>2.1 Primary Objectives</h4>
+<p>The primary objective of this lab is to provide you experience working with:</p>
+<ul>
+<li>Layering a component (e.g., List) on another already existing component (e.g., Queue).</li>
+</ul>
+<h4>2.2 Specifics</h4>
+<p><span style="text-decoration: underline;"><strong>Specifics - Part1 - Initial Configuration of List2.hpp</strong></span></p>
+<p>2.2.1) <em>Navigate</em> to the folder: <em>C:\CppDevSp19\components\Include\List</em></p>
+<p>2.2.2) <em>Create</em> a duplicate of <em>List1.hpp</em>, name it: <em>List2.hpp </em></p>
+<p>2.2.3) <em>Modify</em> List2.hpp as follows</p>
+
+<table width="100%" border="0">
+  <tr>
+    <td width="380"><img src="List2TopPartOfFile.png" width="419" height="127" alt=""/></td>
+    <td><p>2.2.3a) In the top part of the List2.hpp file:</p>
+      <ol>
+        <li>Add the #<em>pragma warning</em> line (as shown)</li>
+        <li>Change the #<em>include</em> line (as shown)</li>
+    </ol></td>
+  </tr>
+  <tr>
+    <td><img src="List2PublicPart.png" width="375" height="611" alt="List2 public part" /></td>
+    <td><p>2.2.3b) In the public part:</p>
+      <ol>
+        <li>Change all occurences of List1 to List2 (as shown)</li>
+    </ol></td>
+  </tr>
+  <tr>
+    <td><img src="List2PrivatePart.png" width="414" height="261" alt=""/></td>
+    <td><p>2.2.3c) In the private part:</p>
+      <ol>
+        <li>Change the <em>typedef</em> line (as shown)</li>
+        <li>Delete all existing 5 lines of data member declarations left over from List1</li>
+        <li>Add the 2 data member declaration line as shown</li>
+        <li>Add the 4 lines of <em>correspondence</em> specification (as shown)</li>
+    </ol></td>
+  </tr>
+  <tr>
+    <td><img src="List2MemberFunctionPart.png" width="414" height="308" alt=""/></td>
+    <td><p>2.2.3d) In the member function part:</p>
+      <ol>
+        <li>Change all occurences of List1 to List2 (as shown)</li>
+        <li>Stub out all List2 member functions (with the exception of operator &lt;&lt; which is found at the bottom of List2.hpp - see <em>2.2.3e</em> below for what to do for it). Stubbing out an operation means deleting the code found in the body of each member function - for example, see <em>clear</em> (as shown). </li>
+      </ol>
+    <p></p></td>
+  </tr>
+  <tr>
+    <td><p>&nbsp;</p>
+    <pre><strong>template</strong> &lt;<strong>class</strong> T&gt;
+wostream&amp; operator&lt;&lt;(wostream&amp; os, List2&lt;T&gt;&amp; s)
+{
+#<strong>ifdef</strong> _DEBUG
+
+   os &lt;&lt; &quot;(&quot; &lt;&lt; s.repRZ &lt;&lt; &quot;,&quot; &lt;&lt; s.repQ &lt;&lt; &quot;)&quot;;
+   
+<strong>#else</strong>
+
+<em>   // existing code remains, except last line
+   // which is the return line, put it below #endif </em>
+
+#<strong>endif</strong>
+   <strong>return</strong> os;  // make sure <em>return</em> line is still last line
+} // operator &lt;&lt;
+</pre>
+    <p>&nbsp;</p></td>
+    <td><p>2.2.3e) Modify the operator &lt;&lt; as shown to the right</p>
+      <p>This modified implementation of operator &lt;&lt; uses conditional compilation to:</p>
+      <ul>
+        <li>display the <em>repRZ</em> and the <em>repQ</em> when compiled in Debug Mode, this is the list's internal concrete representation</li>
+        <li>display the list in terms of its mathematical model (i.e., its abstract value)  when compiled in Release Mode</li>
+    </ul></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><strong><span style="text-decoration: underline;">Specifics - Part 2 - Modifying driver.cpp</span></strong></p>
+<p>In Visual Studio, open driver.cpp and make the following changes near the top of the file:</p>
+<ol>
+  <li>change the #include line to:<em> #include &quot;List\List2.hpp&quot;</em></li>
+  <li>change the 2 <em>typedef</em> lines (just below the #include) to use List2 instead of List1</li>
+</ol>
+<p>&nbsp;</p>
+<p><strong><span style="text-decoration: underline;">Specifics - Part 3 - Layering a Component</span></strong></p>
+<p>In Visual Studio, open List2.hpp and implement the member functions:</p>
+<ul>
+  <li>Reread the Component Layering slides from Week #3 on the CSSE373 Moodle site</li>
+<li>Reference the Queue and List specifications</li>
+<li>Implement all of List2's stubbed out member functions based on the instructional materials</li>
+</ul>
+<p><em>Important Restrictions</em>:</p>
+<ol>
+<li><strong>Obey the correspondence </strong>- all your implementations must obey the correspondence internal contract (see Part 4 below for an example of what this means)</li>
+<li><strong>Use Design by Contract</strong> - No defensive programming of List's operations (see Part 5 below for an example)
+  <ul>
+<li>What this means is that the implementation of a List operation must not contain code that checks to make sure that the List operation was called correctly by the client</li>
+<li>Therefore, for all List operations that have a <em>requires</em> clause, you must program them with the assumption that their <em>requires</em> clause holds at the time the operation is called (like replaceRightFront, see Part 5 below)</li>
+</ul>
+</li>
+<li><strong>No Cross Calling - </strong>None of List's member functions are permitted to make calls to any of the other <em>public</em> List member functions, i.e., no cross calling
+<ul>
+<li>For example, under this rule it is illegal for the <em>append</em> operation to call any other List operation, e.g., <em>add</em></li>
+<li>All List operations (e.g.,<em> append</em>) should directly manipulate List's data members in order to satisfy the operation's <em>ensures</em> clause</li>
+</ul>
+</li>
+<li><strong>Calling Down</strong> - create private member functions that capture code that starts to appear in multiple different places in your List2 implementation and then instead of duplicating this code (i.e., having it appear in multiple different member function implementations) make a <em>call down</em> to the private member function from the public member function - this engineering technique is called procedural abstraction and the call is call <em>calling down</em></li>
+<li><strong>No Recursion</strong> - None of List's member functions are permitted to be recursive</li>
+<li><strong>About Making Copies</strong> -
+<ul>
+<li>Copying the  data member <em>repQ</em> - When implementing List2's <em>operator =</em> you must use Queue's <em>operator =</em> to make a copy of <em>reqQ</em>. Do not call <em>operator =</em> to make a copy of <em>repQ</em> in any implementation of the other List2 member functions - this is a performance constraint. If when implementing any other List operations you think you need to call <em>operator =</em> to make a copy of<em> repQ</em>, then rethink your algorithm until you figure out a way to not make a copy.</li>
+<li>Copying variables of type T - There is no need to make copies of the items being added or removed to the list. These are all items of type T. If you need to move items of type T from one variable to another, then call the <em>transferFrom</em> operation to do it.</li>
+</ul>
+</li>
+</ol>
+<p><strong><span style="text-decoration: underline;">Specifics - Part 4 - Obey the correspondence, What it Means</span></strong></p>
+<table style="width: 80%;" border="1">
+<tbody>
+<tr>
+<td align="center" valign="top"><strong>Client of replaceRightFront - Obeying the correspondence</strong></td>
+</tr>
+<tr>
+<td valign="top" width="60%">
+<pre>
+
+   // Example client
+   typedef List2&lt;Integer&gt; IntList;
+   Integer y;
+   IntList s1;
+   
+   // code that modifies s1 and y
+   
+   // Incoming s1 = (&lt;18,15,27&gt;,&lt;25,10&gt;) and y = 37
+   s1.replaceRightFront(y);
+   // Outgoing s1 = (&lt;18,15,27&gt;,&lt;37,10&gt;) and y = 25
+
+<hr />
+<strong>template</strong> &lt;<strong>class</strong> T&gt;
+<strong>void</strong> List2&lt;T&gt;::replaceRightFront (T&amp; x)
+{
+   //! correspondence:
+   //! 	|self.right| = repRZ
+   //! 	and
+   //!	self.left = repQ[repRZ,|repQ|)
+   //! 	and
+   //!	self.right = repQ[0,repRZ)
+
+   // Use correspondence to determine incoming repRZ and repQ
+	
+   // repRZ = |self.right| = |&lt;25,10&gt;| = 2
+   //
+   // repQ must be the following in order for the correspondence to hold:
+   // repQ = &lt;25,10,18,15,27&gt;
+   // self.left = repQ[repRZ,|reqQ|]
+   // self.left = &lt;25,10,18,15,27&gt;[2,5) = &lt;18,15,27&gt;
+   // 
+   // self.right = repQ[0,repRZ]
+   // self.right = &lt;25,10,18,15,27&gt;[0,2) = &lt;25,10&gt;
+
+   // Here is the call through to Queue's replaceFront operation
+   repQ.replaceFront(x);<em></em>
+
+   // Outgoing: repQ = &lt;37,10,18,15,27&gt;  repRZ = 2
+
+   // Use correspondence to obtain outgoing self
+   // self = (repQ[repRZ,|reqQ|],repQ[0,repRZ])
+   // self = (&lt;37,10,18,15,27&gt;[2,|&lt;37,10,18,15,27&gt;|],&lt;37,10,18,15,27&gt;[0,2])
+   // self = (&lt;18,15,27&gt;,&lt;37,10&gt;)
+
+}	// replaceRightFront</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong><span style="text-decoration: underline;">Part 5 - Design by Contract - Example</span></strong></p>
+<table style="width: 100%;" border="1">
+<tbody>
+<tr>
+<td align="center" valign="top"><strong><strong>List2 implementation of replaceRightFront<br /> <br /> Implemented Using Design by Contract<br /> <br /></strong></strong>
+<p style="background-color: #ff0;">Use This Engineering Technique</p>
+</td>
+<td align="center" valign="top"><strong><strong>List2 implementation of replaceRightFront<br /> <br /> Implementation Fails to Use Design by Contract<br /> Also Known As: Defensive Programming</strong></strong>
+<p style="background-color: #ff0;">Do Not Use This Approach</p>
+</td>
+</tr>
+<tr>
+<td valign="top" width="40%">
+<pre><strong>template</strong> &lt;<strong>class</strong> T&gt;
+<strong>void</strong> List2&lt;T&gt;::replaceRightFront(T&amp; x)
+{
+   repQ.replaceFront(x);
+}  // replaceRightFront</pre>
+</td>
+<td valign="top" width="40%">
+<pre><strong>template</strong> &lt;class T&gt;
+<strong>void</strong> List2&lt;T&gt;::replaceRightFront(T&amp; x)
+{
+   <strong>if</strong> (repQ.length() &gt; 0) {
+      repQ.replaceFront(x);
+   } // end if
+}  // replaceRightFront</pre>
+</td>
+</tr>
+</tbody>
+</table>
+
+	
+<h3>3. Testing</h3>
+<ul>
+  <li>A set of test scripts was included in the L3Starter download, placed in the folder: L3\TestScripts</li>
+<li>Test your completed <em>L3.exe</em> using these test script files or use your Unit Tests from L2</li>
+<li>To earn the most points for this assignment it is recommeded that you test your List2 implementation in both Release and Debug configurations as described next</li>
+<li>Test in Release Mode:
+<ul>
+<li>Run all of the test script files against <em>L3SolR.exe</em> (found in the folder: L3\SupplementalFiles)</li>
+<li>FC compare the output from <em>L3SolR.exe</em>'s with the output from your <em>L3.exe</em> (compiled in Release Mode)</li>
+<li>If they are different, change your program so that FC reports <em>no differences encountered</em> between <em>L3SolR.exe</em>'s output and the output from your <em>L3.exe</em></li>
+</ul>
+</li>
+<li>Test in Debug Mode:
+<ul>
+<li>Run all of the test script files against <em>L3SolD.exe</em> (found in the folder: L3\SupplementalFiles)</li>
+<li>FC compare the output from <em>L3SolD.exe</em>'s with the output from your <em>L3.exe</em> (compiled in Debug Mode)</li>
+<li>If they are different, change your program so that FC reports <em>no differences encountered</em> between <em>L3SolD.exe</em>'s output and the output from your <em>L3.exe</em></li>
+</ul>
+</li>
+<li>When grading I will be running test scripts from the TestScripts folder along with others that perform various steady state and boundary conditions tests.</li>
+</ul>
+
+<h3>4. Grading Guidelines</h3>
+<h4>Failure of Your Submission to Correctly Compile - 100 out of 100 points</h4>
+<ul>
+  <li>If your submission does not compile correctly so that Visual Studio can generate a .exe (executable), zero points will be earned</li>
+<li>It must compile correctly (and generate a .exe file) in both Debug and Release configurations</li>
+<li>Both Debug and Release .exe's will be tested for correct builds</li>
+</ul>
+<h4>Violation of "Important Restrictions" (see above) - 40 points maximum</h4>
+<ul>
+<li>8 points each up to 40 points</li>
+</ul>
+<h4>Unused Variables/Code - 10&nbsp; points maximum</h4>
+<p>For unused variables and code remaining anywhere in List2.hpp</p>
+<ul>
+<li>1st offense 0 points off</li>
+<li>2nd offense 6 points off</li>
+<li>3rd offense 4 points off</li>
+<li>4th offense, etc., no more points off</li>
+</ul>
+<h4>Internal Representation - 20 points maximum</h4>
+<p>The the private part (internal representation) as described in <em>Section 2.2.3c Specifics </em>(above)</p>
+<h4>Operation Implementations - 60 points maximum</h4>
+<p>6 points off for each incorrect operation listed in the check list below that does not meet its ensures clause, not to exceed 60 points</p>
+<p><img src="List2CheckList.png" width="315" height="361" alt="List2 check list" /></p>
+
+<h3>5. Submitting the Lab for Grading</h3>
+<p>Please read and follow the instructions in the reference material: How To Turn In A Lab Assignment</p>
+<p>Upload your L3.zip to this Moodle assignment</p>
+</body>
+</html>
