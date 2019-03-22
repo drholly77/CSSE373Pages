@@ -155,11 +155,11 @@ wostream&amp; operator&lt;&lt;(wostream&amp; os, List2&lt;T&gt;&amp; s)
 </li>
 <li><strong>No Cross Calling - </strong>None of List's member functions are permitted to make calls to any of the other <em>public</em> List member functions, i.e., no cross calling
 <ul>
-<li>For example, under this rule it is illegal for the <em>append</em> operation to call any other List operation, e.g., <em>add</em></li>
-<li>All List operations (e.g.,<em> append</em>) should directly manipulate List's data members in order to satisfy the operation's <em>ensures</em> clause</li>
+<li>For example, under this rule it is illegal for the <em>swapRights</em> operation to call any other List operation, e.g., <em>addRightFront</em></li>
+<li>All List operations (e.g.,<em> swapRights</em>) should directly manipulate List's data members (i.e., repRZ and repQ) in order to satisfy the operation's <em>ensures</em> clause</li>
 </ul>
 </li>
-<li><strong>Calling Down</strong> - create private member functions that capture code that starts to appear in multiple different places in your List2 implementation and then instead of duplicating this code (i.e., having it appear in multiple different member function implementations) make a <em>call down</em> to the private member function from the public member function - this engineering technique is called procedural abstraction and the call is call <em>calling down</em></li>
+<li><strong>Calling Down</strong> - create private member functions that capture code that starts to appear in multiple different places in your List2 implementation and then instead of duplicating this code (i.e., having it appear in multiple different member function implementations) make a <em>call down</em> to the private member function from the public member function - this engineering technique is called procedural abstraction and the call is call <em>calling down</em> - for this assignment a private operation that can move items from one queue to second queue will come in real handy</li>
 <li><strong>No Recursion</strong> - None of List's member functions are permitted to be recursive</li>
 <li><strong>About Making Copies</strong> -
 <ul>
