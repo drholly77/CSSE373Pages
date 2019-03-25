@@ -1,184 +1,96 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<!doctype html>
 <html>
 
 <head>
 <meta http-equiv="Content-Language" content="en-us">
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta charset="utf-8">
 <meta name="Author" content="Raymond Wisman">
 <meta name="Edited" content="Dr. Holly">
-<meta name="ProgId" content="FrontPage.Editor.Document">
-<link REL="stylesheet" href="basic.css" type="text/css">
+<link href="../css/style.css" rel="stylesheet" type="text/css">
 <title>Chapter 1 - Logic and Proofs</title>
 </head>
 <body>
 
-<table width="80%" align="center">
-  <tr>
-    <td width="50%" align="center" bgcolor="#D1D8FC">
-      <h1>Chapter 1 - Logic and Proofs</h1>
-    </td>
-  </tr>
-</table>
-<p>© Ray Wisman - Edited August 2015 by Dr. Holly</p>
-<hr>
+<h1>Chapter 1 - Logic and Proofs</h1>
+<p>Â© Ray Wisman - Edited March 2019 by Dr. Holly</p>
+
 <h3>1.3 Propositional Equivalences</h3>
-<blockquote>
-	<p>Important in simplifying mathematical arguments to replace statements with those of 
-	equivalent truth value.</p>
-	<p><b>Definition 1</b></p>
+
+	<p>Propositional equivalances are used for simplifying logical arguments </p>
+	<h5>Definitions - tautology and contradictions</h5>
 	<blockquote>
-		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
+		<table width="75%" border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
 			<tr>
 				<td><i>Tautology</i> 
 				<blockquote>
-					<p>is a compound proposition that is always 
-					True.</p>
+					<p>is a compound proposition that is always True<br><br>
+					Column 3 of Table 1 illustrates that p &or; ~p is a tautology, i.e., this compound proposition is always True no matter what propositional fact p is</p>
 				</blockquote>
-				<p><i>Contradiction</i> 
+				  <p><i>Contradiction</i></p>
 				<blockquote>
-					<p>is a compound proposition that is 
-				always False.</blockquote>
+				  <p>is a compound proposition that is always False<br><br>
+					Column 4 of Table 1 illustrates that p &and; ~p is a contradiction, i.e., this compound proposition is always False no matter what propositional fact p is</p></blockquote>
 				</td>
 			</tr>
 		</table>
 	</blockquote>
 	<blockquote>
-		<p><img border="0" src="ch01/t01_2_001.jpg" width="402" height="180"></p>
-	</blockquote>
+	  <p><img src="ch01/t01_2_001.png" width="268" height="158" alt=""/></p>
 </blockquote>
+
 <p>&nbsp;</p>
-<p><b>Logical Equivalences</b></p>
-<blockquote>
-	<p><b>Definition 2</b></p>
+<h4>Logical Equivalences</h4>
+
+<h5>Definition - logical equivalence</h5>
 	<blockquote>
-		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
+		<table width="75%" border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
 			<tr>
-				<td><i>Logically equivalent</i> statements if p &#8596; q is a 
-				tautology.<blockquote>
-					<p>Denoted by p &#926; q.</blockquote>
+				<td>The compound propositions p and q are <i>logically equivalent</i> statements if p &#8596; q is a 
+				tautology.
+				  <blockquote>
+					<p>This is denoted by p  &equiv; q</p></blockquote>
 				</td>
 			</tr>
 		</table>
-		<p><img border="0" src="ch01/t01_2_002.jpg" width="452" height="299"></p>
-		<p>Example - Proof that one of De Morgan's Laws is logically equivalent</p>
-		<blockquote>
-			<blockquote>
-				<p>¬(p ^ q) &#926; ¬p v ¬q </p>
-			</blockquote>
-			<table border="1" cellpadding="10" cellspacing="0">
-				<tr>
-					<td bgcolor="#EAEBEC">&nbsp;p&nbsp;&nbsp; </td>
-					<td bgcolor="#EAEBEC">&nbsp;q&nbsp;&nbsp; </td>
-					<td bgcolor="#EAEBEC">p ^ q</td>
-					<td bgcolor="#EAEBEC">¬(p ^ q)</td>
-					<td bgcolor="#EAEBEC">¬p</td>
-					<td bgcolor="#EAEBEC">¬q</td>
-					<td bgcolor="#EAEBEC">¬p v ¬q</td>
-				</tr>
-				<tr>
-					<td>F</td>
-					<td>F</td>
-					<td align="center">F</td>
-					<td align="center" bgcolor="#FFFF00">T</td>
-					<td align="center">T</td>
-					<td align="center">T</td>
-					<td align="center" bgcolor="#FFFF00">T</td>
-				</tr>
-				<tr>
-					<td>F</td>
-					<td>T</td>
-					<td align="center">F</td>
-					<td align="center" bgcolor="#FFFF00">T</td>
-					<td align="center">T</td>
-					<td align="center">F</td>
-					<td align="center" bgcolor="#FFFF00">T</td>
-				</tr>
-				<tr>
-					<td>T</td>
-					<td>F</td>
-					<td align="center">F</td>
-					<td align="center" bgcolor="#FFFF00">T</td>
-					<td align="center">F</td>
-					<td align="center">T</td>
-					<td align="center" bgcolor="#FFFF00">T</td>
-				</tr>
-				<tr>
-					<td>T</td>
-					<td>T</td>
-					<td align="center">T</td>
-					<td align="center" bgcolor="#FFFF00">F</td>
-					<td align="center">F</td>
-					<td align="center">F</td>
-					<td align="center" bgcolor="#FFFF00">F</td>
-				</tr>
-			</table>
-		</blockquote>
-		<blockquote>
-		  <p>&nbsp;</p>
-			<p>
-			<img border="0" src="ch01/t01_2_003.jpg" width="469" height="184"></p>
-			<p>
-			<img border="0" src="ch01/t01_2_004.jpg" width="453" height="290"></p>
-			<p>
-			<img border="0" src="ch01/t01_2_005.jpg" width="533" height="273"></p>
-			<p><img src="ch01/t01_2_006.png" width="328" height="459" border="0"></p>
-			<p>
-			<img border="0" src="ch01/t01_2_007.jpg" width="329" height="414"></p>
-			<p>
-			<img border="0" src="ch01/t01_2_008.jpg" width="425" height="372"></p>
-		</blockquote>
+		<p><img src="ch01/t01_2_002.png" width="230" height="137" alt="de Morgan's laws"/></p>
+		<p>Example<br><br>
+			Table 3 shows that the 2nd of de Morgan's laws is logically equivalent<br>
+		Inspect columns 3 and 6 and you will see that ~(p &or; q) &harr; ~p &and; ~q</p>
+
+	  <blockquote>
+			<p><img src="ch01/t01_2_003.png" width="454" height="174" alt="truth table showing one of de Morgan's laws"/></p>
+		
+
+	    <p><img src="ch01/t01_2_006.png" width="376" height="552" alt="table of logical equivalences"/></p>
+			<p><img src="ch01/t01_2_007.png" width="245" height="308" alt="table of logical equivalences involving conditionals"/></p>
+	  </blockquote>
 	</blockquote>
-</blockquote>
-<p>&nbsp;</p>
-<p><b>Using De Morgan's Laws</b></p>
+
+	
+<h5>Example Using De Morgan's Laws</h5>
 <blockquote>
 	<blockquote>
-		<p><img border="0" src="ch01/t01_2_002.jpg" width="378" height="247"></p>
+		<p><img src="ch01/t01_2_001.png" width="268" height="158" alt="example of tautology and contradiction"/></p>
 	</blockquote>
 	<p>Example</p>
 	<blockquote>
-		<p>p is &quot;Miguel has a cell phone.&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-		q is &quot;Miguel has a laptop computer.&quot;</p>
+		<p>p is &quot;Miguel has a cell phone&quot;<br>
+			q is &quot;Miguel has a laptop computer&quot;</p>
 		<blockquote>
-			<p>p ^ q is &quot;Miguel has a cell phone.&quot; and &quot;Miguel has a laptop 
-			computer.&quot;</p>
-			<p>¬(p ^ q) is &quot;Miguel does not have a cell phone and a laptop 
-			computer.&quot;</p>
-			<p>¬p v ¬q is &quot;Miguel does not have a cell phone or Miguel does not 
-			have a laptop computer.&quot;</p>
+			<p>p &and; q is &quot;Miguel has a cell phone&quot; and &quot;Miguel has a laptop 
+			computer&quot;</p>
+			<p>~(p &and; q) is &quot;Miguel does not have a cell phone and a laptop 
+		  computer&quot;</p>
+			<p>~p &or; ~q is &quot;Miguel does not have a cell phone or Miguel does not 
+		  have a laptop computer&quot;</p>
 			<blockquote>
-				<p>¬(p ^ q) &#8801; ¬p v ¬q </p>
+				<p>~(p &and; q) &#8801; ~p &or; ~q </p>
 			</blockquote>
 		</blockquote>
 		<p>&nbsp;</p>
 	</blockquote>
 </blockquote>
-<p><b>Constructing New Logical Equivalences</b></p>
-<blockquote>
-	<p>Can use truth tables to prove that compound statements are equivalent.</p>
-	<p>Can also use previously established equivalencies.</p>
-	<p>Example </p>
-	<blockquote>
-		<p>Prove:&nbsp;&nbsp;&nbsp; ¬(p &#8594; q)&nbsp;&nbsp; &#926;&nbsp; &nbsp; p ^ ¬q</p>
-	</blockquote>
-	<table border="1" cellpadding="11" cellspacing="0">
-		<tr>
-			<td>¬(<b>p &#8594; q</b>) &#926; ¬(<b>¬p v q</b>)<p>&nbsp;</td>
-			<td>&nbsp;1. By Table 4:&nbsp;&nbsp; <b>p &#8594; q</b> 
-			&#926; <b>¬p v q</b><br><br>
-			<img border="0" src="ch01/t01_2_004.jpg" width="334" height="214"></td>
-		</tr>
-		<tr>
-			<td>¬(¬p v q) &#926; ¬(¬p) ^ ¬q</td>
-			<td>2. By Table 2.<br><br>
-			<img border="0" src="ch01/t01_2_002.jpg" width="290" height="189"></td>
-		</tr>
-		<tr>
-			<td>¬(¬p) ^ ¬q &#926; p ^ ¬q</td>
-			<td>3. ¬(¬p) &#926; p by double negation law.</td>
-		</tr>
-	</table>
-</blockquote>
+
 
 </body>
 
