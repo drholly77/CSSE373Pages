@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta charset="utf-8">
+<meta name="Author" content="Raymond Wisman">
+<meta name="Edited" content="Dr. Holly">
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<title>Chapter 1 - Logic and Proofs</title>
+</head>
+<body>
+
+
+<h1>Chapter 1 - Logic and Proofs</h1>
+
+<p>© Ray Wisman - Edited August 2019 by Dr. Holly</p>
+<h3>1.2 Applications of Propositional Logic to Logal Systems</h3>
+
+<p><b>&nbsp;</b>Definitions</p>
+
+<ul>
+  <li><i>consistent</i> - when specifications do not contain conflicts that could lead to contradictions</li>
+  <li><em>conjunction</em> - a compound proposition using &and;</li>
+  <li><em>conjunct</em> - an operand to the &and; operator</li>
+</ul>
+	
+	<p>Example 1 - Are the following statements consistent? That is, are all True at the 
+	same time?</p>
+
+
+	<ol>
+	<li>&quot;It snowed or I went to school&quot;</li>
+	<li>&quot;It did not snow&quot;</li>
+	<li>&quot;If snowed, then I went to school&quot;</li>
+	</ol>
+
+
+	<p>Step 1) Represent as logic using propositional variables p and q</p>
+	<blockquote>
+		<p>p: &quot;It snowed&quot;</p>
+		<p>q: &quot;I went to school&quot;</p>
+		<blockquote>
+        <p>Rewrite the English propositions using propositional variables and logical operators:</p>
+			<p>1) p &or; q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;It snowed or I went to school&quot;</p>
+			<p>2) ~p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;It did not snow&quot;</p>
+			<p>3) p &#8594; q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;If snowed, then I went to school&quot;</p>
+			
+		</blockquote>
+        
+	</blockquote>
+    <p>Step 2) Now, create one big compound proposition from lines 1, 2, and 3, using the AND logical operator, name this proposition b (for big)</p>
+  <p>b: (p &or; q) &and; ~p &and; (p &#8594; q)</p>
+        <p>The three things AND'ed together in b are each called a <em>conjunct</em>.</p>
+        <p>In order for b to be consistent, b has to evaluate to True. In order for b to evaluate to True, each conjunct must evaluate to True</p>
+        <p><br>
+        Step 3) Try to find an assignment of True and False to the two propositional variable (p and q) used in proposition b, such that b evaluates to True</p>
+        <p>3.1) Start with the conjunct ~p - <br>
+  Iin order for ~p to evaluate to True, p has to be False. <br>
+  So we have an assignment for p, now we must come up with an assignment for q</p>
+        <p>3.2) Work with the first conjunct (p &or; q), substitute our assignment for p (which is False) into this proposition and get (False &or; q). <br>
+        In order for this proposition to evaluate to True, q must have the assignment of True. <br>
+        That would give (False v True) which evaluates to True. <br>
+        So now we have q with the assignment of True</p>
+        <p>3.3) With p = False and q = True, verify that the 3rd conjunct (p &#8594; q) evaluates to True. <br>
+        Substitute p and q's values and get (False &#8594; True). <br>
+        Check Implication's Truth Table to determine if this evaluates to True. <br>
+        The Truth Table says it does, so the 3rd conjunct evaluates to True when p = False and q = True</p>
+        <p>3.4) Wrap it up. With p = False and q = True, all 3 of b's conjuncts evaluate to True, so this System is consistent, i.e., it is not a contradication.</p>
+
+
+</body>
+
+</html>

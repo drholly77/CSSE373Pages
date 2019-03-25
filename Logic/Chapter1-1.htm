@@ -1,0 +1,342 @@
+<!doctype html>
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta charset="utf-8">
+<meta name="Author" content="Raymond Wisman">
+<meta name="Edited" content="Dr. Holly">
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<title>Chapter 1 - Logic and Proofs</title>
+</head>
+<body>
+
+
+      <h1>Chapter 1 - Logic and Proofs</h1>
+
+
+<p>© Ray Wisman - Edited August 2019 by Dr. Holly</p>
+
+<h3>1.1 Propositional Logic</h3>
+<h5>Propositions</h5>
+	<p>A declarative sentence (declares a fact) that is either <i>True</i> or <i>False</i>.</p>
+<blockquote>
+	<p>Examples of propositions</p>
+	<blockquote>
+		<ol>
+			<li>This course is CSSE230, Ballroom Dancing.<br>
+&nbsp;</li>
+			<li>I paid my taxes by sending a check for $30,000.</li>
+		</ol>
+	</blockquote>
+	<p><br>
+	Examples that are not propositions</p>
+	<blockquote>
+		<ol>
+			<li>What is your name?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			Not declarative.<br>
+&nbsp;</li>
+			<li>I paid my taxes by sending a check for x + 1 dollars.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			Neither True nor False, x is undefined.	</li>
+		</ol>
+	</blockquote>
+</blockquote>
+	
+<h5>Variables</h5>
+	<blockquote>
+		<p>Often we use the letters such as <i>p, q, r, ... </i>to represent propositions.</p>
+		<p>Example</p>
+		<blockquote>
+			<p>p is &quot;I paid my taxes&quot;</p>
+			<p>q is &quot;I am now broke&quot;</p>
+			<p>&nbsp;</p>
+		</blockquote>
+	</blockquote>
+	
+<h5>Truth value</h5>
+	<blockquote>
+		<p>T denotes <i>True</i> propositions</p>
+		<p>F denotes <i>False </i>propositions</p>
+		<p>&nbsp;</p>
+		<p>Example</p>
+		<blockquote>
+			<p>p is &quot;I paid my taxes&quot;</p>
+			<p>p = T </p>
+			<blockquote>
+				<p>&quot;I paid my taxes&quot; is <i>True</i> </p>
+			</blockquote>
+			<p>p = F </p>
+			<blockquote>
+				<p>&quot;I paid my taxes&quot; is <i>False</i> </p>
+			</blockquote>
+		</blockquote>
+		<p>&nbsp;</p>
+	</blockquote>
+	<h4>Definition 1</h4>
+	<blockquote>
+		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
+			<tr>
+				<td><i>Negation</i> of p, 
+				<blockquote>
+					<p>denoted by ~p</p>
+				</blockquote>
+				<p>~p is the opposite 
+					truth values of p</p></td>
+			</tr>
+		</table>
+		<p><img src="ch01/t01_1_001.jpg" width="314" height="258" border="0" alt="negation truth table"></p>
+		<p>Example</p>
+		<blockquote>
+			<p>p is &quot;Earth is the third planet from the Sun&quot; </p>
+			<blockquote>
+				<p>which is <i>True</i>.</p>
+			</blockquote>
+			<p>~p is &quot;Earth is not the third planet from the Sun&quot; </p>
+			<blockquote>
+			  <p>which is <i>False</i>.</p>
+			</blockquote>
+		</blockquote>
+	</blockquote>
+<h4>Definition 2 - p ^ q</h4>
+	<blockquote>
+		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
+			<tr>
+				<td><i>Conjunction</i> of p and q<blockquote>
+					<p>denoted by p ^ q</p>
+				</blockquote>
+					<p>p ^ q is True</p>
+				<blockquote>
+					<p>when both p <i>and</i> q are True</p>
+				</blockquote>
+				</td>
+			</tr>
+		</table>
+		<p>&nbsp;</p>
+	</blockquote>
+	<blockquote>
+		<p><img src="ch01/t01_1_002.jpg" width="330" height="312" border="0" alt="truth table for conjunction"></p>
+		<p>Example</p>
+		<blockquote>
+			<p>p is &quot;Today is Tuesday&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			q is &quot;I am in the Ball Room dancing class&quot;</p>
+			<ol type="a">
+				<li>Express p ^ q in English.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				<p>&quot;Today is Tuesday&quot; <b><i>and</i></b> &quot;I am in the Ball Room dancing class&quot;<br>&nbsp;</p></li>
+				<li>Which row of the truth table matches the p and q values right 
+				now?<p><u>p&nbsp;&nbsp; q&nbsp;&nbsp;&nbsp;&nbsp; p ^ q</u><br>
+					T&nbsp;&nbsp; F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; F<br>&nbsp;</p></li>
+				<li>What is the truth value of p ^ q?&nbsp;&nbsp;F</li>
+			</ol>
+		</blockquote>
+	</blockquote>
+	
+	
+
+	<h4>Definition 3 - p &or; q</h4>
+
+	<blockquote>
+		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
+			<tr>
+				<td><i>Disjunction</i> of p and q, 
+				<blockquote>
+					<p>denoted by p &or; q</p>
+				</blockquote>
+					<p>p &or; q is True </p>
+				<blockquote>
+					<p>when either p <i>or</i> q are True</p></blockquote>
+				</td>
+			</tr>
+		</table>
+		<p>&nbsp;</p>
+	</blockquote>
+	<blockquote>
+		<p><img src="ch01/t01_1_003.jpg" width="346" height="324" border="0" alt="truth table for disjunction"></p>
+		<p>Example</p>
+		<blockquote>
+			<p>p is &quot;Today is Tuesday&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			q is &quot;I am in the Ball Room dancing class&quot;</p>
+			<ol type="a">
+				<li>Express p &or; q in English.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				<p>&quot;Today is Tuesday&quot; <b><i>or</i></b> &quot;I am in the Ball Room dancing class&quot;<br>&nbsp;</p></li>
+				<li>Which row of the truth table matches the p and q values right 
+				now?<p><u>p&nbsp;&nbsp; q&nbsp;&nbsp;&nbsp;&nbsp; p &or; q</u><br>
+					T&nbsp;&nbsp; F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T<br>&nbsp;</p></li>
+				<li>What is the truth value of p &or; q?&nbsp;&nbsp;&nbsp;T;</li>
+			</ol>
+		</blockquote>
+	</blockquote>
+<h4>Definition 4 - p &#8853; q</h4>
+	<blockquote>
+		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
+			<tr>
+				<td><i>Exclusive or</i> of p and q, 
+				<blockquote>
+					<p>denoted by p <font size="5">&#8853;</font> q</p>
+				</blockquote>
+					<p>p</p> 
+				<font size="5">&#8853;</font> q is True 
+				<blockquote>
+					<p>when only one of p or q are True</p></blockquote>
+					<p>Also known as the difference operator.</p></td>
+			</tr>
+		</table>
+	</blockquote>
+	<blockquote>
+		<p><img src="ch01/t01_1_004.jpg" width="341" height="324" border="0" alt="truth table for exclusive or"></p>
+	</blockquote>
+
+		
+<h4>Definition 5 - p &#8594; q</h4>
+	<blockquote>
+		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
+			<tr>
+				<td><i>Conditional</i> of p and q, 
+				<blockquote>
+					<p>denoted by p &#8594; q</p>
+					<p>is the 
+				proposition &quot;if p, then q&quot;.</p>
+				</blockquote>
+					<p>p &#8594; q is False only </p>
+				<blockquote>
+					<p>when p is True and q is False.</p>
+					</blockquote>
+				</td>
+			</tr>
+		</table>
+	</blockquote>
+	<blockquote>
+		<p><img src="ch01/t01_1_005.jpg" width="379" height="354" border="0" alt="truth table for conditional"></p>
+		<p>Example</p>
+		<blockquote>
+			<p>p is &quot;Today is Tuesday&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			q is &quot;I am in the Ball Room Dancing class&quot;</p>
+			<ol type="a">
+				<li>p &#8594; q in English?<p><b><i>If</i></b> &quot;Today is 
+				Tuesday&quot;&nbsp;&nbsp;<i><b>then</b></i>&nbsp; &quot;I am in 
+				the Ball Room Dancing class&quot;<br>&nbsp;</p></li>
+				<li>Which row of the truth table matches the p and q values at 
+				this moment in time?<p><u>p&nbsp;&nbsp; q&nbsp;&nbsp;&nbsp;&nbsp; 
+				p &#8594; q</u><br>
+					T&nbsp;&nbsp; F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; F<br>&nbsp;</p></li>
+				<li>p &#8594; q truth value?&nbsp;&nbsp;&nbsp;F</li>
+			</ol>
+		</blockquote>
+		<p>Example</p>
+		<blockquote>
+			<p>p is &quot;I win a million dollars&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			q is &quot;I give you a million dollars&quot;</p>
+			<p>p &#8594; q is &quot;If I win a million dollars then I give you a 
+				million dollars&quot;.</p>
+			<blockquote>
+				<p>p &#8594; q is True when &quot;I win a million dollars&quot; 
+				is True and &quot;I give you 
+				a million dollars&quot; is True.</p>
+				<p>p &#8594; q is False when &quot;I win a million dollars&quot; 
+				is True and &quot;I give you a million dollars&quot; is False.</p>
+				<p>p &#8594; q is True when &quot;I win a million dollars&quot; 
+				is False and &quot;I 
+				give you a million dollars&quot; is True.</p>
+				<p>p &#8594; q is True when &quot;I win a million dollars&quot; 
+				is False and &quot;I give you a million dollars&quot; is False.</p>
+			</blockquote>
+			<table border="1" cellspacing="0">
+				<tr>
+					<td bgcolor="#EAEBEC" align="center">p<br>I win a million 
+					dollars</td>
+					<td bgcolor="#EAEBEC" align="center">q <br>I give you a 
+					million dollars</td>
+					<td bgcolor="#EAEBEC" align="center">p &#8594; q<br>If I win a 
+					million dollars then <br>I give you a million dollars</td>
+				</tr>
+				<tr>
+					<td align="center">T</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center">F</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+				</tr>
+			</table>
+		</blockquote>
+
+	</blockquote>
+
+
+
+
+<h4>Truth Tables of Compound Propositions</h4>
+<blockquote>
+	<p><img src="ch01/t01_1_007.jpg" width="539" height="211" border="0" alt="truth table for a compound proposition"></p>
+	<p>Example</p>
+	<blockquote>
+		<table border="1" cellpadding="11" cellspacing="0">
+			<tr>
+				<td bgcolor="#EAEBEC">&nbsp;p&nbsp;&nbsp; </td>
+				<td bgcolor="#EAEBEC">&nbsp;q&nbsp;&nbsp; </td>
+				<td bgcolor="#EAEBEC">p &or; q</td>
+				<td bgcolor="#EAEBEC">p &#8594; q</td>
+				<td bgcolor="#EAEBEC">(p &#8594; q) ^ (p &or; q)</td>
+			</tr>
+			<tr>
+				<td>F</td>
+				<td>F</td>
+				<td align="center">F</td>
+				<td align="center">T</td>
+				<td align="center">F</td>
+			</tr>
+			<tr>
+				<td>F</td>
+				<td>T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+			</tr>
+			<tr>
+				<td>T</td>
+				<td>F</td>
+				<td align="center">T</td>
+				<td align="center">F</td>
+				<td align="center">F</td>
+			</tr>
+			<tr>
+				<td>T</td>
+				<td>T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+			</tr>
+		</table>
+	</blockquote>
+</blockquote>
+<h4>Precedence of Operators</h4>
+<blockquote>
+	<p><img src="ch01/t01_1_008.jpg" width="398" height="456" border="0" alt="logical operators precedence table"></p>
+	<blockquote>
+		<p>Example</p>
+		<blockquote>
+			<p>~p &#8594; q&nbsp; <font size="5">&#8596;</font>&nbsp; p ^<font size="5">
+			</font>q &or; r&nbsp; =&nbsp; [((~p) &#8594; q)&nbsp; <font size="5">&#8596;</font>&nbsp; 
+			((p ^<font size="5"> </font>q) &or; r)]</p>
+		</blockquote>
+		<p>Example (left associative)</p>
+		<blockquote>
+			<p>p ^ q&nbsp; &or; ~p = ((p ^ q)&nbsp; v&nbsp; (~p)) </p>
+		</blockquote>
+		<blockquote>&nbsp;</blockquote>
+	</blockquote>
+</blockquote>
+</body>
+
+</html>

@@ -1,0 +1,1333 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Raymond Wisman">
+<meta name="Edited" content="Dr. Holly">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<link REL="stylesheet" href="basic.css" type="text/css">
+<title>Chapter 1 - Logic and Proofs</title>
+</head>
+<body>
+
+<table width="80%" align="center">
+  <tr>
+    <td width="50%" align="center" bgcolor="#D1D8FC">
+      <h1>Chapter 1 - Logic and Proofs</h1>
+    </td>
+  </tr>
+</table>
+<p>© Ray Wisman - Edited August 2015 by Dr. Holly</p>
+<hr>
+<h3>1.6 Rules of Inference</h3>
+<blockquote>
+  <p><b>Definition </b></p>
+	<blockquote>
+			<table border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td><i>Proof</i> 
+					<blockquote>
+						<p>is a sequence of True statements (premises) 
+					that end in a valid conclusion.&nbsp; </p>
+					</blockquote>
+					</td>
+				</tr>
+			</table>
+		</blockquote>
+		<p>&nbsp;</p>
+	<p><b>Valid Arguments in Propositional Logic</b></p>
+	<blockquote>
+		<p>Example</p>
+		<blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>&nbsp;&nbsp;&nbsp; p<u><br></u>_______<u> <br></u>&there4; p</td>
+					<td>&nbsp;&nbsp;&nbsp; True premise<br>______________<br>
+					&there4; True conclusion</td>
+				</tr>
+			</table>
+			<p>If p is True then p is True.</p>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td bgcolor="#EAEBEC" align="center">p</td>
+					<td bgcolor="#EAEBEC" align="center">p</td>
+					<td bgcolor="#EAEBEC" align="center">p &rarr; p </td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center" bgcolor="#FFFF00">T</td>
+					<td align="center" bgcolor="#FFFF00">T</td>
+					<td align="center" bgcolor="#FFFF00">T</td>
+				</tr>
+			</table>
+			<p>&nbsp;</p>
+		</blockquote>
+		<p>Example - Conjunction</p>
+		<blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>p<br>q<u><br></u>_______<u> <br></u>&there4;p ^ q</td>
+					<td>True premise<br>True premise<br>___<br>
+					&there4;True conclusion</td>
+				</tr>
+			</table>
+			<p>If p is True and q is True </p>
+			<blockquote>
+				<p>then p ^ q is True.</p>
+			</blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td bgcolor="#EAEBEC" align="center">p</td>
+					<td bgcolor="#EAEBEC" align="center">q</td>
+					<td bgcolor="#EAEBEC" align="center">p ^ q </td>
+					<td bgcolor="#EAEBEC" align="center">p ^ q &rarr; p ^ q</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center" bgcolor="#FFFF00">T</td>
+					<td align="center" bgcolor="#FFFF00">T</td>
+					<td align="center" bgcolor="#FFFF00">T</td>
+					<td align="center" bgcolor="#FFFF00">T</td>
+				</tr>
+			</table>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<caption>&nbsp;</caption>
+				<tr>
+					<td width="570">&quot;You buy a lottery ticket&quot; 
+					<p>&quot;You win a million dollars&quot;</p>
+					<p><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</u></p>
+					<p>&there4;&quot;You buy a lottery ticket&quot; ^ &quot;You win a million dollars&quot;</td>
+					<td>p 
+					<p>q<br>_____<u> <br></u>&there4;p ^ q</p>
+					<p>&nbsp;</td>
+				</tr>
+			</table>
+		</blockquote>
+		<p>&nbsp;</p>
+		<p>Example - Modus ponens</p>
+		<blockquote>
+			<p>If p &rarr; q is True and p is True </p>
+			<blockquote>
+				<p>then q is True.</p>
+			</blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>p &rarr; q<br>p<u><br></u>_____<u>
+					<br></u>&there4;q</td>
+					<td>True premise<br>True premise<br>___<br>
+					&there4;True conclusion</td>
+				</tr>
+			</table>
+			<p>Know that when all premises are True, the conclusion, q, is True.</p>
+			<blockquote>
+				<p>( (p &rarr; q) ^ p ) &rarr; q</p>
+				<table border="1" cellpadding="10" cellspacing="0">
+					<tr>
+						<td bgcolor="#EAEBEC" align="center">p</td>
+						<td bgcolor="#EAEBEC" align="center">q</td>
+						<td bgcolor="#EAEBEC" align="center">p &rarr; q</td>
+						<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ p </td>
+						<td bgcolor="#EAEBEC" align="center">((p &rarr; q) ^ p) &rarr; q</td>
+					</tr>
+					<tr>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+					</tr>
+					<tr>
+						<td align="center">F</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+					</tr>
+					<tr>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+					</tr>
+					<tr>
+						<td align="center" bgcolor="#FFFF00">T</td>
+						<td align="center" bgcolor="#EAEBEC">T</td>
+						<td align="center" bgcolor="#FFFF00">T</td>
+						<td align="center" bgcolor="#EAEBEC">T</td>
+						<td align="center" bgcolor="#EAEBEC">T</td>
+					</tr>
+				</table>
+			</blockquote>
+			<p>Note in table: </p>
+			<ul>
+				<li>only when the premises p &rarr; q is True and p is True, (p &rarr; q) 
+				^ p, is q also True.<br>&nbsp;</li>
+				<li>when any one of the premises is False, either (p &rarr; q) or p, 
+				q can be True or False.<br>&nbsp;</li>
+				<li>( (p &rarr; q) ^ p ) &rarr; q is a tautology, 
+				<p>implies Modus Ponens is 
+				valid rule of inference, it is always True. </li>
+			</ul>
+		</blockquote>
+		<p>&nbsp;</p>
+		<p>Example</p>
+		<blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td width="570">&quot;You have a current password&quot; &rarr; &quot;You can log 
+					on the network&quot;<p>&quot;You have a current password&quot;</p>
+					<p><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</u></p>
+					<p>&there4;&quot;You can log on the network&quot;</td>
+					<td>p &rarr; q<br>p<u><br></u>_____<u>
+					<br></u>&there4;q<p>&nbsp;</td>
+					<td>True premise<br>True premise<br>___<br>
+					&there4;True conclusion</td>
+				</tr>
+			</table>
+			<p>&nbsp;</p>
+		</blockquote>
+	</blockquote>
+</blockquote>
+<blockquote>
+	<blockquote>
+		<p>Example</p>
+		<blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td width="570">4 &gt; 2 &rarr; 4<sup>2</sup> 
+					&gt; 2<sup>2</sup><p>4 &gt; 2<br>
+					<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</u></p>
+					<p>&there4;can conclude 4<sup>2</sup> &gt; 2<sup>2</sup> is 
+					True</td>
+					<td>p &rarr; q<br>p<u><br></u>_____<u>
+					<br></u>&there4;q<p>&nbsp;</td>
+					<td>True premise<br>True premise<br>___<br>
+					&there4;True conclusion</td>
+				</tr>
+			</table>
+			<blockquote>
+				<table border="1" cellpadding="10" cellspacing="0">
+					<tr>
+						<td bgcolor="#EAEBEC" align="center">&nbsp;</td>
+						<td bgcolor="#EAEBEC" align="center">p</td>
+						<td bgcolor="#EAEBEC" align="center">q</td>
+						<td bgcolor="#EAEBEC" align="center">p &rarr; q</td>
+						<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ p </td>
+						<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ p &rarr; q</td>
+					</tr>
+					<tr>
+						<td align="center">&nbsp;</td>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+					</tr>
+					<tr>
+						<td align="center">&nbsp;</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+					</tr>
+					<tr>
+						<td align="center">&nbsp;</td>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+					</tr>
+					<tr>
+						<td align="center" bgcolor="#FFFF00">4 &gt; 2 &rarr; 4<sup>2</sup> 
+						&gt; 2<sup>2<br>
+						</sup>p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+						q</td>
+						<td align="center" bgcolor="#FFFF00">T</td>
+						<td align="center" bgcolor="#FFFF00">T</td>
+						<td align="center" bgcolor="#FFFF00">T</td>
+						<td align="center" bgcolor="#FFFF00">T</td>
+						<td align="center" bgcolor="#FFFF00">T</td>
+					</tr>
+				</table>
+			</blockquote>
+		</blockquote>
+		<p>&nbsp;</p>
+		<p>Example</p>
+		<blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td width="570">2 &gt; 4 &rarr; 2<sup>2</sup> &gt; 4<sup>2</sup><p>
+					2 &gt; 4<br>
+					<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</u></p>
+					<p>&there4;cannot conclude 2<sup>2</sup> 
+					&gt; 4<sup>2</sup> is True</td>
+					<td>p &rarr; q<br>
+					<br>
+					p<u><br>
+					</u>_____<u> <br>
+					</u>&there4;q<p>&nbsp;</td>
+					<td>True premise<br>
+					<br>
+					False premise<br>
+					___<br>
+					&there4;False conclusion</td>
+				</tr>
+			</table>
+			<blockquote>
+				<p>Because one of the premises, p, is False, the conclusion is 
+				False.</p>
+				<p>&nbsp;</p>
+			</blockquote>
+		</blockquote>
+		<p><b>Invalid inference rules</b></p>
+		<p>Example</p>
+		<blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>p &rarr; q<br>¬p<u><br></u>_____<u>
+					<br></u>&there4;q</td>
+					<td>True premise<br>True premise<br>___<br>
+					Conclusion not valid</td>
+				</tr>
+			</table>
+			<p>(p &rarr; q) ^ ¬p &rarr; q is not a valid rule of inference. </p>
+			<blockquote>
+				<p>Result (last 
+			column) not always True.</p>
+			</blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td bgcolor="#EAEBEC" align="center">&nbsp;</td>
+					<td bgcolor="#EAEBEC" align="center">p</td>
+					<td bgcolor="#EAEBEC" align="center">q</td>
+					<td bgcolor="#EAEBEC" align="center">¬p</td>
+					<td bgcolor="#EAEBEC" align="center">p &rarr; q</td>
+					<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ ¬p </td>
+					<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ ¬p &rarr; q</td>
+				</tr>
+				<tr>
+					<td align="center">2 &gt; 4 &rarr; 2<sup>2</sup> &gt; 4<sup>2</sup></td>
+					<td align="center">F</td>
+					<td align="center" bgcolor="#FFFF00">F</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+					<td align="center" bgcolor="#FFFF00">F</td>
+				</tr>
+				<tr>
+					<td align="center">&nbsp;</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center">&nbsp;</td>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center">&nbsp;</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+				</tr>
+			</table>
+		</blockquote>
+	</blockquote>
+
+	<p><b>Rules of Interference for Propositional Logic</b></p>
+	<blockquote>
+		<p><img src="ch01/t01_5_001.png" width="570" height="566" border="0" ></p>
+		<p>Example</p>
+		<table border="1" cellpadding="10" cellspacing="0">
+			<caption>Conjunction</caption>
+			<tr>
+				<td width="570">&quot;You buy a lottery ticket&quot; 
+					<p>&quot;You win a million dollars&quot;</p>
+				<p><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</u></p>
+				<p>&there4;&quot;You buy a lottery ticket&quot; ^ &quot;You win a million dollars&quot;</td>
+				<td>p 
+					<p>q<br>_____<u> <br></u>&there4;p ^ q</p>
+				<p>&nbsp;</td>
+			</tr>
+		</table>
+		<table border="1" cellpadding="10" cellspacing="0">
+			<caption>Simplification</caption>
+			<tr>
+				<td width="570">&quot;You buy a lottery ticket&quot; ^ &quot;You win a 
+					million dollars&quot;<p><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</u></p>
+				<p>&there4;&quot;You win a million dollars&quot;</td>
+				<td>p ^ q<br>_____<u> <br></u>&there4;q<p>&nbsp;</td>
+			</tr>
+		</table>
+		<table border="1" cellpadding="10" cellspacing="0">
+			<caption>Disjunctive Syllogism</caption>
+			<tr>
+				<td width="570">&quot;You buy a lottery ticket&quot; v &quot;You win a 
+					million dollars&quot;<p>&quot;You did not buy a lottery ticket&quot;</p>
+				<p><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</u></p>
+				<p>&there4;&quot;You win a million dollars&quot; </td>
+				<td>p v q<br>¬p<u><br></u>_____<u> <br></u>&there4;q<p>&nbsp;</td>
+			</tr>
+		</table>
+		<table border="1" cellpadding="10" cellspacing="0">
+			<caption>Resolution</caption>
+			<tr>
+				<td width="570">3 = 4 v 5 &lt; 10<br>¬(3=4) v 9 &lt; 0<br><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<br></u>&there4;5 &lt; 10 v 9 &lt; 0</td>
+				<td>p v q<br>¬p v r<u><br></u>_____<u> <br></u>&there4;q v r</td>
+			</tr>
+		</table>
+		<p>Note that ALL inference rules require ALL premises to be True.</p>
+		<p>The inference rule is always True, a tautology.</p>
+		<blockquote>
+			<blockquote>
+				<table border="1" cellpadding="10" cellspacing="0">
+				</table>
+			</blockquote>
+		</blockquote>
+	</blockquote>
+</blockquote>
+<blockquote>
+	<blockquote>
+	
+	<p><b>Using Rules of Inference to Build Arguments</b></p>
+		<p>Example</p>
+	<blockquote>
+		<p>Propositions - may be True or False</p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>p</td>
+					<td>&nbsp;</td>
+					<td>&quot;It is sunny this afternoon&quot;</td>
+				</tr>
+				<tr>
+					<td>q</td>
+					<td>&nbsp;</td>
+					<td>&quot;It is colder than yesterday&quot;</td>
+				</tr>
+				<tr>
+					<td>r</td>
+					<td>&nbsp;</td>
+					<td>&quot;We will go swimming&quot;</td>
+				</tr>
+				<tr>
+					<td>s</td>
+					<td>&nbsp;</td>
+					<td>&quot;We will take a canoe trip&quot;</td>
+				</tr>
+				<tr>
+					<td>t</td>
+					<td>&nbsp;</td>
+					<td>&quot;We will be home by sunset&quot;</td>
+				</tr>
+			</table>
+		</blockquote>
+		<p>Premises - assumed to be True</p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>¬p ^ q</td>
+					<td>&nbsp;</td>
+					<td>&quot;It is not sunny this afternoon and it is colder than 
+			yesterday&quot;</td>
+				</tr>
+				<tr>
+					<td>r &rarr; p</td>
+					<td>&nbsp;</td>
+					<td>&quot;If we will go swimming, then it is sunny&quot;</td>
+				</tr>
+				<tr>
+					<td><b>¬r</b> &rarr; s</td>
+					<td>&nbsp;</td>
+					<td>&quot;If we do not go swimming, then we will take a canoe 
+					trip&quot;</td>
+				</tr>
+				<tr>
+					<td><b>s</b> &rarr; t</td>
+					<td>&nbsp;</td>
+					<td>&quot;If we take a canoe trip, then we will be home by 
+					sunset.</td>
+				</tr>
+			</table>
+		</blockquote>
+	</blockquote>
+</blockquote>
+</blockquote>
+<table border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+		<blockquote>
+			<blockquote>
+				<blockquote>
+					<p>Show Conclusion</p>
+					<blockquote>
+						<p>&quot;We will be home by sunset&quot;</p>
+					</blockquote>
+				</blockquote>
+			</blockquote>
+		</blockquote>
+		<table border="1" cellpadding="10" cellspacing="0">
+			<tr>
+				<td>¬p ^ q<br>___<br>&there4;<b> ¬p</b></td>
+				<td>Simplification</td>
+				<td>&quot;It is not sunny this afternoon&quot; ^ &quot;It is colder than yesterday&quot;<br>___<br>&there4;&quot;It is not sunny this afternoon&quot;</td>
+			</tr>
+			<tr>
+				<td><b>¬p</b><br>r &rarr; p<br>___<br>&there4;<b>¬r</b></td>
+				<td>Modus tollens</td>
+				<td>&quot;It is not sunny this afternoon&quot;<br>&quot;We will go swimming&quot; &rarr; &quot;It 
+			is sunny this afternoon&quot;<br>___<br>&there4;&quot;We will not go swimming&quot;</td>
+			</tr>
+			<tr>
+				<td><b>¬r</b> &rarr; s<br><b>¬r</b><br>___<br>&there4;<b> s</b></td>
+				<td>Modus ponens</td>
+				<td>&quot;We will not go swimming&quot; &rarr; &quot;We will take a canoe trip&quot;<br>&quot;We 
+			will not go swimming&quot;<br>___<br>&there4;&quot;We will take a canoe trip&quot;</td>
+			</tr>
+			<tr>
+				<td><b>s</b> &rarr; t<br><b>s</b><br>___<br>&there4;<b> t</b></td>
+				<td>Modus ponens</td>
+				<td>&quot;We will take a canoe trip&quot; &rarr; &quot;We will be home by sunset&quot;<br>&quot;We 
+			will take a canoe trip&quot;<br>___<br>&there4;&quot;We will be home by sunset&quot;</td>
+			</tr>
+		</table></td>
+		<td>&nbsp;&nbsp;
+			<img src="ch01/t01_5_001.png" width="458" height="502" border="0" ></td>
+	</tr>
+</table>
+<blockquote>
+	<blockquote>
+		<blockquote>
+			<p>&nbsp;
+			</p>
+		</blockquote>
+		<p>&nbsp;</p>
+</blockquote>
+	<p><b>Resolution </b>- Only rule of inference required, useful for computer 
+	implementation of logic solvers (e.g. Prolog).</p>
+	<blockquote>
+		<p><b>Definition</b></p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td><i>Clause </i>is a disjunction of variables or their 
+					negation.</td>
+				</tr>
+			</table>
+		</blockquote>
+		<p>Resolution is the only rule of inference needed but requires 
+		hypotheses and conclusion to be in clause form.</p>
+		<blockquote>
+			<p>p v q<br>¬p v r<br>_____<br>&there4;q v r</p>
+		</blockquote>
+		<p>Example</p>
+		<blockquote>
+			<p>Given the following are True:</p>
+			<blockquote>
+				<p>(p ^ q) v r <br>r &rarr; s</p>
+			</blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>(p ^ q) v r&nbsp;&nbsp; &#926; <b>&nbsp; (r v p)</b> ^ (r v q)
+					</td>
+					<td>Distributive Law<br>Both (r v p) and (r v q) are True</td>
+				</tr>
+				<tr>
+					<td> <b>(r v p)</b></td>
+					<td>Simplification</td>
+				</tr>
+				<tr>
+					<td>r &rarr; s&nbsp;&nbsp;&nbsp; &#926;&nbsp;&nbsp;&nbsp; <b>¬r v s</b> </td>
+					<td>Replace with equivalent clause</td>
+				</tr>
+				<tr>
+					<td>r v p<br>¬r v s <br>_____<br>&there4; p v s</td>
+					<td>By resolution<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p v s </p>
+					<p>is True</td>
+				</tr>
+			</table>
+		</blockquote>
+	</blockquote>
+	<blockquote>
+		<table border="1" cellpadding="10" cellspacing="0">
+			<caption >Resolution Truth Table Proof<blockquote>
+			<p>p v q<br>¬p v r<br>_____<br>&there4;q v r</p>
+		</blockquote>
+			</caption>
+			<tr>
+				<td bgcolor="#EAEBEC" align="center">p</td>
+				<td bgcolor="#EAEBEC" align="center">q</td>
+				<td bgcolor="#EAEBEC" align="center">r</td>
+				<td bgcolor="#EAEBEC" align="center">¬p</td>
+				<td bgcolor="#EAEBEC" align="center">p v q</td>
+				<td bgcolor="#EAEBEC" align="center">¬p v r</td>
+				<td bgcolor="#EAEBEC" align="center">(p v q) ^ (¬p v r)</td>
+				<td bgcolor="#EAEBEC" align="center">q v r</td>
+				<td bgcolor="#EAEBEC" align="center">(p v q) ^ (¬p v r) 
+						&rarr; q v r</td>
+			</tr>
+			<tr>
+				<td align="center">F</td>
+				<td align="center">F</td>
+				<td align="center">F</td>
+				<td align="center">T</td>
+				<td align="center">F</td>
+				<td align="center">T</td>
+				<td align="center">F</td>
+				<td align="center">F</td>
+				<td align="center" bgcolor="#EAEBEC">T</td>
+			</tr>
+			<tr>
+				<td align="center">F</td>
+				<td align="center">F</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center" bgcolor="#EAEBEC">T</td>
+			</tr>
+			<tr>
+				<td align="center">F</td>
+				<td align="center">T</td>
+				<td align="center">F</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center" bgcolor="#EAEBEC">T</td>
+			</tr>
+			<tr>
+				<td align="center">F</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center" bgcolor="#EAEBEC">T</td>
+			</tr>
+			<tr>
+				<td align="center">T</td>
+				<td align="center">F</td>
+				<td align="center">F</td>
+				<td align="center">F</td>
+				<td align="center">T</td>
+				<td align="center">F</td>
+				<td align="center">F</td>
+				<td align="center">F</td>
+				<td align="center" bgcolor="#EAEBEC">T</td>
+			</tr>
+			<tr>
+				<td align="center">T</td>
+				<td align="center">F</td>
+				<td align="center">T</td>
+				<td align="center">F</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center" bgcolor="#EAEBEC">T</td>
+			</tr>
+			<tr>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">F</td>
+				<td align="center">F</td>
+				<td align="center">T</td>
+				<td align="center">F</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center" bgcolor="#EAEBEC">T</td>
+			</tr>
+			<tr>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">F</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center">T</td>
+				<td align="center" bgcolor="#EAEBEC">T</td>
+			</tr>
+		</table>
+	</blockquote>
+	<p>&nbsp;</p>
+	<blockquote>
+		<p><b>Fallacies</b></p>
+		<blockquote>
+			<p>Example</p>
+			<blockquote>
+				<table border="1" cellpadding="10" cellspacing="0">
+					<tr>
+						<td>p &rarr; q<br>q<u><br></u>_____<u> <br></u>&there4;p</td>
+						<td>True premise<br>True premise<br>___<br>&there4;invalid conclusion</td>
+					</tr>
+				</table>
+			</blockquote>
+			<p>Not a tautology, therefore not valid as a rule of inference.</p>
+			<blockquote>
+				<p>(p &rarr; q) ^ q &rarr; p</p>
+				<table border="1" cellpadding="10" cellspacing="0">
+					<tr>
+						<td bgcolor="#EAEBEC" align="center">p</td>
+						<td bgcolor="#EAEBEC" align="center">q</td>
+						<td bgcolor="#EAEBEC" align="center">p &rarr; q</td>
+						<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ q </td>
+						<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ q &rarr; p</td>
+					</tr>
+					<tr>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+					</tr>
+					<tr>
+						<td align="center">F</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center" bgcolor="#FFFF00">F</td>
+					</tr>
+					<tr>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+					</tr>
+					<tr>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+					</tr>
+				</table>
+			</blockquote>
+			<p>&nbsp;</p>
+			<p>Example</p>
+			<blockquote>
+				<table border="1" cellpadding="10" cellspacing="0">
+					<tr>
+						<td>p &rarr; q<br>¬p<u><br></u>_____<u> <br></u>&there4; ¬q</td>
+						<td>True premise<br>True premise<br>___<br>&there4;invalid conclusion</td>
+					</tr>
+				</table>
+			</blockquote>
+			<p>Not a tautology, therefore not valid as a rule of inference.</p>
+			<blockquote>
+				<p>(p &rarr; q) ^ ¬p &rarr; ¬q</p>
+				<table border="1" cellpadding="10" cellspacing="0">
+					<tr>
+						<td bgcolor="#EAEBEC" align="center">p</td>
+						<td bgcolor="#EAEBEC" align="center">q</td>
+						<td bgcolor="#EAEBEC" align="center">
+						¬p</td>
+						<td bgcolor="#EAEBEC" align="center">
+						¬q</td>
+						<td bgcolor="#EAEBEC" align="center">p &rarr; q</td>
+						<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ ¬p 
+						</td>
+						<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ ¬p &rarr; ¬q</td>
+					</tr>
+					<tr>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center" bgcolor="#EAEBEC">T</td>
+					</tr>
+					<tr>
+						<td align="center">F</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center" bgcolor="#FFFF00">F</td>
+					</tr>
+					<tr>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center" bgcolor="#EAEBEC">T</td>
+					</tr>
+					<tr>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center" bgcolor="#EAEBEC">T</td>
+					</tr>
+				</table>
+			</blockquote>
+		</blockquote>
+		<p><b>Rules of Inference for Quantified Statements</b></p>
+	<blockquote>
+		<p>Universal instantiation </p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>P(c) is True 
+					<blockquote>
+						<p>for all c in domain given &forall;x P(x)</p>
+					</blockquote>
+					</td>
+				</tr>
+			</table>
+			<blockquote>
+				<p>P(x) is &quot;x + 1 &gt; x&quot; where x &#8712; { -2, -1, 0 }</p>
+				<blockquote>
+					<p>&forall;x P(x) is True</p>
+					<p>P(c) is True for c &#8712; {-2, -1, 0}</p>
+					<p>P( -1 ) is True</p>
+					<p>&nbsp;</p>
+				</blockquote>
+			</blockquote>
+		</blockquote>
+		<p>Universal generalization </p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>&forall;x P(x) is True<blockquote>
+						<p>given P(c) is True for all c in domain.</p>
+					</blockquote>
+					<p>Show 
+					&forall;x P(x) by showing that for any arbitrary c in domain, P(c) 
+					is True. </td>
+				</tr>
+			</table>
+			<blockquote>
+				<p>P(c) is &quot;c + 1 &gt; c&quot; is True where c &#8712; {-2, -1, 0}</p>
+				<blockquote>
+					<p>P( -2 ) = -2 + 1 &gt; -2 is True</p>
+					<p>P( -1 ) = -1 + 1 &gt; -1&nbsp; is True</p>
+					<p>P( 0 )&nbsp;&nbsp; =&nbsp; 0 + 1 &gt;&nbsp; 0 is True</p>
+				</blockquote>
+				<p>&forall;x P(x) is True</p>
+				<p>&nbsp;</p>
+			</blockquote>
+		</blockquote>
+		<p>Existential instantiation </p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>P(c) is True 
+					<blockquote>
+						<p>for some c in domain given &exist;x P(x) is True</p>
+					</blockquote>
+					</td>
+				</tr>
+			</table>
+		</blockquote>
+			<blockquote>
+				<blockquote>
+					<p>P(x) is &quot;x + 1 &gt; 0&quot; where x &#8712; { -2, -1, 0 }</p>
+					<blockquote>
+						<p>&exist;x P(x) is True </p>
+						<p>P( c ) is True</p>
+						<p>&nbsp;</p>
+					</blockquote>
+				</blockquote>
+			</blockquote>
+		<p>Existential generalization </p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>&exist;x P(x) is True<blockquote>
+						<p>when a particular c with P(c) True is known.</p>
+						<p>If we know one c with P(c) True, then &exist;x P(x) 
+						is True.</blockquote>
+					</td>
+				</tr>
+			</table>
+			<blockquote>
+				<p>P(x) is &quot;x + 1 &gt; 0&quot; where x &#8712; { -2, -1, 0 }</p>
+				<blockquote>
+					<p>P( 0 )&nbsp;&nbsp; =&nbsp; 0 + 1 &gt;&nbsp; 0 is True</p>
+					<p>&exist;x P(x) is True </p>
+					<p>&nbsp;</p>
+				</blockquote>
+			</blockquote>
+		</blockquote>
+		<p><img border="0" src="ch01/t01_5_002.jpg" width="516" height="408"></p>
+
+	</blockquote>
+</blockquote>
+<blockquote>
+	<blockquote>
+		<p><b>Combining Rules of Inference for Propositions and Quantified 
+	Statements</b></p>
+	<blockquote>
+		<p>Universal modus ponens </p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>&forall;x (P(x) &rarr; Q(x))<p>P(a)<br>
+					____</p>
+					<p>&there4;Q(a)</td>
+				</tr>
+			</table>
+					</td>
+					<td>&nbsp;</td>
+					<td>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>P(a) &rarr; Q(a)<p>P(a)<br>
+					____</p>
+					<p>&there4;Q(a)</td>
+				</tr>
+			</table>
+					</td>
+				</tr>
+			</table>
+			<p>Given &forall;x (P(x) &rarr; Q(x)), </p>
+			<blockquote>
+				<p>when P(a) for a particular <i>a</i>, Q(a).</p>
+			</blockquote>
+			<p>&nbsp;</p>
+		</blockquote>
+		<p>Universal modus tollens </p>
+		<blockquote>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>&forall;x (P(x) &rarr; Q(x))<p>¬Q(a)<br>
+					____</p>
+					<p>&there4;¬P(a)</td>
+				</tr>
+			</table>
+					</td>
+					<td>&nbsp;</td>
+					<td>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>P(a) &rarr; Q(a)<p>¬Q(a)<br>
+					____</p>
+					<p>&there4;¬P(a)</td>
+				</tr>
+			</table>
+		</blockquote>
+					</td>
+				</tr>
+			</table>
+			<p>Given &forall;x (P(x) &rarr; Q(x)), </p>
+			<blockquote>
+				<p>when ¬Q(a) for a particular <i>a</i>, ¬P(a).</p>
+			</blockquote>
+		</blockquote>
+	</blockquote>
+</blockquote>
+</blockquote>
+	<blockquote>
+		<blockquote>
+		<p>&nbsp;</p>
+		<p>Example proof</p>
+		<blockquote>
+			<p>Premises are True</p>
+			<ol>
+				<li>&exist;x (C(x) ^ ¬B(x))<br>
+&nbsp;</li>
+				<li>&forall;x (C(x) &rarr; P(x))</li>
+			</ol>
+			<p>Show Conclusion</p>
+			<blockquote>
+				<p>&exist;x (P(x) ^ ¬B(x))</p>
+			</blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>&exist;x (C(x) ^ ¬B(x))</td>
+					<td>Premise 1</td>
+				</tr>
+				<tr>
+					<td>C(a) ^ ¬B(a)</td>
+					<td>Existential instantiation of &exist;x (C(x) ^ ¬B(x))<br>
+					<br>
+					&exist;<u>x P(x) <br>
+			</u>&there4;&nbsp;&nbsp; P(a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					true for some <i>a</i></td>
+				</tr>
+				<tr>
+					<td>C(a)</td>
+					<td>Simplification of C(a) ^ ¬B(a)</td>
+				</tr>
+				<tr>
+					<td>&forall;x (C(x) &rarr; P(x))</td>
+					<td>Premise 2</td>
+				</tr>
+				<tr>
+					<td>C(a) &rarr; P(a)</td>
+					<td>Universal instantiation of &forall;x (C(x) &rarr; P(x))<p><u>
+					&forall;x P(x)</u><br>
+					&there4; P(a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					true for some <i>a</i></td>
+				</tr>
+				<tr>
+					<td>C(a)<br>
+					<u>C(a) &rarr; P(a)<br>
+					P(a)</u></td>
+					<td>Modus ponens<p>P(a) true</td>
+				</tr>
+				<tr>
+					<td>¬B(a)</td>
+					<td>Simplification of C(a) ^ ¬B(a)</td>
+				</tr>
+				<tr>
+					<td>P(a) ^ ¬B(a)</td>
+					<td>Conjunction of two truths</td>
+				</tr>
+				<tr>
+					<td>&exist;x (P(x) ^ ¬B(x))</td>
+					<td>Existential generalization<p><u>&nbsp;&nbsp;&nbsp; P(a)&nbsp;&nbsp;&nbsp;
+			</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					true for some <i>a</i><u><br>
+			</u>&there4;&exist;x P(x)</td>
+				</tr>
+			</table>
+			<p>&nbsp;</p>
+		</blockquote>
+	</blockquote>
+</blockquote>
+</blockquote>
+<hr>
+<blockquote>
+<p><b>Eliminating Software Failures: Testing vs Verification</b></p>
+<blockquote>
+	<p><b>Testing</b> = running the program with a set of inputs to gain 
+	confidence that the software has few defects (in this case, the program is 
+	said to be &#8220;tested&#8221;)</p>
+	<blockquote>
+		<p><i>Goal</i>: reduce the frequency of <i>failures</i> </p>
+		<p><i>When done</i>: after the programming is complete</p>
+		<p><i>Methodology</i>: develop test cases, normally including boundary 
+		conditions; run the program with each 
+		test case</p>
+	</blockquote>
+	<p><b>Verification</b> = formally proving that the software has no defects 
+	(in this case, the program is said to be &#8220;correct&#8221;)</p>
+	<blockquote>
+		<p><i>Goal</i>: detect <i>errors </i>and eliminate <i>failures</i></p>
+		<p><i>When done</i>: before, during and after the programming is 
+		complete</p>
+		<p><i>Methodology</i>: </p>
+		<ol>
+			<li>write separate specifications for the code (e.g. pre and post 
+			conditions)<br>
+			<br>
+			</li>
+			<li>prove 
+		that the code and the specifications are mathematically equivalent (i.e. 
+			the code produces results consistent with specifications).</li>
+		</ol>
+	</blockquote>
+</blockquote>
+<p>&nbsp;</p>
+<p><b>Program Correctness</b></p>
+<blockquote>
+	<p>The correctness of a program is based on a specific standard. </p>
+	<p>That 
+	standard is called a <i>specification</i>. </p>
+	<blockquote>
+		<table border="1" cellspacing="0" id="table11" cellpadding="8">
+			<tr>
+				<td>// Compute max of a and b<blockquote>
+					<p>int max (int a, int b) {<br>
+&nbsp; int m;<br>
+					<br>
+&nbsp; if (a &#8805; b)<br>
+&nbsp;&nbsp;&nbsp;&nbsp; m &#8592; a;<br>
+&nbsp; else<br>
+&nbsp;&nbsp;&nbsp;&nbsp; m &#8592; b;<br>
+					<br>
+&nbsp; return m;<br>
+					}</p>
+				</blockquote>
+				</td>
+			</tr>
+		</table>
+	</blockquote>
+	<p>An informal specification for the above program might be that it "<i>finds the 
+	maximum value of any two integers</i>."</p>
+	<p><br>
+	</p>
+</blockquote>
+<p><b>Formalizing a Specification</b></p>
+<blockquote>
+	<p><i>Formal specification</i> is written as a logical expression called an <i>
+	assertion</i>.</p>
+	<p><br>
+	<i>Assertion</i> describes the state of the program's variables.</p>
+	<blockquote>
+		<p>Two key assertions are the program's <i>precondition</i> and its 
+		<i>postcondition; P</i> and <i>Q</i> respectively.</p>
+	</blockquote>
+	<p><br>
+	<i>Domain</i> is a set of values over which a variable is well defined. </p>
+	<blockquote>
+		<p>The 
+	primitive types (int, float, boolean, etc.) and standard Java classes 
+	(String, Vector, HashMap, etc.) provide domains for reasoning about 
+	programs.</p>
+	</blockquote>
+</blockquote>
+<p>&nbsp;</p>
+<p><b><a name="Pre_and_Postconditions">Pre and Postconditions</a></b></p>
+  <blockquote>
+		<p><i>Precondition - </i>Country bridges often have a weight limit sign 
+		posted that specifies the precondition for a safe crossing.</p>
+		<p><i>Postcondition - </i>Violating the bridge weight limit, its 
+		precondition, may result in the bridge failure.</p>
+		<p>&nbsp;</p>
+		<p><i>Preconditions</i> describe minimum requirements for the program to 
+	run correctly.</p>
+		<blockquote>
+			<p><i>max</i>, the <i>precondition</i> is P = True because a and b can be 
+		any integers. </p>
+		</blockquote>
+		<p><i>Postconditions</i> describes what will be computed when the 
+		precondition is True. </p>
+		<blockquote>
+			<p><i>max</i>, a <i>postcondition</i> is Q = <i>m &ge; a 
+			^ m &ge; b</i>, defining <i>m</i> to be greater 
+		than or equal both <i>a</i> and <i>b.</i></p>
+			<p>&nbsp;</p>
+		</blockquote>
+		<p>Before proving a program's correctness, we first write its 
+	specifications:</p>
+		<blockquote>
+			<table border="1" cellspacing="0" id="table2" cellpadding="8">
+				<tr>
+					<td>{<i>P is True}</i><blockquote>
+						<p>int max (int a, int b) {<br>&nbsp; int m;<br>
+						<br>&nbsp; if (a &#8805; b)<br>&nbsp;&nbsp;&nbsp;&nbsp; m &#8592; a;<br>&nbsp; else<br>&nbsp;&nbsp;&nbsp;&nbsp; m &#8592; b;<br>
+						<br>&nbsp; return m;<br>}</p>
+					</blockquote>
+					<p>{Q is <i>m &ge; a ^ m &ge; b</i>}</td>
+				</tr>
+			</table>
+		</blockquote>
+		<p>Proof must show that: <i>if preconditions P = True then postconditions 
+		Q = True </i>for the code of
+		<i>max</i>:</p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0">
+				<tr>
+					<td><br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+&nbsp;&nbsp;&nbsp;&nbsp; P &rarr; Q<br>
+					<br>
+					True&nbsp; &rarr;  <i>m &#8805; a ^ m &#8805; b</i></td>
+					<td>
+			<table border="1" cellSpacing="0" cellPadding="10">
+				<tr>
+					<td bgColor="#eaebec" align="center">P</td>
+					<td bgColor="#eaebec" align="center">Q</td>
+					<td bgColor="#eaebec" align="center">P &rarr; Q</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center">F</td>
+				</tr>
+				<tr>
+					<td align="center"><b>T</b></td>
+					<td align="center"><b>T</b></td>
+					<td align="center"><b>T</b></td>
+				</tr>
+			</table>
+					</td>
+				</tr>
+			</table>
+			<table border="1" cellSpacing="0" cellPadding="10">
+			</table>
+		</blockquote>
+		<p><b>Example&nbsp;&nbsp;&nbsp; </b></p>
+		<table border="0" cellpadding="10" cellspacing="0">
+			<tr>
+				<td><br>
+&nbsp;<table border="1" cellspacing="0" id="table10" cellpadding="10">
+			<tr>
+				<td>{ P is x = 1 ^ y = 3}<p>int sum (int x, int y) {<br>&nbsp; z &larr; x + y;<br>&nbsp; return z;<br>}</p>
+				<p>{ Q is z = 4 }</td>
+			</tr>
+		</table>
+				</td>
+				<td>
+			<table border="1" cellSpacing="0" cellPadding="10">
+			<caption>x=1 ^ y=3&nbsp;&rarr; z=4</caption>
+				<tr>
+					<td bgColor="#eaebec" align="center">x=1 ^ y=3</td>
+					<td bgColor="#eaebec" align="center">z=4</td>
+					<td bgColor="#eaebec" align="center">x=1 ^ y=3&nbsp;&rarr; z=4</td>
+				</tr>
+				<tr>
+					<td align="center">P</td>
+					<td align="center">Q</td>
+					<td align="center">P &rarr; Q</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center">F</td>
+				</tr>
+				<tr>
+					<td align="center"><b>T</b></td>
+					<td align="center"><b>T</b></td>
+					<td align="center"><b>T</b></td>
+				</tr>
+			</table>
+				</td>
+			</tr>
+		</table>
+		<br/><table border="0" cellpadding="10" cellspacing="0">
+			<tr>
+				<td>Assume preconditions True<p>{ P is x = 1 ^ y = 3 }</td>
+				<td bordercolordark="#000000" style="border: 1px solid #000000; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">int sum (int x, int y) {<br>
+				<br>&nbsp; z &larr; x + y;<br>
+				<br>&nbsp; return z;<br>
+				}</td>
+				<td>Prove algorithm ensures postcondition True<p>{ Q is z = 4 }</td>
+			</tr>
+		</table>
+		<p>Proof: <i>if P = True then Q = True</i></p>
+		<blockquote>
+		<table border="0" cellpadding="10" cellspacing="0">
+			<tr>
+				<td>
+				<table border="1" cellspacing="0" id="table15" cellpadding="10">
+			<tr>
+				<td>{ P is x = 1 ^ y = 3}<p>int sum (int x, int y) {<br>
+				<br>&nbsp; z &larr; x + y;<br>
+				<br>&nbsp; return z;<br>}</p>
+				<p>{ Q is z = 4 }</td>
+			</tr>
+		</table>
+				</td>
+				<td>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>x = 1 ^ y = 3</td>
+					<td>Assume P (precondition) is True</td>
+				</tr>
+				<tr>
+					<td>z &#8592; x + y</td>
+					<td>Definition of z</td>
+				</tr>
+				<tr>
+					<td>z &#8592; 1 + 3</td>
+					<td>Substitution of x and y</td>
+				</tr>
+				<tr>
+					<td>z &#8592; 4</td>
+					<td>Addition 1 + 3</td>
+				</tr>
+				<tr>
+					<td>z = 4</td>
+					<td>Q (post condition) is True by z &#8592; 4</td>
+				</tr>
+				<tr>
+					<td>z = 4</td>
+					<td>&there4; P &rarr; Q</td>
+				</tr>
+			</table>
+				</td>
+			</tr>
+		</table>
+		</blockquote>
+	</blockquote>
+	<p>&nbsp;</p>
+</blockquote>
+
+
+</body>
+
+</html>

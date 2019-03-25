@@ -1,0 +1,1491 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Raymond Wisman">
+<meta name="Edited" content="Dr. Holly">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<link REL="stylesheet" href="basic.css" type="text/css">
+<title>Chapter 1 - Logic and Proofs</title>
+</head>
+<body>
+
+<table width="80%" align="center">
+  <tr>
+    <td width="50%" align="center" bgcolor="#D1D8FC">
+      <h1>Chapter 1 - Logic and Proofs</h1>
+    </td>
+  </tr>
+</table>
+<p>© Ray Wisman - Edited August 2015 by Dr. Holly</p>
+<hr>
+<h3>1.7 Introduction to Proofs</h3>
+<blockquote>
+<blockquote>
+	<p><b>Some Terminology</b></p>
+	<blockquote>
+		<p>Theorem </p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>Statement that can be shown to be True.</td>
+				</tr>
+			</table>
+		</blockquote>
+		<p>Propositions </p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>Statement that can be shown to be True but not as 
+					important as theorems.</td>
+				</tr>
+			</table>
+		</blockquote>
+		<p>Proof </p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>Valid argument that establishes the truth of a theorem.</td>
+				</tr>
+			</table>
+		</blockquote>
+		<p>Axiom </p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>Statements assumed to be True.</td>
+				</tr>
+			</table>
+		</blockquote>
+		<p>Hypothesis</p>
+		<blockquote>
+			<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>&quot;If P, then Q&quot;<blockquote>
+						<p>P denotes the <i>hypothesis</i></p>
+						<p>Q is the <i>conclusion</i>.</p>
+					</blockquote>
+					</td>
+				</tr>
+			</table>
+		</blockquote>
+	</blockquote>
+	<p>&nbsp;</p>
+	<p><b>Direct Proof</b></p>
+	<blockquote>
+		<p>Assume <i>hypothesis</i> is True and </p>
+		<blockquote>
+			<p>show through valid rules of 
+		inference, </p>
+			<blockquote>
+				<p>that the <i>conclusion</i> is True.</p>
+			</blockquote>
+		</blockquote>
+		<p>Example</p>
+		<blockquote>
+			<blockquote>
+				<p>p is &quot;I won the lottery&quot; </p>
+				<p>q is &quot;I have a lottery ticket&quot; </p>
+			</blockquote>
+			<p>Prove p &#8594; q</p>
+			<blockquote>
+				<p>If I won the lottery then I have a lottery ticket.</p>
+			</blockquote>
+			<p>Hypothesis: </p>
+			<blockquote>
+				<p>Assume p is True,&nbsp; &quot;I won the lottery&quot;</p>
+			</blockquote>
+			<p>Conclusion: </p>
+			<blockquote>
+				<p>Prove q is True, &quot;I have a lottery ticket&quot;</p>
+			</blockquote>
+			<p>Proof</p>
+			<blockquote>
+				<table border="0" cellspacing="0" cellpadding="10">
+					<tr>
+						<td>p is True</td>
+						<td>&nbsp;</td>
+						<td>&quot;I won the lottery&quot; assumed True.</td>
+					</tr>
+					<tr>
+						<td>q is True</td>
+						<td>&nbsp;</td>
+						<td>&quot;I have a lottery ticket&quot; must prove True by having 
+						a lottery ticket.</td>
+					</tr>
+					<tr>
+						<td>&there4; p is True<br>
+&nbsp;&nbsp;&nbsp;<u> q is True</u><br>
+						&there4; p &#8594; q is True </td>
+						<td>&nbsp;</td>
+						<td>&nbsp;<p>&nbsp;</td>
+					</tr>
+				</table>
+				<p>&nbsp;</p>
+				<table border="1" cellpadding="10" cellspacing="0">
+					<tr>
+						<td bgcolor="#EAEBEC" align="center">p</td>
+						<td bgcolor="#EAEBEC" align="center">q</td>
+						<td bgcolor="#EAEBEC" align="center">p &#8594; q</td>
+					</tr>
+					<tr>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+					</tr>
+					<tr>
+						<td align="center">F</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+					</tr>
+					<tr>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">F</td>
+					</tr>
+					<tr>
+						<td align="center" bgcolor="#FFFF00">T</td>
+						<td align="center" bgcolor="#FFFF00">T</td>
+						<td align="center" bgcolor="#FFFF00">T</td>
+					</tr>
+				</table>
+			</blockquote>
+		</blockquote>
+		<p>&nbsp;</p>
+	</blockquote>
+	<p><b>Definition 1</b></p>
+	<blockquote>
+		<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+			<tr>
+				<td width="321">
+                <p><i>Even</i> integer <i>n</i> has <i>k </i>such that n = 2k</p>
+				<p><i>Odd </i>integer <i>n</i> has <i>k </i>such that n = 2k+1</p>
+				<p>Predicates:</p>
+                <ul>
+                <li>even(x) : &exist;k : Integer (2k = x)</li>
+                <li>odd(x) : &exist;k : Integer (2k + 1 = x)</li>
+                </ul></td>
+			</tr>
+		</table>
+	</blockquote>
+	<p>Example</p>
+	<blockquote>
+		<p>Even&nbsp;&nbsp;&nbsp; </p>
+		<blockquote>
+			<p>n = 12 = 2(6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			k = 6</p>
+		</blockquote>
+		<p>Odd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+		<blockquote>
+			<p>n = 13 = 2(6) + 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			k = 6</p>
+		</blockquote>
+	</blockquote>
+	<blockquote>
+		<p>&nbsp;</p>
+	</blockquote>
+	<p>Example direct proof</p>
+	<blockquote>
+		<p>Propositions</p>
+		<ol>
+			<li>p is odd(n)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n = 2k + 1<br>&nbsp;</li>
+			<li>q is odd(n<sup>2</sup>)&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n<sup>2</sup> = (2k + 1)<sup>2</sup></li>
+		</ol>
+		<p>Prove</p>
+		<blockquote>
+			<p>If odd(n), then odd(n<sup>2</sup>)</p>
+			<blockquote>
+				<p>odd(n)  &#8594; odd(n<sup>2</sup>)</p>
+				<p>p &#8594; q</p>
+			</blockquote>
+		</blockquote>
+		<p>Hypothesis:</p>
+		<blockquote>
+			<p>p assumed True</p>
+			<p>odd(n)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n = 2j + 1</p>
+		</blockquote>
+		<p>Conclusion:</p>
+		<blockquote>
+			<p>q, must show to be True</p>
+			<p>odd(n<sup>2</sup>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n<sup>2</sup> 
+			= 2i + 1</p>
+		</blockquote>
+		<table border="1" cellpadding="10" cellspacing="0">
+			<tr>
+				<td>n </td>
+				<td>= 2j + 1</td>
+				<td>p is True, odd(n).</td>
+			</tr>
+			<tr>
+				<td>(n)<sup>2</sup></td>
+				<td>= (2j + 1)<sup>2</sup></td>
+				<td>Square both sides, to show odd(n<sup>2</sup>)</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>= (4j<sup>2</sup> + 4j + 1)</td>
+				<td>Multiply</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>= 2(2j<sup>2</sup> + 2j) + 1</td>
+				<td>Factor</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>= 2(<b>2j<sup>2</sup> + 2j</b>) + 1</td>
+				<td>q is True, odd(n<sup>2</sup>)<br>
+				<br>
+				n<sup>2</sup> = 2i+1 
+				<p>i = 2j<sup>2</sup> + 2j</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&there4; n<sup>2</sup> is odd</td>
+				<td>&there4; p is True<br>
+				&nbsp;&nbsp;<u> q is True&nbsp;&nbsp;&nbsp; </u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+				&there4; p &#8594; q is True </td>
+			</tr>
+		</table>
+		<p>Assumed p, odd(n) to be True.</p>
+		<p>Proved by algebra and odd definition, with p True, q is odd(n<sup>2</sup>) to be True.</p>
+		<blockquote>
+		  <p>odd(n) &#8594; odd(n<sup>2</sup>)</p>
+		</blockquote>
+		<table border="0" cellpadding="10" cellspacing="0">
+			<tr>
+				<td>&nbsp;&nbsp;&nbsp; p is True<br>&nbsp;&nbsp;&nbsp; <u>q is 
+				True</u><br>&there4; p &#8594; q is True 
+				</td>
+				<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; odd(n) is True<br>&nbsp;&nbsp;&nbsp; <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				</u><u>odd(n<sup>2</sup>) is True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</u><br>
+				&there4;odd(n) &#8594; odd(n<sup>2</sup>) is True </td>
+			</tr>
+		</table>
+		<blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td bgcolor="#EAEBEC" align="center">odd(n)</td>
+					<td bgcolor="#EAEBEC" align="center">odd(n<sup>2</sup>)</td>
+					<td bgcolor="#EAEBEC" align="center">odd(n) &#8594; odd(n<sup>2</sup>)</td>
+				</tr>
+				<tr>
+					<td align="center">p</td>
+					<td align="center">q</td>
+					<td align="center">p &#8594; q</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+				</tr>
+				<tr>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center">F</td>
+				</tr>
+				<tr>
+					<td align="center" bgcolor="#FFFF00">T</td>
+					<td align="center" bgcolor="#FFFF00">T</td>
+					<td align="center" bgcolor="#FFFF00">T</td>
+				</tr>
+			</table>
+		</blockquote>
+	</blockquote>
+	<blockquote>
+	<p><b><a name="Example_-_Correctness_Proof">Example - Program Correctness Proof</a></b></p>
+	<blockquote>
+		<table border="1" cellspacing="0" id="table13" cellpadding="10">
+			<tr>
+				<td>{ P: odd(n) }
+				  <p>int square ( int n ) {<br>&nbsp; z &larr; 
+				n<sup>2</sup>;<br>&nbsp; return z;<br>}</p>
+				<p>{ Q: odd(z) }</td>
+			</tr>
+		</table>
+		<table border="0" cellpadding="10" cellspacing="0">
+			<tr>
+				<td>Assume preconditions True<p>{ P: odd(n) }</td>
+				<td bordercolordark="#000000" style="border: 1px solid #000000; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px">int 
+				square ( int n ) {<br>&nbsp; z &larr; n<sup>2</sup>;<br>&nbsp; return z;<br>}</td>
+				<td>Prove algorithm ensures postcondition True<p>{ Q: odd(z) }</td>
+			</tr>
+		</table>
+		<p>Proof</p>
+		<table border="1" cellpadding="10" cellspacing="0">
+			<tr>
+				<td>odd(n)</td>
+				<td>P is True</td>
+			</tr>
+			<tr>
+				<td>n = 2j+1</td>
+				<td>Definition of odd</td>
+			</tr>
+			<tr>
+				<td>n<sup>2 </sup>= (2j+1)<sup>2</sup></td>
+				<td>From z &#8592; n<sup>2</sup></td>
+			</tr>
+			<tr>
+				<td>&nbsp;&nbsp;&nbsp;&nbsp; = 4j<sup>2</sup>+4j + 1</td>
+				<td>Multiply</td>
+			</tr>
+			<tr>
+				<td>&nbsp;&nbsp;&nbsp;&nbsp; = 2(2j<sup>2</sup>+2j) + 1</td>
+				<td>n<sup>2</sup> odd<br>
+				for k = 2j<sup>2</sup>+2j</td>
+			</tr>
+			<tr>
+				<td>z = n<sup>2</sup></td>
+				<td>z &#8592; n<sup>2</sup></td>
+			</tr>
+			<tr>
+				<td>z is odd</td>
+				<td>&nbsp; P is True&nbsp;&nbsp;odd(n)<br>
+				&nbsp; <u>Q is True</u>&nbsp;&nbsp;odd(z)<br>
+				&there4; P &#8594; Q</td>
+			</tr>
+		</table>
+	</blockquote>
+	
+	<p><b>Definition 1</b></p>
+	<blockquote>
+	<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+			<tr>
+				<td width="321">
+                <p><i>Even</i> integer <i>n</i> has <i>k </i>such that n = 2k</p>
+				<p><i>Odd </i>integer <i>n</i> has <i>k </i>such that n = 2k+1</p>
+				<p>Predicates:</p>
+                <ul>
+                <li>even(x) : &exist;k : Integer (2k = x)</li>
+                <li>odd(x) : &exist;k : Integer (2k + 1 = x)</li>
+                </ul></td>
+			</tr>
+		</table>
+	</blockquote>
+	</blockquote>
+	<p>&nbsp;</p>
+	<blockquote>
+		<p>Example </p>
+		<blockquote>
+			<p>a is odd integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a = 2i + 1</p>
+			<p>b is odd integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b = 2j + 1</p>
+		</blockquote>
+		<p>Prove</p>
+		<blockquote>
+			<p>odd(a) ^ odd(b) &rarr; even(a + b) </p>
+			<p>p &#8594; q</p>
+		</blockquote>
+		<p>Hypothesis p is assumed True</p>
+		<blockquote>
+			<p>odd(a) ^ odd(b</p>
+			<blockquote>
+				<p>a = 2i + 1
+				<br>
+				<br>b = 2j + 1</p>
+			</blockquote>
+		</blockquote>
+		<p>Show q is True</p>
+		<blockquote>
+			<p>even(a + b)</p>
+		</blockquote>
+		<table border="1" cellpadding="10" cellspacing="0">
+			<tr>
+				<td>a = 2i + 1
+				<br>
+				b = 2j + 1</td>
+				<td>&nbsp;</td>
+				<td>p, hypothesis, is True,<br>
+				a and b are odd</td>
+			</tr>
+			<tr>
+				<td>a + b </td>
+				<td>= (2i + 1) + (2j + 1)</td>
+				<td>Substitution for a and b</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>= 2i + 2j + 2</td>
+				<td>Addition</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>= 2(i + j + 1)</td>
+				<td>Factor </td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>= 2(<b>i + j + 1</b>)</td>
+				<td>q is True<br>
+				a + b = 2k <br>
+				for k = i+j+1</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&there4;a + b is even<p>a and b odd &#8594; a + b even</p>
+				</td>
+				<td>&there4; q is True<br>
+				&nbsp;&nbsp;&nbsp;<u> p is True</u><br>
+				&there4; p &#8594; q is True </td>
+			</tr>
+		</table>
+	</blockquote>
+	
+		<p><b>Definition 1</b></p>
+		<blockquote>
+	<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+			<tr>
+				<td width="321">
+                <p><i>Even</i> integer <i>n</i> has <i>k </i>such that n = 2k</p>
+				<p><i>Odd </i>integer <i>n</i> has <i>k </i>such that n = 2k+1</p>
+				<p>Predicates:</p>
+                <ul>
+                <li>even(x) : &exist;k : Integer (2k = x)</li>
+                <li>odd(x) : &exist;k : Integer (2k + 1 = x)</li>
+                </ul></td>
+			</tr>
+		</table>
+		</blockquote>
+	<p>&nbsp;</p>
+	<p><b>Proof by Contraposition (or Proof by Contrapositive)</b></p>
+	<blockquote>
+		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
+			<tr>
+				<td>p &#8594; q &#926; ¬q &#8594; ¬p</td>
+			</tr>
+		</table>
+		<blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td bgcolor="#EAEBEC" align="center">p</td>
+					<td bgcolor="#EAEBEC" align="center">q</td>
+					<td bgcolor="#EAEBEC" align="center">p &#8594; q</td>
+					<td bgcolor="#EAEBEC" align="center">¬q</td>
+					<td bgcolor="#EAEBEC" align="center">¬p</td>
+					<td bgcolor="#EAEBEC" align="center">¬q &#8594; ¬p</td>
+				</tr>
+				<tr>
+					<td align="center">T</td>
+					<td align="center">T</td>
+					<td align="center" bgcolor="#EAEBEC">T</td>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center" bgcolor="#EAEBEC">T</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">T</td>
+					<td align="center" bgcolor="#EAEBEC">T</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+					<td align="center" bgcolor="#EAEBEC">T</td>
+				</tr>
+				<tr>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center" bgcolor="#EAEBEC">F</td>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center" bgcolor="#EAEBEC">F</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center" bgcolor="#EAEBEC">T</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+					<td align="center" bgcolor="#EAEBEC">T</td>
+				</tr>
+			</table>
+		</blockquote>
+					<p>When p &#8594; q difficult to prove, consider direct proof of 
+					¬q &#8594; ¬p</p>
+		<p>&nbsp;</p>
+		<p>Example</p>
+	</blockquote>
+	<blockquote>
+		<blockquote>
+			<p>Prove p &#8594; q</p>
+			<p>odd(n<sup>3</sup> + 5) &#8594; even(n) </p>
+			<blockquote>
+			  <p>p is odd(n<sup>3</sup> + 5)</p>
+				<p>q is  even(n) </p>
+			</blockquote>
+		</blockquote>
+	</blockquote>
+	<blockquote>
+		<p>Contrapositive</p>
+		<blockquote>
+			<p>¬q &#8594; ¬p</p>
+			<blockquote>
+				<p>&not;even(n) &#8594; &not;odd(n<sup>3</sup> + 5)</p>
+				<blockquote>
+				  <p>odd(n) &#8594; even(n<sup>3</sup> + 5) </p>
+				</blockquote>
+			</blockquote>
+			<p>¬q is odd(n)</p>
+			<p>¬p is  even(n<sup>3</sup> + 5) </p>
+		</blockquote>
+		<p>Prove</p>
+		<blockquote>
+			<p>odd(n) &#8594; even(n<sup>3</sup> + 5)</p>
+			<p>¬q &#8594; ¬p</p>
+	  </blockquote>
+		<p>Hypothesis ¬q assumed True</p>
+		<blockquote>
+			<p>odd(n), n = 2j + 1</p>
+		</blockquote>
+		<p>Show ¬p True</p>
+		<blockquote>
+			<p>even(n<sup>3</sup> + 5)</p>
+		</blockquote>
+	  <blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>n </td>
+					<td>= 2j+1</td>
+					<td>¬q is True, n is odd.&nbsp;</td>
+				</tr>
+				<tr>
+					<td>n<sup>3</sup> + 5&nbsp; </td>
+					<td>= (2j + 1)<sup>3 </sup>+ 5 </td>
+					<td>Substitute 2j + 1 for n</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>= 8j<sup>3</sup> + 12j<sup>2</sup> 
+					+ 6j + 6</td>
+					<td>Multiply</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>= <b>2(4j<sup>3</sup> 
+					+ 6j<sup>2</sup> + 3j + 3)</b></td>
+					<td>Factor</td>
+				</tr>
+				<tr>
+					<td>n<sup>3</sup> + 5&nbsp; </td>
+					<td>= 2(<b>4j<sup>3</sup> 
+					+ 6j<sup>2</sup> + 3j + 3</b>)</td>
+					<td>¬p is True<br>
+					n<sup>3</sup> + 5 = 2k is even</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&there4; odd(n) &#8594; even(n<sup>3</sup> + 5)</td>
+					<td>&there4; ¬p is True<br>
+&nbsp;&nbsp;<u> ¬q is True</u><br>
+					&there4; ¬q &#8594; ¬p</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&there4; odd(n<sup>3</sup> + 5) &#8594; even(n)</td>
+					<td>p &#8594; q &#926; ¬q &#8594; ¬p by contraposition</td>
+				</tr>
+			</table>
+		</blockquote>
+	
+		<p><b>Definition 1</b></p>
+		<blockquote>
+		<blockquote>
+	<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+			<tr>
+				<td width="321">
+                <p><i>Even</i> integer <i>n</i> has <i>k </i>such that n = 2k</p>
+				<p><i>Odd </i>integer <i>n</i> has <i>k </i>such that n = 2k+1</p>
+				<p>Predicates:</p>
+                <ul>
+                <li>even(x) : &exist;k : Integer (2k = x)</li>
+                <li>odd(x) : &exist;k : Integer (2k + 1 = x)</li>
+                </ul></td>
+			</tr>
+		</table>
+		</blockquote>
+			<p>&nbsp;</p>
+		</blockquote>
+	</blockquote>
+	<p><b>Proofs by Contradiction</b></p>
+	<blockquote>
+		<p>Direct proof assumes hypothesis is True and using rules of inference 
+		shows theorem is True.</p>
+		<blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>&there4; p<br>
+				&nbsp;&nbsp;&nbsp;<u> q&nbsp; </u><br>
+					&there4; p &#8594; q</td>
+				</tr>
+			</table>
+		</blockquote>
+		<p>Contradiction proof assumes theorem is False; using rules of 
+		inference, shows contradiction of assuming to be False. </p>
+		<blockquote>
+			<p>Only source of contradiction was assumption that theorem False.</p>
+			<p>Contradiction, not possible for both p and ¬p to be true.</p>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td bgcolor="#EAEBEC" align="center">p</td>
+					<td bgcolor="#EAEBEC" align="center">¬p</td>
+					<td bgcolor="#EAEBEC" align="center">p ^ ¬p</td>
+				</tr>
+				<tr>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center">F</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">T</td>
+					<td align="center">F</td>
+				</tr>
+			</table>
+		</blockquote>
+		<p>Example</p>
+		<blockquote>
+			<blockquote>
+				<p>p is &quot;I won the lottery&quot; </p>
+				<p>q is &quot;I have a lottery ticket&quot; </p>
+			</blockquote>
+			<p>Prove p &#8594; q</p>
+			<blockquote>
+				<p>If I won the lottery then I have a lottery ticket.</p>
+			</blockquote>
+			<p>Hypothesis: </p>
+			<blockquote>
+				<p>Assume p True,&nbsp; &quot;I won the lottery&quot;</p>
+			</blockquote>
+			<p>Conclusion: </p>
+			<blockquote>
+				<p>Assume ¬q True, &quot;I do not have a lottery ticket&quot;</p>
+			</blockquote>
+			<p>Proof</p>
+			<blockquote>
+				<table border="1" cellspacing="0" cellpadding="10">
+					<tr>
+						<td>p is True</td>
+						<td>&quot;I won the lottery&quot; assumed True.</td>
+					</tr>
+					<tr>
+						<td>¬q is True</td>
+						<td>&quot;I do not have a lottery ticket&quot; assumed 
+						True.</td>
+					</tr>
+					<tr>
+						<td>¬p is True</td>
+						<td>When ¬q is True<blockquote>
+							<p>&quot;I do not have a lottery ticket&quot;, </p>
+						</blockquote>
+						<p>¬p is True<blockquote>
+							<p>&quot;I did not win the lottery&quot;, 
+						because of lottery rules.</blockquote>
+						</td>
+					</tr>
+					<tr>
+						<td>¬p ^ p</td>
+						<td>Contradiction, not possible for both p and ¬p to be 
+						true.</td>
+					</tr>
+					<tr>
+						<td>¬q cannot be True.</td>
+						<td>Source of contradiction.</td>
+					</tr>
+					<tr>
+						<td>q must be True.</td>
+						<td>&quot;I do have a lottery ticket&quot;</td>
+					</tr>
+					<tr>
+						<td>p is True<br>
+						<u>q is True</u><br>
+						&there4;p &#8594; q is True</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+			</blockquote>
+			<p>&nbsp;</p>
+		</blockquote>
+	</blockquote>
+	<p><b>Contradiction proofs</b></p>
+	<blockquote>
+		<p>Following are three different proofs by contradiction of same theorem 
+		and one by use of contrapositive.</p>
+		<p>Premise</p>
+		<blockquote>
+			<p>p is x<sup>2</sup> + x - 2 = 0</p>
+			<p>q is x &#8800; 0</p>
+		</blockquote>
+		<p>Prove</p>
+		<blockquote>
+				<p>&quot;If x<sup>2</sup> + x - 2 = 0 then x &#8800; 0&quot;</p>
+			<p>x<sup>2</sup> + x - 2 = 0 &#8594; x &#8800; 0</p>
+			<blockquote>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p &#8594; q</p>
+			</blockquote>
+		</blockquote>
+		<p>*Example 1</p>
+		<blockquote>
+			<p>Assume</p>
+			<blockquote>
+				<p>Hypothesis: </p>
+				<blockquote>
+					<p>p is True, x<sup>2</sup> + x - 2 = 0</p>
+				</blockquote>
+				<p>Conclusion:</p>
+				<blockquote>
+					<p>&nbsp;¬q is True, x = 0.</p>
+				</blockquote>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; q is x &#8800; 0.</p>
+			</blockquote>
+			<p>Derive contradiction that by assuming ¬q is True that p is False: 
+			x<sup>2</sup> + x - 2 &#8800; 0</p>
+			<p>Proof</p>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>x<sup>2</sup> + x - 2</td>
+					<td>= 0</td>
+					<td>Assumption p</td>
+				</tr>
+				<tr>
+					<td>x </td>
+					<td>= 0</td>
+					<td>Assumption ¬q</td>
+				</tr>
+				<tr>
+					<td>x<sup>2</sup> + x - 2</td>
+					<td>= 0<sup>2</sup> + 0 - 2 </td>
+					<td>Substitute x=0</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>= -2</td>
+					<td>Have shown ¬p<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x<sup>2</sup> + x - 2 &#8800; 0</td>
+				</tr>
+				<tr>
+					<td>x<sup>2</sup> + x - 2 </td>
+					<td>= -2</td>
+					<td>Contradiction of p: x<sup>2</sup> + x - 2 = 0<blockquote>
+						<p>¬p ^ p</blockquote>
+					<p>Result of assuming ¬q True, x=0<p>&there4; q must be true</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&there4;x<sup>2</sup> + x - 2 = 0 &#8594; x &#8800; 0</td>
+					<td>&nbsp;p<br>
+					<u>&nbsp;q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u><br>
+					&there4;p &#8594; q</td>
+				</tr>
+			</table>
+			<table border="0" cellspacing="0">
+				<tr>
+					<td><br>
+					By assuming:<blockquote>
+				<p>p: x<sup>2</sup> + x - 2 = 0</p>
+				<p>¬q: x = 0</p>
+			</blockquote>
+			<p>leads to:</p>
+			<blockquote>
+				<p>¬p: x<sup>2</sup> + x - 2 &#8800; 0</p>
+			</blockquote>
+			<p>Contradiction:</p>
+			<blockquote>
+				<p>p ^ ¬p</p>
+			</blockquote>
+			<p>Source of contradiction from assuming ¬q True.</p>
+					<p>Can conclude ¬q is False, so q is True.</p>
+					<blockquote>
+						<p>and by assuming p is True</p>
+						<p>p &#8594; q is True</p>
+						<blockquote>
+							<p>&quot;If x<sup>2</sup> + x - 2 = 0 then x &#8800; 0&quot;</p>
+						</blockquote>
+					</blockquote>
+					</td>
+					<td>
+		<blockquote>
+			<blockquote>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<table border="1" cellpadding="10" cellspacing="0">
+					<tr>
+						<td bgcolor="#EAEBEC" align="center">p</td>
+						<td bgcolor="#EAEBEC" align="center">q</td>
+						<td bgcolor="#EAEBEC" align="center">p &#8594; q</td>
+					</tr>
+					<tr>
+						<td align="center">F</td>
+						<td align="center">F</td>
+						<td align="center">T</td>
+					</tr>
+					<tr>
+						<td align="center">F</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+					</tr>
+					<tr>
+						<td align="center">T</td>
+						<td align="center">F</td>
+						<td align="center">F</td>
+					</tr>
+					<tr>
+						<td align="center">T</td>
+						<td align="center">T</td>
+						<td align="center">T</td>
+					</tr>
+				</table>
+			</blockquote>
+		</blockquote>
+					<p>&nbsp;</td>
+				</tr>
+			</table>
+			<p>&nbsp;</p>
+		</blockquote>
+		<p><b>Rule of inference: Proof by Contradiction</b></p>
+		<blockquote>
+			<p>If, from assuming p and ¬q, can derive both r and ¬r for some 
+			statement r, can conclude p &#8594; q.</p>
+			<p>Prove p &#8594; q</p>
+			<blockquote>
+				<p>Assume p and ¬q</p>
+				<p>Derive ¬p</p>
+				<p>Contradiction p ^ ¬p</p>
+				<p>Conclude p &#8594; q</p>
+			</blockquote>
+			<p>Note here: r = p, ¬r = ¬p</p>
+		</blockquote>
+		<p>&nbsp;</p>
+		<p>Example 2</p>
+		<blockquote>
+		<p>Premise</p>
+		<blockquote>
+			<p>p is x<sup>2</sup> + x - 2 = 0</p>
+			<p>q is x &#8800; 0</p>
+		</blockquote>
+		<p>Prove</p>
+		<blockquote>
+			<p>x<sup>2</sup> + x - 2 = 0 &#8594; x &#8800; 0</p>
+			<blockquote>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p &#8594; q</p>
+			</blockquote>
+		</blockquote>
+			<p>Assume:</p>
+			<blockquote>
+				<p>Hypothesis: p is True, x<sup>2</sup> + x - 2 = 0</p>
+				<p>Conclusion: ¬q is True, x = 0.</p>
+			</blockquote>
+			<p>Derive contradiction of a known fact.</p>
+			<p>Proof</p>
+			<blockquote>
+				<table border="1" cellpadding="10" cellspacing="0">
+					<tr>
+						<td>x<sup>2</sup> + x - 2</td>
+						<td>= 0</td>
+						<td>Assumption of hypothesis p True</td>
+					</tr>
+					<tr>
+						<td>0<sup>2</sup> + 0 - 2 </td>
+						<td>= 0</td>
+						<td>Substituting into p, <br>
+&nbsp;&nbsp;&nbsp; assumption ¬q: x = 0</td>
+					</tr>
+					<tr>
+						<td>
+						<p align="right">-2 </td>
+						<td>= 0</td>
+						<td>Contradiction of known fact, <br>
+&nbsp;&nbsp;&nbsp; showing ¬p is True</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&there4;x<sup>2</sup> + x - 2 = 0 &#8594; x &#8800; 0</td>
+						<td>Assuming p and ¬q both True leads to contradiction 
+						<br>
+						p ^ ¬p, therefore q is True.</td>
+					</tr>
+					<tr>
+					<td>&nbsp;</td>
+					<td>&there4;x<sup>2</sup> + x - 2 = 0 &#8594; x &#8800; 0</td>
+					<td>&nbsp;p<br>
+					<u>&nbsp;q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u><br>
+					&there4;p &#8594; q</td>
+					</tr>
+				</table>
+			</blockquote>
+		</blockquote>
+		<p>&nbsp;</p>
+		<p>*Example 3</p>
+	  <blockquote>
+		<p>Premise</p>
+		<blockquote>
+			<p>p is n<sup>2</sup> is even</p>
+			<p>q is n is even</p>
+		</blockquote>
+		<p>Prove</p>
+		<blockquote>
+			<p>even(n<sup>2</sup>)  &#8594; even(n)</p>
+			<blockquote>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p &#8594; q</p>
+			</blockquote>
+		</blockquote>
+			<p>Assume:</p>
+			<blockquote>
+				<p>Hypothesis: p is True, even(n<sup>2</sup>)</p>
+				<p>Conclusion: ¬q is True, odd(n)</p>
+			</blockquote>
+			<p>Derive contradiction of a known fact.</p>
+			<p>Proof&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;even(n<sup>2</sup>) &#8594; even(n)</p>
+			<blockquote>
+				<table border="1" cellpadding="10" cellspacing="0">
+					<tr>
+						<td>n</td>
+						<td>= 2i+1</td>
+						<td>Assumptions<br>
+&nbsp;&nbsp;&nbsp;&nbsp; p: n<sup>2</sup> is even<br>
+&nbsp; ¬q: n is odd</td>
+					</tr>
+					<tr>
+						<td>n<sup>2</sup>&nbsp; </td>
+						<td>= (2i+1)<sup>2</sup></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>
+						<p align="right">&nbsp;</td>
+						<td>= 4i<sup>2</sup>+4i+1</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>= 2(2i<sup>2</sup>+2i) + 1</td>
+						<td>n<sup>2</sup> is odd, ¬p<br>
+						<br>
+						p ^ ¬p cannot be True</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&there4; n<sup>2</sup> is even &#8594; n is even</td>
+						<td>Assuming p and ¬q both True <br>
+						leads to contradiction
+						p ^ ¬p, <br>
+						therefore q is True.<p>q: n is even
+						<p>&nbsp;p<br>
+						<u>&nbsp;q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u><br>
+						&there4;p &#8594; q</td>
+					</tr>
+				</table>
+			</blockquote>
+		</blockquote>
+	
+		<p><b>Definition 1</b></p>
+		<blockquote>
+		<blockquote>
+	<table border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+			<tr>
+				<td width="321">
+                <p><i>Even</i> integer <i>n</i> has <i>k </i>such that n = 2k</p>
+				<p><i>Odd </i>integer <i>n</i> has <i>k </i>such that n = 2k+1</p>
+				<p>Predicates:</p>
+                <ul>
+                <li>even(x) : &exist;k : Integer (2k = x)</li>
+                <li>odd(x) : &exist;k : Integer (2k + 1 = x)</li>
+                </ul></td>
+			</tr>
+		</table>
+		</blockquote>
+		</blockquote>
+		<p>Example 4</p>
+		<blockquote>
+		<p>Premise</p>
+		<blockquote>
+			<p>p is x<sup>2</sup> + x - 2 = 0</p>
+			<p>q is x &#8800; 0</p>
+		</blockquote>
+			<p>Assume:</p>
+			<blockquote>
+				<p>Hypothesis: p is True, x<sup>2</sup> + x - 2 = 0</p>
+				<p>Conclusion: ¬q is True, x = 0.</p>
+			</blockquote>
+			<p>Proof</p>
+			<blockquote>
+				<table border="1" cellpadding="10" cellspacing="0">
+					<tr>
+						<td>x<sup>2</sup> + x - 2 </td>
+						<td>= 0</td>
+						<td>Assumption of hypothesis p</td>
+					</tr>
+					<tr>
+						<td>
+						<p align="right">x<sup>2</sup> + x </td>
+						<td>= 2</td>
+						<td>Add 2 to both sides</td>
+					</tr>
+					<tr>
+						<td>
+						<p align="right">0<sup>2</sup> + 0</td>
+						<td>= 2 </td>
+						<td>Substituting assumption ¬q, x = 0</td>
+					</tr>
+					<tr>
+						<td>
+						<p align="right">0 </td>
+						<td>= 2</td>
+						<td>p: x<sup>2</sup> + x - 2 = 0 False assuming ¬q, x = 
+						0<p>¬p is True&nbsp;&nbsp; </td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&there4;x<sup>2</sup> + x - 2 = 0 &#8594; x &#8800; 0</td>
+						<td>p and ¬q both True leads to contradiction p ^ ¬p</td>
+					</tr>
+				</table>
+				<p>&nbsp;</p>
+			</blockquote>
+		</blockquote>
+		<p><b>Rule of Inference: Proof by Contraposition</b></p>
+		<blockquote>
+		<table border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
+			<tr>
+				<td>p &#8594; q &#926; ¬q &#8594; ¬p</td>
+			</tr>
+		</table>
+		<blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td bgcolor="#EAEBEC" align="center">p</td>
+					<td bgcolor="#EAEBEC" align="center">q</td>
+					<td bgcolor="#EAEBEC" align="center">p &#8594; q</td>
+					<td bgcolor="#EAEBEC" align="center">¬q</td>
+					<td bgcolor="#EAEBEC" align="center">¬p</td>
+					<td bgcolor="#EAEBEC" align="center">¬q &#8594; ¬p</td>
+				</tr>
+				<tr>
+					<td align="center">T</td>
+					<td align="center">T</td>
+					<td align="center" bgcolor="#C0C0C0" bordercolor="#D1D8FC">T</td>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center" bgcolor="#C0C0C0">T</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">T</td>
+					<td align="center" bgcolor="#C0C0C0" bordercolor="#D1D8FC">T</td>
+					<td align="center">F</td>
+					<td align="center">T</td>
+					<td align="center" bgcolor="#C0C0C0">T</td>
+				</tr>
+				<tr>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center" bgcolor="#C0C0C0" bordercolor="#D1D8FC">F</td>
+					<td align="center">T</td>
+					<td align="center">F</td>
+					<td align="center" bgcolor="#C0C0C0">F</td>
+				</tr>
+				<tr>
+					<td align="center">F</td>
+					<td align="center">F</td>
+					<td align="center" bgcolor="#C0C0C0" bordercolor="#D1D8FC">T</td>
+					<td align="center">T</td>
+					<td align="center">T</td>
+					<td align="center" bgcolor="#C0C0C0">T</td>
+				</tr>
+			</table>
+		</blockquote>
+					<p>&nbsp;</p>
+		</blockquote>
+		<p>&nbsp;Example 5</p>
+		<blockquote>
+		<p>Premise</p>
+		<blockquote>
+			<p>p is x<sup>2</sup> + x - 2 = 0</p>
+			<p>q is x &#8800; 0</p>
+		</blockquote>
+		<p>Prove</p>
+			<blockquote>
+				<p>&quot;If x<sup>2</sup> + x - 2 = 0, then x &#8800; 0.&quot;</p>
+				<p>Contrapositive</p>
+				<blockquote>
+					<table border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
+						<tr>
+							<td>p &#8594; q &#926; ¬q &#8594; ¬p</td>
+						</tr>
+					</table>
+					<p>&quot;If x = 0, then x<sup>2</sup> + x - 2 &#8800; 0.&quot;</p>
+					<blockquote>
+						<p>x = 0 &#8594; x<sup>2</sup> + x - 2 &#8800; 0</p>
+						<p>&nbsp;&nbsp;&nbsp; ¬q &#8594; ¬p</p>
+					</blockquote>
+				</blockquote>
+			</blockquote>
+			<p>Hypothesis</p>
+			<blockquote>
+				<p>¬q is True, x = 0.</p>
+			</blockquote>
+			<p>Show</p>
+		<blockquote>
+			<p>¬p is True, x<sup>2</sup> + x - 2 &#8800; 0</p>
+		</blockquote>
+			<p>Proof</p>
+			<blockquote>
+				<table border="1" cellpadding="10" cellspacing="0">
+					<tr>
+						<td>
+						<p align="right">x </td>
+						<td>= 0</td>
+						<td>Assumption of hypothesis, ¬q</td>
+					</tr>
+					<tr>
+						<td>x<sup>2</sup> + x - 2 </td>
+						<td>= 0<sup>2</sup> + 0 - 2 = -2</td>
+						<td>Substituting x = 0</td>
+					</tr>
+					<tr>
+						<td>x<sup>2</sup> + x - 2</td>
+						<td>&nbsp;= -2&#8800; 0</td>
+						<td>¬p is True</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&there4;x = 0 &#8594; x<sup>2</sup> + x - 2 &#8800; 0</td>
+						<td>&nbsp;&nbsp; ¬q<br>
+						<u>&nbsp;&nbsp; ¬p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</u>&nbsp;<br>
+						¬q &#8594; ¬p is True</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&there4;x<sup>2</sup> + x - 2 = 0 &#8594; x &#8800; 0</td>
+						<td>By contrapositive, p &#8594; q &#926; ¬q &#8594; ¬p</td>
+					</tr>
+				</table>
+				<blockquote>
+					<blockquote>
+						<blockquote>
+							<blockquote>
+								<blockquote>
+									<blockquote>
+										<blockquote>
+											<blockquote>
+												<blockquote>
+													<blockquote>
+														<p>&nbsp;</p>
+													</blockquote>
+												</blockquote>
+											</blockquote>
+										</blockquote>
+									</blockquote>
+								</blockquote>
+							</blockquote>
+						</blockquote>
+					</blockquote>
+				</blockquote>
+			</blockquote>
+		</blockquote>
+		<p>*Example 6</p>
+	</blockquote>
+	<blockquote>
+		<blockquote>
+			<p>p is odd(n<sup>3</sup> + 5)</p>
+			<p>q is even(n)</p>
+			<p>&quot;If odd(n<sup>3</sup> + 5), even(n)</p>
+			<blockquote>
+			  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p &#8594; q</p>
+			</blockquote>
+		</blockquote>
+	</blockquote>
+	<blockquote>
+		<p>Contradiction</p>
+		<blockquote>
+			<p>p is odd(n<sup>3</sup> + 5)</p>
+			<p>¬q is odd(n)</p>
+			<p>Assume p and ¬q are True, p &#8594; ¬q</p>
+			<blockquote>
+				<p>If odd(n<sup>3</sup> + 5), then odd(n)</p>
+			</blockquote>
+		</blockquote>
+		<p>Hypothesis</p>
+		<blockquote>
+			<p>p is odd(n<sup>3</sup> + 5)</p>
+		</blockquote>
+		<blockquote>
+			<p>¬q is odd(n)</p>
+		</blockquote>
+		<p>Show</p>
+		<blockquote>
+			<p>p &#8594; q from contradiction</p>
+			<blockquote>
+				<p>If odd(n<sup>3</sup> + 5), even(n)</p>
+			</blockquote>
+		</blockquote>
+		<p>Proof</p>
+	</blockquote>
+	<table border="1" cellpadding="10" cellspacing="0">
+		<tr>
+			<td>n </td>
+			<td>= 2j+1</td>
+			<td>¬q is True, n is odd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			(Assumed)&nbsp;</td>
+		</tr>
+		<tr>
+			<td>n<sup>3</sup> + 5&nbsp; </td>
+			<td>= (2j + 1)<sup>3 </sup>+ 5 </td>
+			<td>Substitute 2j + 1 for n</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>= 8j<sup>3</sup> + 12j<sup>2</sup> 
+					+ 6j + 6</td>
+			<td>Multiply and factor</td>
+		</tr>
+		<tr>
+			<td>n<sup>3</sup> + 5&nbsp; </td>
+			<td>= 2(<b>4j<sup>3</sup> 
+					+ 6j<sup>2</sup> + 3j + 3</b>)</td>
+			<td>n<sup>3</sup> + 5 is even&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			(Proven)<br>
+			¬p is True</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>n<sup>3</sup> + 5 is odd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			(Assumed)<br>
+			p is True</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>Assuming p and ¬q both True <br>
+			leads to contradiction p ^ 
+					¬p</td>
+		</tr>
+		<tr>
+			<td>&there4; odd(n<sup>3</sup> + 5) &#8594; even(n)</td>
+			<td>&nbsp;</td>
+			<td>¬q is False, source of contradiction <br>
+			so q is True<p>&nbsp;p<br>
+			<u>&nbsp;q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </u><br>
+			&there4;p &#8594; q</td>
+		</tr>
+	</table>
+	<p>&nbsp;</p>
+	<blockquote>
+		<p>&nbsp;</p>
+	</blockquote>
+	<p><b>Counterexamples</b></p>
+	<blockquote>
+		<p>Can show &forall;x P(x) False by finding one counterexample.</p>
+		<p>Example</p>
+		<blockquote>
+			<p>&forall;x (x<sup>2 </sup>&gt; 0)</p>
+			<p>False when x = 0</p>
+			<p>&nbsp;</p>
+		</blockquote>
+		<p>Example</p>
+		<blockquote>
+			<p>&forall;x P(x)&nbsp; is &quot;Every prime number is odd&quot;</p>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>2 is a prime number but is even</td>
+				</tr>
+				<tr>
+					<td>&forall;x P(x) is False</td>
+				</tr>
+			</table>
+		</blockquote>
+		<p>Example</p>
+	  <blockquote>
+			<p>&forall;x P(x)&nbsp; is &quot;Every positive integer is the sum of the 
+			squares of two integers&quot;</p>
+			<p>Examples</p>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>0<sup>2 </sup>+ 1<sup>2 </sup>= 1</td>
+				</tr>
+				<tr>
+					<td>1<sup>2 </sup>+ 1<sup>2 </sup>= 2</td>
+				</tr>
+				<tr>
+					<td>&forall;x P(x) requires some x<sup>2 </sup>+ y<sup>2 </sup>
+					= 3</td>
+				</tr>
+				<tr>
+					<td>Since x<sup>2 </sup>+ 2<sup>2 </sup>&gt; 3 for any integer x,&nbsp; 
+					-2 &lt; y<sup> </sup>&lt; 2.<p>Either:</p>
+					<p>&nbsp;&nbsp;&nbsp; x<sup>2 </sup>+ 1<sup>2 </sup>= 3<br>
+&nbsp;&nbsp;&nbsp; x<sup>2 </sup>+ (-1)<sup>2 </sup>= 3<br>
+&nbsp;&nbsp;&nbsp; x<sup>2 </sup>+ 0<sup>2 </sup>= 3</td>
+				</tr>
+				<tr>
+					<td>x<sup>2 </sup>+ 1<sup>2 </sup>= 3 implies x<sup>2 </sup>= 
+					2, x is not an integer</td>
+				</tr>
+				<tr>
+					<td>x<sup>2 </sup>+ (-1)<sup>2 </sup>= 3 implies x<sup>2 </sup>
+					= 2, x is not an integer</td>
+				</tr>
+				<tr>
+					<td>x<sup>2 </sup>+ 0<sup>2 </sup>= 3 implies x<sup>2 </sup>= 
+					3, x is not an integer</td>
+				</tr>
+				<tr>
+					<td>&forall;x P(x) is False</td>
+				</tr>
+			</table>
+		</blockquote>
+
+	</blockquote>
+</blockquote>
+	<p><b>Summary of Proof Methods (so far)</b></p>
+	<blockquote>
+		<p><b>Direct </b></p>
+		<blockquote>
+			<blockquote>
+				<p>p is &quot;I won the lottery&quot; </p>
+				<p>q is &quot;I have a lottery ticket&quot; </p>
+			</blockquote>
+			<p>Prove p &#8594; q</p>
+			<blockquote>
+				<p>If I won the lottery then I have a lottery ticket.</p>
+			</blockquote>
+			<p>Hypothesis: Assume p is True,&nbsp; &quot;I won the lottery&quot;</p>
+			<p>Conclusion: Prove q is True, &quot;I have a lottery ticket&quot;</p>
+			<p>Proof</p>
+			<blockquote>
+				<table border="0" cellspacing="0" cellpadding="10">
+					<tr>
+						<td>p is True</td>
+						<td>&nbsp;</td>
+						<td>&quot;I won the lottery&quot; assumed True.</td>
+					</tr>
+					<tr>
+						<td>q is True</td>
+						<td>&nbsp;</td>
+						<td>&quot;I have a lottery ticket&quot; must prove True by having 
+						a lottery ticket.</td>
+					</tr>
+					<tr>
+						<td>p is True<br><u>q is True</u><br>p &#8594; q is True</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;<p>&nbsp;</td>
+					</tr>
+				</table>
+			</blockquote>
+		</blockquote>
+	
+		<p><b>Contrapositive</b></p>
+		<blockquote>
+			<blockquote>
+				<p>p is &quot;I won the lottery&quot; </p>
+				<p>q is &quot;I have a lottery ticket&quot; </p>
+			</blockquote>
+			<p>Prove p &#8594; q</p>
+			<blockquote>
+				<p>If I won the lottery then I have a lottery ticket.</p>
+			</blockquote>
+			<p>Contrapositive</p>
+			<blockquote>
+				<p>¬q &#8594; ¬p</p>
+				<p>If I do not have a lottery ticket then I have not won the 
+				lottery.</p>
+			</blockquote>
+			<p>Hypothesis: Assume ¬q is True,&nbsp; &quot;I do not have a lottery 
+			ticket&quot;</p>
+			<p>Conclusion: Prove ¬p is True, &quot;I have not won the lottery&quot;</p>
+			<p>Proof</p>
+		  <blockquote>
+				<table border="0" cellspacing="0" cellpadding="10">
+					<tr>
+						<td>¬q is True</td>
+						<td>&nbsp;</td>
+						<td>&quot;I do not have a lottery ticket&quot; assumed 
+						True.</td>
+					</tr>
+					<tr>
+						<td>¬p is True</td>
+						<td>&nbsp;</td>
+						<td>&quot;I have not won the lottery&quot; by the lottery rules.</td>
+					</tr>
+					<tr>
+						<td>¬q is True<br>
+						<u>¬p is True</u><br>
+						¬q &#8594; ¬p</td>
+						<td>&nbsp;</td>
+						<td>p &#8594; q is True</td>
+					</tr>
+				</table>
+		  </blockquote>
+
+
+		<p><b>Contradiction</b></p>
+		<blockquote>
+			<blockquote>
+				<p>p is &quot;I won the lottery&quot; </p>
+				<p>q is &quot;I have a lottery ticket&quot; </p>
+			</blockquote>
+			<p>Prove p &#8594; q</p>
+			<blockquote>
+				<p>If I won the lottery then I have a lottery ticket.</p>
+			</blockquote>
+			<p>Hypothesis: Assume p is True,&nbsp; &quot;I won the lottery&quot;</p>
+			<p>Conclusion: Assume ¬q is True, &quot;I do not have a lottery ticket&quot;</p>
+			<p>Proof</p>
+			<blockquote>
+				<table border="0" cellspacing="0" cellpadding="10">
+					<tr>
+						<td>p is True</td>
+						<td>&nbsp;</td>
+						<td>&quot;I won the lottery&quot; assumed True.</td>
+					</tr>
+					<tr>
+						<td>¬q is True</td>
+						<td>&nbsp;</td>
+						<td>&quot;I do not have a lottery ticket&quot; assumed 
+						True.</td>
+					</tr>
+					<tr>
+						<td>¬p is True</td>
+						<td>&nbsp;</td>
+						<td>&quot;I did not win the lottery&quot; by lottery rules when ¬q 
+						&quot;I do not have a lottery ticket&quot;.</td>
+					</tr>
+					<tr>
+						<td>¬p ^ p</td>
+						<td>&nbsp;</td>
+						<td>Contradiction.</td>
+					</tr>
+					<tr>
+						<td>¬q cannot be True.</td>
+						<td>&nbsp;</td>
+						<td>Source of contradiction.</td>
+					</tr>
+					<tr>
+						<td>q must be True.</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>p is True<br>
+						<u>q is True</u><br>
+						p &#8594; q is True</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+			</blockquote>
+		</blockquote>
+	
+	</blockquote>
+</blockquote>
+</body>
+
+</html>

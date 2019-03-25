@@ -1,0 +1,255 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Raymond Wisman">
+<meta name="Edited" content="Dr. Holly">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<link REL="stylesheet" href="basic.css" type="text/css">
+<title>Chapter 1 - Logic and Proofs</title>
+</head>
+<body>
+
+<table width="80%" align="center">
+  <tr>
+    <td width="50%" align="center" bgcolor="#D1D8FC">
+      <h1>Chapter 1 - Logic and Proofs</h1>
+    </td>
+  </tr>
+</table>
+<p>© Ray Wisman - Edited August 2015 by Dr. Holly</p>
+
+<hr>
+<h3>1.5 Nested Quantifiers</h3>
+<p><b>Introduction</b></p>
+<blockquote>
+	<p>Example</p>
+	<ol>
+		<li>&exist;y (1 + y = 0) is True for y = -1<br>&nbsp;</li>
+		<li>&exist;x &exist;y (x + y = x * y) is True for the pair y = 0, x = 0<br>&nbsp;</li>
+		<li>&forall;x &exist;y (x + y = 0) is True for y = -x<br>&nbsp;</li>
+		<li>&exist;x &forall;y (x * y = 0) is True for x = 0 and all y<br>
+&nbsp;</li>
+		<li> &forall;y &exist;x (x * y = 0) is True for x = 0 and all y<br>&nbsp;</li>
+		<li>&forall;x &forall;y (x + y = y + x) is True by the commutative law of addition</li>
+	</ol>
+</blockquote>
+<p>&nbsp;</p>
+<p><b>The Order of Quantifiers</b></p>
+<blockquote>
+	<p>Example</p>
+	<blockquote>
+		<p>x &#8712;{1, 2, 3}</p>
+		<p>y &#8712;{-5, -4, -3}</p>
+		<p>&forall;x &forall;y Q(x, y)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		The inner y can change for each outer x. </p>
+		<table border="1" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>for all x in {1, 2, 3}<blockquote>
+					<p>for all y in {-5, -4, -3}</p>
+					<blockquote>
+						<p>Q(x, y) is True</p>
+					</blockquote>
+				</blockquote></td>
+			</tr>
+		</table>
+	</blockquote>
+	<p>Example</p>
+	<blockquote>
+		Below <i>Q</i>(<i>x</i>,<i> y</i>) is a 
+		predicate with domain:<blockquote>
+			<p>x &#8712; { 1, 2 }</p>
+			<p>y &#8712; { R, G } </p>
+		</blockquote>
+		<p>Table shows <i>Q</i>( 1, G ), <i>Q</i>( 2, R ) are True, <i>Q</i>(<i>x</i>,<i> y</i>) is False otherwise. 
+			</p>
+		<table border="1" cellpadding="10" cellspacing="0">
+			<tr>
+				<td bgcolor="#EAEBEC" align="center">Q(x, y)</td>
+				<td bgcolor="#EAEBEC" align="center">y=R</td>
+				<td bgcolor="#EAEBEC" align="center">y=G</td>
+			</tr>
+			<tr>
+				<td bgcolor="#EAEBEC" align="center">x=1</td>
+				<td align="center">F</td>
+				<td align="center">T</td>
+			</tr>
+			<tr>
+				<td bgcolor="#EAEBEC" align="center">x=2</td>
+				<td align="center">T</td>
+				<td align="center">F</td>
+			</tr>
+		</table>
+		</blockquote>
+	<ul>
+		<li>&exist;x &forall;y Q(x, y)&nbsp; is False</li>
+	</ul>
+	<blockquote>
+		<p>&quot;There exists x such that for all y, Q(x, y) is True&quot;</p>
+		<blockquote>
+			<p>The x is the same, &forall;y.<br>
+&nbsp;</p>
+		</blockquote>
+	</blockquote>
+	<ul>
+		<li>&forall;y &exist;x Q(x, y)&nbsp; is True</li>
+	</ul>
+	<blockquote>
+		<p>&quot;For all y, there exists x such that Q(x, y) is True&quot;</p>
+		<blockquote>
+			<p>The x can be different, &forall;y.<br>
+&nbsp;</p>
+		</blockquote>
+	</blockquote>
+	<ul>
+		<li>&forall;y &exist;x Q(x, y)&nbsp; is not equivalent to &exist;x &forall;y Q(x, y)
+		<br>
+		<br>&nbsp;</li>
+		<li>&forall;x &forall;y Q(x, y) is False</li>
+	</ul>
+	<blockquote>
+		<p>&quot;For all x, for all y, Q(x, y) is True&quot;<br>
+&nbsp;</p>
+	</blockquote>
+	<ul>
+		<li>&exist;x &exist;y Q(x, y) is True</li>
+	</ul>
+	<blockquote>
+		<p>&quot;There exists x and y such that Q(x, y) is True&quot;</p>
+	</blockquote>
+</blockquote>
+
+<blockquote>
+	<p><img border="0" src="ch01/t01_4_001.jpg" width="532" height="280"></p>
+	<p>&nbsp;</p>
+</blockquote>
+<p ><b>Translating Mathematical Statements into Statements Involving Nested 
+Quantifiers</b></p>
+<blockquote>
+	<p >Example</p>
+	<blockquote>
+		<p >&quot;For every two integers, if both are negative, then their product is 
+		positive.&quot;</p>
+		<p >&forall;x &forall;y ((x &lt; 0) ^ (y &lt; 0)) &#8594; (x * y &gt; 0))</p>
+	</blockquote>
+	<p >Example</p>
+	<blockquote>
+		<p >&quot;For every integer x, there exists a smaller integer y.&quot;</p>
+		<p >&forall;x &exist;y (y &lt; x)<br>&nbsp;</p>
+	</blockquote>
+	<p >&nbsp;</p>
+</blockquote>
+<p ><b>Translating from Nested Quantifiers into English</b></p>
+<blockquote>
+	<p>Example</p>
+	<blockquote>
+		<p>x and y is the domain of current C251 students</p>
+		<p>tookNotes(x) is &quot;x took notes&quot;</p>
+		<p>F(x, y) is &quot;x and y are friends&quot;</p>
+		<blockquote>
+			<p>&forall;x&forall;y F(x, y)</p>
+			<blockquote>
+				<p>&quot;Every C251 student is a friend of every C251 student.&quot;</p>
+			</blockquote>
+			<p>&forall;x&exist;y F(x, y)</p>
+			<blockquote>
+				<p>&quot;Every C251 student is a friend of at least one C251 
+				student.&quot;</p>
+			</blockquote>
+			<p>&exist;x&forall;y F(x, y)</p>
+			<blockquote>
+				<p>&quot;At least one C251 student is a friend every C251 student.&quot;</p>
+			</blockquote>
+			<p>&forall;x (tookNotes(x)&nbsp;&nbsp; v&nbsp; &exist;y( tookNotes(y)&nbsp; ^&nbsp; 
+			F(x, y)) )</p>
+			<blockquote>
+				<p>&quot;Every C251 student took notes or had a friend in the class 
+				that took notes.&quot;</p>
+			</blockquote>
+		</blockquote>
+	</blockquote>
+</blockquote>
+<p>&nbsp;</p>
+<p><b>Translating English Sentences into Logical Expressions</b></p>
+<blockquote>
+	<p>Example</p>
+	<blockquote>
+		<p>x and y are from the domain of all people</p>
+		<p>L(x, y) is &quot;x loves y&quot;</p>
+		<ul>
+			<li>&quot;Everybody loves everybody&quot; is &forall;x &forall;y L(x, y)<br>&nbsp;</li>
+			<li>&quot;Everybody loves everybody else&quot; is &forall;x &forall;y (L(x, y) ^ (x &ne; y))<br>&nbsp;</li>
+			<li>&quot;Everybody loves somebody else&quot; is &forall;x &exist;y (L(x, y) ^ (x &ne; y))<br>&nbsp;</li>
+			<li>&quot;Somebody loves somebody else&quot; is &exist;x &exist;y (L(x, y) ^ (x &ne; y))<br>&nbsp;</li>
+			<li>&quot;Everybody loves themselves&quot; is &forall;x &exist;y (L(x, y) ^ (x = y))<br>&nbsp;</li>
+			<li>&quot;Somebody loves only themselves&quot; is &exist;x &exist;y (L(x, y) ^ (x = y))<br>&nbsp;</li>
+		</ul>
+	</blockquote>
+</blockquote>
+<p>&nbsp;</p>
+<p><b>Negating Nested Quantifiers</b></p>
+<blockquote>
+	<p><img border="0" src="ch01/t01_3_002.jpg" width="800" height="229"></p>
+	<p>&nbsp;</p>
+	<p>Example</p>
+	<blockquote>
+		<p>Express so that no negation precedes a quantifier.</p>
+		<ol>
+			<li>¬&forall;x (x = 1)&nbsp; &equiv;;&nbsp; &exist;x ¬(x = 1)&nbsp; &equiv;;&nbsp; &exist;x (x ¬= 1)<br>&nbsp;</li>
+			<li>¬&exist;x (x &gt; 2x)&nbsp; &equiv;;&nbsp; &forall;x ¬(x &gt; 2x)&nbsp; &equiv;;&nbsp; &forall;x (x <font face="Times New Roman">
+			&le;</font> 
+			2x) <br>&nbsp;</li>
+			<li>&exist;x &forall;y ¬(xy = 1)&nbsp; &equiv;;&nbsp; &exist;x &forall;y (xy ¬= 1) <br>&nbsp;</li>
+			<li>&exist;x ¬&exist;y (xy = 1)&nbsp; &equiv;;&nbsp; &exist;x &forall;y ¬(xy = 1)&nbsp; &equiv;;&nbsp; &exist;x 
+			&forall;y (xy ¬= 1) <br>&nbsp;</li>
+			<li>¬&forall;x &exist;y (xy = 1)&nbsp; &equiv;;&nbsp; &exist;x ¬&exist;y (xy = 1)&nbsp; &equiv;;&nbsp; &exist;x 
+			&forall;y ¬(xy = 1)&nbsp; &equiv;;&nbsp; &exist;x &forall;y (xy ¬= 1)<br>&nbsp;</li>
+		</ol>
+	</blockquote>
+	<p>Example</p>
+	<blockquote>
+		<i>Q</i>(<i>x</i>,<i> y</i>) is a 
+		predicate with domain:<blockquote>
+			<p>x &#8712; { 1, 2 }</p>
+			<p>y &#8712; { R, G } </p>
+		</blockquote>
+		<p>Table shows <i>Q</i>( 1, G ), <i>Q</i>( 2, R ) are True, <i>Q</i>(<i>x</i>,<i> y</i>) is False otherwise. 
+			</p>
+		<table border="1" cellpadding="10" cellspacing="0">
+			<tr>
+				<td bgcolor="#EAEBEC" align="center">Q(x, y)</td>
+				<td bgcolor="#EAEBEC" align="center">y=R</td>
+				<td bgcolor="#EAEBEC" align="center">y=G</td>
+			</tr>
+			<tr>
+				<td bgcolor="#EAEBEC" align="center">x=1</td>
+				<td align="center">F</td>
+				<td align="center">T</td>
+			</tr>
+			<tr>
+				<td bgcolor="#EAEBEC" align="center">x=2</td>
+				<td align="center">T</td>
+				<td align="center">F</td>
+			</tr>
+		</table>
+		<ol>
+			<li>&exist;y Q(2, y) &equiv;; T<br>
+&nbsp;</li>
+			<li>¬&exist;y Q(2, y)&nbsp; &equiv;; &forall;y ¬Q(2, y) &equiv;; F<br>
+&nbsp;</li>
+			<li>&forall;x &exist;y Q(x, y)&nbsp; &equiv;; T<br>&nbsp;</li>
+			<li>¬&forall;x &exist;y Q(x, y)&nbsp; &equiv;; &exist;x ¬&exist;y Q(x, y)&nbsp; &equiv;; 
+			&exist;x &forall;y ¬Q(x, y)&nbsp; &equiv;; F<br>&nbsp;</li>
+			<li>&exist;y &forall;x ¬Q(x, y)&nbsp; &equiv;; F<br>
+&nbsp;</li>
+			<li>¬&exist;y &forall;x ¬Q(x, y)&nbsp; &equiv;; &forall;y ¬&forall;x ¬Q(x, y)&nbsp; &equiv;; 
+			&forall;y &exist;x ¬¬Q(x, y)&nbsp; &equiv;; &forall;y &exist;x Q(x, y) &equiv;; T</li>
+		</ol>
+	</blockquote>
+</blockquote></p>
+
+</body>
+
+</html>

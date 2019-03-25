@@ -1,0 +1,208 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Raymond Wisman">
+<meta name="Edited" content="Dr. Holly">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<link REL="stylesheet" href="basic.css" type="text/css">
+<title>Chapter 1 - Logic and Proofs</title>
+</head>
+<body>
+
+<table width="80%" align="center">
+  <tr>
+    <td width="50%" align="center" bgcolor="#D1D8FC">
+      <h1>Chapter 1 - Logic and Proofs</h1>
+    </td>
+  </tr>
+</table>
+<p>© Ray Wisman - Edited August 2015 by Dr. Holly</p>
+<hr>
+<blockquote>
+<h3>1.8 Proof Methods and Strategy</h3>
+<blockquote>
+  <p>&nbsp;</p>
+	<p><b>Exhaustive Proof and Proof by Cases</b></p>
+	<blockquote>
+		<p>To prove</p>
+		<blockquote>
+			<p>(p<sub>1</sub> v p<sub>2</sub> v p<sub>3</sub> v ... v p<sub>n</sub>) 
+			&#8594; q</p>
+		</blockquote>
+		<p>use tautology</p>
+		<blockquote>
+			<p>(p<sub>1</sub> &#8594; q) ^ (p<sub>2</sub>&nbsp; &#8594; q) ^ (p<sub>3</sub>&nbsp; 
+			&#8594; q) ^ ... ^ (p<sub>n</sub>
+			&#8594; q) </p>
+			<p>that is, prove each <i>n</i> case.</p>
+		</blockquote>
+		<p>&nbsp;</p>
+		<p>Example - Exhaustive proof </p>
+		<blockquote>
+			<p>&quot;If positive integer n &lt; 3, then n is the sum of the squares of 
+			two integers&quot;</p>
+			<blockquote>
+				<p>1 and 2 are the only positive integers less than 3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				(1 &lt; 3 ^ 2 &lt; 3)</p>
+				<p>&nbsp;n &lt; 3 &#8594; n = x<sup>2 </sup>+ y<sup>2</sup></p>
+				<blockquote>
+					<p>sum of the squares of two positive integers, x and y.</p>
+				</blockquote>
+				<p>p<sub>1</sub> is n = 1 &lt; 3</p>
+				<p>p<sub>2</sub> is n = 2 &lt; 3</p>
+				<p>q is n = x<sup>2 </sup>+ y<sup>2</sup></p>
+			</blockquote>
+			<p>Show</p>
+			<blockquote>
+			<p>(p<sub>1</sub> &#8594; q) ^ (p<sub>2</sub>&nbsp; &#8594; q) </p>
+			<p>( n<sub>a </sub>= 1 &lt; 3 &#8594; n<sub>a</sub> = x<sub>a</sub><sup>2</sup>+y<sub>a</sub><sup>2</sup>) 
+			^ (n<sub>b</sub> = 2 &lt; 3 &#8594; n<sub>b</sub> = x<sub>b</sub><sup>2</sup>+y<sub>b</sub><sup>2</sup>)</p>
+		</blockquote>
+			<table border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td bgcolor="#EAEBEC">n<sub>a</sub> =&nbsp; 1 &lt; 3</td>
+					<td>n<sub>a</sub> = 0<sup>2</sup>+1<sup>2 </sup>= 1 </td>
+					<td>1 &lt; 3 &#8594; 0<sup>2</sup>+1<sup>2
+				</sup>= 1 </td>
+				</tr>
+				<tr>
+					<td bgcolor="#EAEBEC">n<sub>b</sub> = 2 &lt; 3</td>
+					<td>n<sub>b</sub> = 1<sup>2</sup>+1<sup>2 </sup>= 2 </td>
+					<td>2 &lt; 3 &#8594; 1<sup>2</sup>+1<sup>2 </sup>
+					= 2</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>
+					&#8756;(1 &lt; 3 &#8594; 0<sup>2</sup>+1<sup>2
+				</sup>= 1) ^ (2 &lt; 3 &#8594; 1<sup>2</sup>+1<sup>2 </sup>
+					= 2)<p>&nbsp;&nbsp; (p<sub>1</sub> &#8594; q) ^ (p<sub>2</sub>&nbsp; &#8594; q)</td>
+				</tr>
+			</table>
+		</blockquote>
+		<p>&nbsp;</p>
+		<p>Example - Cases</p>
+		<blockquote>
+			<p>Theorem: &quot;If x is a non-zero real number, then x<sup>2</sup> is a 
+			positive number.&quot;</p>
+			<blockquote>
+				<p>p is &quot;x is a non-zero real number&quot;</p>
+				<p>q is &quot;x<sup>2</sup> is a positive number.&quot;</p>
+			</blockquote>
+			<p>Show</p>
+			<blockquote>
+				<p>p &#8594; q</p>
+				<p>by showing (p<sub>1</sub> &#8594; q) ^ (p<sub>2</sub>&nbsp; &#8594; q)</p>
+			</blockquote>
+			<p>Case 1:&nbsp;&nbsp;&nbsp; </p>
+			<blockquote>
+				<blockquote>
+					<p>p<sub>1</sub> is x &lt; 0 </p>
+					<p>q is x<sup>2</sup> &gt; 0</p>
+					<p>Show</p>
+					<blockquote>
+						<p>p<sub>1</sub> &#8594; q</p>
+					</blockquote>
+					<table border="1" cellpadding="10" cellspacing="0">
+						<tr>
+							<td>x &lt; 0</td>
+							<td>Hypothesis p<sub>1</sub></td>
+						</tr>
+						<tr>
+							<td>x<sup>2 </sup>&gt; 0</td>
+							<td>x<sup>2</sup>, the product of two negative 
+							reals, is positive<p>q is True</td>
+						</tr>
+						<tr>
+							<td>&#8756;p<sub>1</sub> &#8594; q</td>
+							<td>
+							<p>x &lt; 0 &#8594; x<sup>2 </sup>&gt; 0</p></td>
+						</tr>
+					</table>
+				</blockquote>
+			</blockquote>
+			<p>Case 2:&nbsp;&nbsp;&nbsp; </p>
+			<blockquote>
+				<blockquote>
+					<p>p<sub>2</sub> is x &gt; 0 </p>
+					<p>q is x<sup>2</sup> &gt; 0</p>
+					<p>Show</p>
+					<blockquote>
+						<p>p<sub>2</sub> &#8594; q</p>
+					</blockquote>
+					<table border="1" cellpadding="10" cellspacing="0">
+						<tr>
+							<td>x &gt; 0</td>
+							<td>Hypothesis p<sub>2</sub></td>
+						</tr>
+						<tr>
+							<td>x<sup>2 </sup>&gt; 0</td>
+							<td>x<sup>2</sup>, the product of two positive 
+							reals, is positive<p>q is True</td>
+						</tr>
+						<tr>
+							<td>&#8756;p<sub>2</sub> &#8594; q</td>
+							<td>x &gt; 0 &#8594; x<sup>2 </sup>&gt; 0</td>
+						</tr>
+					</table>
+				</blockquote>
+			</blockquote>
+			<p>p &#8594; q proven by proving cases (p<sub>1</sub>
+			&#8594; q) ^ (p<sub>2</sub>&nbsp; &#8594; q) </p>
+		</blockquote>
+	</blockquote>
+	<p>&nbsp;</p>
+	<p><b>Existence Proofs</b></p>
+	<blockquote>
+		<p>&nbsp;Asserts that at least one x exists such that P(x) is True.</p>
+		<blockquote>
+			<p>&#8707;P(x)</p>
+		</blockquote>
+		<p>Example - Constructive existence proof</p>
+		<blockquote>
+			<p>Show:</p>
+			<blockquote>
+				<p>There exist n &lt; 0 where n<sup>2</sup> &gt; 0.</p>
+				<p>&#8707;n&lt;0 (n<sup>2</sup> 
+				&gt; 0) </p>
+			</blockquote>
+			<p>Solution: </p>
+			<blockquote>
+				<p>n = -3</p>
+				<p>-3<sup>2</sup> = 9</p>
+				<p>&nbsp;</p>
+			</blockquote>
+		</blockquote>
+		<p>Example - Constructive existence proof</p>
+		<blockquote>
+			<p>Show:</p>
+			<blockquote>
+				<p>There exist three consecutive integers where the sum of the 
+				squares of the first two are equal to the square of the third.</p>
+				<p>&#8707;x&#8707;y&#8707;z P(x, y, z) (y = x + 1 ^ z = y + 1 ^ x<sup>2 </sup>+ y<sup>2</sup> 
+				= z<sup>2</sup>) </p>
+			</blockquote>
+			<p>Solution: </p>
+			<blockquote>
+				<p>3, 4, 5 are consecutive integers where 3<sup>2 </sup>+ 4<sup>2</sup> 
+				= 5<sup>2</sup></p>
+				<p>P(3, 4, 5) is </p>
+				<blockquote>
+					<p>4 = 3 + 1 ^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					4 is consecutive with 3</p>
+					<p>5 = 4 + 1 ^&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					5 is consecutive with 4 </p>
+					<p>3<sup>2 </sup>+ 4<sup>2</sup> = 5<sup>2</sup> = 25</p>
+				</blockquote>
+			</blockquote>
+		</blockquote>
+	</blockquote>
+</blockquote>
+
+</body>
+
+</html>
