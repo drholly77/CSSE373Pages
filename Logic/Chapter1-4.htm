@@ -67,7 +67,7 @@
 					</td>
 				</tr>
 			</table>
-			<p>&nbsp;Example</p>
+			<p>Example</p>
 			<blockquote>
 				<p>P(x) is &quot;<b>x &gt; x - 1</b>&quot;</p>
 			  <p>P(2) is &quot;<b>2 &gt; 2 - 1</b>&quot;</p>
@@ -98,8 +98,7 @@
 					</td>
 				</tr>
 			</table>
-			<p>&nbsp;</p>
-			<p>&nbsp;Example</p>
+			<p>Example</p>
 			<blockquote>
 					<p>&#8707;x P(x) is True</p>
 					<blockquote>
@@ -128,11 +127,47 @@
 					<blockquote>
 						<p>when at least one P(x) is True</p>
 					</blockquote>
-					<p>&nbsp;</p>
 				</blockquote>
 			</blockquote>
-		</blockquote>
+			
 
+		</blockquote>
+	
+<h4>Constraints on Quantifier Variables</h4>
+	<blockquote>
+				<table width="75%" border="0" cellpadding="0" cellspacing="0" bgcolor="#EAEBEC">
+				<tr>
+					<td>When variable x is of type T write: 
+					<blockquote>
+						<p>&forall; x:T (P(x))</p>
+						<p>&exist; x:T (P(x))</p>
+					</blockquote>
+					<p>In a &forall;, where x is constrained to specific values write:</p>
+					<blockquote>
+						
+						<p>&forall; x:T (P(x) &rarr; Q(x))<br><br>
+						where P(x) defines the constraints on x's values</p>
+					</blockquote>
+					<p>In a &exist;, where x is constrained to specific values write:</p>
+					<blockquote>
+						
+						<p>&exist; x:T (P(x) &and; Q(x))<br><br>
+						where P(x) defines the constraints on x's values</p>
+					</blockquote>
+					</td>
+				</tr>
+			</table>
+	</blockquote>
+	
+	<p>Examples</p>
+	<blockquote>
+		<p>&forall; x:Integer (P(x))</p>
+		<p>&forall; x:Integer ((0 &le; x &lt; N) &rarr; Q(x))<br><br></p>
+		<p>&exist; y:Integer (P(y))</p>
+		<p>&exist; y:Integer ((0 &le; y &lt; N) &and; Q(y))</p>
+	
+	</blockquote>
+	
 
 <h4>Precedence of Quantifiers</h4>
 
