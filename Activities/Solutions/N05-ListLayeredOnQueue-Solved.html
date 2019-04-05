@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta charset="utf-8">
+   <meta name="Author" content="Dr. Holly">
+   <title>List Implement addRightFront</title>
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<h1>List - Utilizing Correspondence to Implement addRightFront</h1>
+<table border="1" width="100%">
+  <tr>
+      <td width="33%">
+    <pre>incoming: s1 = (&lt;32,40&gt;,&lt;19,7,1&gt;)
+incoming: y = 47
+s1.addRightFront(y);
+
+
+</pre>
+	  <hr>
+	  <p>Names:<br><br></p>
+	  <p>One CM:</p></td>
+      <td width="33%">
+        <p align="center"><img src="../N05-List2PrivatePart.png" width="414" height="261" alt=""/></p></td>
+      <td width="33%"><pre><code>// Queue1 standard Operations
+Queue1 ();
+~Queue1 ();
+void clear (void);
+void transferFrom(Queue1&amp; source);
+Queue1&amp; operator = (Queue1&amp; rhs);
+
+// Queue1 Specific Operations
+void enqueue (T&amp; x);
+void dequeue (T&amp; x);
+void replaceFront(T&amp; x);
+T&amp; front (void);
+Integer length (void);
+</code></pre>
+     </td>
+    </tr>
+  </table>
+	<ol>
+	  <li> Utilize the correspondence to transform the incoming abstract value for s1 (given above) into the concrete values repQ and repRZ
+	    <br>
+	    <br>
+	    repRZ = 
+	    3<br>
+	    <br>
+	    repQ = &lt;19,7,1,32,40&gt;<br>
+	    <br>
+	  </li>
+	  <li>Verify your answer for step 1 with L3SolD.exe found in L3Starter.zip (download associated with L3 Moodle assignment)	    <br>
+	    <br>
+	  </li>
+	  <li> Implement addRightFront (use space below) by manipulating repQ and repRZ<br>
+	    <br>
+	  </li>
+	  <li>Use your implementation (step 3) to hand trace the call to addRightFront (above). Write down the new concrete values for repQ and repRZ
+	    <br>
+	    <br>
+	    repRZ = 4<br>
+	    <br>
+	    repQ = &lt;47,19,7,1,32,40&gt;<br>
+	    <br>
+	  </li>
+	  <li> Utilize the correspondence to transform the outgoing concrete values of repQ and repRZ into outgoing abstract value for s1<br>
+	    <br>
+      s1 = &lt;32,40,47,19,7,1&gt;<br>
+      <br>
+	  </li>
+	  <li> Verify your answer using L3SolR.exe<br>
+	    <br>
+	  </li>
+</ol>
+	<h4 align="left">Implementation for addRightFront</h4>
+ 
+
+	<div align="left">
+	<pre><code><b>template</b> &lt;<b>class</b> T&gt;
+<b>void</b> List2&lt;T&gt;::addRightFront (T&amp; x)
+{
+   // TODO: for Step 3 (above) put your implementation here
+   
+   	QueueOfT temp;
+
+	temp.enqueue(x);
+	for (int k = 0, z = repQ.length(); k &lt; z; k++) {
+		T y;
+		repQ.dequeue(y);
+		temp.enqueue(y);
+	} // end for
+	repQ.transferFrom(temp);
+	repRZ++;
+
+
+
+}  // addRightFront</code></pre></div>
+
+
+</body>
+</html>
