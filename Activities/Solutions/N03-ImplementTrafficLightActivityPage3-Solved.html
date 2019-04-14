@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta charset="utf-8">
+<title>Implement Traffic Light Activity</title>
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+	<pre>TrafficLight1::TrafficLight1()
+{
+   // data member state is type Integer
+   // Integer's constructor initializes variables to zero
+   // Let zero = (true,false,false)
+}	// TrafficLight1
+
+TrafficLight1::~TrafficLight1()
+{
+   // TODO: nothing
+}	// ~TrafficLight1
+
+<strong>void</strong> TrafficLight1::clear(<strong>void</strong>)
+{
+   state.clear();
+} // clear
+
+<strong>void</strong> TrafficLight1::transferFrom(TrafficLight1&amp; source)
+{
+   state.transferFrom(source.state);
+} // transferFrom
+
+TrafficLight1&amp; TrafficLight1::<strong>operator</strong> = (TrafficLight1&amp; rhs)
+{
+   state = rhs.state;
+   <strong>return</strong> *this; // Must have this <em>return</em> statement at the end
+} // operator =
+
+<strong>void</strong> TrafficLight1::changeState(<strong>void)</strong>
+{
+   state = (state + 1) % 3;
+}	// change
+
+<strong>void</strong> TrafficLight1::getState(Boolean&amp; red, Boolean&amp; yellow, Boolean&amp; green)
+{
+   <strong>switch</strong> (state) {
+      <strong>case</strong> 0:
+         red = true;
+         yellow = false;
+         green = false;
+         <strong>break</strong>;
+      <strong>case</strong> 1:
+         red = false;
+         yellow = true;
+         green = false;
+         <strong>break</strong>;
+      <strong>case</strong> 2:
+         red = false;
+         yellow = false;
+         green = true;
+         <strong>break</strong>;
+      <strong>default</strong>:
+         <strong>break</strong>;
+   } // end switch
+} // getState
+
+wostream&amp; <strong>operator</strong>&lt;&lt;(wostream&amp; os, TrafficLight1&amp; t)
+{
+	Boolean red, yellow, green;
+	t.getState(red, yellow, green);
+
+	os &lt;&lt; "(" &lt;&lt; red &lt;&lt; "," &lt;&lt; yellow &lt;&lt; "," &lt;&lt; green &lt;&lt; ")";
+	<strong>return</strong> os;
+}</pre>
+
+</body>
+
+</html>
