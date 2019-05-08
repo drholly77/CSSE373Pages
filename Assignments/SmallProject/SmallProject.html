@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Small Project</title>
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<h1>Small Project - Develop RESOLVE Operations</h1> 
+
+	
+<h3>1) Register an Account w/ Web IDE</h3>
+	<ul>
+	<li>This step is to be done by each team member</li>
+	<li>Do this 1 time only</li>
+	<li>Registering allows you to login to Web IDE and to save and export your work</li>
+	<li>Navigate to <a href="https://www.cs.clemson.edu/resolve/webide.html" target="_blank">Web IDE</a> and click the <em>Register</em> link in the upper right hand corner</li>
+	<li>Follow the registration instructions</li>
+	<li>After registering, log into Web IDE anytime you do work on this project</li>
+	</ul>
+	
+<h3>2) Create a <em>Main</em> Program</h3>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td><ul>
+        <li>Each team member should do this step so that everyone can do development of RESOLVE software on their own machine</li>
+        <li>This step needs to be done at least once</li>
+        <li>After logging into Web IDE, create a Main program facility - in Java-speak, the void static main</li>
+        <li> See screen shot to the right - Click <em>Components</em> button, then right click <em>Programs</em>, choose <em>new facility</em>, give your program a name</li>
+        <li>Reference other RESOLVE Activities from the past few class sessions for examples on how to declare a syntactically correct <em>Main</em>, as well as other helper operations        </li>
+      </ul>
+        <p>The screen shot below shows Web IDE just after creating an new program      </p>
+      <p><img src="newMainFacility.png" width="365" height="241" alt=""/></p></td>
+      <td width="500"><img src="createMainProgram.png" alt="" width="500" height="353"/><br>
+      <p align="center"><strong>Creating a New Program</strong></p></td>
+    </tr>
+  </tbody>
+</table>
+	
+	
+<!-- ############################################################################### -->
+<!-- ############################################################################### -->
+
+<h3>3) Initial Implementation Work</h3>
+	
+<h4>Each team member on her/his own does Steps 3.1, 3.2, and 3.3</h4>
+<p>&nbsp;</p>
+	
+<!-- ############################################################################### -->
+	
+<h5>3.1 Declare a Queue Facility</h5> 
+<ul>
+  <li>Declare a Queue facility of 3 integers realized by Circular_Array_Realiz</li>
+  <li>Reference Activity_301</li>
+</ul>
+	
+<!-- ############################################################################### -->
+	
+
+	
+<h5>3.2 Develop Operations Read_Queue and Write_Queue</h5>
+<ul>
+  <li>Reference Activity_301</li>
+</ul>
+	
+<!-- ############################################################################### -->
+	
+<h5>3.3 Develop a Main Operation and Test</h5>
+<ul>
+  <li>In your <em>Main</em> declare a Queue variable from the Facility created in Step 3.1</li>
+  <li>From <em>Main</em>, make calls to <em>Read_Queue</em> and <em>Write_Queue</em> similar to how Activity_301 works</li>
+  <li>Build a jar file and test - the Build button is located by MP-Prove button</li>
+</ul>
+	
+<!-- ############################################################################### -->
+<!-- ############################################################################### -->	
+	
+<h3>4) Developing Separate Operations</h3>
+<h4>Everyone can work on Step 4.1 together - One team member per Steps 4.2, 4.3, and 4.4</h4>
+<p>&nbsp;</p>
+	
+<h5>4.1 Develop a Verified Implementation for Operation Rotate</h5>
+<ul>
+  <li>Operation Rotate moves one element of a queue from its front to its rear - reference its header is below</li>
+  <li>Write Rotate's specification (i.e., requires/ensures clauses) - reference Queue_Template operations and their specs for guidance on syntax, etc.</li>
+  <li>Implement  Rotate</li>
+</ul>
+<table width="25%" border="1">
+  <tbody>
+    <tr>
+<td><pre>
+<strong>Operation</strong> Rotate (<strong>updates</strong> Q: Queue);
+<strong>requires</strong>
+<strong>ensures</strong></pre></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+
+<!-- ############################################################################### -->
+
+<h5>4.2 Develop a Verified Implementation for Operation Split_Into</h5>
+	
+<ul>
+<li>The specification is provided below</li>
+<li>You will need suitable loop assertions for the code to verify</li>
+<li>Add the name of the team member who completed this operation</li>
+<li>It's OK for all team  members to participate in a  code walk through for these operations</li>
+</ul>
+
+<table width="25%" border="1">
+  <tbody>
+    <tr>
+<td><pre>
+<strong>Operation</strong> Split_Into(<strong>clears</strong> P: Queue; <strong>replaces</strong> E: Integer; <strong>replaces</strong> Q: Queue);
+<strong>requires</strong> 1 &lt;= |P|;
+<strong>ensures</strong> #P = Q o &lt;E&gt;;
+-- Team member: </pre></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+	
+<!-- ############################################################################### -->
+	
+<h5>4.3 Develop a Verified Implementation for Operation Combine</h5>
+<ul>
+<li>The specification is provided below</li>
+<li>You will need suitable loop assertions for the code to verify</li>
+<li>Add the name of the team member who completed this operation</li>
+</ul>
+	
+<table width="25%" border="1">
+  <tbody>
+    <tr>
+<td><pre>
+<strong>Operation</strong> Combine(<strong>updates</strong> P: Queue; <strong>alters</strong> E: Integer; <strong>clears</strong> Q: Queue);
+<strong>requires</strong> |P| + 1 + |Q| &lt;= 3;
+<strong>ensures</strong> P = #P o &lt;#E&gt; o #Q;
+-- Team member: </pre></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+	
+<!-- ############################################################################### -->
+	
+<h5>4.4 Develop a Verified Implementation for Operation Copy_Queue</h5>
+<ul>
+<li>The specification is provided below</li>
+<li>You will need suitable loop assertions for the code to verify</li>
+<li>Add the name of the team member who completed this operation</li>
+</ul>
+	
+<table width="25%" border="1">
+  <tbody>
+    <tr>
+<td><pre>
+<strong>Operation</strong> Operation Copy_Queue(<strong>restores</strong> Q: Queue; <strong>replaces</strong> Q_Copy: Queue);
+<strong>ensures</strong> Q_Copy = Q;
+-- Team member: </pre></td>
+    </tr>
+  </tbody>
+</table>
+	
+		
+<!-- ############################################################################### -->
+<!-- ############################################################################### -->	
+	
+<h3>5) Putting All the Operations Together - Seeing Design-By-Contract In Action</h3>
+<h4>Everyone on the team together should work on this step</h4>
+<p>&nbsp;</p>
+	
+<ol>
+<li>On one team member's machine repeat Step 2 (<em>Create a Main Program</em> - above), but this time when asked for a name, give the name &quot;Team #&quot;, where X is your #, assigned to you by Dr. Holly<br>
+  This naming convention will allow me to import all submissions for grading without name clashes
+</li>
+<li>In this new program combine all 7 operations into one program, which are:
+	<em>Read_Queue</em>, <em>Write_Queue</em>, <em>Rotate</em>, <em>Split_Into</em>, <em>Combine</em>, <em>Copy_Queue</em>, and <em>Main</em></li>
+<li>In the <em>Main</em> program insert a comment containing the names of all team members</li>
+<li>Be sure that the operations developed in Step 4  contain the required comment with the name of the  author of the individual operation</li>
+<li>Work to get this combined program to verify and compile</li>
+<li>Modify <em>Main</em> so it makes suitable calls to the six other operations, i.e., do some traditional testing with concrete values</li>
+<li>Build a jar file and run your tests</li>
+	
+</ol>
+		
+<!-- ############################################################################### -->
+<!-- ############################################################################### -->	
+	
+<h3>6) Making Your Team's Submission </h3>
+<h4>Everyone on the team should be present to verify that this step is completed</h4>
+<p>&nbsp;</p>
+
+<ol>
+<li>While in the Web IDE and with the combined program developed in Step 5, click the Export button - this will export a .json file with your combined program</li>
+<li>Upload the exported .json file to this assignment</li>
+<li>You can double check that you made a good export by having one of your other team members do an import of this .json file and then inspecting the imported combined program</li>
+</ol>
+<p>&nbsp;</p>
+
+</body>
+</html>
+
+
+
+
+
+
+
