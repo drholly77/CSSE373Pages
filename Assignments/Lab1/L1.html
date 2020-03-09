@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
 <head>
 <meta charset="utf-8">
 <title>A Static Array of Queues</title>
@@ -9,67 +8,64 @@
 </head>
 
 <body>
-	<h1>A Static Array of Queues</h1>
+<h1>A Static Array of Queues</h1>
 <table border="0" width="100%" id="tablL1">
-
-<div align="center">
-  <center>
-  <table border="0" width="85%">
-    <tr>
-      <td width="20%" align="center">0</td>
-      <td width="20%" align="center">1</td>
-      <td width="20%" align="center">2</td>
-      <td width="20%" align="center">3</td>
-      <td width="20%" align="center">4</td>
-    </tr>
-  </table>
-  </center>
-</div>
-<div align="center">
-  <center>
-  <table border="1" width="85%">
-    <tr>
-      <td width="20%" align="center">&lt; &gt;</td>
-      <td width="20%" align="center">&lt; &quot;CSSE437&quot;&gt;</td>
-      <td width="20%" align="center">&lt;&quot;CSSE230&quot;,&quot;CSSE477&quot;&gt;</td>
-      <td width="20%" align="center">&lt;&quot;CSSE376&quot;,&quot;CSSE333&quot;&gt;</td>
-      <td width="20%" align="center">&lt;&quot;CSSE220&quot;&gt;</td>
-    </tr>
-  </table>
-  </center>
-</div>
+  <div align="center">
+    <center>
+      <table border="0" width="85%">
+        <tr>
+          <td width="20%" align="center">0</td>
+          <td width="20%" align="center">1</td>
+          <td width="20%" align="center">2</td>
+          <td width="20%" align="center">3</td>
+          <td width="20%" align="center">4</td>
+        </tr>
+      </table>
+    </center>
+  </div>
+  <div align="center">
+    <center>
+      <table border="1" width="85%">
+        <tr>
+          <td width="20%" align="center">&lt; &gt;</td>
+          <td width="20%" align="center">&lt; &quot;CSSE437&quot;&gt;</td>
+          <td width="20%" align="center">&lt;&quot;CSSE230&quot;,&quot;CSSE477&quot;&gt;</td>
+          <td width="20%" align="center">&lt;&quot;CSSE376&quot;,&quot;CSSE333&quot;&gt;</td>
+          <td width="20%" align="center">&lt;&quot;CSSE220&quot;&gt;</td>
+        </tr>
+      </table>
+    </center>
+  </div>
 </table>
-	
 <h2>1. Command Interpreter Using an Array</h2>
 <p>Make a command interpreter that works with an array of Queues instead of
-just two Queues.&nbsp; This permits the user at the keyboard to work with more than two 
-Queues, and it actually reduces the amount of code in our command interpreter.</p>
+  just two Queues.&nbsp; This permits the user at the keyboard to work with more than two 
+  Queues, and it actually reduces the amount of code in our command interpreter.</p>
 <h4>Setup Steps:</h4>
 <table width="100%" border="0">
   <tbody>
     <tr>
       <td><ol>
-  <li>Follow the VS2017 instructions for creating a new Visual Studio Console Project, name the project <em>L1</em> and make it subordinate to the CppDevSp19 folder</li>
-	<li>Copy (don't move) the  <em>driver.cpp</em> from the CppDevSp19/QueueDriver folder to the newly created
-	L1 folder (VS created the L1  in Step 1)</li>
-	<li>Follow the VS2017 instructions for adding .cpp files to your project's Source Files folder. First add the <em>driver.cpp</em> (that you copied) to the project's Source Files folder, then add the wrapper folder (VS calls it a filter) and its subordinate .cpp files. When finished with this step, your project should look like the screen shot to the right.</li>
-	<li>Follow the VS2017 instructions for changing the project settings</li>
-	<li>Follow the VS2017 instructions for building a project. If all steps up to this point were done correctly, it should build without any errors</li>
-	<li>Follow the Vs2017 instructions for changing to Release configuration</li>
-	<li>Build again</li>
-	<li>To run this program click: <em>Debug | Start Debugging</em> from the menu bar in Visual Studio</li>
-</ol></td>
+          <li>Follow the VS2019 instructions for creating a new Visual Studio Console Project, name the project <em>L1</em> and make it subordinate to the CppDevSp20 folder</li>
+          <li>Copy (don't move) the <em>driver.cpp</em> from the CppDevSp20/QueueDriver folder to the newly created
+            L1 folder (VS created the L1  in Step 1)</li>
+          <li>Follow the VS2019 instructions for adding .cpp files to your project's Source Files folder. First add the <em>driver.cpp</em> (that you copied) to the project's Source Files folder, then add the wrapper folder (VS calls it a filter) and its subordinate .cpp files. When finished with this step, your project should look like the screen shot to the right.</li>
+          <li>Follow the VS2019 instructions for changing the project settings</li>
+          <li>Follow the VS2019 instructions for building a project. If all steps up to this point were done correctly, it should build without any errors</li>
+          <li>Follow the VS2019 instructions for changing to Release configuration</li>
+          <li>Build again</li>
+          <li>To run this program click: <em>Debug | Start Debugging</em> from the menu bar in Visual Studio</li>
+        </ol></td>
       <td width="295"><img src="L1Solution.png" width="293" height="381" alt=""/>&nbsp;</td>
     </tr>
   </tbody>
 </table>
 <p>&nbsp;</p>
-
 <h4>Overview of What To Do:</h4>
 <ul>
   <li>The <em>driver.cpp</em> that you copied from the QueueDriver folder is a client program of the Queue1 component</li>
   <li>Both client program and Queue1 component follow the Design by Contract approach where the client program is responsible for making sure that the precondition (requires clause) for the called operation (from the Queue component) is satisfied prior to making a call. Also, the Queue component's exported operations do not check to make sure that client as called correctly, they are implemented with the assumption that the client has called with all preconditions satisfied.</li>
-  <li>The client program in <em>driver.cpp</em>  works with two queues, q1 and q2</li>
+  <li>The client program in <em>driver.cpp</em> works with two queues, q1 and q2</li>
   <li>Your job is to modify each of the <em>driver.cpp</em> operations that currently work with q1 and q2 so that after modification it works with one variable which is an array of queues instead of two distinct queue variables</li>
 </ul>
 <h4>To Do Specifics:</h4>
@@ -79,87 +75,73 @@ Queues, and it actually reduces the amount of code in our command interpreter.</
   <li>Then change all operations that  end up being called by <em>main</em>, e.g., the commandController,  the <em>do</em> operations, the file input and output operations, etc. - see Example 2.3</li>
   <li>Also, you must  modify <em>getIndex</em> - see Example 2.4 </li>
 </ol>
-	
-	
 <h2>2. Code Examples</h2>
 <h3>2.1 - Creating a StaticArray of Queues of Integers</h3>
-
-  <p>Use the following example as a guide to creating an Array of Queues</p>
-
+<p>Use the following example as a guide to creating an Array of Queues</p>
 <div align="center">
   <center>
-<table border="1" width="95%">
-  <tr>
-    <td width="44%" valign="top">
-		<p align="center"><b>Release Configuration Version</b></p></td>
-    <td width="54%" valign="top">
-	<p align="center"><b>Debug Configuration Version</b></p></td>
-  </tr>
-  <tr>
-    <td width="44%" valign="top"><code><font size="1">// Array of Queue &lt;Integer&gt;<br>
-      // Date: 3/19<br>
-      <br>
-      #<b>include</b> &quot;Queue/Queue1.hpp&quot;<br>
-      #<b>include</b> &quot;StaticArray/StaticArray1.hpp&quot;<br>
-      <br>
-      <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
-      <b>typedef</b> Queue1 &lt;Integer&gt; IntQueue;<br>
-      <br>
-	//Create a class called QueueArray, which is indexed from 0..4<br>
-      <b>typedef</b> StaticArray1 &lt;IntQueue, lowerBound, upperBound&gt; 
-	IntQueueArray;</font></code></td>
-    <td width="54%" valign="top"><code><font size="1">// Array of Queue &lt;Integer&gt;<br>
-      // Date: 3/19<br>
-      <br>
-      #<b>include</b> &quot;Queue/Queue1.hpp&quot;<br>
-	#<strong>include</strong> &quot;Queue/QueueChecking.hpp&quot;<br>
-      #<b>include</b> &quot;StaticArray/StaticArray1.hpp&quot;<br>
-	#<strong>include</strong> &quot;StaticArray/StaticArrayChecking.hpp&quot;<br>
-	<br>
-      <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
-      <strong>typedef</strong> QueueChecking1&lt;Queue1, Integer&gt; IntQueue;<br>
-      <br>
-	//Create checked QueueArray, which is indexed from 0..4<br>
-      <strong>typedef</strong> StaticArrayChecking1&lt;StaticArray1, IntQueue, lowerBound, upperBound&gt; 
-	IntQueueArray;</font></code></td>
-  </tr>
-</table>
+    <table border="1" width="95%">
+      <tr>
+        <td width="44%" valign="top"><p align="center"><b>Release Configuration Version</b></p></td>
+        <td width="54%" valign="top"><p align="center"><b>Debug Configuration Version</b></p></td>
+      </tr>
+      <tr>
+        <td width="44%" valign="top"><code><font size="1">// Array of Queue &lt;Integer&gt;<br>
+          // Date: 3/19<br>
+          <br>
+          #<b>include</b> &quot;Queue/Queue1.hpp&quot;<br>
+          #<b>include</b> &quot;StaticArray/StaticArray1.hpp&quot;<br>
+          <br>
+          <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
+          <b>typedef</b> Queue1 &lt;Integer&gt; IntQueue;<br>
+          <br>
+          //Create a class called QueueArray, which is indexed from 0..4<br>
+          <b>typedef</b> StaticArray1 &lt;IntQueue, lowerBound, upperBound&gt; 
+          IntQueueArray;</font></code></td>
+        <td width="54%" valign="top"><code><font size="1">// Array of Queue &lt;Integer&gt;<br>
+          // Date: 3/19<br>
+          <br>
+          #<b>include</b> &quot;Queue/Queue1.hpp&quot;<br>
+          #<strong>include</strong> &quot;Queue/QueueChecking.hpp&quot;<br>
+          #<b>include</b> &quot;StaticArray/StaticArray1.hpp&quot;<br>
+          #<strong>include</strong> &quot;StaticArray/StaticArrayChecking.hpp&quot;<br>
+          <br>
+          <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
+          <strong>typedef</strong> QueueChecking1&lt;Queue1, Integer&gt; IntQueue;<br>
+          <br>
+          //Create checked QueueArray, which is indexed from 0..4<br>
+          <strong>typedef</strong> StaticArrayChecking1&lt;StaticArray1, IntQueue, lowerBound, upperBound&gt; 
+          IntQueueArray;</font></code></td>
+      </tr>
+    </table>
   </center>
 </div>
-
-	
 <h3>2.2 - Changes to <em>main</em> - the <em>main</em> below is done, use it to replace the one in driver.cpp</h3>
-
 <div align="center">
   <center>
-  <table border="1" width="90%">
-    <tr>
-      <td width="100%"><code><font size="2"><b>int</b> main (int argc, char* 
-		argv[])<br>
-        {<br>
-        &nbsp;&nbsp; Boolean showMenu = (argc == 1);<br>
-        &nbsp;&nbsp; ArrayOfQueues aQ1;<br>
-        <br>
-        &nbsp;&nbsp; commandController (aQ1, showMenu);<br>
-        <br>
-        &nbsp;&nbsp; wcout &lt;&lt; "end program" &lt;&lt; endl;<br>
-&nbsp;&nbsp; <b>return</b> 0;<br>
-        }	// end main</font></code></td>
-    </tr>
-  </table>
+    <table border="1" width="90%">
+      <tr>
+        <td width="100%"><code><font size="2"><b>int</b> main (int argc, char* 
+          argv[])<br>
+          {<br>
+          &nbsp;&nbsp; Boolean showMenu = (argc == 1);<br>
+          &nbsp;&nbsp; ArrayOfQueues aQ1;<br>
+          <br>
+          &nbsp;&nbsp; commandController (aQ1, showMenu);<br>
+          <br>
+          &nbsp;&nbsp; wcout &lt;&lt; "end program" &lt;&lt; endl;<br>
+          &nbsp;&nbsp; <b>return</b> 0;<br>
+          }	// end main</font></code></td>
+      </tr>
+    </table>
   </center>
 </div>
-
-	
 <h3>2.3 - Changes to <em>do</em> operations - the <em>doEnqueue</em> below is done, use it and then modify all other <em>do</em> operations similarly</h3>
-	
 <div align="center">
   <center>
-  <table border="1" width="95%">
-    <tr>
-		
-      <td width="100%">
-		<pre><strong>void</strong> doEnqueue(ArrayOfQueues&amp; aQ)
+    <table border="1" width="95%">
+      <tr>
+        <td width="100%"><pre><strong>void</strong> doEnqueue(ArrayOfQueues&amp; aQ)
 {
 	Integer index;
 	Text x;
@@ -171,32 +153,25 @@ Queues, and it actually reduces the amount of code in our command interpreter.</
 	wcout &lt;&lt; endl &lt;&lt; "q" &lt;&lt; index &lt;&lt; ".enqueue(x); executed." &lt;&lt; endl;
 	wcout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; endl;
 }	// doEnqueue</pre></td>
-    </tr>
-  </table>
+      </tr>
+    </table>
   </center>
 </div>
-	
-	<h3>2.4 - Changes to <em>getIndex</em> operation</h3>
-
-
+<h3>2.4 - Changes to <em>getIndex</em> operation</h3>
 <p>Change <em>getIndex</em> so that it lets the user type in a
-        number that can legally index into the ArrayOfQueues, but not allow indices 
-		  outside the bounds of the array</p>
-	<ul>
-          <li>Change <em>getIndex</em>'s header to so that it takes the array of queues as a parameter - you can see a legal call to <em>getIndex</em> in the<em> doEnqueue</em> example above</li>
-          <li>In <em>getIndex</em> use StaticArray's 
-			<em>getBounds</em> operation to determine the number of
-            locations in the array<br>
-            <code>Integer lowerB, upperB;<br>
-            aQ.getBounds (lowerB, upperB);<br>
-            // use lowerB and upperB to tell the user what the bounds
-            are&nbsp;<br>
-            // and to check to make sure the user supplied a good index</code></li>
-        </ul>
-     
-
+  number that can legally index into the ArrayOfQueues, but not allow indices 
+  outside the bounds of the array</p>
+<ul>
+  <li>Change <em>getIndex</em>'s header to so that it takes the array of queues as a parameter - you can see a legal call to <em>getIndex</em> in the<em> doEnqueue</em> example above</li>
+  <li>In <em>getIndex</em> use StaticArray's <em>getBounds</em> operation to determine the number of
+    locations in the array<br>
+    <code>Integer lowerB, upperB;<br>
+    aQ.getBounds (lowerB, upperB);<br>
+    // use lowerB and upperB to tell the user what the bounds
+    are&nbsp;<br>
+    // and to check to make sure the user supplied a good index</code></li>
+</ul>
 <h2>3. Testing</h2>
-
 <table width="100%" border="0">
   <tbody>
     <tr>
@@ -204,25 +179,21 @@ Queues, and it actually reduces the amount of code in our command interpreter.</
         <p>You can test the program three different ways:</p>
         <ol>
           <li>Run the program and type in commands at the command prompt to exercise each of the<em> </em>operations that were modified</li>
-          <li>In the folder <em>CppDevSp19/QueueDriver</em> there is a sub-folder called <em>TestScripts</em> which contains .txt files. Each .txt contains a sequence of command interpreter commands for the original QueueDriver implementation that uses only two queues. If you utilize these test scripts, you'll need to first study them to understand what they are asking the command interpreter to do, and then modify them slightly to work with your command interpreter that uses an array of queues. Instead of running and retyping commands, you can run your command interpreter and then copy and paste modified tests scripts into your command interpreter while its running. </li>
+          <li>In the folder <em>CppDevSp20/QueueDriver</em> there is a sub-folder called <em>TestScripts</em> which contains .txt files. Each .txt contains a sequence of command interpreter commands for the original QueueDriver implementation that uses only two queues. If you utilize these test scripts, you'll need to first study them to understand what they are asking the command interpreter to do, and then modify them slightly to work with your command interpreter that uses an array of queues. Instead of running and retyping commands, you can run your command interpreter and then copy and paste modified tests scripts into your command interpreter while its running. </li>
           <li>Once you have your own set of .txt test scripts, you can place them in  either the <em>L1/Debug</em> folder or the <em>L1/Release</em> folder and run the command interpreter from a command prompt and use file redirection to feed your test scripts into your .exe. See the <em>Testing - With a Test Script</em> reference page.</li>
-      </ol></td>
+        </ol></td>
       <td width="410" align="right"><img src="L1Running.png" width="408" height="401" alt=""/></td>
     </tr>
   </tbody>
 </table>
-
 <h2>4. Grading</h2>
-	<p>Download from this Moodle assignment the <em>L1Sol.zip</em> file which contains <em> L1Sol.exe</em>.<em> L1Sol.exe</em> is a completed working version of the L1 assignment</p>
+<p>Download from this Moodle assignment the <em>L1Sol.zip</em> file which contains <em> L1Sol.exe</em>.<em> L1Sol.exe</em> is a completed working version of the L1 assignment</p>
 <p>I will be grading you submission by running various test scripts against your <em>L1.exe</em> and then using FC (a File Compare tool) to compare the output from your .exe against the output from <em>L1Sol.exe</em></p>
-	<p>It's highly recommend that you do not try to use the <em>eyeball method</em> compare your <em>L1.exe</em>'s output with the output from <em>L1Sol.exe</em> because FC detects all character differences, even whitespace differences</p>
-	<p>See the Grading Rubric associated with the L1 Moodle assignment</p>
-	<p>&nbsp;</p>
-	
-	
+<p>It's highly recommend that you do not try to use the <em>eyeball method</em> compare your <em>L1.exe</em>'s output with the output from <em>L1Sol.exe</em> because FC detects all character differences, even whitespace differences</p>
+<p>See the Grading Rubric associated with the L1 Moodle assignment</p>
+<p>&nbsp;</p>
 <h2>5. Submitting the Assignment for Grading</h2>
-	<p>Upload your L1 <em>driver.cpp</em> file to the L1 Moodle assignment	</p>
-	<p>&nbsp;</p>
+<p>Upload your L1 <em>driver.cpp</em> file to the L1 Moodle assignment </p>
+<p>&nbsp;</p>
 </body>
-
 </html>
