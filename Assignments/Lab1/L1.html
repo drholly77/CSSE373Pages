@@ -76,7 +76,7 @@
   <li>Also, you must  modify <em>getIndex</em> - see Example 2.4 </li>
 </ol>
 <h2>2. Code Examples</h2>
-<h3>2.1 - Creating a StaticArray of Queues of Integers</h3>
+<h3>2.1 - Creating a StaticArray of Queues of Text</h3>
 <p>Use the following example as a guide to creating an Array of Queues</p>
 <div align="center">
   <center>
@@ -86,20 +86,19 @@
         <td width="54%" valign="top"><p align="center"><b>Debug Configuration Version</b></p></td>
       </tr>
       <tr>
-        <td width="44%" valign="top"><code><font size="1">// Array of Queue &lt;Integer&gt;<br>
-          // Date: 3/19<br>
+        <td width="44%" valign="top"><code><font size="1">// Array of Queue &lt;Text&gt;<br>
+          // Date: 3/20<br>
           <br>
           #<b>include</b> &quot;Queue/Queue1.hpp&quot;<br>
           #<b>include</b> &quot;StaticArray/StaticArray1.hpp&quot;<br>
           <br>
           <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
-          <b>typedef</b> Queue1 &lt;Integer&gt; IntQueue;<br>
+          <b>typedef</b> Queue1 &lt;Text&gt; TextQueue;<br>
           <br>
           //Create a class called QueueArray, which is indexed from 0..4<br>
-          <b>typedef</b> StaticArray1 &lt;IntQueue, lowerBound, upperBound&gt; 
-          IntQueueArray;</font></code></td>
-        <td width="54%" valign="top"><code><font size="1">// Array of Queue &lt;Integer&gt;<br>
-          // Date: 3/19<br>
+          <b>typedef</b> StaticArray1 &lt;TextQueue, lowerBound, upperBound&gt; ArrayOfQueues;</font></code></td>
+        <td width="54%" valign="top"><code><font size="1">// Array of Queue &lt;Text&gt;<br>
+          // Date: 3/20<br>
           <br>
           #<b>include</b> &quot;Queue/Queue1.hpp&quot;<br>
           #<strong>include</strong> &quot;Queue/QueueChecking.hpp&quot;<br>
@@ -107,11 +106,10 @@
           #<strong>include</strong> &quot;StaticArray/StaticArrayChecking.hpp&quot;<br>
           <br>
           <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
-          <strong>typedef</strong> QueueChecking1&lt;Queue1, Integer&gt; IntQueue;<br>
+          <strong>typedef</strong> QueueChecking1&lt;Queue1, Text&gt;TextQueue;<br>
           <br>
           //Create checked QueueArray, which is indexed from 0..4<br>
-          <strong>typedef</strong> StaticArrayChecking1&lt;StaticArray1, IntQueue, lowerBound, upperBound&gt; 
-          IntQueueArray;</font></code></td>
+          <strong>typedef</strong> StaticArrayChecking1&lt;StaticArray1, TextQueue, lowerBound, upperBound&gt; ArrayOfQueues;</font></code></td>
       </tr>
     </table>
   </center>
