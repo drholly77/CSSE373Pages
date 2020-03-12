@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+<title>Using Queue</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<meta NAME="Author" CONTENT="Dr. Holly">
+</head>
+<body>
+<table border="1" width="100%">
+  <tr>
+    <td width="12%"><h1>Using Queue </h1></td>
+    <td width="63%">When execution reaches the bottom of each cell in the left
+      column, in the corresponding cell on the right, fill in the values for
+      each of the 4 variables: q1, q2, x, and z.&nbsp;&nbsp;<br>
+      Hint: the 4th cell down has already been completed.</td>
+	  <td width="25%">Name:<br>
+	  Name:<br>
+	  CM:</td>
+  </tr>
+</table>
+<hr>
+<table border="1" width="100%">
+  <tr>
+    <td width="40%"><tt><font size="1">#<b>include</b> &quot;wrapper.h&quot;<br>
+      #include &quot;Queue\Queue1.hpp&quot;<br>
+      <br>
+      <b>typedef</b> Queue1 &lt;Text&gt; QueueOfText;<br>
+      <br>
+      int main(int argc, char* argv[])<br>
+      {<br>
+      &nbsp;&nbsp; QueueOfText q1, q2;<br>
+      &nbsp;&nbsp; Text x;<br>
+      &nbsp;&nbsp; Integer z;</font></tt></td>
+    <td width="60%"><tt><font size="1">q1 =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      q2 =&nbsp;<br>
+      <br>
+      x =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      z =&nbsp;</font></tt></td>
+  </tr>
+  <tr>
+    <td width="40%"><tt><font size="1">&nbsp;&nbsp; z = q1.length();<br>
+      &nbsp;&nbsp; x = &quot;white&quot;;<br>
+      &nbsp;&nbsp; q1.enqueue(x);</font></tt></td>
+    <td width="60%"><tt><font size="1">q1 =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+      q2 =&nbsp;<br>
+      <br>
+      x =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      z =&nbsp;</font></tt></td>
+  </tr>
+  <tr>
+    <td width="40%"><tt><font size="1">&nbsp;&nbsp; x = &quot;red&quot;;<br>
+      &nbsp;&nbsp; q1.enqueue(x);<br>
+      &nbsp;&nbsp; z = q1.length();</font></tt></td>
+    <td width="60%"><tt><font size="1">q1 =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+      q2 =&nbsp;<br>
+      <br>
+      x =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      z =&nbsp;</font></tt></td>
+  </tr>
+  <tr>
+    <td width="40%"><tt><font size="1">&nbsp;&nbsp; x = &quot;blue&quot;;<br>
+      &nbsp;&nbsp; q1.enqueue(x);<br>
+      &nbsp;&nbsp; z = q1.length();</font></tt></td>
+    <td width="60%"><tt><font size="1">q1 = &lt;&quot;white&quot;,&quot;red&quot;,&quot;blue&quot;&gt;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      q2 = &lt; &gt;<br>
+      x = &quot;&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      z = 3</font></tt></td>
+  </tr>
+  <tr>
+    <td width="40%"><tt><font size="1"> &nbsp;&nbsp; x = &quot;orange&quot;;<br>
+      &nbsp;&nbsp; q2.enqueue(x);</font></tt></td>
+    <td width="60%"><tt><font size="1">q1 =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+      q2 =&nbsp;<br>
+      <br>
+      x =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      z =&nbsp;</font></tt></td>
+  </tr>
+  <tr>
+    <td width="40%"><tt><font size="1">&nbsp;&nbsp; x = &quot;yellow&quot;;<br>
+      &nbsp;&nbsp; q2.enqueue(x);</font></tt></td>
+    <td width="60%"><tt><font size="1">q1 =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+      q2 =&nbsp;<br>
+      <br>
+      x =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      z =&nbsp;</font></tt></td>
+  </tr>
+  <tr>
+    <td width="40%"><tt><font size="1">&nbsp;&nbsp; wcout &lt;&lt; q2.front();<br>
+      &nbsp;&nbsp; q2 = q1;<br>
+      &nbsp;&nbsp; z = q2.length();</font></tt></td>
+    <td width="60%"><tt><font size="1">What value is wcout? 
+      __________________<br>
+      The requires clause on operation 'front' is satisfied because: _____________<br>
+      q1 =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+      q2 =&nbsp;<br>
+      <br>
+      x =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      z =&nbsp;</font></tt></td>
+  </tr>
+  <tr>
+    <td width="40%"><tt><font size="1">&nbsp;&nbsp; q1.dequeue(x);<br>
+      &nbsp;&nbsp; z = q1.length();</font></tt></td>
+    <td width="60%"><tt><font size="1"> The
+      requires clause on operation 'dequeue' satisfied because: _______________<br>
+      q1 =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+      q2 =&nbsp;<br>
+      <br>
+      x =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      z =&nbsp;</font></tt></td>
+  </tr>
+  <tr>
+    <td width="40%"><tt><font size="1">&nbsp;&nbsp; wcout &lt;&lt; q2.front();<br>
+      &nbsp;&nbsp; z = q2.length();</font></tt></td>
+    <td width="60%"><tt><font size="1">What value is wcout? 
+      __________________<br>
+      The requires clause on operation 'front' is satisfied because: _____________<br>
+      q1 =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; q2 =&nbsp; <br>
+      x =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      z = </font></tt></td>
+  </tr>
+  <tr>
+    <td width="40%"><tt><font size="1">&nbsp;&nbsp; q2.transferFrom(q1);</font></tt></td>
+    <td width="60%"><tt><font size="1">q1 =&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      q2 =&nbsp;<br>
+      x =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      z = </font></tt></td>
+  </tr>
+  <tr>
+    <td width="40%"><tt><font size="1">&nbsp;&nbsp; x = &quot;rojo&quot;<br>
+      &nbsp;&nbsp; q2.replaceFront(x);</font></tt></td>
+    <td width="60%"><tt><font size="1">The requires clause on operation 'replaceFront' is satisfied because: _____________<br>
+      q1 =&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; q2 = <br>
+      x =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      z = </font></tt></td>
+  </tr>
+  <tr>
+    <td width="40%"><tt><font size="1"> &nbsp;&nbsp; q2.clear();</font></tt></td>
+    <td width="60%"><tt><font size="1">q1 =&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      q2 =&nbsp;<br>
+      x =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      z = </font></tt></td>
+  </tr>
+  <tr>
+    <td width="100%" colspan="2"><tt><font size="1"> &nbsp;&nbsp; return 0;<br>
+      }&nbsp; // end main</font></tt></td>
+  </tr>
+</table>
+</body>
+</html>
