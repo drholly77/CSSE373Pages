@@ -22,7 +22,7 @@
 	  <td align="center">
 		<h2>Constructing Unit Tests</h2></td>
 		<td width="218">
-		<p align="right"><i>Last Updated: 02/25/2019</i></td>
+			<p align="right"><i>Last Updated: 03/28/2020</i></p></td>
 	</tr>
 </table>
 
@@ -62,7 +62,7 @@ TEST_METHOD(<span class="yellowColor">UT01ConstructorV1</span>)
    Logger::WriteMessage(L"UT01ConstructorV1: Queue1();");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;&gt;");
 
-   // Verify ensures: self = <>
+   // Verify ensures: self = &lt;&gt;
    toText(q1, x1);
    Assert::IsTrue(x1 == "&lt;&gt;", L"q1 = &lt;&gt;");
 } // UT01ConstructorV1</pre></td>
@@ -144,13 +144,13 @@ TEST_METHOD(UT02ClearV1)
 </td>
   </tr>
   <tr>
-    <td valign="top"><pre>TEST_METHOD(UT02ClearV2)
+    <td valign="top"><pre>TEST_METHOD(UT03ClearV2)
 {
    IntegerQueue q1;
    Text x1;
    Integer k;
 
-   Logger::WriteMessage(L"UT02ClearV2: q1.clear();");
+   Logger::WriteMessage(L"UT03ClearV2: q1.clear();");
    Logger::WriteMessage(L"\tincoming: q1 = &lt;10&gt;");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;&gt;");
 
@@ -164,7 +164,7 @@ TEST_METHOD(UT02ClearV1)
    // Verify clears parameter mode: clears self
    toText(q1, x1);
    Assert::IsTrue(x1 == "&lt;&gt;", L"q1 = &lt;&gt;");
-} // UT02ClearV2</pre></td>
+} // UT03ClearV2</pre></td>
     <td valign="top">
 <p class="yellowColor"><em>Explanation of the Test Set Up section</em>: </p>
 <ul>
@@ -194,12 +194,12 @@ TEST_METHOD(UT02ClearV1)
 //! clears source
 //! ensures: self = #source
 // -----------------------------------------------------
-TEST_METHOD(UT03TransferFromV1)
+TEST_METHOD(UT04TransferFromV1)
 {
    IntegerQueue q1, q2;
    Text x1, x2;
 
-   Logger::WriteMessage(L"UT03TransferFromV1: q1.transferFrom(q2);");
+   Logger::WriteMessage(L"UT04TransferFromV1: q1.transferFrom(q2);");
    Logger::WriteMessage(L"\tincoming: q1 = &lt;&gt; and q2 = &lt;&gt;");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;&gt; and q2 = &lt;&gt;");
 
@@ -213,7 +213,7 @@ TEST_METHOD(UT03TransferFromV1)
    // Verify clears parameter mode: clears source
    toText(q2, x2);
    Assert::IsTrue(x2 == "&lt;&gt;", L"q2 = &lt;&gt;");
-} // UT03TransferFromV1</pre></td>
+} // UT04TransferFromV1</pre></td>
     <td width="50%" valign="top"><p class="yellowColor"><em>Explanation of the Execute Operation section</em>:</p>
       <ul>
         <li>This section is for executing the operation under test</li>
@@ -227,13 +227,13 @@ TEST_METHOD(UT03TransferFromV1)
 	outgoing: q1 = &lt;&gt; and q2 = &lt;&gt;</pre></td>
   </tr>
   <tr>
-    <td valign="top"><pre>TEST_METHOD(UT03TransferFromV2)
+    <td valign="top"><pre>TEST_METHOD(UT05TransferFromV2)
 {
    IntegerQueue q1, q2;
    Text x1, x2;
    Integer k;
 
-   Logger::WriteMessage(L"UT03TransferFromV2: q1.transferFrom(q2);");
+   Logger::WriteMessage(L"UT05TransferFromV2: q1.transferFrom(q2);");
    Logger::WriteMessage(L"\tincoming: q1 = &lt;&gt; and q2 = &lt;17&gt;");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;17&gt; and q2 = &lt;&gt;");
 
@@ -251,7 +251,7 @@ TEST_METHOD(UT03TransferFromV1)
    // Verify clears parameter mode: clears source
    toText(q2, x2);
    Assert::IsTrue(x2 == "&lt;&gt;", L"q2 = &lt;&gt;");
-} // UT03TransferFromV2</pre></td>
+} // UT05TransferFromV2</pre></td>
     <td valign="top"><p class="yellowColor"><em>Explanation of the Verify Ensures section</em>: </p>
       <ul>
         <li>The purpose of this section is to verify that that the tested operation actually did the right thing, i.e., it satisfied its own ensures clause</li>
@@ -286,13 +286,13 @@ TEST_METHOD(UT03TransferFromV1)
   </tr>
 
   <tr>
-    <td valign="top"><pre>TEST_METHOD(UT03TransferFromV4)
+    <td valign="top"><pre>TEST_METHOD(UT06TransferFromV4)
 {
    IntegerQueue q1, q2;
    Text x1, x2;
    Integer k;
 
-   Logger::WriteMessage(L"UT03TransferFromV4: q1.transferFrom(q2);");
+   Logger::WriteMessage(L"UT06TransferFromV4: q1.transferFrom(q2);");
    Logger::WriteMessage(L"\tincoming: q1 = &lt;10&gt; and q2 = &lt;25&gt;");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;25&gt; and q2 = &lt;&gt;");
 
@@ -312,7 +312,7 @@ TEST_METHOD(UT03TransferFromV1)
 <span class="yellowColor">   // Verify clears parameter mode: clears source
    toText(q2, x2);
    Assert::IsTrue(x2 == "&lt;&gt;", L"q2 = &lt;&gt;");</span>
-} // UT03TransferFromV4</pre></td>
+} // UT06TransferFromV4</pre></td>
     <td valign="top"><p class="yellowColor"><em>Explanation of the Clears Parameter Mode section</em>: </p>
       <ul>
         <li>This section appears in the unit test <em>only if</em> the tested operation has a <em>clears</em> parameter mode for one of its parameters</li>
@@ -339,13 +339,13 @@ TEST_METHOD(UT03TransferFromV1)
 // -----------------------------------------------------
 //! replaces self<br />//! restores rhs<br />//! ensures: self = rhs&gt;
 // -----------------------------------------------------
-TEST_METHOD(UT04AssignmentV2)
+TEST_METHOD(UT07AssignmentV2)
 {
    IntegerQueue q1, q2;
    Text x1, x2;
    Integer k;
 
-   Logger::WriteMessage(L"UT04AssignmentV2: q1 = q2;");
+   Logger::WriteMessage(L"UT07AssignmentV2: q1 = q2;");
    Logger::WriteMessage(L"\tincoming: q1 = &lt;&gt; and q2 = &lt;27&gt;");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;27&gt; and q2 = &lt;27&gt;");
 
@@ -364,7 +364,7 @@ TEST_METHOD(UT04AssignmentV2)
 <span class="yellowColor">   // Verify restores parameter mode: restores rhs
    toText(q1, x1);
    Assert::IsTrue(x1 == "&lt;27&gt;", L"q1 = &lt;27&gt;");</span>
-} // UT04AssignmentV2</pre></td>
+} // UT07AssignmentV2</pre></td>
     <td width="50%" valign="top">
     <p class="yellowColor"><em>Explanation of the Restores Parameter Mode section</em>: </p>
     <ul>
@@ -400,13 +400,13 @@ TEST_METHOD(UT04AssignmentV2)
 //! requires: self /= &lt;&gt;
 //! ensures: &lt;x&gt; is prefix of #self  and  self = #self[1, |#self|)
 // -----------------------------------------------------
-TEST_METHOD(UT06DequeueV2)
+TEST_METHOD(UT08DequeueV2)
 {
    IntegerQueue q1;
    Text x1;
    Integer k;
 
-   Logger::WriteMessage(L"UT06DequeueV2: q1.dequeue(k);");
+   Logger::WriteMessage(L"UT08DequeueV2: q1.dequeue(k);");
    Logger::WriteMessage(L"\tincoming: q1 = &lt;25,30&gt; and k = 0");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;30&gt; and k = 25");
 
@@ -425,7 +425,7 @@ TEST_METHOD(UT06DequeueV2)
    // Verify ensures: self = #self[1, |#self|)
    toText(q1, x1);
    Assert::IsTrue(x1 == "&lt;30&gt;", L"q1 = &lt;30&gt;");</span>
-} // UT06DequeueV2
+} // UT08DequeueV2
 </pre></td>
     <td width="50%" valign="top">
     <p class="yellowColor"><em>Explanation of the Verify Ensures section - when there are multiple conjuncts</em>: </p>
