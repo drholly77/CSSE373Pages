@@ -181,8 +181,11 @@
 </ul>
 <p><em>Use Boundary Condition Testing</em>:</p>
 <ul>
-  <li>Add/Remove/Access at the front, middle, and at the end of a List</li>
-  <li>There are four addRightFront's unit tests - use these 4 different tests as a guide for boundary condition testing the other member functions:
+  <li>Add/Remove/Access at the front, middle, and at the end of a List <br>
+  the <em>middle</em> is not a boundary, but the front and end are</li>
+  <li>Add to an empty List and Remove from a List with 1 item to make it empty <br>
+  the boundary here is going from empty to non-empty on an Add, and going from non-empty to empty on a Remove</li>
+  <li>There are 4 addRightFront's unit tests - use these 4 different tests as a guide for boundary condition testing the other member functions:
     <ol>
       <li>adds an item to: (&lt;&gt;,&lt;&gt;) - incoming List is empty</li>
       <li>adds an item to: (&lt;&gt;,&lt;21&gt;) - incoming List has empty left and non-empty right</li>
