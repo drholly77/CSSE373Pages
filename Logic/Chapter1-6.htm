@@ -310,13 +310,13 @@
 		<blockquote>
 			<table width="30%" border="1" cellpadding="10" cellspacing="0">
 				<tr>
-					<td>p &rarr; q<br>¬p<u><br></u>_____<u>
+					<td>p &rarr; q<br>~p<u><br></u>_____<u>
 					<br></u>&there4;q</td>
 					<td>True premise<br>True premise<br>___<br>
 					Conclusion not valid</td>
 				</tr>
 			</table>
-			<p>(p &rarr; q) ^ ¬p &rarr; q is not a valid rule of inference. </p>
+			<p>(p &rarr; q) ^ ~p &rarr; q is not a valid rule of inference. </p>
 			<blockquote>
 				<p>Result (last 
 			column) not always True.</p>
@@ -326,10 +326,10 @@
 					<td bgcolor="#EAEBEC" align="center">&nbsp;</td>
 					<td bgcolor="#EAEBEC" align="center">p</td>
 					<td bgcolor="#EAEBEC" align="center">q</td>
-					<td bgcolor="#EAEBEC" align="center">¬p</td>
+					<td bgcolor="#EAEBEC" align="center">~p</td>
 					<td bgcolor="#EAEBEC" align="center">p &rarr; q</td>
-					<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ ¬p </td>
-					<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ ¬p &rarr; q</td>
+					<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ ~p </td>
+					<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ ~p &rarr; q</td>
 				</tr>
 				<tr>
 					<td align="center">2 &gt; 4 &rarr; 2<sup>2</sup> &gt; 4<sup>2</sup></td>
@@ -402,20 +402,20 @@
 		<table  width="80%" border="1" cellpadding="10" cellspacing="0">
 			<caption>Disjunctive Syllogism</caption>
 			<tr>
-				<td >&quot;You buy a lottery ticket&quot; v &quot;You win a 
+				<td >&quot;You buy a lottery ticket&quot; &or; &quot;You win a 
 					million dollars&quot;<p>&quot;You did not buy a lottery ticket&quot;</p>
 				<p><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</u></p>
 				&there4;&quot;You win a million dollars&quot; </td>
-				<td>p v q<br>¬p<u><br></u>_____<u> <br></u>&there4; q</td>
+				<td>p &or; q<br>~p<u><br></u>_____<u> <br></u>&there4; q</td>
 			</tr>
 		</table>
 		<table  width="80%" border="1" cellpadding="10" cellspacing="0">
 			<caption>Resolution</caption>
 			<tr>
-				<td>3 = 4 v 5 &lt; 10<br>¬(3=4) v 9 &lt; 0<br><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<br></u>&there4;5 &lt; 10 v 9 &lt; 0</td>
-				<td>p v q<br>¬p v r<u><br></u>_____<u> <br></u>&there4; q v r</td>
+				<td>3 = 4 &or; 5 &lt; 10<br>~(3=4) &or; 9 &lt; 0<br><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<br></u>&there4;5 &lt; 10 &or; 9 &lt; 0</td>
+				<td>p &or; q<br>~p &or; r<u><br></u>_____<u> <br></u>&there4; q &or; r</td>
 			</tr>
 		</table>
 		<p>Note that ALL inference rules require ALL premises to be True.</p>
@@ -468,7 +468,7 @@
 		<blockquote>
 			<table  width="50%" border="0" cellpadding="10" cellspacing="0">
 				<tr>
-					<td>¬p ^ q</td>
+					<td>~p ^ q</td>
 					<td>&nbsp;</td>
 					<td>&quot;It is not sunny this afternoon and it is colder than 
 			yesterday&quot;</td>
@@ -479,7 +479,7 @@
 					<td>&quot;If we will go swimming, then it is sunny&quot;</td>
 				</tr>
 				<tr>
-					<td><b>¬r</b> &rarr; s</td>
+					<td><b>~r</b> &rarr; s</td>
 					<td>&nbsp;</td>
 					<td>&quot;If we do not go swimming, then we will take a canoe 
 					trip&quot;</td>
@@ -510,18 +510,18 @@
 		</blockquote>
 		<table  width="100%" border="1" cellpadding="10" cellspacing="0">
 			<tr>
-				<td>¬p ^ q<br>___<br>&there4;<b> ¬p</b></td>
+				<td>~p ^ q<br>___<br>&there4;<b> ~p</b></td>
 				<td>Simplification</td>
 				<td>&quot;It is not sunny this afternoon&quot; ^ &quot;It is colder than yesterday&quot;<br>___<br>&there4; &quot;It is not sunny this afternoon&quot;</td>
 			</tr>
 			<tr>
-				<td><b>¬p</b><br>r &rarr; p<br>___<br>&there4;<b>¬r</b></td>
+				<td><b>~p</b><br>r &rarr; p<br>___<br>&there4;<b>~r</b></td>
 				<td>Modus tollens</td>
 				<td>&quot;It is not sunny this afternoon&quot;<br>&quot;We will go swimming&quot; &rarr; &quot;It 
 			is sunny this afternoon&quot;<br>___<br>&there4; &quot;We will not go swimming&quot;</td>
 			</tr>
 			<tr>
-				<td><b>¬r</b> &rarr; s<br><b>¬r</b><br>___<br>&there4;<b> s</b></td>
+				<td><b>~r</b> &rarr; s<br><b>~r</b><br>___<br>&there4;<b> s</b></td>
 				<td>Modus ponens</td>
 				<td>&quot;We will not go swimming&quot; &rarr; &quot;We will take a canoe trip&quot;<br>&quot;We 
 			will not go swimming&quot;<br>___<br>&there4; &quot;We will take a canoe trip&quot;</td>
@@ -550,7 +550,7 @@
 		<blockquote>
 			<p>Example</p>
 			<blockquote>
-				<table width=30%" border="1" cellpadding="10" cellspacing="0">
+				<table width="30%" border="1" cellpadding="10" cellspacing="0">
 					<tr>
 						<td>p &rarr; q<br>q<u><br></u>_____<u> <br></u>&there4;p</td>
 						<td>True premise<br>True premise<br>___<br>&there4; invalid conclusion</td>
@@ -560,7 +560,7 @@
 			<p>Not a tautology, therefore not valid as a rule of inference.</p>
 			<blockquote>
 				<p>(p &rarr; q) ^ q &rarr; p</p>
-				<table width=50%" border="1" cellpadding="10" cellspacing="0">
+				<table width="50%" border="1" cellpadding="10" cellspacing="0">
 					<tr>
 						<td bgcolor="#EAEBEC" align="center">p</td>
 						<td bgcolor="#EAEBEC" align="center">q</td>
@@ -601,28 +601,28 @@
 			<p>&nbsp;</p>
 			<p>Example</p>
 			<blockquote>
-				<table width=30%" border="1" cellpadding="10" cellspacing="0">
+				<table width="30%" border="1" cellpadding="10" cellspacing="0">
 					<tr>
-						<td>p &rarr; q<br>¬p<u><br></u>_____<u> <br></u>&there4; ¬q</td>
+						<td>p &rarr; q<br>~p<u><br></u>_____<u> <br></u>&there4; ~q</td>
 						<td>True premise<br>True premise<br>___<br>&there4; invalid conclusion</td>
 					</tr>
 				</table>
 			</blockquote>
 			<p>Not a tautology, therefore not valid as a rule of inference.</p>
 			<blockquote>
-				<p>(p &rarr; q) ^ ¬p &rarr; ¬q</p>
-				<table width=50%"  border="1" cellpadding="10" cellspacing="0">
+				<p>(p &rarr; q) ^ ~p &rarr; ~q</p>
+				<table width="50%"  border="1" cellpadding="10" cellspacing="0">
 					<tr>
 						<td bgcolor="#EAEBEC" align="center">p</td>
 						<td bgcolor="#EAEBEC" align="center">q</td>
 						<td bgcolor="#EAEBEC" align="center">
-						¬p</td>
+						~p</td>
 						<td bgcolor="#EAEBEC" align="center">
-						¬q</td>
+						~q</td>
 						<td bgcolor="#EAEBEC" align="center">p &rarr; q</td>
-						<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ ¬p 
+						<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ ~p 
 						</td>
-						<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ ¬p &rarr; ¬q</td>
+						<td bgcolor="#EAEBEC" align="center">(p &rarr; q) ^ ~p &rarr; ~q</td>
 					</tr>
 					<tr>
 						<td align="center">F</td>
@@ -668,7 +668,7 @@
 	<blockquote>
 		<p>Universal instantiation </p>
 		<blockquote>
-			<table width=30%" border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
+			<table width="30%" border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
 				<tr>
 					<td>P(c) is True 
 					<blockquote>
@@ -777,9 +777,10 @@
 					<td>
 			<table width="100%" border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
 				<tr>
-					<td>P(a) &rarr; Q(a)<p>P(a)<br>
-					____</p>
-					<p>&there4;Q(a)</td>
+					<td>P(a) &rarr; Q(a)<br>
+						P(a)<br>
+					____<br>
+					&there4; Q(a)</td>
 				</tr>
 			</table>
 					</td>
@@ -798,9 +799,9 @@
 					<td>
 			<table width="100%" border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
 				<tr>
-					<td>&forall;x (P(x) &rarr; Q(x))<p>¬Q(a)<br>
+					<td>&forall;x (P(x) &rarr; Q(x))<p>~Q(a)<br>
 					____</p>
-					&there4; ¬P(a)</td>
+					&there4; ~P(a)</td>
 				</tr>
 			</table>
 					</td>
@@ -809,9 +810,9 @@
 		<blockquote>
 			<table width="100%" border="0" cellpadding="10" cellspacing="0" bgcolor="#EAEBEC">
 				<tr>
-					<td>P(a) &rarr; Q(a)<p>¬Q(a)<br>
+					<td>P(a) &rarr; Q(a)<p>~Q(a)<br>
 					____</p>
-					<p>&there4; ¬P(a)</td>
+					&there4; ~P(a)</td>
 				</tr>
 			</table>
 		</blockquote>
@@ -820,7 +821,7 @@
 			</table>
 			<p>Given &forall;x (P(x) &rarr; Q(x)), </p>
 			<blockquote>
-				<p>when ¬Q(a) for a particular <i>a</i>, ¬P(a).</p>
+				<p>when ~Q(a) for a particular <i>a</i>, ~P(a).</p>
 			</blockquote>
 		</blockquote>
 	</blockquote>
@@ -833,22 +834,22 @@
 		<blockquote>
 			<p>Premises are True</p>
 			<ol>
-				<li>&exist;x (C(x) ^ ¬B(x))<br>
+				<li>&exist;x (C(x) ^ ~B(x))<br>
 &nbsp;</li>
 				<li>&forall;x (C(x) &rarr; P(x))</li>
 			</ol>
 			<p>Show Conclusion</p>
 			<blockquote>
-				<p>&exist;x (P(x) ^ ¬B(x))</p>
+				<p>&exist;x (P(x) ^ ~B(x))</p>
 			</blockquote>
 			<table width="80%" border="1" cellpadding="10" cellspacing="0">
 				<tr>
-					<td>&exist;x (C(x) ^ ¬B(x))</td>
+					<td>&exist;x (C(x) ^ ~B(x))</td>
 					<td>Premise 1</td>
 				</tr>
 				<tr>
-					<td>C(a) ^ ¬B(a)</td>
-					<td>Existential instantiation of &exist;x (C(x) ^ ¬B(x))<br>
+					<td>C(a) ^ ~B(a)</td>
+					<td>Existential instantiation of &exist;x (C(x) ^ ~B(x))<br>
 					<br>
 					&exist;<u>x P(x) <br>
 			</u>&there4;&nbsp;&nbsp; P(a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -856,7 +857,7 @@
 				</tr>
 				<tr>
 					<td>C(a)</td>
-					<td>Simplification of C(a) ^ ¬B(a)</td>
+					<td>Simplification of C(a) ^ ~B(a)</td>
 				</tr>
 				<tr>
 					<td>&forall;x (C(x) &rarr; P(x))</td>
@@ -864,34 +865,35 @@
 				</tr>
 				<tr>
 					<td>C(a) &rarr; P(a)</td>
-					<td>Universal instantiation of &forall;x (C(x) &rarr; P(x))<p><u>
+					<td>Universal instantiation of<br>
+						&forall;x (C(x) &rarr; P(x))<br>
+						<u>
 					&forall;x P(x)</u><br>
-					&there4; P(a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					true for some <i>a</i></td>
+					&there4; P(a) true for some <i>a</i></td>
 				</tr>
 				<tr>
 					<td>C(a)<br>
 					<u>C(a) &rarr; P(a)<br>
 					P(a)</u></td>
-					<td>Modus ponens<p>P(a) true</td>
+					<td>Modus ponens <br>
+						P(a) true</td>
 				</tr>
 				<tr>
-					<td>¬B(a)</td>
-					<td>Simplification of C(a) ^ ¬B(a)</td>
+					<td>~B(a)</td>
+					<td>Simplification of C(a) ^ ~B(a)</td>
 				</tr>
 				<tr>
-					<td>P(a) ^ ¬B(a)</td>
+					<td>P(a) ^ ~B(a)</td>
 					<td>Conjunction of two truths</td>
 				</tr>
 				<tr>
-					<td>&exist;x (P(x) ^ ¬B(x))</td>
-					<td>Existential generalization<p><u>&nbsp;&nbsp;&nbsp; P(a)&nbsp;&nbsp;&nbsp;
-			</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					true for some <i>a</i><u><br>
-			</u>&there4;&exist;x P(x)</td>
+					<td>&exist;x (P(x) ^ ~B(x))</td>
+					<td>Existential generalization<br>
+						
+			 <u>&nbsp;&nbsp;&nbsp; P(a)</u>	true for some <i>a</i><u><br>
+			</u>&there4; &exist;x P(x)</td>
 				</tr>
 			</table>
-			<p>&nbsp;</p>
 		</blockquote>
 	</blockquote>
 </blockquote>
