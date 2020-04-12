@@ -2,30 +2,185 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Unit Testing Queue Component at the Concrete Level</title>
+<title>Layering a Component</title>
 <link href="../../css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-	<h1>Unit Testing Queue Component at the Concrete Level</h1>
+<h1>Layering a Component</h1>
 <h3>0. Reference material</h3>
-	<ul>
-	<li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/QueueTemplate.html" target="_blank">Queue spec</a></li>
-	<li><a href="https://drholly77.github.io/CSSE373Pages/ComponentLayering/LayeringImplementation2.pdf" target="_blank">Layering a Component - An Example Implementation Including a Module Level Invariant</a></li>
-	</ul>
+<ul>
+  <ul>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/ListTemplate.html" target="_blank">List Specification</a></li>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/QueueTemplate.html" target="_blank">Queue Specification</a></li>
+  </ul>
+</ul>
+<hr>
+<h3>1. Setup</h3>
+<table border="0" width="100%">
+  <tbody>
+    <tr>
+      <td valign="top"><h4>1.1 Get the L4Starter Download</h4>
+        <ul>
+          <li>Download <em>L4Starter.zip</em>&nbsp;to your machine - to be used on a subsequent steps</li>
+        </ul></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top"><h4>1.2 Copy List3.hpp from the L4Starter.zip</h4>
+        <ul>
+          <li>Inside L4Starter.zip is a file named List3.hpp
+            <ul>
+              <li>For this assignment you will be making changes to this file</li>
+            </ul>
+          </li>
+          <li>Copy this file to the following folder on your machine <em>CppDevSp20\components\include\List </em></li>
+        </ul>
+        <h4>1.3 Copy Folders from the L4Starter.zip</h4>
+        <ul>
+          <li>Inside L4Starter.zip are two folders named L4D and L4R </li>
+          <li>Copy both folders to your <em>CppDevSp20</em> folder as shown in the screen shot to the right</li>
+          <li>From VS2019 you can click File Once you copy these folders you can use Visual Studio to open these projects by double clicking on L4D.sln (for the L4D project) and L4R.sln (for the L4R project) </li>
+        </ul>
+        <h4>1.4 About Project L4D and L4R</h4>
+        <ul>
+          <li>Each contain a Visual Studio 2019 unit test project</li>
+          <li>Both projects can be opened with VS2019 by double clicking on the file L4D.sln (inside L4D folder) or the file L4R.sln (inside the L4R folder)</li>
+          <li>Both projects will build correctly if you have followed the instructions in 1.1 - 1.3 (above)</li>
+          <li>L4D
+            <ul>
+              <li>is to be used only in Debug mode - that's what the 'D' of L4D stands for</li>
+              <li>L4D.cpp contains unit tests for List3.hpp</li>
+              <li>L4D.cpp's unit tests test a List variable using the List's internal representation, not it's abstract value</li>
+            </ul>
+          </li>
+          <li>L4R
+            <ul>
+              <li>is to be used only in Release mode - that's what the 'R' of L4R stands for</li>
+              <li>L4R.cpp also contains unit tests for List3.hpp</li>
+              <li>L4R.cpp's unit tests test a List variable using the List's abstract value, not it's internal representation</li>
+            </ul>
+          </li>
+        </ul></td>
+      <td valign="top"><p><img src="L4FolderView.png" width="264" height="490" alt=""/></p></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h3>2. L4 Statement of Work</h3>
+<h4>2.1 Primary Objectives</h4>
+<p>The primary objective of this lab is to provide you experience working with:</p>
+<ul>
+  <li>Layering a component (e.g., List) on another already existing component (e.g., Queue).</li>
+</ul>
+<h4>2.2 Specifics</h4>
+<p><em>Steps</em>:</p>
+<ol>
+  <li>Start Visual Studio</li>
+  <li>Open project L4D</li>
+  <li>Find and open List3.hpp</li>
+  <li>Implement a member function - think strategically, some need to be done before others in order to for a unit test's &quot;Test set up&quot; part to work correctly<br>
+  </li>
+</ol>
+<p><em>Hints</em>:</p>
+<ul>
+  <li>addRightFront() has been done for you - study the code in that operation to help you understand the <em>correspondence</em></li>
+  <li>Reread the Component Layering slides from Week #4 on the CSSE373 Moodle site</li>
+  <li>Reference the Queue and List specifications</li>
+  <li>Implement all of List3's stubbed out member functions based on the instructional materials</li>
+  <li>Look for the TODO comments in List3.hpp</li>
+</ul>
+<p><em>Important Restrictions</em>:</p>
+<ol>
+  <li><strong>Obey the correspondence </strong>- When implementing the member functions you must obey the correspondence internal contract<br>
+    That means: </li>
+  <ul>
+    <li>assume that the correspondence holds when the member function is called</li>
+    <li>guarantee that the correspondence holds when the member function exits</li>
+  </ul>
+  <li><strong>Use Design by Contract</strong> - No defensive programming of List's operations</li>
+
+  <ul>
+    <li>What this means is that the implementation of a List operation must not contain code that checks to make sure that the List operation was called correctly by the client</li>
+    <li>Therefore, for all List operations that have a <em>requires</em> clause, you must program them with the assumption that their <em>requires</em> clause holds at the time the operation is called (like replaceRightFront, see Part 3 below)</li>
+  </ul>
+  <li><strong>No Cross Calling - </strong>None of List's member functions are permitted to make calls to any of the other <em>public</em> List member functions, i.e., no cross calling
+    <ul>
+      <li>For example, under this rule it is illegal for the <em>swapRights</em> operation to call any other List operation, e.g., <em>addRightFront</em></li>
+      <li>All List operations (e.g.,<em> swapRights</em>) should directly manipulate List's data members (i.e., repRZ and repQ) in order to satisfy the operation's <em>ensures</em> clause</li>
+    </ul>
+  </li>
+  <li><strong>Calling Down</strong> - create private member functions that capture code that starts to appear in multiple different places in your List3 implementation and then instead of duplicating this code (i.e., having it appear in multiple different member function implementations) make a <em>call down</em> to the private member function from the public member function - this engineering technique is called procedural abstraction and the call is call <em>calling down</em> - for this assignment a private operation that can move items from one queue to second queue will come in real handy</li>
+  <li><strong>No Recursion</strong> - None of List's member functions are permitted to be recursive</li>
+  <li><strong>About Making Copies</strong> -
+    <ul>
+      <li>Copying the  data members <em>repRZ </em>or <em>repQ</em> - When implementing List3's <em>operator =</em> you must use Queue's <em>operator =</em> to make a copy of <em>repRZ</em> and <em>repQ</em>. Do not call <em>operator =</em> to make a copy of <em>repRZ </em>or <em>repQ </em>in any implementation of the other List3 member functions - this is a performance constraint. If when implementing any other List operations you think you need to call <em>operator =</em> to make a copy of<em> repRZ </em>or <em>repQ</em>, then rethink your algorithm until you figure out a way to not make a copy. Use transferFrom.</li>
+      <li>Copying variables of type T - There is no need to make copies of the items being added or removed to the list. These are all items of type T. If you need to move items of type T from one variable to another, then call the <em>transferFrom</em> operation to do it.</li>
+    </ul>
+  </li>
+</ol>
 
 <hr>
-	
-<h3>1. Setup</h3>
-<ol>
-  <li>Download the <em>L4Starter.zip</em> from this Moodle Assignment</li>
-  <li>Navigate into <em>L4Starter.zip</em> and copy the L4 folder from inside the zip, place the copy in the <em>CppDevSp19</em> folder</li>
-  <li>Navigate into <em>CppDevSp19\L4</em> folder and double click the file<em> L4.sln</em> inside the L4 folder to start up the L4 Visual Studio project</li>
-  <li>In the file <em>unittest1.cpp</em> read the &quot;Overview&quot; and then the &quot;TODO&quot; section</li>
-  <li>Do what the TODO says to do</li>
-  <li>Upload your solution to this assignment</li>
-</ol>
-<p>&nbsp;</p>
+<h3>3. Testing</h3>
+<ul>
+  <li>L4D testing first
+    <ul>
+      <li>These test against the List's internal representation, so these unit tests will only work with this particular implementation</li>
+      <li>Look at these unit tests to better understand the correespondence between a List's abstract value and its internal representation</li>
+    </ul>
+  </li>
+  <li>L4R tesing second
+    <ul>
+      <li>These test at the abstract level only and would work for any List implementation</li>
+    </ul>
+  </li>
+  <li>Unfortunately the unit tests in L4D and L4R do not thoroughly test the List3.hpp member functions</li>
+  <li>If you want to earn full credit for this assignment you must add more unit tests, particularly to L4D.cpp</li>
+</ul>
+<p><em>Use Boundary Condition Testing</em>:</p>
+<ul>
+  <li>Add/Remove/Access at the front, middle, and at the end of a List <br>
+  the <em>middle</em> is not a boundary, but the front and end are</li>
+  <li>Add to an empty List and Remove from a List with 1 item to make it empty <br>
+  the boundary here is going from empty to non-empty on an Add, and going from non-empty to empty on a Remove</li>
+  <li>There are 4 addRightFront's unit tests - use these 4 different tests as a guide for boundary condition testing the other member functions:
+    <ol>
+      <li>adds an item to: (&lt;&gt;,&lt;&gt;) - incoming List is empty</li>
+      <li>adds an item to: (&lt;&gt;,&lt;22&gt;) - incoming List has empty left and non-empty right</li>
+      <li>adds an item to: (&lt;17,2,10&gt;,&lt;11&gt;) - incoming List has non-empty left and non-empty right</li>
+      <li>adds an item to: (&lt;17,2,10,83&gt;,&lt;&gt;) - incoming List has non-empty left and empty right</li>
+    </ol>
+    <ul>
+      <li>Notice that in both #2 and #3, there is only one item in the List's right prior to the call to addRight Front. If I were to add additional tests for addRightFront, I would vary #2 and #3 above by having more items in the List's right before the call to addRightFront. </li>
+    </ul>
+  </li>
+</ul>
+<p><em>My test cases</em>:</p>
+<p>When grading I will be running my own more complete set of unit tests that will systematically stress your member function implementations</p>
 
+<hr>
+<h3>4. Grading Guidelines</h3>
+<h4>Failure of Your Submission to Correctly Compile - 100 out of 100 points</h4>
+<ul>
+  <li>If your submission does not compile correctly so that I cannot run my test cases, zero points will be earned</li>
+</ul>
+<h4>Violation of "Important Restrictions" (see above) - 40 points maximum</h4>
+<ul>
+  <li>8 points each up to 40 points</li>
+</ul>
+<h4>Unused Variables/Code - 10&nbsp; points maximum</h4>
+<p>For unused variables and code remaining anywhere in List3.hpp</p>
+<ul>
+  <li>1st offense 0 points off</li>
+  <li>2nd offense 6 points off</li>
+  <li>3rd offense 4 points off</li>
+  <li>4th offense, etc., no more points off</li>
+</ul>
+<h4>Operation Implementations - 60 points maximum</h4>
+<p>6 points off for each incorrect operation listed in the check list below that does not meet its ensures clause, not to exceed 60 points</p>
+<p><img src="List3CheckList.png" width="299" height="363" alt="List3 check list" /></p>
+<hr>
+<h3>5. Submitting the Lab for Grading</h3>
+<p>Upload L4's completed<em> List3.hpp </em>file to the L4 Moodle assignment</p>
 </body>
 </html>
