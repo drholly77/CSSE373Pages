@@ -12,7 +12,7 @@
 <ul>
   <ul>
     <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/ListTemplate.html" target="_blank">List Specification</a></li>
-    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/QueueTemplate.html" target="_blank">Queue Specification</a></li>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/StackTemplate.html" target="_blank">Stack Specification</a></li>
   </ul>
 </ul>
 <hr>
@@ -71,7 +71,7 @@
 <h4>2.1 Primary Objectives</h4>
 <p>The primary objective of this lab is to provide you experience working with:</p>
 <ul>
-  <li>Layering a component (e.g., List) on another already existing component (e.g., Queue).</li>
+  <li>Layering a component (e.g., List) on another already existing component (e.g., Stack).</li>
 </ul>
 <h4>2.2 Specifics</h4>
 <p><em>Steps</em>:</p>
@@ -84,9 +84,8 @@
 </ol>
 <p><em>Hints</em>:</p>
 <ul>
-  <li>addRightFront() has been done for you - study the code in that operation to help you understand the <em>correspondence</em></li>
   <li>Reread the Component Layering slides from Week #4 on the CSSE373 Moodle site</li>
-  <li>Reference the Queue and List specifications</li>
+  <li>Reference the Stack and List specifications</li>
   <li>Implement all of List3's stubbed out member functions based on the instructional materials</li>
   <li>Look for the TODO comments in List3.hpp</li>
 </ul>
@@ -106,15 +105,15 @@
   </ul>
   <li><strong>No Cross Calling - </strong>None of List's member functions are permitted to make calls to any of the other <em>public</em> List member functions, i.e., no cross calling
     <ul>
-      <li>For example, under this rule it is illegal for the <em>swapRights</em> operation to call any other List operation, e.g., <em>addRightFront</em></li>
-      <li>All List operations (e.g.,<em> swapRights</em>) should directly manipulate List's data members (i.e., repRZ and repQ) in order to satisfy the operation's <em>ensures</em> clause</li>
+      <li>For example, under this rule it is illegal for the <em>moveToFinish</em> operation to call any other List operation, e.g., <em>advance</em></li>
+      <li>All List operations (e.g.,<em> swapRights</em>) should directly manipulate List's data members (i.e., repRZ and repStk) in order to satisfy the operation's <em>ensures</em> clause</li>
     </ul>
   </li>
   <li><strong>Calling Down</strong> - create private member functions that capture code that starts to appear in multiple different places in your List3 implementation and then instead of duplicating this code (i.e., having it appear in multiple different member function implementations) make a <em>call down</em> to the private member function from the public member function - this engineering technique is called procedural abstraction and the call is call <em>calling down</em> - for this assignment a private operation that can move items from one queue to second queue will come in real handy</li>
   <li><strong>No Recursion</strong> - None of List's member functions are permitted to be recursive</li>
   <li><strong>About Making Copies</strong> -
     <ul>
-      <li>Copying the  data members <em>repRZ </em>or <em>repQ</em> - When implementing List3's <em>operator =</em> you must use Queue's <em>operator =</em> to make a copy of <em>repRZ</em> and <em>repQ</em>. Do not call <em>operator =</em> to make a copy of <em>repRZ </em>or <em>repQ </em>in any implementation of the other List3 member functions - this is a performance constraint. If when implementing any other List operations you think you need to call <em>operator =</em> to make a copy of<em> repRZ </em>or <em>repQ</em>, then rethink your algorithm until you figure out a way to not make a copy. Use transferFrom.</li>
+      <li>Copying the  data members <em>repRZ </em>or <em>repStk</em> - When implementing List3's <em>operator =</em> you must use Stack's <em>operator =</em> to make a copy of <em>repRZ</em> and <em>repStk</em>. Do not call <em>operator =</em> to make a copy of <em>repRZ</em> or <em>repStk</em> in any implementation of the other List3 member functions - this is a performance constraint. If when implementing any other List operations you think you need to call <em>operator =</em> to make a copy of<em> repRZ </em>or <em>repStk</em>, then rethink your algorithm until you figure out a way to not make a copy. Use transferFrom.</li>
       <li>Copying variables of type T - There is no need to make copies of the items being added or removed to the list. These are all items of type T. If you need to move items of type T from one variable to another, then call the <em>transferFrom</em> operation to do it.</li>
     </ul>
   </li>
@@ -151,7 +150,7 @@
       <li>adds an item to: (&lt;17,2,10,83&gt;,&lt;&gt;) - incoming List has non-empty left and empty right</li>
     </ol>
     <ul>
-      <li>Notice that in both #2 and #3, there is only one item in the List's right prior to the call to addRight Front. If I were to add additional tests for addRightFront, I would vary #2 and #3 above by having more items in the List's right before the call to addRightFront. </li>
+      <li>Notice that in both #2 and #3, there is only one item in the List's right prior to the call to addRight Front. If I were to add additional tests for addRightFront, I would vary #2 and #3 above by having more items in the List's right before the call to addRightFront</li>
     </ul>
   </li>
 </ul>
