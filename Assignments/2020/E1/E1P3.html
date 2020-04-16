@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Exam 1 Part 3</title>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Exam 1 Part 3 - Using Correspondence to Layer a Component</h1>
+<h3>0. Reference material</h3>
+<ul>
+  <ul>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/ListTemplate.html" target="_blank">List Specification</a></li>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/StackTemplate.html" target="_blank">Stack Specification</a></li>
+  </ul>
+</ul>
+<hr>
+<h3>1. Setup</h3>
+<table border="0" width="100%">
+  <tbody>
+    <tr>
+      <td valign="top"><h4>1.1 Get the E1P3-Starter Download</h4>
+        <ul>
+          <li>Download <em>E1P3-Starter.zip</em>&nbsp;to your machine - to be used on a subsequent steps</li>
+        </ul></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top"><h4>1.2 Copy List5.hpp from the E1P3-Starter.zip</h4>
+        <ul>
+          <li>Inside E1P3-Starter.zip is a file named List5.hpp
+            <ul>
+              <li>For this assignment you will be making changes to this file</li>
+            </ul>
+          </li>
+          <li>Copy this file to the following folder on your machine <em>CppDevSp20\components\include\List </em></li>
+        </ul>
+        <h4>1.3 Copy Folder from the E1P3-Starter.zip</h4>
+        <ul>
+          <li>Inside E1P3-Starter.zip is one folder named E1P3D </li>
+          <li>Copy this folder to your <em>CppDevSp20</em> folder as shown in the screen shot to the right</li>
+          <li>Once you copy these folders you can use Visual Studio to open the E1P3D project by double clicking on E1P3D.sln </li>
+        </ul>
+        <h4>1.4 About Project E1P3D</h4>
+        <ul>
+          <li>Project E1P3D contains a Visual Studio 2019 unit test project</li>
+          <li>A project can be opened with VS2019 by double clicking on the file E1P3D.sln  file </li>
+          <li>This project will build correctly if you have followed the instructions in 1.1 - 1.3 (above)</li>
+          <li>E1P3D
+            <ul>
+              <li>is to be used only in Debug mode - that's what the 'D' of E1P3D stands for</li>
+              <li>E1P3D.cpp contains unit tests for List5.hpp</li>
+              <li>E1P3D.cpp's unit tests test a List variable using the List's internal representation, not it's abstract value          </li>
+            </ul>
+          </li>
+        </ul></td>
+      <td valign="top"><p><img src="E1P3FolderView.png" width="262" height="521" alt=""/></p></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h3>2. E1P3 Statement of Work</h3>
+<h4>2.1 Primary Objectives</h4>
+<p>The primary objective of this assessment is to determine how well you can layer a component by using a provided internal represenation and correspondence contract.</p>
+<h4>2.2 Specifics</h4>
+<p><em>Steps</em>:</p>
+<ol>
+  <li>Start Visual Studio</li>
+  <li>Open project E1P3D</li>
+  <li>Find and open List5.hpp</li>
+  <li>Implement a member function - think strategically, some need to be done before others in order to for a unit test's &quot;Test set up&quot; part to work correctly<br>
+  </li>
+</ol>
+<p><em>Important Restrictions</em>:</p>
+<ol>
+  <li><strong>Obey the correspondence </strong>- When implementing the member functions you must obey the correspondence internal contract<br>
+    That means: </li>
+  <ul>
+    <li>assume that the correspondence holds when the member function is called</li>
+    <li>guarantee that the correspondence holds when the member function exits</li>
+  </ul>
+  <li><strong>Use Design by Contract</strong> - No defensive programming of List's operations</li>
+
+  <ul>
+    <li>What this means is that the implementation of a List operation must not contain code that checks to make sure that the List operation was called correctly by the client</li>
+  </ul>
+  <li><strong>No Cross Calling - </strong>None of List's member functions are permitted to make calls to any of the other <em>public</em> List member functions, i.e., no cross calling
+    <ul>
+      <li>For example, under this rule it is illegal for the <em>moveToFinish</em> operation to call any other List operation, e.g., <em>advance</em></li>
+      <li>All List operations should directly manipulate List's data members </li>
+    </ul>
+  </li>
+  <li><strong>Calling Down</strong> - is encouraged (but not required) by creating private member functions that capture code that starts to appear in multiple different places in your List5 implementation. Do this to avoid the duplicaiton of  code</li>
+  <li><strong>No Recursion</strong> - None of List's member functions are permitted to be recursive</li>
+  <li><strong>About Making Copies</strong> -
+    <ul>
+      <li>When implementing List5's <em>operator =</em> you must use Stack's <em>operator =</em> to make a copy of the data members. Otherwise do not call <em>operator =</em> with the List5 data members or with variables of type T.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr>
+<h3>3. Testing</h3>
+<ul>
+  <li>E1P3D testing first
+    <ul>
+      <li>These test against the List's internal representation, so these unit tests will only work with this particular implementation</li>
+      <li>Look at these unit tests to better understand the correespondence between a List's abstract value and its internal representation  </li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h3>4. Grading Guidelines</h3>
+<h4>Failure of Your Submission to Correctly Compile -  40 out of 40 points</h4>
+<ul>
+  <li>If your submission does not compile correctly so that I cannot run my test cases, zero points will be earned</li>
+</ul>
+<h4>Violation of "Important Restrictions" (see above) - 40 points maximum</h4>
+<ul>
+  <li>4 points each up to 20 points</li>
+</ul>
+<h4>Operation Implementations - 30 points maximum</h4>
+<ul>
+  <li>4 points off for each incorrect operation listed in the check list below that does not meet its ensures clause, not to exceed 60 points</li>
+</ul>
+<p><img src="List5CheckList.png" width="299" height="363" alt=""/></p>
+<hr>
+<h3>5. Submitting the Lab for Grading</h3>
+<p>Upload your completed<em> List5.hpp </em>file to the E1P3 Moodle assignment in Week #5</p>
+<p>&nbsp;</p>
+</body>
+</html>
