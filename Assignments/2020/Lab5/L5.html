@@ -13,6 +13,17 @@
   <ul>
     <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/SequenceTemplate.html" target="_blank">Sequence Specification</a></li>
     <li>Week #4 Instructional Materials on Layering</li>
+    <li>Reference slides:
+      <ul >
+        <ul >
+          <li ><a href="https://drholly77.github.io/CSSE373Pages/Slides/SequenceSpec/SequenceExplanationPart1-Overview.pdf" target="_blank" >Sequence Overview</a></li>
+          <li ><a href="https://drholly77.github.io/CSSE373Pages/Slides/SequenceSpec/SequenceExplanationPart2-5StdOps.pdf" target="_blank" >Sequence Standard Ops</a></li>
+          <li><a href="https://drholly77.github.io/CSSE373Pages/Slides/SequenceSpec/SequenceExplanationPart3-AddingRemovingItems.pdf" target="_blank" >Sequence Specific Ops - for adding and removing</a></li>
+          <li><a href="https://drholly77.github.io/CSSE373Pages/Slides/SequenceSpec/SequenceExplanationPart4-Inspecting.pdf" target="_blank" >Sequence Specific Ops - for inspecting</a></li>
+          <li ><a href="https://drholly77.github.io/CSSE373Pages/Slides/SequenceSpec/SequenceExplanationPart5-AppendAndSplit.pdf" target="_blank" >Sequence Specific Ops - for append and split</a></li>
+        </ul>
+      </ul>
+    </li>
   </ul>
 </ul>
 <hr>
@@ -42,23 +53,20 @@
           <li>Copy L5R and L5Driver to your <em>CppDevSp20</em> folder as shown in the screen shot to the right</li>
           <li>You can  open L5Driver or L5R by double clicking on  the project's .sln file </li>
         </ul>
-		  
-		  
         <h4>1.4 About Project L5Driver</h4>
         <ul>
           <li>Contains Visual Studio 2019 .exe console generating project</li>
           <li>L5Driver will build correctly if you have followed the instructions in 1.1 - 1.3 (above)</li>
           <li>L5Driver:
-			  <ul>
-            <li>is to be used in Release mode</li>
-            <li>contains a command interpreter for Sequence</li>
-            <li>see &quot;TODO&quot; at the top of the driver.cpp file for the one step you must complete in order to ready L5Driver for testing your Sequence2 implementation</li>
+            <ul>
+              <li>is to be used in Release mode</li>
+              <li>contains a command interpreter for Sequence</li>
+              <li>see &quot;TODO&quot; at the top of the driver.cpp file for the one step you must complete in order to ready L5Driver for testing your Sequence2 implementation</li>
             </ul>
           </li>
           <li>The L5Driver command interpreter is the same one used for creating <em>Sequence.exe</em> found in <em>CppDevSp20/SampleDrivers</em> folder</li>
           <li>I recommend that you &quot;play around&quot; with this Sequence.exe sample found in the SampleDrivers folder</li>
         </ul>
-		  
         <h4>1.5 About Project L5R</h4>
         <ul>
           <li>Contains a Visual Studio 2019 unit test project (similar to the .exe generated in L1)</li>
@@ -66,76 +74,65 @@
           <li>L5R
             <ul>
               <li>is to be used only in Release mode - that's what the 'R' of L5R stands for</li>
-            <li>use this as another way to test your implementation of Sequence2.hpp</li>
+              <li>use this as another way to test your implementation of Sequence2.hpp</li>
               <li>L5R.cpp  contains unit tests for Sequence2.hpp</li>
               <li>L5R.cpp's unit tests test a Sequence variable using the Sequence's abstract value, not it's internal representation</li>
               <li>see the 3 &quot;TODOs&quot; at the top of L5R.cpp you must complete in order ready L5R for testing your Sequence2 implementation</li>
             </ul>
           </li>
-        </ul>
-		
-		</td>
+        </ul></td>
       <td valign="top"><p><img src="L5FolderView.png" width="211" height="556" alt=""/></p></td>
     </tr>
   </tbody>
 </table>
 <hr>
 <h3>2. L5 Statement of Work</h3>
-	
-	<table width="100%" border="0">
+<table width="100%" border="0">
   <tbody>
     <tr>
       <td valign="top"><h4>2.1 Primary Objectives</h4>
-<p>The primary objective of this lab is to provide you experience  with:</p>
-<ul>
-  <li>Layering a component (e.g., Sequence) on another already existing component (e.g., Stack).</li>
-  <li>Where you choose the underlying component upon which to do the layering</li>
-  <li>Where you choose the correspondence between the component being developed (Sequence in this case) and the underlying data structures</li>
-</ul></td>
+        <p>The primary objective of this lab is to provide you experience  with:</p>
+        <ul>
+          <li>Layering a component (e.g., Sequence) on another already existing component (e.g., Stack).</li>
+          <li>Where you choose the underlying component upon which to do the layering</li>
+          <li>Where you choose the correspondence between the component being developed (Sequence in this case) and the underlying data structures</li>
+        </ul></td>
       <td width="310"><img src="SequenceLayering.png" width="310" height="264" alt=""/></td>
     </tr>
   </tbody>
 </table>
-	
 <p>&nbsp;</p>
-	
-	
 <table width="100%" border="0">
   <tbody>
     <tr>
       <td valign="top"><h4>2.2 Specifics</h4>
-<p><em>Steps</em>:</p>
-<ol>
-  <li>Start Visual Studio</li>
-  <li>Open project L5Driver</li>
-  <li>Find and open Sequence2.hpp</li>
-  <li>Choose a component from the list shown to the right for your your internal representation
-    <ul>
-      <li>Your component choice must come from the list to the right</li>
-      <li>You can find their specs on the <a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/" target="new">C++ Component Specs web page</a></li>
-      <li>You can find each of these components in sub-folders in: <em>CppDevSp20/components/include</em></li>
-    </ul>
-  </li>
-  <li>Create the correspondence between abstract Sequence values and your internal representations</li>
-  <li>Implement each Sequence2 member function - use the L5Driver command interpreter to test your implementation<br>
-  </li>
-</ol>
-<p><em>Hints</em>:</p>
-<ul>
-  <li>Reread the Component Layering slides from Week #4 on the CSSE373 Moodle site</li>
-  <li>Reference the Sequence specifications</li>
-  <li>Implement all of Sequence2's stubbed out member functions</li>
-  <li>Look for the TODO comments in Sequence2.hpp</li>
-</ul></td>
+        <p><em>Steps</em>:</p>
+        <ol>
+          <li>Start Visual Studio</li>
+          <li>Open project L5Driver</li>
+          <li>Find and open Sequence2.hpp</li>
+          <li>Choose a component from the list shown to the right for your your internal representation
+            <ul>
+              <li>Your component choice must come from the list to the right</li>
+              <li>You can find their specs on the <a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/" target="new">C++ Component Specs web page</a></li>
+              <li>You can find each of these components in sub-folders in: <em>CppDevSp20/components/include</em></li>
+            </ul>
+          </li>
+          <li>Create the correspondence between abstract Sequence values and your internal representations</li>
+          <li>Implement each Sequence2 member function - use the L5Driver command interpreter to test your implementation<br>
+          </li>
+        </ol>
+        <p><em>Hints</em>:</p>
+        <ul>
+          <li>Reread the Component Layering slides from Week #4 on the CSSE373 Moodle site</li>
+          <li>Reference the Sequence specifications</li>
+          <li>Implement all of Sequence2's stubbed out member functions</li>
+          <li>Look for the TODO comments in Sequence2.hpp</li>
+        </ul></td>
       <td width="310"><img src="LayeredOnComponentChoices.png" width="222" height="350" alt=""/></td>
     </tr>
   </tbody>
 </table>
-	
-	
-
-	
-
 <p><em>Important Restrictions</em>:</p>
 <ol>
   <li><strong>Obey the correspondence </strong>- When implementing the member functions you must obey the correspondence internal contract<br>
@@ -145,7 +142,6 @@
     <li>guarantee that the correspondence holds when the member function exits</li>
   </ul>
   <li><strong>Use Design by Contract</strong> - No defensive programming of Sequence's operations</li>
-
   <ul>
     <li>What this means is that the implementation of a Sequence operation must not contain code that checks to make sure that the Sequence operation was called correctly by the client</li>
   </ul>
@@ -163,7 +159,6 @@
     </ul>
   </li>
 </ol>
-
 <hr>
 <h3>3. Testing</h3>
 <ul>
@@ -221,7 +216,6 @@
 </ul>
 <p><em>My test cases</em>:</p>
 <p>When grading I will be running my own more complete set of unit tests that will systematically stress your member function implementations</p>
-
 <hr>
 <h3>4. Grading Guidelines</h3>
 <h4>Failure of Your Submission to Correctly Compile - 100 out of 100 points</h4>
@@ -232,8 +226,6 @@
 <ul>
   <li>8 points each up to 40 points</li>
 </ul>
-
-
 <h4>Internal Representation and Correspondence - 10 points maximum</h4>
 <p>Includes:</p>
 <ol>
