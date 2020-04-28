@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="utf-8">
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+<meta name="author" content="Dr. Holly">
+<title>Details: Sequence Layered on Binary Tree</title>
+</head>
+
+<body>
+
+      <h2>Details: Sequence Layered on Binary Tree</h2>
+	
+<hr>
+<p><b>Sequence's Nice Properties:</b></p>
+<ul>
+  <li>Items stored in a sequence can be accessed via the <em>entry</em> operation similar to the
+    way items are randomly accessed in an array</li>
+  <li>A sequence's size is dynamic, i.e., it grows larger when more items are
+    added and shrinks when they are removed.</li>
+  <li>A sequence provides automatic shifting of items, so no <i>holes</i> are
+    created in the middle of the sequence:
+    <ul>
+      <li>upon insertion all items present that are to the right of the inserted
+        item are shifted to the right by one</li>
+      <li>upon deletion all items present that are to the right of the inserted
+        item are shifted left by one</li>
+    </ul>
+  </li>
+</ul>
+<p><b>Sequence's Drawbacks:</b></p>
+<ul>
+  <li>Since sequence is dynamic by nature, it cannot support O(1) (i.e.,
+    constant time) random access</li>
+  <li>If sequence is implemented by a standard one way linked list structure,
+    then worst case access will be O(N), or linear time in the number of items
+    stored in the sequence</li>
+  <li>The way to minimize the access time, and still enjoy the sequence's
+    benefits is to use a non-linear structure for the representation, e.g., a
+    binary tree</li>
+</ul>
+<hr>
+<p><b>Using Binary Tree for Sequence's Representation</b></p>
+<ul>
+  <li>Worst case access time of any item in the sequence can be O(log<font size="2"><sub>2</sub></font>(N)),
+    if all the items stored in a sequence, are stored internally in a balanced
+    binary tree</li>
+  <li>In order for this work, a correspondence must be created between the
+    position at which an item is stored in the sequence, to where it is stored
+    in the binary tree</li>
+  <li>For example, when accessing position 3 of a sequence, the 3 must uniquely
+    identify where in the tree the item at position 3 is located</li>
+  <li><i>The In-Order Traversal Correspondence Property</i> - Guarantees that the in-order traversal of the tree
+    visits each label in the tree in the same order as if one were indexing
+    through the sequence starting at 0</li>
+</ul>
+<p><b>Example:</b></p>
+<table border="0" width="80%">
+  <tr>
+    <td width="80%" valign="top">
+      <ul>
+        <li>The in-order traversal of the tree to the right  would visit the
+          values in the following order: 5, 3, 4, 0, 2, 6, 1</li>
+        <li>The numbers in blue adjacent to each node are a numbering of the
+          nodes showing which node is visited first, second, third, etc.,
+          starting with 0</li>
+        <li>s = &lt;5,3,4,0,2,6,1&gt; is a
+          sequence whose values are in the same order as the in-order
+          traversal.&nbsp; Therefore the position of each value in the sequence exactly matches the
+          <i>blue</i> numbering of the
+          nodes.&nbsp; That is, 4 is at position number 2 in s, and the node
+          with the blue number 2 in the tree contains the value 4.</li>
+      </ul>
+    </td>
+    <td width="20%"><img border="1" src="SeqBTEx.GIF" width="117" height="92"></td>
+  </tr>
+</table>
+<hr>
+<p><b>Sequence's <em>add</em> Operation</b></p>
+<ul>
+  <li>Sequence's <em>add</em> operation must guarantee that the In-Order Traversal
+  Correspondence Property holds after each call to <i>add</i></li>
+  <li>But, sequence's <em>add</em> is not the real workhorse, <i>add</i> must call a private
+  member function to do the work, let's call this operation <i>insertInTree</i></li>
+  <li><i>insertInTree</i>:
+    <ul>
+      <li>Is a private member function inside of Sequence</li>
+      <li>Is a recursive operation since it works on a recursive data structure,
+        i.e., the tree</li>
+      <li>Its job is to insert the new value into the tree based on the position
+        where the item is to be inserted</li>
+      <li>After it is done, the in-order traversal of the tree must visit the
+        nodes in the same order as if one were indexing through the sequence
+        starting at 0</li>
+      <li>The <u> base case</u> is when <i>insertInTree</i> reaches an empty tree:
+        <ul>
+          <li><i>insertInTree</i> has navigated to the correct location in the tree.</li>
+          <li>It just composes the insertion object x into the tree at that point, with
+        empty left and right subtrees.</li>
+        </ul>
+      </li>
+      <li>When <u> not at the base case</u>:
+        <ul>
+          <li><i>insertInTree</i> uses the insertion position to navigate to the
+          correct location.&nbsp; </li>
+          <li>It does not use the value of the object being inserted for
+            navigation.&nbsp; Remember how a regular binary search tree uses the object values to do
+          its navigation?&nbsp; That does not happen here</li>
+          <li><i>Insert the new item in the left subtree</i>: if the insertion
+            position &le; the size of the left subtree.&nbsp; Just call
+            <i>insertInTree</i> with x (the object to be inserted), position, and the
+          left subtree</li>
+          <li><i>Insert the new item in the right subtree</i>: if the insertion
+            position &gt; the size of the left subtree.&nbsp; Call
+            <i>insertInTree</i> with x, adjustedPosition, and the right subtree,
+		  where:
+		  <pre>adjustedPosition = pos - (|left| + 1)</pre></li>
+          <li>This adjustedPosition must be computed because when <i>insertInTree</i>
+            recurses into the right subtree, it doesn't have access to the size
+            of the left subtree anymore.&nbsp; The way to implicitly give it
+            that information is to adjust the insertion position like we are
+            doing here.&nbsp; The &quot;+ 1&quot; counts the value stored in the
+          root of the current tree</li>
+          <li>Another way to view it is: when inserting at position <i>p</i>,
+            all values in the sequence to the left of p must be located in some
+            left subtree or subtrees, so that if an in-order traversal were
+            done, all those left subtree(s) would have been visited before
+            visiting the object being inserted at position p</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<div align="center">
+  <center>
+<table border="1" width="80%">
+  <tr>
+    <td width="100%"><pre><b>template</b> &lt;<b>class</b> T&gt;
+<b>void</b> Sequence3&lt;T&gt;::<i>insertInTree</i> (TreeOfT&amp; t, Integer pos, T&amp; x)
+   //! updates t
+   //! restores pos
+   //! clears x
+   //! requires: 0 &lt;= pos &lt;= |t|
+   //! ensures: there exists a, b : BinaryTree of T (t = (x,a,b) and 
+   //!          inorderTraversal(#t) = inorderTraversal(a) * inorderTraversal(b) and
+   //!          |a| = pos)
+   //! decreases |t|
+{
+ //...
+}  // <i>insertInTree</i>
+     
+//------------------------------------------------------------
+
+<b>template</b> &lt;<b>class</b> T&gt;
+<b>void</b> Sequence3&lt;T&gt;::<i>add</i> (Integer pos, T&amp; x)
+   //! updates self
+   //! restores pos
+   //! clears x
+   //! requires: 0 &lt;= pos &lt;= |self|
+   //! ensures: self = #self[0, pos) * &lt;#x&gt; * #self[pos, |#self|)
+{
+   <i>insertInTree</i> (rep, pos, x);
+}  // <i>add</i>
+</pre></td>
+  </tr>
+</table>
+  </center>
+</div>
+<p><b>Example: A Series of <i>add</i> Operations</b></p>
+<div align="center">
+  <center>
+  <table border="1" width="95%">
+    <tr>
+      <td width="20%">&nbsp;</td>
+      <th width="30%">Conceptual Sequence Value</th>
+      <th width="25%">Internal Representation Value<br>
+        Unbalanced Tree</th>
+      <th width="25%">Internal Representation Value<br>
+        Balanced Tree</th>
+    </tr>
+    <tr>
+      <td width="20%"><code>IntegerSequence s1;</code></td>
+      <td width="30%">s1 = &lt; &gt;</td>
+      <td width="25%" align="center"><b>rep = </b> EMPTY</td>
+      <td width="25%" align="center"><b>rep = </b> EMPTY</td>
+    </tr>
+    <tr>
+      <td width="20%"><p><code>x1 = 3;<br>
+      s1.add(0, x1);</code></p></td>
+      <td width="30%">s1 = &lt;3&gt;</td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b><img border="0" src="seqBT1.GIF" width="25" height="24"></td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT1.GIF" width="25" height="24"></td>
+    </tr>
+    <tr>
+      <td width="20%"><code>x1 = 4;<br>
+      s1.add(1, x1);</code></td>
+      <td width="30%">s1 = &lt;3,4&gt;</td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT2.GIF" width="50" height="46"></td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT2.GIF" width="50" height="46"></td>
+    </tr>
+    <tr>
+      <td width="20%"><code>x1 = 0;<br>
+      s1.add(0, x1);</code></td>
+      <td width="30%">s1 = &lt;0,3,4&gt;</td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT3.GIF" width="73" height="48"></td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT3.GIF" width="73" height="48"></td>
+    </tr>
+    <tr>
+      <td width="20%"><code>x1 = 1;<br>
+      s1.add(1, x1);</code></td>
+      <td width="30%">s1 = &lt;0,1,3,4&gt;</td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT4.GIF" width="73" height="72"></td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT4.GIF" width="73" height="72"></td>
+    </tr>
+    <tr>
+      <td width="20%"><code>x1 = 2;<br>
+      s1.add(2, x1);</code></td>
+      <td width="30%">s1 = &lt;0,1,2,3,4&gt;</td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT5.GIF" width="73" height="91"></td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT5B.GIF" width="96" height="70"></td>
+    </tr>
+    <tr>
+      <td width="20%"><code>x1 = 6;<br>
+      s1.add(5, x1);</code></td>
+      <td width="30%">s1 = &lt;0,1,2,3,4,6&gt;</td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT6.GIF" width="99" height="88"></td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT6B.GIF" width="114" height="70"></td>
+    </tr>
+    <tr>
+      <td width="20%"><code>x1 = 5;<br>
+      s1.add(5, x1);</code></td>
+      <td width="30%">s1 = &lt;0,1,2,3,4,5,6&gt;</td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT7.GIF" width="101" height="85"></td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT7B.GIF" width="113" height="70"></td>
+    </tr>
+    <tr>
+      <td width="20%"><code>x1 = 7;<br>
+      s1.add(7, x1);</code></td>
+      <td width="30%">s1 = &lt;0,1,2,3,4,5,6,7&gt;</td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT8.GIF" width="116" height="85"></td>
+      <td width="25%" align="center"><b>rep =&nbsp;<br>
+        </b> <img border="0" src="seqBT8B.GIF" width="131" height="91"></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p><b>Maintaining Balance</b></p>
+
+<ul>
+  <li>The worst case access time for accessing a value depends on the height of
+    the tree</li>
+  <li>If the tree becomes highly unbalanced, then the worst case access time
+    tends toward O(N), where N is the number of nodes in the tree</li>
+  <li>If the tree is maintained in a well-balanced state, then access time is O(log<font size="2"><sub>2</sub></font>(N)).&nbsp;
+    Meaning that the deepest we will ever have to look in the tree is log<font size="2"><sub>2</sub></font>(N)
+    levels</li>
+  <li>Question: If we use the standard binary tree rotations, will the tree
+    still have the <i>in-order traversal correspondence property</i>?<br>
+    Yes!&nbsp; Because the in-order traversal of a tree before it is balanced is
+    the same as it is after its balanced<br>
+    See the right-most column in the table above</li>
+</ul>
+<hr>
+<p><b>Implementing the Other Sequence Operations</b></p>
+<em>remove</em>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td  width="40%" valign="top"><ul>
+      <li>Calls <i>extractFromTree</i></li>
+      <li>Uses the position to navigate to the correct node in the tree</li>
+      <li>Base case:&nbsp;
+        <ul>
+          <li>When pos = |left|</li>
+          <li>Must remove label and leave tree in consistent state</li>
+          <li>Hardest case is when node has non-empty left &amp; right subtrees</li>
+          <li>But it's not so hard, just remove rightmost node from left subtree.&nbsp;
+            Use this value to replace the one that's being removed</li>
+          <li>Example: remove(3, x1) from the last tree above</li>
+        </ul>
+      </li>
+    </ul></td>
+      <td width="60%" valign="top"><pre><strong>void</strong> insertInTree(TreeOfT&amp; t, Integer pos, T&amp; x);
+//! updates t
+//! restores pos
+//! clears x
+//! requires: 0 &lt;= pos &lt;= |t|
+//! ensures: there exists a, b : BinaryTree of T (t = (x,a,b) and 
+//!          inorderTraversal(#t) = inorderTraversal(a) * inorderTraversal(b) and
+//!          |a| = pos)
+//! decreases |t|</pre></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<i>replaceEntry</i>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td width="40%" valign="top"><ul>
+      <li>Calls <i>replaceInTree</i></li>
+      <li>Uses the position to navigate to the correct node in the tree</li>
+      <li>Base case:&nbsp;
+        <ul>
+          <li>When pos = |left|</li>
+          <li>Swap the value into/out of the node</li>
+        </ul>
+      </li>
+    </ul></td>
+      <td width="60%" valign="top"><pre><strong>void</strong> replaceInTree(TreeOfT&amp;t, Integer pos, T&amp;x)
+//! updates t
+//! restores pos
+//! replaces x
+//! requires: 0 &lt;= pos &lt; |t|
+//! ensures: there exists y : T (there exists a, b : BinaryTree of T (#t = (y,a,b) and 
+//!          t = (x,a,b) and
+//!          inorderTraversal(t) = inorderTraversal(a) * &lt;x&gt; * inorderTraversal(b) and
+//!          |a| = pos and
+//!          x = y))
+//! decreases |t|</pre></td>
+    </tr>
+  </tbody>
+</table>
+	
+    
+<br>
+<em>entry</em>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td width="40%" valign="top"><ul>
+      <li>Calls <i>treeAccessor</i></li>
+      <li>Uses the position to navigate to the correct node in the tree</li>
+      <li>Base case:&nbsp;
+        <ul>
+          <li>When pos = |left|</li>
+          <li>Returns reference to label of node</li>
+        </ul>
+      </li>
+    </ul></td>
+      <td width="60%" valign="top"><pre>T&amp; treeAccessor(TreeOfT&amp; t, Integer pos)
+//! restores t
+//! restores pos
+//! requires: 0 &lt;= pos &lt; |t|
+//! ensures: there exists a, b : BinaryTree of T (t = (a,treeAccessor,b) and |a| = pos)
+//! decreases |t|</pre></td>
+    </tr>
+  </tbody>
+</table>
+
+    
+<br>
+<i>append</i>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td width="40%" valign="top">   <ul>
+      <li>Calls <i>concatenateTrees</i></li>
+      <li>Takes tree from each sequence and composes one big tree</li>
+      <li>Initial approach, remove rightmost node from left subtree and make it
+        the root of the combined trees.&nbsp; (Or remove leftmost node from
+        right subtree.)</li>
+      <li>Fails to build a balanced tree if the two trees being composed are not
+        the same height</li>
+      <li>Requires a more sophisticated approach to maintain balance</li>
+    </ul></td>
+      <td width="60%" valign="top"><pre><strong>void</strong> concatenateTrees(TreeOfT&amp; t1, TreeOfT&amp; t2)
+//! updates t1
+//! clears t2
+//! ensures: inorderTraversal(t1) = inorderTraversal(#t1) * inorderTraversal(#t2)
+//! decreases |t1| or |t2|</pre></td>
+    </tr>
+  </tbody>
+</table>
+
+ 
+<br>
+<i>split</i>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td width="40%" valign="top"><ul>
+      <li>Calls <i>splitTree</i> with 3 parameters: the &quot;giving&quot; tree (the
+        tree being split), the &quot;receiving&quot; tree (the tree to receive
+        what's split off from the giving tree, and the position in the sequence
+      where the split must take place.</li>
+      <li>Straight forward approach (below) will fail to maintain balance in
+        either tree.</li>
+    </ul></td>
+      <td width="60%" valign="top"><pre><strong>void</strong> splitTree(TreeOfT&amp; t1, Integer pos, TreeOfT&amp; t2)
+//! updates t1
+//! replaces t2
+//! restores pos
+//! requires: 0 &lt;= pos &lt;= |t1|
+//! ensures: inorderTraversal(#t1) = inorderTraversal(t1) * inorderTraversal(t2) and |t1| = pos
+//! decreases |t1|</pre></td>
+    </tr>
+  </tbody>
+</table>
+
+    
+  
+
+<p><i>split</i> Examples:</p>
+<p>1) <code>sx.<i>split</i> (3, sy);</code></p>
+<table border="1" width="100%">
+  <tr>
+    <td width="25%" align="center"><b>sx before Decompose</b></td>
+    <td width="75%" colspan="3" align="center"><b>sx after Decompose</b></td>
+  </tr>
+  <tr>
+    <td width="25%" align="center"><font size="2">sx = &lt;0,1,2,3,4,5,6,7&gt;</font></td>
+    <td width="25%" align="center">left</td>
+    <td width="25%" align="center">label</td>
+    <td width="25%" align="center">right</td>
+  </tr>
+  <tr>
+    <td width="25%" align="center"><img border="0" src="seqBT8B.GIF" width="131" height="91"></td>
+    <td width="25%" align="center"><img border="0" src="seqBT9L.gif" width="87" height="71"></td>
+    <td width="25%" align="center">3</td>
+    <td width="25%" align="center"><img border="0" src="seqBT9R.gif" width="102" height="99"></td>
+  </tr>
+</table>
+<ul>
+  <li>Base Case:
+    <ul>
+      <li>|left| = pos</li>
+      <li>sx.transferFrom(left)</li>
+      <li>sy.compose(label, EMPTY, right)</li>
+    </ul>
+  </li>
+  <li>final result: sx = &lt;0,1,2&gt;&nbsp; and sy = &lt;3,4,5,6,7 &gt;</li>
+</ul>
+<p>2) <code>sx.<i>split</i> (2, sy);</code></p>
+<ul>
+  <li>Case 2 - The split takes place somewhere in the left subtree
+    <ul>
+      <li>Call <i>splitTree</i> with <em>left</em> and pos = 3, and an empty <em>temp</em> tree</li>
+      <li><em>temp</em> comes back with &lt;2&gt;</li>
+      <li>Upon return from recursive call to <em>splitTree</em>, do:<br>
+        sy.compose (label, temp, right)        <br>
+      sx.transferFrom(left)</li>
+    </ul>
+  </li>
+  <li>final result: sx = &lt;0,1&gt;&nbsp; and sy = &lt;2,3,4,5,6,7 &gt;</li>
+</ul>
+<p>3) <code>sx.<i>split</i> (5, sy);</code></p>
+<ul>
+  <li>Case 3 - The split takes place somewhere in the right subtree
+    <ul>
+      <li>Call <i>splitTree</i> with <em>right</em>, pos - (|left| + 1), and an empty <em>temp</em> tree</li>
+      <li><em>temp</em> comes back with &lt;4&gt;</li>
+      <li>Upon return from recursive call to <em>splitTree</em>, do:<br>
+      sx.compose (label, left, temp)<br>
+      sy.transferFrom(right)</li>
+    </ul>
+  </li>
+  <li>final result: sx = &lt;0,1,2,3,4&gt;&nbsp; and sy = &lt;5,6,7&gt;</li>
+</ul>
+
+</body>
+
+</html>
