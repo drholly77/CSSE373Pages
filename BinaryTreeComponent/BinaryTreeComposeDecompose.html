@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="author" content="Dr. Holly">
+<title>BinaryTree Component - Compose &amp; Decompose</title>
+</head>
+
+<body>
+	
+	<h2>BinaryTree Component - Compose &amp; Decompose</h2>
+
+
+<hr>
+<p><b>The purpose of the BinaryTree component:</b></p>
+<ul>
+  <li>To hide the nodes and pointers from the client programmer</li>
+  <li>To provide operations which automatically handle connecting and unconnecting
+    tree nodes</li>
+  <li>To make client programming with binary trees easier</li>
+</ul>
+<hr>
+<p><b>Examples:</b></p>
+<p><code>#<b>include</b> &quot;BinaryTree/BinaryTree1.hpp&quot;<b><br>
+typedef</b> BinaryTree1&lt;Integer&gt; IntegerTree;<br>
+IntegerTree t;</code></p>
+<table border="1" width="100%">
+  <tr>
+    <td width="33%" align="center">Abstract Tree t</td>
+    <td width="33%" align="center">Semi-Abstract Tree t</td>
+    <td width="34%" align="center">Raw Nodes &amp; Pointers Tree t</td>
+  </tr>
+  <tr>
+    <td width="33%" align="center"><img src="bintreecomp1.gif" alt="Abstract tree size 5" width="149" height="118" border="0"></td>
+    <td width="33%" align="center"><img src="bintreecomp2.gif" alt="Nodes &amp; ptrs diagram of tree size 5" width="166" height="141" border="0"></td>
+    <td width="34%" align="center"><img src="bintreecomp3.gif" alt="Memory address version of tree of size 5" width="166" height="129" border="0"></td>
+  </tr>
+</table>
+<p><code><b>void</b> exampleOp (IntegerTree&amp; t)<br>
+//! updates t<br>
+{<br>
+&nbsp;&nbsp; IntegerTree leftSubtree, rightSubtree;<br>
+&nbsp;&nbsp; Integer label;<br>
+<br>
+&nbsp;&nbsp; // time 0<br>
+&nbsp;&nbsp; t.Decompose(label, leftSubtree, rightSubtree);<br>
+&nbsp;&nbsp; // time 1<br>
+&nbsp;&nbsp; // do something with leftSubtree and/or right subtree<br>
+&nbsp;&nbsp; // do something with label<br>
+&nbsp;&nbsp; t.Compose(label, leftSubtree, rightSubtree);<br>
+&nbsp;&nbsp; // time 2<br>
+}</code></p>
+<table border="1" width="100%">
+  <tr>
+    <td width="5%" align="center"><b>time</b></td>
+    <td width="20%" align="center"><b>t</b></td>
+    <td width="20%" align="center"><b>label</b></td>
+    <td width="20%" align="center"><b>leftSubtree</b></td>
+    <td width="20%" align="center"><b>rightSubtree</b></td>
+  </tr>
+  <tr>
+    <td width="5%" align="center">0</td>
+    <td width="20%" align="center"><img src="bintreecomp1.gif" alt="Original t size 5" width="149" height="118" border="0">
+      <p>size = 5<br>
+    height = 3</p></td>
+    <td width="20%" align="center">0</td>
+    <td width="20%" align="center">EMPTY
+      <p>size = 0<br>
+      height = 0</p></td>
+    <td width="20%" align="center">EMPTY
+      <p>size = 0<br>
+      height = 0</p></td>
+  </tr>
+  <tr>
+    <td width="5%" align="center">1</td>
+    <td width="20%" align="center">EMPTY
+      <p>size = 0</p></td>
+    <td width="20%" align="center">31</td>
+    <td width="20%" align="center"><img src="bintreecomp4.gif" alt="Left subtree" width="27" height="27" border="0">
+      <p>size = 1<br>
+    height = 1</p></td>
+    <td width="20%" align="center"><img src="bintreecomp5.gif" alt="Right subtree" width="73" height="68" border="0">
+      <p>size = 3<br>
+    height = 2</p></td>
+  </tr>
+  <tr>
+    <td width="5%" align="center">2</td>
+    <td width="20%" align="center"><img src="bintreecomp1.gif" alt="Original t size 5" width="149" height="118" border="0">
+      <p>&nbsp;</p>
+      <p>size = 5<br>
+      height = 3</p></td>
+    <td width="20%" align="center">0</td>
+    <td width="20%" align="center">EMPTY
+      <p>&nbsp;</p>
+      <p>size = 0<br>
+      height = 0</p></td>
+    <td width="20%" align="center">EMPTY
+      <p>&nbsp;</p>
+      <p>size = 0<br>
+      height = 0</p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>
