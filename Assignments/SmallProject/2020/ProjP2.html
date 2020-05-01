@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Project Part 2</title>
+<meta name="author" content="Dr. Holly">
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Project - Part 2</h1>
+<h3>0. Reference material</h3>
+<ul>
+  <ul>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/SequenceTemplate.html" target="_blank">Sequence Specification</a></li>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/BinaryTreeTemplate.html" target="_blank">BinaryTree Specification</a></li>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ReferenceParameters/ReferenceParameters.pdf" target="_blank">Reference Parameters and Recursion Explanation</a>
+      <ul >
+      </ul>
+    </li>
+  </ul>
+</ul>
+<hr>
+<h3>1. Setup</h3>
+<h4>1.1 Get the ProjP2Starter Download</h4>
+<ul>
+  <li>Download <em>ProjP2Starter.zip</em>&nbsp;to your machine - to be used on a subsequent steps</li>
+</ul>
+<h4>1.2 Copy Sequence0.hpp from the ProjP2Starter.zip</h4>
+<ul>
+  <li>Inside ProjP2Starter.zip is a file named Sequence0.hpp
+    <ul>
+      <li>For this assignment you will be making changes to this file</li>
+    </ul>
+  </li>
+  <li>Copy this file to the following folder on your machine <em>CppDevSp20/components/include/Sequence </em></li>
+</ul>
+<h4>1.3  Use Project L5Driver</h4>
+<ul>
+  <li>Use VisualStudio to open the L5Driver project (from assignment L5) </li>
+  <li>At the top of <em>driver.cpp</em>, change the #include so that it obtains Sequence0.hpp</li>
+  <li>L5Driver will build correctly if you have followed the instructions in 1.1 - 1.2 (above)</li>
+</ul>
+<hr>
+<h3>2. ProjP2 Statement of Work</h3>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><h4>2.1 Primary Objectives</h4>
+        <p>The primary objective of this lab is to provide you experience  with:</p>
+        <ul>
+          <li>Building a component directly in the programming language's raw data types, in this case with C++ Nodes &amp; Pointers</li>
+          <li>This implementation of Sequence will require you to write recursive operations</li>
+          <li>Note: this implemenation will not maintain a balanced binary tree</li>
+        </ul></td>
+      <td width="310"><img src="SequenceLayeringNodesPtrs.png" width="400" height="179" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<h4>2.2 Specifics</h4>
+<p><em>Steps</em>:</p>
+<ol>
+  <li>Start Visual Studio</li>
+  <li>Open project L5Driver</li>
+  <li>Implement each Sequence0 member functions - use the L5Driver command interpreter to test your implementation<br>
+  </li>
+</ol>
+<p><em>Hints</em>:</p>
+<ul>
+  <li>As a guide, use the nodes &amp; pointers implementation of Queue found in <em>Queue0.hpp</em> of <em>CppDevSp20/components/include/Queue</em></li>
+  <li>Implement all of Sequence0's stubbed out member functions and private helper functions</li>
+  <li>Many of your private helper member function implementations will look similar to Sequence3's implelementations</li>
+  <li>Look for the TODO comments in Sequence0.hpp</li>
+  <li>Reference the Sequence and BinaryTree specifications</li>
+</ul>
+<p><em>Important Restrictions</em>:</p>
+<ol>
+  <li><strong>Obey the correspondence </strong>- When implementing the member functions you must obey the correspondence internal contract<br>
+    That means: </li>
+  <ul>
+    <li>assume that the correspondence holds when the member function is called</li>
+    <li>guarantee that the correspondence holds when the member function exits</li>
+  </ul>
+  <li><strong>Use Design by Contract</strong> - No defensive programming of Sequence's operations</li>
+  <ul>
+    <li>What this means is that the implementation of a Sequence operation must not contain code that checks to make sure that the Sequence operation was called correctly by the client</li>
+  </ul>
+  <li><strong>No Cross Calling - </strong>None of Sequence's member functions are permitted to make calls to any of the other <em>public</em> Sequence member functions, i.e., no cross calling
+    <ul>
+      <li>All Sequence operations should directly manipulate Sequence's data members </li>
+    </ul>
+  </li>
+  <li><strong>Calling Down</strong> - is encouraged (but not required) by creating private member functions that capture code that starts to appear in multiple different places in your Sequence0 implementation. Do this to avoid the duplication of  code</li>
+  <li><strong>Recursion</strong> - You must used recursion for all private member functions</li>
+  <li><strong>About Making Copies</strong> -
+    <ul>
+      <li>When implementing Sequence0's <em>operator =</em> you must make a duplicate of the the binary tree which means you cannot just copy the pointer to the root of the tree and be done. You have to traverse the entire tree and while traversing you must construct a duplicate tree. While doing the traversal, you must call type T's operator equal in order to make a copy of the data stored in each node.</li>
+    </ul>
+  </li>
+</ol>
+<hr>
+<h3>3. Testing</h3>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td  valign="top"><ul>
+          <li>At a minimum, use L5Driver for your testing
+            <ul>
+              <li>1st - It is recommended that you test in Debug mode<br>
+                This means you should write a recursive helper that traverses the tree and displays something meaningful for debugging purposes <br>
+              Consider displaying the tree using the <em>nested list representation</em>, as shown to the right</li>
+              <li>2nd - It is recommended that you test in Release mode</li>
+              <li>Like on the previous lab, if you'd like to share your testing scripts or ideas, please feel free to do so</li>
+            </ul>
+          </li>
+        </ul></td>
+      <td align="center" valign="top"> <img src="bintreecomp1.gif" width="149" height="118" alt="binary tree"/>
+        <p>Nested list representation: (31,(21,E,E),(37,(35,E,E),(52,E,E)))</p>
+        <p>Uses 3-tuples of: (label, left, right) where E = Empty Tree</p></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h3>4. Grading Guidelines</h3>
+<h4>Failure of Your Submission to Correctly Compile - 100 out of 100 points</h4>
+<ul>
+  <li>If your submission does not compile correctly so that I cannot run my test cases, zero points will be earned</li>
+</ul>
+<h4>Violation of "Important Restrictions" (see above) - 40 points maximum</h4>
+<ul>
+  <li>8 points each up to 40 points</li>
+</ul>
+<h4>Internal Representation and Correspondence - 10 points maximum</h4>
+<p>Includes:</p>
+<ol>
+  <li>Your own internal representation declaring the Binary Tree's Node represenation</li>
+  <li>Data member(s) declare from your internal representation</li>
+</ol>
+<h4>Operation Implementations - 60 points maximum</h4>
+<ul>
+  <li>6 points off for each incorrect operation listed in the check list below that does not meet its ensures clause, not to exceed 60 points</li>
+  <li>Special note for ~Sequence0, the destructor. It must reclaim all the nodes in the binary tree, when it is invoked. Remember that the compiler takes care of calling the destructor whenever a Sequence0 variable goes out of scope, at that point it should reclaim all the nodes currently in the Sequence's tree. </li>
+  <li>Note: this implemenation will not maintain a balanced binary tree</li>
+</ul>
+<p><img src="Seq0CheckList.png" width="412" height="417" alt=""/></p>
+<hr>
+<h3>5. Submitting the Lab for Grading</h3>
+<p>Upload a completed<em> Sequence0.hpp </em>file to the <em>ProjP2</em> Moodle assignment</p>
+</body>
+</html>
