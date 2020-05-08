@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 
 <head>
 <meta charset="utf-8">
@@ -431,7 +432,7 @@
   
 
 <p><i>split</i> Examples:</p>
-<p>1) <code>sx.<i>split</i> (3, sy);</code></p>
+<p>1) <code><i>split</i> (sx, 3, sy);</code></p>
 <table border="1" width="100%">
   <tr>
     <td width="25%" align="center"><b>sx before Decompose</b></td>
@@ -444,47 +445,61 @@
     <td width="25%" align="center">right</td>
   </tr>
   <tr>
-    <td width="25%" align="center"><img border="0" src="seqBT8B.gif" width="131" height="91"></td>
-    <td width="25%" align="center"><img border="0" src="seqBT9L.gif" width="87" height="71"></td>
+    <td width="25%" align="center"><p><img border="0" src="seqBT8B.gif" width="131" height="91"></p>
+    <p><code>(3,(1,(0,(),()),(2,(),())),(5,(4,(),()),(6,(),(7,(),()))))</code></p></td>
+    <td width="25%" align="center"><p><img border="0" src="seqBT9L.gif" width="87" height="71"></p>
+    <p><code>(1,(0,(),()),(2,(),()))</code></p></td>
     <td width="25%" align="center">3</td>
-    <td width="25%" align="center"><img border="0" src="seqBT9R.gif" width="102" height="99"></td>
+    <td width="25%" align="center"><p><img border="0" src="seqBT9R.gif" width="102" height="99"></p>
+    <p><code>(5,(4,(),()),(6,(),(7,(),())))</code></p></td>
   </tr>
 </table>
 <ul>
   <li>Base Case:
     <ul>
+      <li>After t1.decompose(lable, left, right);<br>
+        label = 3<br>
+      left = <code>(1,(0,(),()),(2,(),()))</code><br>
+      right = <code>(5,(4,(),()),(6,(),(7,(),())))</code><br>
+      </li>
       <li>|left| = pos</li>
-      <li>sx.transferFrom(left)</li>
-      <li>sy.compose(label, EMPTY, right)</li>
+      <li>t1.transferFrom(left) to get t1 = <code>(1,(0,(),()),(2,(),()))</code></li>
+      <li>t2.compose(label, EMPTY, right) to get t2 = <code>(3,(),(5,(4,(),()),(6,(),(7,(),()))))</code></li>
     </ul>
   </li>
-  <li>final result: sx = &lt;0,1,2&gt;&nbsp; and sy = &lt;3,4,5,6,7 &gt;</li>
+  <li>final result  after <em>split(sx,3,sy)</em> returns: sx = &lt;0,1,2&gt;&nbsp; and sy = &lt;3,4,5,6,7 &gt;</li>
 </ul>
-<p>2) <code>sx.<i>split</i> (2, sy);</code></p>
+<p>2) <code><i>split</i>(sx,2,sy);</code></p>
 <ul>
   <li>Case 2 - The split takes place somewhere in the left subtree
     <ul>
-      <li>Call <i>splitTree</i> with <em>left</em> and pos = 2, and an empty <em>temp</em> tree</li>
-      <li><em>temp</em> comes back with &lt;2&gt;</li>
+      <li>Call <i>splitTree</i> with <em>left</em> and pos = 2, and an empty <em>temp</em> tree, here's the call:<br>
+		  <code>splitTree(left, pos, temp);</code><br><br>
+      </li>
+      <li><em>temp</em> comes back with: <code>(2,(),())</code></li>
+      <li><em>left</em> comes back with: <code>(1,(0,(),()),())</code></li>
       <li>Upon return from recursive call to <em>splitTree</em>, do:<br>
-        sy.compose (label, temp, right)        <br>
-      sx.transferFrom(left)</li>
+        t2.compose (label, temp, right)        to get t2 = <code>(3,(2,(),()),(5,(4,(),()),(6,(),(7,(),())))</code>)<br>
+      t1.transferFrom(left) to get t1 = <code>(1,(0,(),()),())</code></li>
     </ul>
   </li>
-  <li>final result: sx = &lt;0,1&gt;&nbsp; and sy = &lt;2,3,4,5,6,7 &gt;</li>
+  <li>final result after <em>split(sx,2,sy)</em> returns: sx = &lt;0,1&gt;&nbsp; and sy = &lt;2,3,4,5,6,7 &gt;</li>
 </ul>
-<p>3) <code>sx.<i>split</i> (5, sy);</code></p>
+<p>3) <code><i>split</i>(sx,5,sy);</code></p>
 <ul>
   <li>Case 3 - The split takes place somewhere in the right subtree
     <ul>
-      <li>Call <i>splitTree</i> with <em>right</em>, pos - (|left| + 1), and an empty <em>temp</em> tree</li>
-      <li><em>temp</em> comes back with &lt;4&gt;</li>
+      <li>Call <i>splitTree</i> with <em>right</em>, pos - (|left| + 1), and an empty <em>temp</em> tree, here's the call:<br>
+		  <code>splitTree(right, (pos - (left.size() + 1)), temp);</code><br><br>
+      </li>
+	  <li><em>temp</em> comes back with: <code>(5,(),(6,(),(7,(),())))</code></li>
+      <li><em>right</em> comes back with: <code>(4,(),())</code></li>
       <li>Upon return from recursive call to <em>splitTree</em>, do:<br>
-      sx.compose (label, left, temp)<br>
-      sy.transferFrom(right)</li>
+      t1.compose (label, left, right) to get: t1 = <code>(3,(1,(0,(),()),(2,(),())),(4,(),()))</code><br>
+      t2.transferFrom(temp) to get: t2 = <code>(5,(),(6,(),(7,(),())))</code></li>
     </ul>
   </li>
-  <li>final result: sx = &lt;0,1,2,3,4&gt;&nbsp; and sy = &lt;5,6,7&gt;</li>
+  <li>final result after <em>split(sx,5,sy)</em> returns: sx = &lt;0,1,2,3,4&gt;&nbsp; and sy = &lt;5,6,7&gt;</li>
 </ul>
 
 </body>
