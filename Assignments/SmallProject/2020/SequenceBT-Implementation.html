@@ -308,13 +308,13 @@
         </ul>
       </li>
     </ul></td>
-      <td width="60%" valign="top"><pre><strong>void</strong> insertInTree(TreeOfT&amp; t, Integer pos, T&amp; x);
+      <td width="60%" valign="top"><pre>void extractFromTree(TreeOfT&amp; t, Integer pos, T&amp; x)
 //! updates t
 //! restores pos
-//! clears x
-//! requires: 0 &lt;= pos &lt;= |t|
-//! ensures: there exists a, b : BinaryTree of T (t = (x,a,b) and 
-//!          inorderTraversal(#t) = inorderTraversal(a) * inorderTraversal(b) and
+//! replaces x
+//! requires: 0 &lt;= pos &lt; |t|
+//! ensures: there exists a, b : BinaryTree of T (#t = (a,x,b) and 
+//!          inorderTraversal(t) = inorderTraversal(a) * inorderTraversal(b) and
 //!          |a| = pos)
 //! decreases |t|</pre></td>
     </tr>
