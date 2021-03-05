@@ -63,8 +63,8 @@
 <p>&nbsp;</p>
 <h4>Overview of What To Do:</h4>
 <ul>
-  <li>The <em>driver.cpp</em> that you copied from the SeqDriver folder is a client program of the Queue1 component</li>
-  <li>Both client program and Queue1 component follow the Design by Contract approach where the client program is responsible for making sure that the precondition (requires clause) for the called operation (from the Queue component) is satisfied prior to making a call. Also, the Queue component's exported operations do not check to make sure that client as called correctly, they are implemented with the assumption that the client has called with all preconditions satisfied.</li>
+  <li>The <em>driver.cpp</em> that you copied from the SeqDriver folder is a client program of the Sequence4 component</li>
+  <li>Both client program and Sequence4 component follow the Design by Contract approach where the client program is responsible for making sure that the precondition (requires clause) for the called operation (from the Queue component) is satisfied prior to making a call. Also, the Queue component's exported operations do not check to make sure that client as called correctly, they are implemented with the assumption that the client has called with all preconditions satisfied.</li>
   <li>The client program in <em>driver.cpp</em> works with two Sequences, q1 and q2</li>
   <li>Your job is to modify each of the <em>driver.cpp</em> operations that currently work with q1 and q2 so that after modification it works with one variable which is an array of Sequences instead of two distinct queue variables</li>
 </ul>
@@ -80,36 +80,20 @@
 <p>Use the following example as a guide to creating an Array of Sequences</p>
 <div align="center">
   <center>
-    <table border="1" width="95%">
+    <table border="1" width="55%">
       <tr>
-        <td width="44%" valign="top"><p align="center"><b>Release Configuration Version</b></p></td>
-        <td width="54%" valign="top"><p align="center"><b>Debug Configuration Version</b></p></td>
-      </tr>
-      <tr>
-        <td width="44%" valign="top"><code><font size="1">// Array of Queue &lt;Text&gt;<br>
-          // Date: 3/20<br>
+        <td  valign="top"><code><font size="1">// Array of Sequence&lt;Text&gt;<br>
+          // Date: 3/21<br>
           <br>
-          #<b>include</b> &quot;Queue/Queue1.hpp&quot;<br>
+          #<b>include</b> &quot;Sequence/Sequence4.hpp&quot;<br>
           #<b>include</b> &quot;StaticArray/StaticArray1.hpp&quot;<br>
           <br>
           <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
-          <b>typedef</b> Queue1 &lt;Text&gt; TextQueue;<br>
+          <b>typedef</b> Sequence4 &lt;Text&gt; TextSequence;<br>
           <br>
           //Create a class called QueueArray, which is indexed from 0..4<br>
-          <b>typedef</b> StaticArray1 &lt;TextQueue, lowerBound, upperBound&gt; ArrayOfSequences;</font></code></td>
-        <td width="54%" valign="top"><code><font size="1">// Array of Queue &lt;Text&gt;<br>
-          // Date: 3/20<br>
-          <br>
-          #<b>include</b> &quot;Queue/Queue1.hpp&quot;<br>
-          #<strong>include</strong> &quot;Queue/QueueChecking.hpp&quot;<br>
-          #<b>include</b> &quot;StaticArray/StaticArray1.hpp&quot;<br>
-          #<strong>include</strong> &quot;StaticArray/StaticArrayChecking.hpp&quot;<br>
-          <br>
-          <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
-          <strong>typedef</strong> QueueChecking1&lt;Queue1, Text&gt;TextQueue;<br>
-          <br>
-          //Create checked QueueArray, which is indexed from 0..4<br>
-          <strong>typedef</strong> StaticArrayChecking1&lt;StaticArray1, TextQueue, lowerBound, upperBound&gt; ArrayOfSequences;</font></code></td>
+          <b>typedef</b> StaticArray1 &lt;TextSequence, lowerBound, upperBound&gt; ArrayOfSequences;</font></code></td>
+   
       </tr>
     </table>
   </center>
@@ -123,9 +107,9 @@
           argv[])<br>
           {<br>
           &nbsp;&nbsp; Boolean showMenu = (argc == 1);<br>
-          &nbsp;&nbsp; ArrayOfSequences aQ1;<br>
+          &nbsp;&nbsp; ArrayOfSequences aS1;<br>
           <br>
-          &nbsp;&nbsp; commandController (aQ1, showMenu);<br>
+          &nbsp;&nbsp; commandController (aS1, showMenu);<br>
           <br>
           &nbsp;&nbsp; wcout &lt;&lt; "end program" &lt;&lt; endl;<br>
           &nbsp;&nbsp; <b>return</b> 0;<br>
@@ -139,18 +123,20 @@
   <center>
     <table border="1" width="95%">
       <tr>
-        <td width="100%"><pre><strong>void</strong> doEnqueue(ArrayOfSequences&amp; aQ)
+        <td width="100%"><pre><strong>void</strong> doAdd (ArrayOfSequences&amp; aS)
 {
-	Integer index;
+	Integer i, p;
 	Text x;
 
-	wcout &lt;&lt; "Enqueue onto ";
-	index = getIndex(aQ);
+	wcout &lt;&lt; "Add to ";
+	i = getIndex(aS);
+	p = getPosition(aS[i].length());
 	getText(x);
-	aQ[index].enqueue(x);
-	wcout &lt;&lt; endl &lt;&lt; "q" &lt;&lt; index &lt;&lt; ".enqueue(x); executed." &lt;&lt; endl;
+	aS[i].add(p, x);
+
+	wcout &lt;&lt; endl &lt;&lt; "s[" &lt;&lt; i &lt;&lt; "].add(" &lt;&lt; p &lt;&lt; ", x); executed." &lt;&lt; endl;
 	wcout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; endl;
-}	// doEnqueue</pre></td>
+}	// doAdd</pre></td>
       </tr>
     </table>
   </center>
@@ -164,7 +150,7 @@
   <li>In <em>getIndex</em> use StaticArray's <em>getBounds</em> operation to determine the number of
     locations in the array<br>
     <code>Integer lowerB, upperB;<br>
-    aQ.getBounds (lowerB, upperB);<br>
+    aS.getBounds (lowerB, upperB);<br>
     // use lowerB and upperB to tell the user what the bounds
     are&nbsp;<br>
     // and to check to make sure the user supplied a good index</code></li>
@@ -178,9 +164,9 @@
         <ol>
           <li>Run the program and type in commands at the command prompt to exercise each of the<em> </em>operations that were modified</li>
           <li>In the folder <em>CppDevSp21/SeqDriver</em> there is a sub-folder called <em>TestScripts</em> which contains .txt files. Each .txt contains a sequence of command interpreter commands for the original SeqDriver implementation that uses only two Sequences. If you utilize these test scripts, you'll need to first study them to understand what they are asking the command interpreter to do, and then modify them slightly to work with your command interpreter that uses an array of sequences. Instead of running and retyping commands, you can run your command interpreter and then copy and paste modified tests scripts into your command interpreter while its running. </li>
-          <li>Once you have your own set of .txt test scripts, you can place them in  either the <em>L1/Debug</em> folder or the <em>L1/Release</em> folder and run the command interpreter from a command prompt and use file redirection to feed your test scripts into your .exe. See the <em>Testing - With a Test Script</em> reference page.</li>
+          <li>You can place them in  either the <em>L1/Debug</em> folder or the <em>L1/Release</em> folder and run the command interpreter from a command prompt and use file redirection to feed your test scripts into your L1.exe. See the <em>Testing - With a Test Script</em> reference page.</li>
         </ol></td>
-      <td width="410" align="right"><img src="L1Running.png" width="408" height="401" alt=""/></td>
+      <td width="360" align="right"><img src="L1Running.png" width="355" height="382" alt=""/></td>
     </tr>
   </tbody>
 </table>
@@ -191,7 +177,7 @@
 <p>See the Grading Rubric associated with the L1 Moodle assignment</p>
 <p>&nbsp;</p>
 <h2>5. Submitting the Assignment for Grading</h2>
-<p>Upload your L1 <em>driver.cpp</em> file to the L1 Moodle assignment </p>
+<p>Use VS2019 to commit your L1 project your GitHub Education CSSE373 repo</p>
 <p>&nbsp;</p>
 </body>
 </html>
