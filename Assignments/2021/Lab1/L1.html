@@ -62,9 +62,9 @@
 <h4>Overview of What To Do:</h4>
 <ul>
   <li>The <em>driver.cpp</em> that you copied from the SeqDriver folder is a client program of the Sequence4 component</li>
-  <li>Both client program and Sequence4 component follow the Design by Contract approach where the client program is responsible for making sure that the precondition (requires clause) for the called operation (from the Queue component) is satisfied prior to making a call. Also, the Queue component's exported operations do not check to make sure that client as called correctly, they are implemented with the assumption that the client has called with all preconditions satisfied.</li>
-  <li>The client program in <em>driver.cpp</em> works with two Sequences, q1 and q2</li>
-  <li>Your job is to modify each of the <em>driver.cpp</em> operations that currently work with q1 and q2 so that after modification it works with one variable which is an array of Sequences instead of two distinct queue variables</li>
+  <li>Both client program and Sequence4 component follow the Design by Contract approach where the client program is responsible for making sure that the precondition (<em>requires</em> clause) for the called operation (from the Sequence component) is satisfied prior to making a call. Also, the Sequence component's exported operations do not check to make sure that the client has called correctly, they are implemented with the assumption that the client has called with all preconditions satisfied.</li>
+  <li>The client program in <em>driver.cpp</em> works with two Sequences, s1 and s2</li>
+  <li>Your job is to modify each of the <em>driver.cpp</em> operations that currently work with s1 and s2 so that after modification it works with one variable which is an array of Sequences instead of two distinct sequence variables</li>
 </ul>
 <h4>To Do Specifics:</h4>
 <ol>
@@ -93,7 +93,7 @@
 			// Use enum to give names to the array lower and upper bounds, and size
 		 <br>
 		  <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
-          // Create named instance called QueueArray, which is indexed from 0..4<br>
+          // Create named instance called ArrayOfSequences, which is indexed from 0..4<br>
           <b>typedef</b> StaticArray1 &lt;TextSequence, lowerBound, upperBound&gt; ArrayOfSequences;</font></code></td>
    
       </tr>
@@ -148,7 +148,7 @@
   number that can legally index into the ArrayOfSequences, but not allow indices 
   outside the bounds of the array</p>
 <ul>
-  <li>Change <em>getIndex</em>'s header to so that it takes the array of Sequences as a parameter - you can see a legal call to <em>getIndex</em> in the<em> doEnqueue</em> example above</li>
+  <li>Change <em>getIndex</em>'s header to so that it takes the array of Sequences as a parameter - you can see a legal call to <em>getIndex</em> in the<em> doAdd</em> example above</li>
   <li>In <em>getIndex</em> use StaticArray's <em>getBounds</em> operation to determine the number of
     locations in the array<br>
     <code>Integer lowerB, upperB;<br>
