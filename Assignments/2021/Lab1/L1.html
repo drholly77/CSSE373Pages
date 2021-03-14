@@ -46,7 +46,7 @@
   <tbody>
     <tr>
       <td valign="top"><ol>
-          <li>Follow the VS2019 instructions for creating a new Visual Studio Console Project, name the project <em>L1</em> and make it subordinate to the CppDevSp21 repo folder</li>
+          <li>Follow the <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2019 instructions</a> for creating a new Visual Studio Console Project, name the project <em>L1</em> and make it subordinate to the CppDevSp21 repo folder</li>
           <li>Copy (don't move) the <em>driver.cpp</em> from the CppDevSp21/SeqDriver folder to the newly created
             L1 folder (VS created the L1  in Step 1)</li>
           <li>Follow the VS2019 instructions for adding .cpp files to your project's Source Files folder. First add the <em>driver.cpp</em> (that you copied) to the project's Source Files folder, then add the wrapper folder (VS calls it a filter) and its subordinate .cpp files. When finished with this step, your project should look like the screen shot to the right.</li>
@@ -80,23 +80,27 @@
   <center>
     <table border="1" width="55%">
       <tr>
-        <td  valign="top"><code><font size="1">// Array of Sequence&lt;Text&gt;<br>
+        <td  valign="top"><code><font size="2">// Array of Sequence&lt;Text&gt;<br>
           // Date: 3/21<br>
           <br>
           #<b>include</b> &quot;Sequence/Sequence4.hpp&quot;<br>
           #<b>include</b> &quot;StaticArray/StaticArray1.hpp&quot;<br>
           <br>
-          <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
+          // First create a named instance of Sequence that holds Text objects
+			<br>
           <b>typedef</b> Sequence4 &lt;Text&gt; TextSequence;<br>
           <br>
-          //Create a class called QueueArray, which is indexed from 0..4<br>
+			// Use enum to give names to the array lower and upper bounds, and size
+		 <br>
+		  <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
+          // Create named instance called QueueArray, which is indexed from 0..4<br>
           <b>typedef</b> StaticArray1 &lt;TextSequence, lowerBound, upperBound&gt; ArrayOfSequences;</font></code></td>
    
       </tr>
     </table>
   </center>
 </div>
-<h3>2.2 - Changes to <em>main</em> - the <em>main</em> below is done, use it to replace the one in driver.cpp</h3>
+<h3>2.2 - Changes to <em>main</em> - the <em>main</em> below has been completed, use it to replace L1's main in driver.cpp</h3>
 <div align="center">
   <center>
     <table border="1" width="90%">
@@ -116,10 +120,10 @@
     </table>
   </center>
 </div>
-<h3>2.3 - Changes to <em>do</em> operations - the <em>doEnqueue</em> below is done, use it and then modify all other <em>do</em> operations similarly</h3>
+<h3>2.3 - Changes to <em>do</em> operations - the <em>doAdd</em> is completed, use it and then modify all other <em>do</em> operations similarly</h3>
 <div align="center">
   <center>
-    <table border="1" width="95%">
+    <table border="2" width="95%">
       <tr>
         <td width="100%"><pre><strong>void</strong> doAdd (ArrayOfSequences&amp; aS)
 {
@@ -140,7 +144,7 @@
   </center>
 </div>
 <h3>2.4 - Changes to <em>getIndex</em> operation</h3>
-<p>Change <em>getIndex</em> so that it lets the user type in a
+<p>Change <em>getIndex</em> (in driver.cpp) so that it lets the user type in a
   number that can legally index into the ArrayOfSequences, but not allow indices 
   outside the bounds of the array</p>
 <ul>
@@ -157,11 +161,11 @@
 <table width="100%" border="0">
   <tbody>
     <tr>
-      <td><p>After a successful build, run your program by clicking <em>Debug | Start Debugging</em> from the menu bar in Visual Studio. This will bring up a window similar to the one to the right</p>
-        <p>You can test the program three different ways:</p>
+      <td valign="top"><p>After a successful build, run your program by clicking <em>Debug | Start Debugging</em> from the menu bar in Visual Studio. This will bring up a window similar to the one to the right</p>
+        <p>You can test the program 3 different ways:</p>
         <ol>
           <li>Run the program and type in commands at the command prompt to exercise each of the<em> </em>operations that were modified</li>
-          <li>In the folder <em>CppDevSp21/SeqDriver</em> there is a sub-folder called <em>TestScripts</em> which contains .txt files. Each .txt contains a sequence of command interpreter commands for the original SeqDriver implementation that uses only two Sequences. If you utilize these test scripts, you'll need to first study them to understand what they are asking the command interpreter to do, and then modify them slightly to work with your command interpreter that uses an array of sequences. Instead of running and retyping commands, you can run your command interpreter and then copy and paste modified tests scripts into your command interpreter while its running. </li>
+          <li>In the folder <em>CppDevSp21/SeqDriver</em> there is a sub-folder called <em>TestScripts</em> which contains .txt files. Each .txt contains a sequence of command interpreter commands for the original SeqDriver implementation (which uses only two Sequences). If you utilize these test scripts, you'll need to first study them to understand what they are asking the command interpreter to do, and then modify them slightly to work with your command interpreter that uses an array of sequences. Instead of running and retyping commands, you can run your command interpreter and then copy and paste modified tests scripts into your command interpreter while its running. </li>
           <li>You can place them in  either the <em>L1/Debug</em> folder and run the command interpreter from a command prompt and use file redirection to feed your test scripts into your L1.exe. See the <em>Testing - With a Test Script</em> reference page.</li>
         </ol></td>
       <td width="360" align="right"><img src="L1Running.png" width="355" height="382" alt=""/></td>
@@ -175,7 +179,7 @@
 <p>See the Grading Rubric associated with the L1 Moodle assignment</p>
 <p>&nbsp;</p>
 <h2>5. Submitting the Assignment for Grading</h2>
-<p>Use VS2019 to commit your L1 project your GitHub Education CSSE373 repo</p>
+<p>Use VS2019 to commit and push your L1 project your GitHub Education CSSE373 repo</p>
 <p>&nbsp;</p>
 </body>
 </html>
