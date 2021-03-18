@@ -337,7 +337,7 @@ TEST_METHOD(UT04TransferFromV1)
     <td width="50%" valign="top"><pre>// -----------------------------------------------------
 // operator =
 // -----------------------------------------------------
-//! replaces self<br />//! restores rhs<br />//! ensures: self = rhs&gt;
+//! replaces self<br />//! restores rhs<br />//! ensures: self = rhs
 // -----------------------------------------------------
 TEST_METHOD(UT07AssignmentV2)
 {
@@ -362,8 +362,8 @@ TEST_METHOD(UT07AssignmentV2)
    Assert::IsTrue(x1 == x2, L"q1 = q2");
 
 <span class="yellowColor">   // Verify restores parameter mode: restores rhs
-   toText(q1, x1);
-   Assert::IsTrue(x1 == "&lt;27&gt;", L"q1 = &lt;27&gt;");</span>
+   toText(q2, x2);
+   Assert::IsTrue(x2 == "&lt;27&gt;", L"q2 = &lt;27&gt;");</span>
 } // UT07AssignmentV2</pre></td>
     <td width="50%" valign="top">
     <p class="yellowColor"><em>Explanation of the Restores Parameter Mode section</em>: </p>
