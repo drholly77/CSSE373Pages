@@ -154,7 +154,7 @@ T&amp; List2&lt;T&gt;::rightFront(<strong>void</strong>)
 //! ensures: &lt;rightFront&gt; is prefix of self.right
 {
    // assumes client has met the requires clause 
-   // assumes the corresponence holds
+   // assumes the correspondence holds
    <strong>return</strong> rightQ.front();
    // guarantees the correspondence still holds because nothing was done leftQ or rightQ
 }  // rightFront</pre></td>
@@ -178,10 +178,10 @@ T&amp; List2&lt;T&gt;::rightFront(<strong>void</strong>)
   <li>L3D testing first
     <ul>
       <li>These test against the List's internal representation, so these unit tests will only work with this particular implementation</li>
-      <li>Look at these unit tests to better understand the correespondence between a List's abstract value and its internal representation</li>
+      <li>Look at these unit tests to better understand the correspondence between a List's abstract value and its internal representation</li>
     </ul>
   </li>
-  <li>L3R tesing second
+  <li>L3R testing second
     <ul>
       <li>These test at the abstract level only and would work for any List implementation</li>
       <li>List2's <em>operator &lt;&lt;</em> which outputs a list's abstract value (similar to Java's <em>toString</em> operation) is layered on top of the List2 class and it calls the List2 member functions: <em>advance</em>, <em>moveToStart</em>, <em>rightLength</em>, and <em>rightFront</em>, Therefore <em>operator &lt;&lt;</em> will not work correctly until all these List2 operations are implemented correctly</li>
