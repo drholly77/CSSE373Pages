@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Layering a Component</title>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Layering a Component</h1>
+<h3>0. Reference material</h3>
+<ul>
+  <ul>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/ListTemplate.html" target="_blank">List Specification</a></li>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/QueueTemplate.html" target="_blank">Queue Specification</a></li>
+    <li>This week's instructional materials on layering a component</li>
+  </ul>
+</ul>
+<hr>
+<h3>1. Setup</h3>
+<table border="0" width="100%">
+  <tbody>
+    <tr>
+      <td valign="top"><h4>1.1 Get the L3Starter Download</h4>
+        <ul>
+          <li>Download <em>L3Starter.zip</em>&nbsp;to your machine - to be used on a subsequent steps</li>
+        </ul></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top"><h4>1.2 Copy List2.hpp from the L3Starter.zip</h4>
+        <ul>
+          <li>Inside L3Starter.zip is a file named List2.hpp
+            <ul>
+              <li>For this assignment you will be making changes to this file</li>
+            </ul>
+          </li>
+          <li>Copy List2.hpp to the following folder in your repo: <em>CppDevSp21\components\include\List </em></li>
+        </ul>
+        <h4>1.3 Copy Folders from the L3Starter.zip</h4>
+        <ul>
+          <li>Inside L3Starter.zip are two folders named L3D and L3R </li>
+          <li>Copy both folders to your <em>CppDevSp21</em> folder as shown in the screen shot to the right</li>
+          <li>Once you copy these folders you can use VS2019 to open these projects by double clicking on L3D.sln (for the L3D project) and L3R.sln (for the L3R project) </li>
+        </ul>
+        <h4>1.4 About Project L3D and L3R</h4>
+        <ul>
+          <li>Each contain a Visual Studio 2019 unit test project</li>
+          <li>Both projects can be opened with VS2019 by double clicking on the file L3D.sln (inside L3D folder) or the file L3R.sln (inside the L3R folder)</li>
+          <li>Both projects will build correctly if you have followed the instructions in 1.1 - 1.3 (above)</li>
+          <li>L3D
+            <ul>
+              <li>is to be used only in Debug mode - that's what the 'D' of L3D stands for</li>
+              <li>L3D.cpp contains unit tests for List2.hpp</li>
+              <li>L3D.cpp's unit tests test a List variable using the List's internal representation, not it's abstract value</li>
+            </ul>
+          </li>
+          <li>L3R
+            <ul>
+              <li>is to be used only in Release mode - that's what the 'R' of L3R stands for</li>
+              <li>L3R.cpp also contains unit tests for List2.hpp</li>
+              <li>L3R.cpp's unit tests test a List variable using the List's abstract value, not it's internal representation</li>
+            </ul>
+          </li>
+        </ul></td>
+      <td valign="top"><p><img src="L3FolderView.png" width="259" height="399" alt=""/></p></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h3>2. L3 Statement of Work</h3>
+<h4>2.1 Primary Objectives</h4>
+<p>The primary objective of this lab is to provide you experience working with:</p>
+<ul>
+  <li>Layering a component (e.g., List) on another already existing component (e.g., Queue)</li>
+  <li>Utilizing internal contracts - the correspondence</li>
+  <li>Learning about the List component</li>
+</ul>
+<h4>2.2 Specifics</h4>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><p><em>Steps</em>:</p>
+        <ol>
+          <li>Start Visual Studio</li>
+          <li>Open project L3D</li>
+          <li>Find and open List2.hpp (located in <em>CppDevSp21\components\include\List</em> folder)</li>
+          <li>Implement the 12 member functions - think strategically, some need to be done before others in order to for a unit test's &quot;Test set up&quot; part to work correctly<br>
+          </li>
+        </ol>
+        <p><em>Hints</em>:</p>
+        <ul>
+          <li>addRightFront() has been done for you - study the code in that operation to help you understand the <em>correspondence</em></li>
+          <li>Reread the Component Layering slides from this week on the CSSE373 Moodle site</li>
+          <li>Reference the Queue and List specifications</li>
+          <li>Implement all of List2's stubbed out member functions based on the instructional materials</li>
+          <li>Look for the TODO comments in List2.hpp</li>
+        </ul></td>
+      <td width="300" valign="top"><img src="List2CheckList.png" width="299" height="363" alt="List2 check list" /></td>
+    </tr>
+  </tbody>
+</table>
+<p><em>Important Restrictions</em>:</p>
+<ol>
+  <li><strong>Obey the correspondence </strong>- When implementing the member functions you must obey the correspondence internal contract<br>
+    That means: </li>
+  <ul>
+    <li>assume that the correspondence holds when the member function is called</li>
+    <li>guarantee that the correspondence holds when the member function exits</li>
+  </ul>
+  <li><strong>Use Design by Contract</strong> - No defensive programming of List's operations (see design-by-contract example below) </li>
+</ol>
+<ol>
+  <ul>
+    <li>What this means is that the implementation of a List operation must not contain code that checks to make sure that the List operation was called correctly by the client</li>
+    <li>Therefore, for all List operations that have a <em>requires</em> clause, you must program them with the assumption that their <em>requires</em> clause holds at the time the operation is called (like rightFront, in the example below)</li>
+  </ul>
+  <li><strong>No Cross Calling - </strong>None of List's member functions are permitted to make calls to any of the other <em>public</em> List member functions, i.e., no cross calling
+    <ul>
+      <li>For example, under this rule it is illegal for the <em>swapRights</em> operation to call any other List operation, e.g., <em>addRightFront</em></li>
+      <li>All List operations (e.g.,<em> swapRights</em>) should directly manipulate List's data members (i.e., leftQ and rightQ) in order to satisfy the operation's <em>ensures</em> clause</li>
+    </ul>
+  </li>
+  <li><strong>Calling Down</strong> - create private member functions that capture code that starts to appear in multiple different places in your List2 implementation and then instead of duplicating this code (i.e., having it appear in multiple different member function implementations) make a <em>call down</em> to the private member function from the public member function - this engineering technique is called procedural abstraction and is called <em>calling down</em> - for this assignment a private operation that can move items from one queue to second queue will come in real handy</li>
+  <li><strong>No Recursion</strong> - None of List's member functions are permitted to be recursive</li>
+  <li><strong>About Making Copies</strong> -
+    <ul>
+      <li>Copying the  data members <em>leftQ </em>or <em>rightQ</em> - When implementing List2's <em>operator =</em> you must use Queue's <em>operator =</em> to make a copy of <em>leftQ</em> and <em>rightQ</em>. Otherwise, do not call Queue's <em>operator =</em> to make a copy of <em>leftQ </em>or <em>rightQ </em>in any implementation of the other List2 member functions - this is a performance constraint. When implementing any other List operations, if you think you need to call <em>operator =</em> to make a copy of<em> leftQ </em>or <em>rightQ</em>, then rethink your algorithm until you figure out a way to not make a copy. Use transferFrom.</li>
+      <li>Copying variables of type T - There is no need to make copies of the items being added or removed to the list. These are all items of type T. If you need to move items of type T from one variable to another, then call the <em>transferFrom</em> operation to do it.</li>
+    </ul>
+  </li>
+</ol>
+<p><strong><span style="text-decoration: underline;">Design by Contract - Example</span></strong></p>
+<table style="width: 100%;" border="1">
+  <tbody>
+    <tr>
+      <td align="center" valign="top"><strong><strong>List2 implementation of rightFront<br />
+        <br />
+        Implemented Using Design by Contract<br />
+        <br />
+        </strong></strong>
+        <p style="background-color: #ff0;">Use This Engineering Technique</p></td>
+      <td align="center" valign="top"><strong><strong>List2 implementation of rightFront<br />
+        <br />
+        Implementation Fails to Use Design by Contract<br />
+        Also Known As: Defensive Programming</strong></strong>
+        <p style="background-color: #ff0;">DO NOT USE THIS APPROACH</p></td>
+    </tr>
+    <tr>
+      <td valign="top" width="40%"><pre><strong>template</strong> &lt;<strong>class</strong> T&gt;
+T&amp; List2&lt;T&gt;::rightFront(<strong>void</strong>)
+//! restores self
+//! requires: self.right /= &lt;&gt;
+//! ensures: &lt;rightFront&gt; is prefix of self.right
+{
+   // assumes client has met the requires clause 
+   // assumes the corresponence holds
+   <strong>return</strong> rightQ.front();
+   // guarantees the correspondence still holds because nothing was done leftQ or rightQ
+}  // rightFront</pre></td>
+      <td valign="top" width="40%"><pre><strong>template</strong> &lt;<strong>class</strong> T&gt;
+T&amp; List2&lt;T&gt;::rightFront(<strong>void</strong>)
+//! restores self
+//! requires: self.right /= &lt;&gt;
+//! ensures: &lt;rightFront&gt; is prefix of self.right
+{
+   // fails to assume client has met the requires clause
+   <strong>if</strong> (rightQ.length() &gt; 0) {
+      <strong>return</strong> rightQ.rightFront(x);
+   } // end if
+}  // rightFront</pre></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h3>3. Testing</h3>
+<ul>
+  <li>L3D testing first
+    <ul>
+      <li>These test against the List's internal representation, so these unit tests will only work with this particular implementation</li>
+      <li>Look at these unit tests to better understand the correespondence between a List's abstract value and its internal representation</li>
+    </ul>
+  </li>
+  <li>L3R tesing second
+    <ul>
+      <li>These test at the abstract level only and would work for any List implementation</li>
+      <li>List2's <em>operator &lt;&lt;</em> which outputs a list's abstract value (similar to Java's <em>toString</em> operation) is layered on top of the List2 class and it calls the List2 member functions: <em>advance</em>, <em>moveToStart</em>, <em>rightLength</em>, and <em>rightFront</em>, Therefore <em>operator &lt;&lt;</em> will not work correctly until all these List2 operations are implemented correctly</li>
+    </ul>
+  </li>
+  <li>Unfortunately the unit tests in L3D and L3R do not thoroughly test the List2.hpp member functions</li>
+  <li>If you want to earn full credit for this assignment you must add more unit tests, particularly to L3D.cpp</li>
+</ul>
+<p><em>Use Boundary Condition Testing</em>:</p>
+<ul>
+  <li>Add/Remove/Access at the front, middle, and at the end of a List <br>
+    the <em>middle</em> is not a boundary, but the front and end are</li>
+  <li>Add to an empty List and Remove from a List with 1 item to make it empty <br>
+    the boundary here is going from empty to non-empty on an Add, and going from non-empty to empty on a Remove</li>
+  <li>There are 4 addRightFront's unit tests - use these 4 different tests as a guide for boundary condition testing the other member functions:
+    <ol>
+      <li>adds an item to: (&lt;&gt;,&lt;&gt;) - incoming List is empty</li>
+      <li>adds an item to: (&lt;&gt;,&lt;21&gt;) - incoming List has empty left and non-empty right</li>
+      <li>adds an item to: (&lt;13,17,19&gt;,&lt;29&gt;) - incoming List has non-empty left and non-empty right</li>
+      <li>adds an item to: (&lt;13,17,19&gt;,&lt;&gt;) - incoming List has non-empty left and empty right</li>
+    </ol>
+    <ul>
+      <li>Notice that in both #2 and #4, there is only one item in the List's right prior to the call to addRight Front. If I were to add additional tests for addRightFront, I would vary #2 and #3 above by having more items in the List's right before the call to addRightFront. </li>
+    </ul>
+  </li>
+</ul>
+<p><em>The Grader's test cases</em>:</p>
+<p>Grading will be done running a more complete set of unit tests which will systematically stress your member function implementations</p>
+<hr>
+
+<h3>4. Submitting the Assignment for Grading</h3>
+	<ul>
+	<li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2019 instructions</a> for <em>committing and pushing</em> your L2 project to your GitHub Education CSSE373 repo</li>
+	<li>Use the commit message &quot;L3 final commit, ready for grading&quot;</li>
+	</ul>
+<p>&nbsp;</p>
+	
+</body>
+</html>
