@@ -3,7 +3,7 @@
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
    <meta name="Author" content="Dr. Holly">
-   <title>Mystery2 Component</title>
+   <title>Mystery1 Component</title>
 	<!--   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert"></script> -->
 	<link href="../codePrettyPrint/src/C343-dark.css" type="text/css" rel="stylesheet" />
 	<script type="text/javascript" src="../codePrettyPrint/src/run_prettify.js?skin=desert"></script>
@@ -12,7 +12,7 @@
 <table border="0" width="100%">
 	<tr>
 		<td>
-		<p align="center"><b>Mystery2 Component</b></p></td>
+		<p align="center"><b>Mystery1 Component</b></p></td>
 	</tr>
 </table>
 
@@ -21,40 +21,40 @@
 <tr>
 <td>
 <pre class="prettyprint"><strong>template</strong> &lt;<strong>class</strong> T&gt;
-<strong>class</strong> Mystery2
+<strong>class</strong> Mystery1
     //! is modeled by string of T
     //!   exemplar self
 {
 <strong>public</strong>:
-    Mystery2();
+    Mystery1();
     //! replaces self
     //! ensures: self = &lt;&gt;
 
-    ~Mystery2();
+    ~Mystery1();
 
-    <strong>void</strong> op1(Mystery2&amp; x);
+    <strong>void</strong> op1(Mystery1&amp; x);
     //! replaces self
     //! replaces x
     //! ensures: self = #x and x = #self
 
-    Mystery2&amp; op2 (Mystery2&amp; x);
+    Mystery1&amp; op2 (Mystery1&amp; x);
     //! replaces self
     //! restores x
     //! ensures: self = x
 
     Boolean op3(<strong>void</strong>);
     //! restores self
-    //! ensures: op7 = (0 = |self|)
+    //! ensures: op3 = (0 = |self|)
 
-    <strong>void</strong> op4(Mystery2&amp; x);
+    <strong>void</strong> op4(Mystery1&amp; x);
     //! replaces self
     //! clears x
     //! ensures: self = #x
 
-    <strong>void</strong> op5(Mystery2&amp; x);
-    //! updates self
-    //! clears x
-    //! ensures: self = #x * #self
+    <strong>void</strong> op5(Mystery1&amp; x);
+	//! updates x
+	//! restores self
+	//! ensures: x = #self * #x
 
     <strong>void</strong> op6(T&amp; x, Integer z);
     //! updates self
@@ -85,7 +85,7 @@
     <strong>void</strong> op11(T&amp; x);
     //! updates self, x
     //! requires: 0 &lt; |self|
-    //! ensures: &lt;x&gt; is suffix of #self  and  self = #self[1, |#self|) * &lt;#x&gt;
+    //! ensures: &lt;x&gt; is suffix of #self  and  self = #self[0, |#self|-1) * &lt;#x&gt;
 
     T&amp; op12(<strong>void</strong>);
     //! restores self
