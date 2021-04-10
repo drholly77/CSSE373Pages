@@ -65,8 +65,8 @@
 
     T&amp; op7(Integer z);
     //! restores self, z
-    //! requires: self /= &lt;&gt;
-    //! ensures: &lt;op8&gt; = self[z,z+1)
+    //! requires: |self| &gt; z &gt;= 0
+    //! ensures: &lt;op7&gt; = self[z,z+1)
 
     <strong>void</strong> op8(<strong>void</strong>);
     //! clears self
