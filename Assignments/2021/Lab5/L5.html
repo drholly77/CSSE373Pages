@@ -12,79 +12,27 @@
 <ul>
   <ul>
     <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/SequenceTemplate.html" target="_blank">Sequence Specification</a></li>
-    <li>Week #4 Instructional Materials on Layering</li>
-    <li>Reference slides:
-      <ul >
-        <ul >
-          <li ><a href="https://drholly77.github.io/CSSE373Pages/Slides/SequenceSpec/SequenceExplanationPart1-Overview.pdf" target="_blank" >Sequence Overview</a></li>
-          <li ><a href="https://drholly77.github.io/CSSE373Pages/Slides/SequenceSpec/SequenceExplanationPart2-5StdOps.pdf" target="_blank" >Sequence Standard Ops</a></li>
-          <li><a href="https://drholly77.github.io/CSSE373Pages/Slides/SequenceSpec/SequenceExplanationPart3-AddingRemovingItems.pdf" target="_blank" >Sequence Specific Ops - for adding and removing</a></li>
-          <li><a href="https://drholly77.github.io/CSSE373Pages/Slides/SequenceSpec/SequenceExplanationPart4-Inspecting.pdf" target="_blank" >Sequence Specific Ops - for inspecting</a></li>
-          <li ><a href="https://drholly77.github.io/CSSE373Pages/Slides/SequenceSpec/SequenceExplanationPart5-AppendAndSplit.pdf" target="_blank" >Sequence Specific Ops - for append and split</a></li>
-        </ul>
-      </ul>
-    </li>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/Slides/SequenceSpec/" target="_blank">Sequence Detail Explanation Slides</a></li>
+    <li><a href="https://moodle.rose-hulman.edu/course/view.php?id=82729#section-4" target="_blank">Week #3 Instructional Materials on Layering</a></li>
   </ul>
 </ul>
 <hr>
 <h3>1. Setup</h3>
-<table border="0" width="100%">
-  <tbody>
-    <tr>
-      <td valign="top"><h4>1.1 Get the L5Starter Download</h4>
+<h4>1.1 Get the L5Starter Download</h4>
         <ul>
           <li>Download <em>L5Starter.zip</em>&nbsp;to your machine - to be used on a subsequent steps</li>
-        </ul></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td valign="top"><h4>1.2 Copy Sequence2.hpp from the L5Starter.zip</h4>
+        </ul>
+
+<h4>1.2 Copy Sequence2.hpp from the L5Starter.zip</h4>
         <ul>
           <li>Inside L5Starter.zip is a file named Sequence2.hpp
             <ul>
               <li>For this assignment you will be making changes to this file</li>
             </ul>
           </li>
-          <li>Copy this file to the following folder on your machine <em>CppDevSp20/components/include/Sequence </em></li>
+          <li>Copy this file to the following folder on in your local repo: <em>CppDevSp21/components/include/Sequence </em></li>
         </ul>
-        <h4>1.3 Copy Folders from the L5Starter.zip</h4>
-        <ul>
-          <li>Inside L5Starter.zip are two folders named L5R and L5Driver</li>
-          <li>Copy L5R and L5Driver to your <em>CppDevSp20</em> folder as shown in the screen shot to the right</li>
-          <li>You can  open L5Driver or L5R by double clicking on  the project's .sln file </li>
-        </ul>
-        <h4>1.4 About Project L5Driver</h4>
-        <ul>
-          <li>Contains Visual Studio 2019 .exe console generating project</li>
-          <li>L5Driver will build correctly if you have followed the instructions in 1.1 - 1.3 (above)</li>
-          <li>L5Driver:
-            <ul>
-              <li>is to be used in Release mode</li>
-              <li>contains a command interpreter for Sequence</li>
-              <li>see &quot;TODO&quot; at the top of the driver.cpp file for the one step you must complete in order to ready L5Driver for testing your Sequence2 implementation</li>
-            </ul>
-          </li>
-          <li>The L5Driver command interpreter is the same one used for creating <em>Sequence.exe</em> found in <em>CppDevSp20/SampleDrivers</em> folder</li>
-          <li>I recommend that you &quot;play around&quot; with this Sequence.exe sample found in the SampleDrivers folder</li>
-        </ul>
-        <h4>1.5 About Project L5R</h4>
-        <ul>
-          <li>Contains a Visual Studio 2019 unit test project (similar to the .exe generated in L1)</li>
-          <li>L5R will build correctly if you have followed the instructions in 1.1 - 1.3 (above)</li>
-          <li>L5R
-            <ul>
-              <li>is to be used only in Release mode - that's what the 'R' of L5R stands for</li>
-              <li>use this as another way to test your implementation of Sequence2.hpp</li>
-              <li>L5R.cpp  contains unit tests for Sequence2.hpp</li>
-              <li>L5R.cpp's unit tests test a Sequence variable using the Sequence's abstract value, not it's internal representation</li>
-              <li>see the 3 &quot;TODOs&quot; at the top of L5R.cpp you must complete in order ready L5R for testing your Sequence2 implementation</li>
-            </ul>
-          </li>
-        </ul></td>
-      <td valign="top"><p><img src="L5FolderView.png" width="211" height="556" alt=""/></p></td>
-    </tr>
-  </tbody>
-</table>
+	
 <hr>
 <h3>2. L5 Statement of Work</h3>
 <table width="100%" border="0">
@@ -115,7 +63,7 @@
             <ul>
               <li>Your component choice must come from the list to the right</li>
               <li>You can find their specs on the <a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/" target="new">C++ Component Specs web page</a></li>
-              <li>You can find each of these components in sub-folders in: <em>CppDevSp20/components/include</em></li>
+              <li>You can find each of these components in sub-folders in: <em>CppDevSp21/components/include</em></li>
             </ul>
           </li>
           <li>Create the correspondence between abstract Sequence values and your internal representations</li>
@@ -164,7 +112,7 @@
 <ul>
   <li>L5Driver testing first
     <ul>
-      <li>In the folder CppDevSp20/QueueDriver there is a sub-folder called TestScripts which contains .txt files.</li>
+      <li>In the folder CppDevSp21/QueueDriver there is a sub-folder called TestScripts which contains .txt files.</li>
       <li>Use QueueDriver's test scripts as a guide for creating your own test scripts for Sequence</li>
       <li>If you develop your own command interpreter test scripts, and if you feel generous, please upload some (or all) of your test scripts to the Piazza for others to use</li>
     </ul>
