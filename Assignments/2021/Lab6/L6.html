@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Layering an Operation</title>
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Layering an Operation</h1>
+<h3>0. Reference material</h3>
+<ul>
+  <ul>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/QueueTemplate.html" target="_blank">Queue Specification</a></li> 
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/StackTemplate.html" target="_blank">Stack Specification</a></li>
+  </ul>
+</ul>
+<hr>
+<h3>1. Setup</h3>
+<h4>1.1 Create L6Example Project</h4>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><ol>
+          <li>Follow the instructions found on <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">Visual Studio Specific Topics</a> for <em>Creating and building console projects</em></li>
+          <li>In your CppDevSp21 repo, create an empty project called <em>L6Example</em></li>
+          <li>Once L6Example has been created, copy the file <em>driver.cpp </em>from L6Starter.zip to your <em>CppDevSp21/L6Example</em> folder</li>
+          <li>Add driver.cpp to the Source Files of your L6Example project, when done your project will look like the screen shot to the right</li>
+          <li>Be sure to correctly set all of the project's properties</li>
+          <li>Now, copy the file <em>AppendCapability1.hpp</em> from L6Starter.zip to your <em>CppDevSp21/components/include/Queue</em> folder</li>
+</ol></td>
+      <td valign="top" width="300"><img src="L6ExampleProject.png" width="295" height="309" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+
+	 
+	
+<h4>1.2 Build, run, and study L6Example</h4>
+        <ul>
+          <li>Study L6Example's <em>driver.cpp</em></li>
+          <li>Study L6Example's <em>AppendCapability1.hpp</em><em> </em></li>
+          <li>Study the output to the console, make sure you understand what's going on</li>
+        </ul>
+	
+<hr>
+<h3>2. L6 Statement of Work</h3>
+
+	<h4>2.1 Primary Objectives</h4>
+        <p>The primary objective of this lab is to provide you experience  with:</p>
+        <ul>
+          <li>Layering an additional operation (e.g., Queue append) on an already existing component (e.g., Queue)
+          </li>
+          <li>Learning more about C++'s template and inheritance capabilities</li>
+        </ul>
+	
+<h4>2.2 Specifics</h4>
+<p><em>Steps</em>:</p>
+        <ol>
+          <li>Create another empty project, call it L6</li>
+          <li>Copy driver.cpp from L6Example to the <em>CppDevSp21/L6</em> folder</li>
+          <li>Copy AppendCapability1.hpp from <em>CppDevSp21/components/include/Queue</em> to <em>CppDevSp21/components/include/Stack</em></li>
+          <li>Rename the copy in the Stack folder to: <em>FlipCapability1.hpp</em></li>
+          <li>Implement the flip operation inside of FlipCapability1.hpp, its header is shown below</li>
+          <li>Modify driver.cpp (in project L6) so that it works with Stack1.hpp and FlipCapability1.hpp instead of Queue and its append capability<br>
+          </li>
+        </ol>
+	<table width="50%" border="1">
+  <tbody>
+    <tr>
+      <td><pre><strong>template</strong> &lt;<strong>class</strong> T, <strong>class</strong> StackOfT&gt;
+<strong>void</strong> FlipCapability1&lt;T, StackOfT&gt;::flip ()
+//! updates self
+//! ensures: self = rev(#self)
+{
+   // your implementation here
+   // you must use a while loop
+   // annotate your while loop with:
+   //    updates, maintains, decreasing
+
+} // flip</pre></td>
+    </tr>
+  </tbody>
+</table>
+
+		  
+<p><em>Important Restrictions</em>:</p>
+<ol>
+  <li><strong>Use Design by Contract</strong> - No defensive programming of the <em>flip </em>operation
+  </li>
+  <li><strong>No Recursion</strong> - You must use iteration, a while loop specifically</li>
+  <li><strong>No Making Copies</strong> - When flipping a stack, there is absolutely no need to make a copy of a stack or any of its contents
+  </li>
+</ol>
+<hr>
+	<h3>3. Testing</h3>
+	<ul>
+		<li>Modify your driver.cpp so that it tests <em>flip</em> on a number of different inputs</li>
+</ul>
+
+	
+<p><em>The Grader's test cases</em>:</p>
+<p>Grading will be done Unit tests on your FlipCapability1.hpp file</p>
+<hr>
+	
+	
+<h3>4. Submitting the Assignment for Grading</h3>
+<ul>
+	<li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2019 instructions</a> for <em>committing and pushing</em> your L6 project to your GitHub Education CSSE373 repo</li>
+	<li>Use the commit message &quot;L6 final commit, ready for grading&quot;</li>
+	</ul>
+</body>
+</html>
