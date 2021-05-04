@@ -1,0 +1,235 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta http-equiv="Content-Language" content="en-us">
+	<meta name="Author" content="Dr. Holly">
+   <title>Using Static Array Component</title>
+</head>
+<body>
+
+<table border="0" width="100%">
+	<tr>
+		<td>
+			<p align="center">Creating an Instance of the StaticArray Component</p></td>
+	
+	</tr>
+</table>
+
+<hr>
+<p><b>StaticArray's Specification</b>
+<ul>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/StaticArrayTemplate.html" target="_blank">StaticArray Spec</a></li>
+</ul>
+
+<hr>
+<p><b>Creating Named Instances</b>
+  <ul>
+    <li>Creating One-Dimensional Integer Array</li>
+    <li>Indexed from 0 to 9, i.e., so its size is 10</li>
+  </ul>
+<table border="1" width="100%">
+  <tr>
+    <td width="100%"><code>// File IntArray.h<br>
+      #<b>pragma once</b><br>
+      #<b>include</b> &quot;wrapper.h&quot;
+      <br>
+	#<b>include</b>  &quot;StaticArray\StaticArray1.hpp&quot;<br>
+      <br>// Use C++ enum to create named constants
+		<br>
+      <b>enum</b> arrayBounds {lowerBound = 0, upperBound = 9, arraySize = 10};<br>
+      <br>
+      <b>typedef</b> StaticArray1&lt;Integer, arrayBounds::lowerBound, arrayBounds::upperBound&gt; 
+	ArrayOfInteger;<br>
+      </code></td>
+  </tr>
+</table>
+<p>&nbsp;&nbsp;
+<center>
+<div align="center">
+  <center><table BORDER="1" WIDTH="95%" >
+<tr>
+<td WIDTH="100%">
+<p align="center">Using ArrayOfIntger</td>
+</tr>
+
+<tr>
+<td WIDTH="100%"><tt>// main.cpp</tt>
+<br><tt>#<b>include</b> &quot;wrapper.h&quot;</tt>
+<br><tt>#<b>include</b> "IntArray.h"</tt>
+<p><tt>int main (int argc, char* argv[])</tt>
+<br><tt>{</tt>
+<br><tt>&nbsp;&nbsp; Integer lower, upper;</tt>
+<br><tt>&nbsp;&nbsp; </tt>
+<code> ArrayOfInteger </code><tt>a1;</tt>
+<p><tt>&nbsp;&nbsp; a1.getBounds(lower, upper);<br>
+&nbsp;&nbsp; cout &lt;&lt; "a1 = [";</tt>
+<br><tt>&nbsp;&nbsp; <b>for</b>  (int i = lower; i &lt;= upper; i++) {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a1[i] &lt;&lt; " ";</tt>
+<br><tt>&nbsp;&nbsp; } // end for</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; "]" &lt;&lt; endl;
+<br>
+<br>
+   &nbsp;&nbsp;
+   return 0;
+   </tt>
+<br><tt>} // end main</tt></td>
+</tr>
+</table></center>
+</div>
+</center>
+
+<p>&nbsp;</p>
+
+<hr>
+<b>Creating A Two-Dimensional Matrix of a Record</b>
+  <ul>
+    <li>Columns indexed from 0 to 9</li>
+    <li>Rows indexed from 0 to 14</li>
+  </ul>
+<p><i>Simulating a 2-D Matrix with a 1-D Array</i></p>
+<ul>
+	<li>A 2-D matrix is never required, you can simulate two (or more) 
+	dimensions with a one dimensional array.</li>
+	<li>In the example above, # of columns = 10, and the # of rows = 15.
+	<ul>
+		<li>Declare an array &quot;a&quot; of size 10 x 15 or 150.</li>
+	</ul>
+	</li>
+	<li>Then use the following formula to convert from (row, col): <br>
+	Integer arrayIndex = (row * 10) + col;</li>
+	<li>Examples of indexing into the simulated 2-D matrix &quot;m&quot; using (row, 
+	column) pairs:<ul>
+		<li>Integer row = 5, col = 3;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; m[row][col];&nbsp; // if &quot;m&quot; 
+		existed in 2-D format, this is how indexing into (row, col) would go.<br>
+		Integer arrayIndex = (row * 10) + col;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a[arrayIndex];<br>
+&nbsp;</li>
+		<li>Integer row = 0, col = 9;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; m[row][col];&nbsp; // if &quot;m&quot; 
+		existed in 2-D format, this is how indexing into (row, col) would go.<br>
+		Integer arrayIndex = (row * 10) + col;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a[arrayIndex];<br>
+&nbsp;</li>
+		<li>Integer row = 14, col = 0;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; m[row][col];&nbsp; // if 
+		&quot;m&quot; existed in 2-D format, this is how indexing into (row, col) would 
+		go.<br>
+		Integer arrayIndex = (row * 10) + col;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a[arrayIndex];<br>
+&nbsp;</li>
+	</ul>
+	</li>
+	<li>Of course it is never wise to engineer your software so that it has 
+	magic numbers appearing everywhere. So define and use in your code constants 
+	for your array upper and lower bounds, and sizes:<ul>
+		<li><code>
+      <b>enum</b> columnBounds {columnLower = 0, columnUpper = 9, maxColumns = 10};<br>
+      <b>enum</b> rowBounds {rowLower = 0, rowUpper = 14, maxRows = 15};<br>
+		<b>enum</b> matrixCells {maxCells = 150};</code> </li>
+		<li>So the computation of arrayIndex becomes: <code>Integer arrayIndex = 
+		(row * columnBounds::maxColumns) + col;</code> </li>
+	</ul>
+	</li>
+</ul>
+<p><i>Declaring a 2-D Matrix using StaticArray component</i></p>
+<table border="1" width="100%">
+  <tr>
+    <td width="100%"><code>// SRMatrix.h<b><br>
+      </b>#<b>pragma</b> <b>once</b><br>
+      #<b>include</b> &quot;wrapper.h&quot;
+      <br>
+      #<b>include</b>  &quot;StaticArray\StaticArray1.hpp&quot;<br>
+      <br>
+      <br>
+      // ----------------------------------------------<br>
+      // Create StudentRecord<br>
+      // ----------------------------------------------<br>
+      <br>
+      <b>class</b> StudentRecord {<br>
+      <b>public</b>:<br>
+&nbsp;&nbsp;&nbsp; Text name;<br>
+&nbsp;&nbsp;&nbsp; Text major;<br>
+&nbsp;&nbsp;&nbsp; Text studentId;<br>
+&nbsp;&nbsp;&nbsp; Integer age;<br><br>
+&nbsp;&nbsp;&nbsp; StudentRecord() {}<br>
+&nbsp;&nbsp;&nbsp; ~StudentRecord() {}<br><br>
+&nbsp;&nbsp;&nbsp; <b>void</b> clear(<b>void</b>)
+      {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name.clear();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; major.clear();
+         <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; studentID.clear();
+      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; age.clear();
+         <br>
+&nbsp;&nbsp;&nbsp; } // clear <br>
+      <br>
+&nbsp;&nbsp; StudentRecord& operator = (StudentRecord& rhs)
+      {
+         <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name = rhs.name;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; major = rhs.major;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; studentID = rhs.studentID;
+
+         <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; age = rhs.age;
+
+         <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>return</b> *this; <br>
+&nbsp;&nbsp; } // operator = <br>
+      <br>
+&nbsp;&nbsp; <b>void</b> transferFrom(StudentRecord&amp; source) 
+		{ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name.transferFrom(source.name);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; major.transferFrom(source.major);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; studentId.transferFrom(source.studentId);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; age.transferFrom(source.age);<br>
+&nbsp;&nbsp; }; <br><br>
+&nbsp;&nbsp; <b>friend</b> wostream&amp; operator << (wostream&amp; os, StudentRecord&amp; r)
+		{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; os << "(" << r.name<< "," << r.major << &quot;,&quot; &lt;&lt; r.studentId &lt;&lt; &quot;,&quot; &lt;&lt; r.age &lt;&lt; ")";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>return</b> os;<br>
+&nbsp;&nbsp; }; <br>
+	};<br><br>
+      // ----------------------------------------------<br>
+      // Create Two Dimensional Matrix of StudentRecord<br>
+      // ----------------------------------------------<br><br>
+      <b>enum</b> columnBounds {columnLower = 0, columnUpper = 9, maxColumns = 10};<br>
+      <b>enum</b> rowBounds {rowLower = 0, rowUpper = 14, maxRows = 15};<br><br>
+      // 1st Create Columns&nbsp;<br>
+      <b>typedef</b> StaticArray1&lt;StudentRecord, columnBounds::columnLower, columnBounds::columnUpper&gt; ColumnArray;<br><br>
+      // 2nd Create Rows by plugging ColumnArray into StaticArray<br>
+      <b>typedef</b> StaticArray1&lt;ColumnArray, rowBounds::rowLower, rowBounds::rowUpper&gt; MatrixOfStudents;<br>
+      </code></pre>
+	</td>
+  </tr>
+</table>
+<p>&nbsp;
+<center>
+</p>
+<div align="center">
+  <center><table BORDER="1" WIDTH="95%" >
+<tr>
+<td WIDTH="100%">
+<p align="center">Using <tt>MatrixOfStudents</tt></td></tr><tr>
+<td WIDTH="100%"><tt>// main.cpp</tt>
+<br><tt>#<b>include</b>  &quot;wrapper.h&quot;</tt>
+<br><tt>#<b>include</b>  &quot;SRMatrix.h&quot;</tt><p><tt>int main (int argc, char* argv[])</tt>&nbsp;
+<br><tt>{</tt>
+<br><tt>&nbsp;&nbsp; </tt>
+<code> MatrixOfStudents </code><tt>sa;</tt>
+<p><tt>
+&nbsp;&nbsp; cout &lt;&lt; "Student Names" &lt;&lt; endl;</tt>
+<br>
+<tt>&nbsp;&nbsp; <b>for</b> (int row = rowBounds::rowLower; row &lt;= rowBounds::rowUpper; row++)
+{</tt>
+<br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>for</b> (int col = columnBounds::columnLower; col &lt;= 
+columnBounds::columnUpper; col++) {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt;
+sa[row][col].name &lt;&lt; endl;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } // end for</tt>
+<br><tt>&nbsp;&nbsp; } // end for</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; endl;<br>
+<br>
+&nbsp;&nbsp; <b>return</b> 0;</tt>
+<br><tt>} // end main</tt></td></tr></table></center></div><p>&nbsp;</p>
+<p>&nbsp;
+</body>
+</html>

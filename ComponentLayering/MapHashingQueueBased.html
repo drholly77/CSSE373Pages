@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta NAME="Author" CONTENT="Dr. Holly">
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<table border="0" width="100%">
+  <tr>
+    <td><p align="center"><b>Map - Hashing Implementation Layered on Queue and StaticArray</b></p></td>
+  </tr>
+</table>
+<hr>
+<h4>A hashing implementation where Map is layered on StaticArray and Queue works as follows: </h4>
+<ul>
+  <li>Map's representation has two data members:
+    <ul>
+      <li><em>map</em>: an array of Queues, indexed from 0..(<em>arraySize</em> - 1), e.g., if <em>arraySize</em> = 10, the array is indexed from 0..9</li>
+      <li><em>mapSize</em>: an Integer holding a number representing the count of the (key, value) mappings currently stored in the
+        map</li>
+    </ul>
+  </li>
+  <li>The items stored in the Queues are (key, value) record that forms the mapping from the key to the value</li>
+  <li>When defining a new mapping:
+    <ol>
+      <li>The <em>add</em> operation first uses the hash function applied to the key to determine which
+        bucket (i.e., array location) to store the mapping record</li>
+      <li>Then add adds the new (key, value)
+        record to the Queue found in the bucket</li>
+    </ol>
+  </li>
+  <li>When removing an existing mapping:
+    <ol>
+      <li>The client program calls the <em>remove</em> operation and provides a key (k)
+        as a parameter to the remove operation</li>
+      <li>The remove operation hashes on k to determine which bucket to search</li>
+      <li>The remove operation then searches for the mapping in the Queue, by
+        comparing the k with the keys found in the (key, value)
+        records stored in the Queue </li>
+      <li>The remove operation removes a MapPairRecord record 'r' which is a (key, value) pair from the 
+        Queue where <code>areEqual(r.keyItem, k)</code>.</li>
+    </ol>
+  </li>
+</ul>
+<h4><strong>Example:</strong></h4>
+<ul>
+  <li>An example named instance of Map might be typedef'ed and a variable <em>mAir</em> is declared 
+    as follows:<br>
+    <code>&nbsp;&nbsp; typedef Map&lt;Text, AirportRecord, KeyComparer&gt; AirportMap;<br>
+    &nbsp;&nbsp; AirportMap mAir; <br>
+    &nbsp;</code></li>
+  <li>The <em>Key</em> is type Text, and is a three letter airport code, e.g., SDF for 
+    Louisville International Airport.<br>
+    <br>
+  </li>
+  <li>The <em>Value</em> is type AirportRecord and contains 13 fields for each piece of airport data<br>
+    <br>
+  </li>
+  <li>The KeyComparer class  (the 3rd template parameter) contains three callback operations:
+    <ul>
+      <li>areEqual - compares for equality to values of type Key</li>
+      <li>areOrdered - compares &le; between two values of type Key</li>
+      <li>hashCode - returns an Integer value that uniquely represents a value of type Key</li>
+    </ul>
+  </li>
+</ul>
+<h4>Abstract Value of Airportmap</h4>
+<p>Variable AirportMap mAir has the following value after many mappings have been 
+  added</p>
+<ul>
+  <li>Recall: Map is  modeled as a mathematical set of (key, value) ordered pairs, therefore we use { } to denote the value of a Map</li>
+  <li><code>mAir = {(&quot;SDF&quot;,(&quot;SDF&quot;,&quot;Louisville International&quot;,&quot;Louisville&quot;, ...)),<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (&quot;ORD&quot;,(&quot;ORD&quot;,&quot;O'Hare International&quot;,&quot;Chicago&quot;, ...)),<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (&quot;MIA&quot;,(&quot;MIA&quot;,&quot;Miami International&quot;,&quot;Miami&quot;, 
+    ...)),<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (&quot;DFW&quot;,(&quot;DFW&quot;,&quot;Dallas Ft. Worth International&quot;,&quot;DFW Airport&quot;, 
+    ...)),<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ..<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (&quot;LAX&quot;,(&quot;LAX&quot;,&quot;Los Angeles International&quot;,&quot;Los 
+    Angeles&quot;, ...))}</code></li>
+</ul>
+<h4>Concrete Value of AirportMap Using Hashing </h4>
+<p>Assume <em>hashCode</em> callback operation supplied by the client programmer has the following definition:
+<blockquote>
+  <pre>Integer hashCode(Text& x)
+{
+   <strong>return</strong> x[0] % arraySize;
+} // hashCode</pre>
+</blockquote>
+<p>Notes about <em>hashCode</em>:</p>
+<ul>
+  <li>Takes a Text as a parameter because the Key field for AirportMap is a Text, i.e., values such as &quot;SDF&quot;, &quot;ORD&quot;, &quot;CDG&quot;, etc. Go look at the typedef statement (above) to see that the Key field is type Text in this example.</li>
+  <li>It uses Text's operator[ ] to access the first character of the Text parameter x</li>
+  <li>It uses the mod operator to mod the ascii value of the first character with the array size. This produces a value in the range of [0..(arraySize - 1)]</li>
+  <li>It returns the value to the caller.</li>
+  <li>For example, suppose the following:
+    <ul>
+      <li>x = &quot;SDF&quot;</li>
+      <li>x[0] access the 'S' character</li>
+      <li>'S' in ascii is 83</li>
+      <li>suppose arraySize = 5</li>
+      <li>83 % 5 = 3</li>
+    </ul>
+  </li>
+</ul>
+<p>Below is what the array of Queues (with <em>arraySize</em> = 5) would look like for the Map variable <em>mAir</em> (shown above)</p>
+<img src="mapQueueBased.png" width="438" height="194" alt="Map implmented using hashing">
+</p>
+<h4>Map Correspondence with the StaticArray of Queues</h4>
+<p>Recall the representation for Map when implemented using hashing and an array of Queues:</p>
+<blockquote>
+  <p>Map's representation has two data members: </p>
+</blockquote>
+<ul>
+  <ul>
+    <ul>
+      <li><em>map</em>: an array of Queues, indexed from 0..(<em>arraySize</em> - 1), e.g., if <em>arraySize</em> = 10, the array is indexed from 0..9</li>
+      <li><em>mapSize</em>: an Integer holding a number representing the count of the (key, value) mappings currently stored in the
+        map</li>
+    </ul>
+  </ul>
+</ul>
+<p>The correspondence function must Union all the two-tuples found in all of the Queues in each location of the array in order to come up with the value for <em>self</em> (i.e., the Map)</p>
+<pre>self = IteratedUnion (b:Integer 0 &lt;= b &lt; arraySize, k:Integer 0 &lt;= k < |map(b)|, map(b)[k,k+1))</pre>
+Applying the correspondence to the <em>map</em> array in the example above provides <em>self</em>, where <em>self</em> is a Map:
+<pre>self = {(&quot;LAX&quot;, (&quot;LAX&quot;, ...)), (&quot;MIA&quot;, (&quot;MIA&quot;, ...)), (&quot;DFW&quot;, (&quot;DFW&quot;, ...)), (&quot;SDF&quot;, (&quot;SDF&quot;, ...)), (&quot;ORD&quot;, (&quot;ORD&quot;, ...))}</pre>
+<h4>Division Method of Hashing: </h4>
+<ul>
+  <li>Here the Hashing function <em>h</em>(<em>k</em>) uses the mod operator: <em>h</em>(<em>k</em>) = k % 5
+    <ul>
+      <li>Where k is the key value, and 5 is
+        used so that the mod operator produces a value between [0..4], which is used as an index
+        into the array<br>
+        <br>
+      </li>
+    </ul>
+  </li>
+  <li>The keys in this example are:
+    <ul>
+      <li>&quot;LAX&quot; - 'L' is ascii 76<br>
+        76 % 5 = 1, so (&quot;LAX&quot;, (&quot;LAX&quot;, ...)) go to bucket #1<br>
+      </li>
+      <li>&quot;MIA&quot; - 'M' is ascii 77<br>
+        77 % 5 = 2, so (&quot;MIA&quot;, (&quot;MIA&quot;, ...)) go to bucket #2</li>
+      <li>&quot;DFW&quot; - 'D' is ascii 68<br>
+        68 % 5 = 3, so (&quot;DFW&quot;, (&quot;DFW&quot;, ...)) go to bucket #3</li>
+      <li>&quot;SDF&quot; - 'S' is ascii 83<br>
+        83 % 5 = 3, so (&quot;SDF&quot;, (&quot;SDF&quot;, ...)) go to bucket #3</li>
+      <li>&quot;ORD&quot; - 'O' is ascii 79<br>
+        79 % 5 = 4, so (&quot;ORD&quot;, (&quot;ORD&quot;, ...)) go to bucket #4<br>
+        <br>
+      </li>
+    </ul>
+  </li>
+  <li>If the array size was chosen to be larger, size 11 for example, then the Hashing function would be: <em>h</em>(<em>k</em>) = <em>k</em> % 11</li>
+</ul>
+<hr>
+<h4>Hashing Terminology &amp; Facts: </h4>
+<ul>
+  <li><em>hash table</em> - An array of some container type, e.g., a Queue.&nbsp; Each
+    container (e.g., Queue) in the array is unbounded, and stores (k, v) tuples, where
+    k is a key and v is an associated value</li>
+  <li><em>bucket</em> - Is one of the containers in the hash table - this is almost always a linear data structure of some type, e.g., Queue, List, Sequence, nodes &amp; pointers linked list, etc.</li>
+  <li><em>hash function</em> - For a particular k (key), the hash function <em>h (k)</em> computes an index into the hash table where the key should be stored (if
+    inserting) or found (if doing a look-up)<br>
+    The hash function h(k) consists of two steps:
+    <ol>
+      <li>convert the value k into an integer <em>di</em>.<br>
+        Examples:
+        <ul>
+          <li>If k is of type Integer, then no conversion needs to be done, it's
+            already an integer.</li>
+          <li>If k is not an Integer, e.g., is of type Text, the conversion step must create an integer di
+            representing some or all the characters in k.&nbsp; One method would be
+            to convert the first character in k to its ASCII value and use that
+            value as the Integer representation.</li>
+        </ul>
+      </li>
+      <li>Apply the mod operator to the integer di generated in Step #1 in order to compute an
+        index into the hash table.<br>
+        For example, if the hash table contains 7 locations, then compute di % 7 to get the index
+        into the hash table.</li>
+    </ol>
+  </li>
+  <li><em>division method</em> - When Step 2 of the <i>hash function</i> (above) 
+    uses the remainder from dividing the the integer <i>di</i> by the size of 
+    the hash table.</li>
+  <li><em>collision</em> - This is when multiple (more than one) different k values hash to
+    the same bucket.
+    <ul>
+      <li>For example, if the hash table contains 7 locations, then if keys k1 = 9 and k2 = 16, then k1
+        and k2 will hash to bucket number 2.&nbsp; In the division method, this is when (k1 % arraySize) = (k2 % arraySize)</li>
+      <li> This is not a problem, because the container (e.g., Queue) at
+        location number 2 in the array is unbounded and can hold more than one item.</li>
+    </ul>
+  </li>
+  <li><em>figuring hash table size</em> - Here are rule of thumb steps to computing a
+    reasonable hash table size:
+    <ul>
+      <li>hash table size = 1
+        <ul>
+          <li>Everything hashes to the same single bucket.</li>
+          <li>A degenerate case where we end up with a simple <em>Association List</em> - in the example of this page the list of items might be stored in a Queue.</li>
+          <li>This case causes linear search (i.e., O
+            (N)) performance (worst case) when doing a look-up.</li>
+        </ul>
+      </li>
+      <li>hash table size &gt; 1<br>
+        A multiple bucket hash table that provides improved (over
+        linear search) performance.<br>
+        In the following, let <em>B</em> = the number of buckets, <em>E</em> be the number of
+        entries.
+        <ol>
+          <li>Estimate the number of entries in your Map under steady-state conditions, e.g.,
+            E = 1000.</li>
+          <li>If you want log<sub>2</sub> (N) performance, (worst case) when searching a particular
+            bucket while doing a look-up, then solve the following for B: E / B = log<sub>2</sub> (E).
+            &nbsp;&nbsp;<br>
+            Solving for B we get <strong>B = E / log<sub>2</sub> (E)</strong><br>
+            For example, if E = 1000, log<sub>2</sub> (1000) = 10 (approximately).&nbsp;&nbsp;<br>
+            So B =
+            1000/10 = 100 buckets.</li>
+          <li>Then choose a prime number just larger than the B computed in Step #2.&nbsp; Use that
+            for the hash table size.</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h4>Here is the <em>add</em> operation, note the following: </h4>
+<ul>
+  <li>KCompare the third template parameter to Map must have a
+    static member function called hashCode parameterized by type K (the data type 
+    for the keys), hashCode returns an
+    Integer.&nbsp; Here is its header:<br>
+    <code>Integer hashCode (preserves K&amp; k)</code> </li>
+  <li>The number returned by hashCode must be an integer computed from the
+    the value stored in the K object.</li>
+  <li>The number returned by hashCode is then mod'ed with the size of the array so that the resulting index is
+    in the range from 0..(arraySize - 1).</li>
+  <li>The index is used to select the bucket in which to insert newPair.</li>
+  <li>representation of map has 2 data members:
+    <ul>
+      <li><code><em>map</em></code> - a StaticArray of Queues, it needs to be indexed starting at 0.</li>
+      <li><code><em>mapSize</em></code>
+        <ul>
+          <li>Is an integer holding the count of the number of items in the map.</li>
+          <li>It must be updated by Map's member functions when ever a (key, 
+            value) pair is added, or removed from the map.</li>
+        </ul>
+      </li>
+    </ul>
+  <li>The size of the array <code>map:</code>&nbsp;
+    <ul>
+      <li>In the Map template-class file, an C++ <code>enum</code> statement has been used to 
+        add the
+        constants lowerBound, upperBound, and arraySize which add the 
+        lower and upper bound of the array, and the array's size.<br>
+        For example: <br>
+        &nbsp;&nbsp; <b></b><code><b>enum</b> hashTableBounds {lowerBound = 0, upperBound = 16, 
+        arraySize = 17};</code></li>
+      <li><em>lowerBound</em> must be set to 0</li>
+      <li>therefore the array is indexed from 0..<em>upperBound</em></li>
+      <li>the size of the array is (<em>upperBound</em> + 1)</li>
+      <li><em>arraySize</em> is used when applying the mod function to compute
+        the index into the array</li>
+    </ul>
+  </li>
+  <li>Most of the Map operations will need to be implemented so as to interact
+    correctly with the rep, i.e., the <code> map</code> and <code><em>mapSize</em></code>.</li>
+</ul>
+<div align="center">
+  <center>
+    <table BORDER="1" WIDTH="75%">
+      <tr>
+        <td WIDTH="100%"><pre><tt><b>template</b> &lt;<b>class</b> K, <b>class</b> V, <b>class</b> KCompare&gt;
+<b>void</b> Map3&lt;K, V, KCompare&gt;::add (K&amp; key, V&amp; value)
+//! updates self
+//! clears key, value
+//! requires: key is not in DOMAIN(self)
+//! ensures: self = #self  union  {(#key, #value)}
+{
+&nbsp;&nbsp; MapPairRecord newPair;
+&nbsp;&nbsp; Integer bucket;
+
+&nbsp;&nbsp; bucket = KCompare::hashCode(key) % hashTableBounds::arraySize;
+
+   // transfer 'key' and 'value' into the newPair record, <em>move</em> them, don't <em>copy</em>
+&nbsp;&nbsp; newPair.keyItem.transferFrom(key);
+&nbsp;&nbsp; newPair.valueItem.transferFrom(value);
+
+&nbsp;&nbsp; map[bucket].enqueue(newPair);
+&nbsp;&nbsp; mapSize++;
+}&nbsp;&nbsp;// add</tt>&nbsp;</pre></td>
+      </tr>
+    </table>
+  </center>
+</div>
+<p>&nbsp;</p>
+<p>The definition of MapPairRecord is an open record and is also defined in the private part of the 
+  Map template class along with the two data members</p>
+<div align="center">
+  <table BORDER="1" WIDTH="75%">
+    <tr>
+      <td WIDTH="100%" align="left"><pre><tt><b>class</b> MapPairRecord {
+<b>public</b>:
+	K keyItem; 
+	V valueItem;
+    
+	MapPairRecord() {}
+	~MapPairRecord() {}
+
+	<strong>void</strong> clear (<strong>void</strong>)
+	{
+		keyItem.clear();
+		valueItem.clear();
+	} // clear
+
+	MapPairRecord& operator = (MapPairRecord& rhs)
+	{
+		keyItem = rhs.keyItem;
+		valueItem = rhs.valueItem;
+		return *this;
+	} // operator =
+
+	<b>void</b> transferFrom(MapPairRecord& source) 
+	{
+		keyItem.transferFrom(source.keyItem);
+		valueItem.transferFrom(source.valueItem);
+	};
+
+	<b>friend</b> wostream& operator << (wostream &os, MapPairRecord& r)
+	{
+		os << "(" << r.keyItem << "," << r.valueItem << ")";
+		<b>return</b> os;
+	}
+};</tt></pre></td>
+    </tr>
+  </table>
+</div>
+<p>&nbsp;</p>
+</body>
+</html>
