@@ -48,7 +48,7 @@
 <ul>
   <li>An example named instance of Map might be typedef'ed and a variable <em>mAir</em> is declared 
     as follows:<br>
-    <code>&nbsp;&nbsp; typedef Map&lt;Text, AirportRecord, KeyComparer&gt; AirportMap;<br>
+    <code>&nbsp;&nbsp; typedef Map&lt;Text, AirportRecord, KCompare&gt; AirportMap;<br>
     &nbsp;&nbsp; AirportMap mAir; <br>
     &nbsp;</code></li>
   <li>The <em>Key</em> is type Text, and is a three letter airport code, e.g., SDF for 
@@ -58,7 +58,7 @@
   <li>The <em>Value</em> is type AirportRecord and contains 13 fields for each piece of airport data<br>
     <br>
   </li>
-  <li>The KeyComparer class  (the 3rd template parameter) contains three callback operations:
+  <li>The KCompare class  (the 3rd template parameter) contains three callback operations:
     <ul>
       <li>areEqual - compares for equality to values of type Key</li>
       <li>areOrdered - compares &le; between two values of type Key</li>
