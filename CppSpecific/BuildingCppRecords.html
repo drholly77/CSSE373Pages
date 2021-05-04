@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>Building C++ Open Records</title>
+<meta name="Author" content="Dr. Holly">
+</head>
+
+<body>
+<table border="0" width="100%">
+  <tbody>
+    <tr>
+      <td><p align="center"><b>Building C++ Open Records Modeled as Math N-tuples</b></p></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<ul>
+  <li>When developing software we frequently need to build open records
+    <ul>
+      <li>A new type that has multiple data members</li>
+      <li>But doesn't have any specific member functions that need to be 
+        implemented, i.e., not like a Stack, Queue, or List</li>
+      <li>Mathematically we model open records as an N-tuple where N = number of fields present in the record</li>
+    </ul>
+  </li>
+  <li>To build record objects, we need to use the C++ class construct and 
+    provide the <em>standard</em> interface (<em>constructor</em>, <em>destructor</em>, clear, operator =, transferFrom), and also 
+    the operator &lt;&lt;.&nbsp;
+    The implementation of the standard interface 
+    will make these record objects look and feel like the rest of our objects,
+    e.g., lists, stacks, etc.</li>
+</ul>
+<h4>Attributes of Open Record:</h4>
+<ul>
+  <li><em>Data members are declared public</em> - so client program can use C++ dot operator to gain direct access, this is what is meant when we describe these records as &quot;Open Records&quot;</li>
+  <li><em>Field</em> - this is what a data member in an open record is called</li>
+  <li><em>Standard operations implemented</em> - this allows client programmer to use the record when creating  instances of cotainer components such as: Stack, Queue, List, etc.
+    <ul>
+      <li>Example: <br>
+        <pre>typedef Queue1&lt;PersonRecord&gt; QueueOfPerson;</pre>
+        Having the standard operations is required by these containter components, so our records must export them<br>
+      </li>
+    </ul>
+  </li>
+  <li><em>The  constructor </em> - Requires no statements to initialize the data members when the record's data members are declared using the wrapper types: Boolean, Character, Float, Integer, LongInteger, and Text.<br>
+    This is because all these wrapper types have their own constructor and C++  guarantees that their constructors will be called when the record gets declared</li>
+  <li><em>The  destructor</em> - Requires no statements to finalize the data members when the record's data members are declared using the wrapper types: Boolean, Character, Float, Integer, LongInteger, and Text.<br>
+    This is because all these wrapper types have their own destructor and C++  guarantees that their destructors will be called when the record goes out of scope</li>
+  <li><em>operator &lt;&lt;</em> - is implemented so that these records can be displayed in <em>console</em> <em>applications</em> - aids with testing and debugging</li>
+</ul>
+<h4>Architecture of a C++ Open Record:</h4>
+<ol>
+  <li>Use the <em>.h</em> file extension for the filename</li>
+  <li>By convention the filename itself is the same as the record name (see example below)</li>
+  <li>At the top of the file use the <em>#pragma once</em> preprocessor directive</li>
+  <li><em>#include &quot;wrapper.h&quot;</em></li>
+  <li>Use the C++ <em>class</em> construct</li>
+  <li>Use the <em>public:</em> keyword to make all members available to the client</li>
+  <li>Declare all data members</li>
+  <li>Declare all the <em>standard operations</em> and  operator &lt;&lt;</li>
+</ol>
+<hr>
+<p align="left"><i>For example, suppose we want a record to store the following data in one variable:</i></p>
+<ul>
+  <li> Text name;</li>
+  <li> Integer age;</li>
+  <li> Character sex;</li>
+  <li> Integer monthOfBirth;</li>
+</ul>
+<p align="left"><i>Example record declaration:</i></p>
+<p align="left">File: <code>PersonRecord.h</code> </p>
+<div align="center">
+  <center>
+    <table border="1" width="90%">
+      <tbody>
+        <tr>
+          <td width="100%"><pre><b>#pragma</b> once
+#<b>include</b> &quot;wrapper.h&quot;
+
+<b>class</b> PersonRecord {
+   <b>public</b>:
+      Text name;
+      Integer age;
+      Character sex;
+      Text monthOfBirth;
+
+      // Standard Operations
+      
+      PersonRecord() {}
+      ~PersonRecord() {}
+      
+      <b>void</b> clear(<b>void</b>)
+      {
+         name.clear();
+         age.clear();
+         sex.clear();
+         monthOfBirth.clear();
+      } // clear
+
+      PersonRecord&amp; <b>operator</b> = (PersonRecord&amp; rhs)
+      {
+         name = rhs.name;
+         age = rhs.age;
+         sex = rhs.sex;
+         monthOfBirth = rhs.monthOfBirth;
+
+         <b>return</b> *this;
+      } // operator =
+
+      <b>void</b> transferFrom(PersonRecord&amp; source) 
+      {
+         name.transferFrom(source.name);
+         age.transferFrom(source.age);
+         sex.transferFrom(source.sex);
+         monthOfBirth.transferFrom(source.monthOfBirth);
+      } // transferFrom
+
+      <b>friend</b> wostream&amp; <b>operator</b> &lt;&lt; (wostream &amp;os, PersonRecord&amp; r)
+      {
+	     // Output Record as a 4-tuple
+         os &lt;&lt; L"(" &lt;&lt; r.name &lt;&lt; L"," &lt;&lt; r.age &lt;&lt; L"," &lt;&lt; r.sex &lt;&lt; L"," &lt;&lt; r.monthOfBirth &lt;&lt; L")";
+         <b>return</b> os;
+      } // operator &lt;&lt;
+};</pre></td>
+        </tr>
+      </tbody>
+    </table>
+  </center>
+</div>
+<p>&nbsp;</p>
+<p><i>Example usage of the record</i>:</p>
+<p>File: <code>driver.cpp</code> </p>
+<div align="center">
+  <table style="width: 90%;" border="1">
+    <tbody>
+      <tr>
+        <td><pre><code> #<strong>include</strong> "wrapper.h"<br /> #<strong>include</strong> "PersonRecord.h"<br /> #<strong>include</strong> "List\List1.hpp"<br /> <br /> <strong>typedef</strong> List1&lt;PersonRecord&gt; PersonList;<br /> <br /> <strong>void</strong> doInputPersonDataFromFile(PersonList&amp; personData)<br /> {<br /> &nbsp;&nbsp; Text filename = "Persons.dat";<br /> &nbsp;&nbsp; File input;<br /> &nbsp;&nbsp; Boolean successful;<br />    PersonRecord r;<br />    Integer dataSize;<br /> <br /> &nbsp;&nbsp; input.openFile(filename, File::openForRead, successful);<br />    <strong>if</strong> (successful) {<br />        // The first item in the data file is an integer<br />        // it represents how many records are in the data file.<br />        input.read(dataSize, successful);<br />        <strong>for</strong> (int j = 0; j &lt; dataSize; j++) {<br />         &nbsp;&nbsp; input.read(r.name, successful);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp; input.read(r.age, successful);<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; input.read(r.sex, successful);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  input.read(r.monthOfBirth, successful);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     personData.addRightFront(r);       <br />        } // end for<br />    &nbsp;&nbsp;  input.closeFile(successful);<br />    } // end if<br /><br />  } // doInputPersonDataFromFile<br /> <br /> int main(int argc, char* argv[])<br /> {<br /> <br /> &nbsp;&nbsp; PersonRecord r1, r2;<br /> &nbsp;&nbsp; PersonList s1;<br /><br />    // load data from a file<br />    doInputPersonDataFromFile(s1);<br /><br />    // work directly with records<br /> &nbsp;&nbsp; r1.name = "Sandy";<br /> &nbsp;&nbsp; r1.age = 32;<br /> &nbsp;&nbsp; r1.sex = "F";<br /> &nbsp;&nbsp; r1.monthOfBirth = "July";<br /> <br /> &nbsp;&nbsp; r2 = r1;<br /> &nbsp;&nbsp; s1.addRightFront(r2);<br><br>    // This wcout of r1 calls PersonRecord's operator &lt;&lt;<br /> &nbsp;&nbsp; wcout &lt;&lt; r1 &lt;&lt; endl;<br /> &nbsp;&nbsp; r2.transferFrom(r1);<br /> &nbsp;&nbsp; s1.addRightFront(r2);<br /> <br /> &nbsp;&nbsp; <strong>return</strong> 0;<br /> }<br /> </code></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>&nbsp;</p>
+</body>
+</html>
