@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="utf-8">
+<title>Loop Engineering</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<table border="0" width="100%">
+  <tr>
+    <td><p align="center"><b>Loop Engineering</b></p></td>
+  </tr>
+</table>
+<hr>
+<ul>
+  <li>Below are 4 code examples of how <b>not</b> to engineer a loop.</li>
+  <li>Each example computes the same result: given a sequence of integers,
+    determine if there a negative number is present anywhere in the sequence.</li>
+  <li>Each example uses a loop is to walk down the sequence looking for a
+    negative number.</li>
+  <li>true is returned from the operation if a negative number is found,
+    otherwise false is returned.</li>
+</ul>
+<table border="1" width="100%">
+  <tr>
+    <td width="50%"><b>Problem: gratuitous</b>
+      <ul>
+        <li>This operation is correct, i.e., it returns true iff there is a
+          negative number present in s.</li>
+        <li>But it has potential to waste a significant amount of time.</li>
+        <li>The for loop continues to execute until every location is
+          examined, even if a negative number has been found.</li>
+        <li>This is gratuitous waste of time.<br>
+          &nbsp;</li>
+        <li><i>Don't gratuitously waste time.</i></li>
+      </ul></td>
+    <td width="50%"><code><font size="2">Boolean negativeNumberPresent (IntegerSequence&amp; s)<br>
+      //! restores s<br>
+      //! requires: true<br>
+      //! ensures: result = true iff there exists a negative number in s<br>
+      {<br>
+      &nbsp;&nbsp; Boolean found;<br>
+      <br>
+      &nbsp;&nbsp; <b>for</b> (int k = 0, z = s.size(); k &lt; z; k++) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>if</b> (s.entry(k) &lt; 0) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; found = true;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } // end if<br>
+      &nbsp;&nbsp; } // end for<br>
+      &nbsp;&nbsp; <b>return</b> found;<br>
+      } // negativeNumberPresent</font></code></td>
+  </tr>
+  <tr>
+    <td width="50%"><b>Problem: unexpected</b>
+      <ul>
+        <li>This operation is correct, i.e., it returns true iff there is a
+          negative number present in s.</li>
+        <li>But it uses a break to &quot;short-circuit&quot; the for loop and
+          cause it to exit early when a negative number is found.</li>
+        <li>This fixes the problem of gratuitously wasting time.&nbsp;</li>
+        <li>Normally when a person sees a for loop, one expects that the for
+          loop is going to execute for a fixed number of times.&nbsp; In this
+          example, one would expect it to execute the body 'z' times.</li>
+        <li>When a break is present in the loop body, then the for loop might
+          not execute 'z' times.</li>
+        <li>This is unexpected behavior out of a for loop, and if a software
+          maintainer isn't careful, they will rely on their expectations, and
+          might not notice the break statement in the body of the loop.<br>
+          &nbsp;</li>
+        <li><i>Don't do the unexpected.&nbsp; Don't create false expectations.</i></li>
+      </ul></td>
+    <td width="50%"><code><font size="2">Boolean negativeNumberPresent (IntegerSequence&amp; s)<br>
+      //! restores s<br>
+      //! requires: true<br>
+      //! ensures: result = true iff there exists a negative number in s<br>
+      {<br>
+      &nbsp;&nbsp;	Boolean found;<br>
+      <br>
+      &nbsp;&nbsp; <b> for</b> (int k = 0, z = s.size(); k &lt; z; k++) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> if</b> (s.entry(k) &lt; 0) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			found = true;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>break</b>;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		} // end if<br>
+      &nbsp;&nbsp;	} // end for<br>
+      &nbsp;&nbsp; <b> return</b> found;<br>
+      } // negativeNumberPresent</font></code></td>
+  </tr>
+  <tr>
+    <td width="50%"><b>Problem: unexpected and tricky</b>
+      <ul>
+        <li>This operation is correct, i.e., it returns true iff there is a
+          negative number present in s.</li>
+        <li>But it modifies the loop counter to &quot;short-circuit&quot; the for loop and
+          cause it to exit early when a negative number is found.</li>
+        <li>This is tricky and unexpected behavior in the same way that the
+          break statement caused unexpected behavior.<br>
+          &nbsp;</li>
+        <li><i>Don't do the unexpected.&nbsp; <br>
+          Don't be tricky.<br>
+          Don't create false expectations.</i></li>
+      </ul></td>
+    <td width="50%"><code><font size="2">Boolean negativeNumberPresent (IntegerSequence&amp; s)<br>
+      //! restores s<br>
+      //! requires: true<br>
+      //! ensures: result = true iff there exists a negative number in s<br>
+      {<br>
+      &nbsp;&nbsp;	Boolean found;<br>
+      <br>
+      &nbsp;&nbsp; <b> for</b> (int k = 0, z = s.size(); k &lt; z; k++) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> if</b> (s.entry(k) &lt; 0) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			found = true;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k = z;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		} // end if<br>
+      &nbsp;&nbsp;	} // end for<br>
+      &nbsp;&nbsp; <b> return</b> found;<br>
+      } // negativeNumberPresent</font></code></td>
+  </tr>
+  <tr>
+    <td width="50%"><b>Problem: unexpected&nbsp;</b>
+      <ul>
+        <li>This operation is correct, i.e., it returns true iff there is a
+          negative number present in s.</li>
+        <li>But it can execute the return statement from two different places
+          and one of those places is in the for-loop body.</li>
+        <li>This is unexpected.&nbsp; Many software developers expect the return
+          to be the last statement in the operation and don't expect to see
+          return statements sprinkled about the operation's body.<br>
+          &nbsp;</li>
+        <li><i>Don't do the unexpected.&nbsp; <br>
+          Don't create false expectations.</i></li>
+      </ul></td>
+    <td width="50%"><code><font size="2">Boolean negativeNumberPresent (IntegerSequence&amp; s)<br>
+      //! restores s<br>
+      //! requires: true<br>
+      //! ensures: result = true iff there exists a negative number in s<br>
+      {<br>
+      &nbsp;&nbsp; <b> for</b> (int k = 0, z = s.size(); k &lt; z; k++) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> if</b> (s.entry(k) &lt; 0) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>return</b> true;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		} // end if<br>
+      &nbsp;&nbsp;	} // end for<br>
+      &nbsp;&nbsp; <b>return</b> false;<br>
+      } // negativeNumberPresent</font></code></td>
+  </tr>
+</table>
+<hr>
+<p><b>What is the Root Cause of the Problems Listed Above?</b></p>
+<ul>
+  <li>A definite loop was used when the situation called for an indefinite loop.</li>
+  <li>Use a <i> definite</i> loop, i.e., a <i>for</i> loop when during the execution of the program,
+    it can be determined prior to the beginning of the loop exactly how many trips need to be
+    made through the loop.
+    <ul>
+      <li>Engineering Rule: <br>
+        If you choose a definite loop, i.e., a <i>for</i> loop, but then you
+        find that you're:
+        <ul>
+          <li>using a 'break' statement or a 'return' statement to exit the loop
+            prior to making all the trips through the loop, then change to an
+            indefinite loop.</li>
+          <li>or that you're modifying the loop counter inside the
+            loop body by assigning it a value that will cause the loop to
+            terminate, then change to an indefinite loop.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Use an <i> indefinite</i> loop, such as a <i>while</i> or <i>do-while</i> loop when during the
+    execution of the program, it is not known prior to the beginning of the loop exactly how
+    many trips need to be made through the loop.
+    <ul>
+      <li><i>zero-trip loop</i>: Choose a <i>while</i> loop when there is a possibility
+        of making 0 trips through the loop.&nbsp; Note: a <i>for</i> is a zero-trip 
+        loop.</li>
+      <li><i>one-trip loop</i>: Choose a <i>do-while</i> loop when the computation requires
+        at least one trip be made through the loop.</li>
+    </ul>
+  </li>
+</ul>
+<table border="1" width="100%">
+  <tr>
+    <td width="50%"><b>Solution: not unexpected</b>
+      <ul>
+        <li>Software developers see while loops (or do-while loops) and they expect
+          them to continue executing based on some condition staying true.</li>
+        <li>They know that the condition might change from true to false at any
+          point, so they know that there is not a preset fixed number of times
+          the loop body is expected to execute.</li>
+        <li>When using a while or do it is often convenient to use a Boolean
+          object as part of the conditional statement that controls the loop.</li>
+        <li>In the body of the loop, the Boolean object gets its value changed
+          at the time when the loop should exit.<br>
+          &nbsp;</li>
+        <li><i>Do this.<br>
+          Write code that the reader expects to see.</i></li>
+      </ul></td>
+    <td width="50%"><code><font size="2">Boolean negativeNumberPresent (IntegerSequence&amp; s)<br>
+      //! restores s<br>
+      //! requires: true<br>
+      //! ensures: result = true iff there exists a negative number in s<br>
+      {<br>
+      &nbsp;&nbsp;	Integer k, z;<br>
+      &nbsp;&nbsp;	Boolean found;<br>
+      <br>
+      &nbsp;&nbsp;	z = s.size();<br>
+      &nbsp;&nbsp; <b>while</b> ((k &lt; z) &amp;&amp; !found) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> if</b> (s.entry(k) &lt; 0) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			found = true;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		} // end if<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k++;<br>
+      &nbsp;&nbsp;	} // end while<br>
+      &nbsp;&nbsp; <b> return</b> found;<br>
+      } // negativeNumberPresent</font></code></td>
+  </tr>
+  <tr>
+    <td width="50%"><b>Solution: not unexpected</b>
+      <ul>
+        <li>Often the Boolean object can be eliminated from the loop by placing
+          a form of the test right in the loop's conditional part.</li>
+        <li>In this case, the loop continues to execute while there is more
+          sequence to look at <i>and</i> while no negative number has been located.</li>
+        <li>In the while's conditional, it is imperative that the <code>(k &lt; z)</code> test comes as the first part of the <code>&amp;&amp;</code> (and),
+          because as soon as this fails, the second part of the <code>&amp;&amp;</code> will not be executed (C++ guarantees this), thus protecting sequence's <em>entry</em> operation from a
+          precondition violation.</li>
+        <li>Finally, at the return, the only way that <code>k &lt; z</code>, is
+          if a negative number was located, then a true will be returned.&nbsp;
+          Otherwise, <code>k == z</code>, and that means every location was
+          examined and no negative number was found, and false will be returned.<br>
+          &nbsp;</li>
+        <li><i>Do this.<br>
+          Write code that the reader expects to see.</i></li>
+      </ul></td>
+    <td width="50%"><code><font size="2">Boolean negativeNumberPresent (IntegerSequence&amp; s)<br>
+      //! restores s<br>
+      //! requires: true<br>
+      //! ensures: result = true iff there exists a negative number in s<br>
+      {<br>
+      &nbsp;&nbsp;	Integer k, z;<br>
+      <br>
+      &nbsp;&nbsp;	z = s.size();<br>
+      &nbsp;&nbsp; <b>while</b> ((k &lt; z) &amp;&amp; (s.entry(k) &gt;= 0)) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //! updates k<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //! maintains for all j : integer (j &lt; k implies s[0,j) &gt;= 0)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //! decreases |s| - k<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; k++;<br>
+      &nbsp;&nbsp;	} // end while<br>
+      &nbsp;&nbsp; <b> return </b>k &lt; z;<br>
+      } // negativeNumberPresent</font></code></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>
