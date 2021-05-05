@@ -14,10 +14,10 @@
   <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/MapTemplate.html" target="_blank">Map Spec</a></li>
   <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/QueueTemplate.html" target="_blank">Queue Spec</a></li>
   <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentUsage/SArrayUsage.html" target="_blank">StaticArray Example Usage</a></li>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/SoftwareDesign/LoopEngineering.html" target="_blank">Loop Engineering</a></li>
 </ul>
-<h3>1. Getting Setup For ProjP1</h3>
 <hr>
-<h3>1. Setup</h3>
+<h3>1. Getting Setup For ProjP1</h3>
 <h4>1.1 Get the L5Starter Download</h4>
 <ul>
   <li>Download <em>ProjP1Starter.zip</em> to your machine - to be used on a subsequent steps</li>
@@ -103,9 +103,14 @@
   <li><strong>Use Design by Contract</strong> - No defensive programming of Map's operations. </li>
   <li><strong>Making copies</strong> - Move (transfer) data, do not unnecessarily copy it. The only operation where a call to StaticArray's assignment operator is permitted is in the Map2's <em>operator =</em>. Do not call operator = to make a copy of an array, Queue, or variable of type K or V in any implementation of the other Map2 member functions. <br>
     If you think you need to call operator = to make a copy in any Map operation (other than Map's operator =), then rethink your algorithm until you figure out a way to not make a copy.</li>
-  <li><strong>Loop engineering - use the correct loop construct</strong> - You must choose between a definite loop construct (for loop) and an indefinite loop construct (while loop), do this based on the looping situation</li>
-  <li><strong></strong><strong>Linear search</strong> -When searching a bucket in the hash table for a particular key value, a linear search must be performed</li>
-  <li><strong>No gratuitous waste of time</strong> - During the search for a key, once the key has been found, then the loop must terminate and not continue to examine the remainder of the keys in the bucket</li>
+  <li><strong>Linear search</strong> -When searching a bucket in the hash table for a particular key value, a linear search must be performed</li>
+  <li><strong>Loop engineering</strong>
+    <ul>
+      <li>Use the correct loop construct - You must choose between a definite loop construct (<em>for</em> loop) and an indefinite loop construct (<em>while</em> loop), do this based on the looping situation</li>
+      <li>No gratuitous waste of time - During the search for a key, once the key has been found, then the loop must terminate and not continue to examine the remainder of the keys in the bucket</li>
+      <li>No tricky  or unexpected exits from the loop</li>
+    </ul>
+  </li>
 </ol>
 <hr />
 <h3>3. Testing</h3>
