@@ -9,10 +9,10 @@
 <body>
 <table border="0" width="100%">
   <tr>
-    <td><p align="center"><b>Loop Engineering</b></p></td>
+    <td><p align="center"><h2>Loop Engineering</h2></p></td>
   </tr>
 </table>
-<hr>
+<h3>Four Examples of Poor Quality Loops</h3>
 <ul>
   <li>Below are 4 code examples of how <b>not</b> to engineer a loop.</li>
   <li>Each example computes the same result: given a sequence of integers,
@@ -24,7 +24,7 @@
 </ul>
 <table border="1" width="100%">
   <tr>
-    <td width="50%"><b>Problem: gratuitous</b>
+    <td width="50%"><b>Example 1: gratuitous</b>
       <ul>
         <li>This operation is correct, i.e., it returns true iff there is a
           negative number present in s.</li>
@@ -51,7 +51,7 @@
       } // negativeNumberPresent</font></code></td>
   </tr>
   <tr>
-    <td width="50%"><b>Problem: unexpected</b>
+    <td width="50%"><b>Example 2: unexpected</b>
       <ul>
         <li>This operation is correct, i.e., it returns true iff there is a
           negative number present in s.</li>
@@ -86,7 +86,7 @@
       } // negativeNumberPresent</font></code></td>
   </tr>
   <tr>
-    <td width="50%"><b>Problem: unexpected and tricky</b>
+    <td width="50%"><b>Example 3: add tricky to the unexpected</b>
       <ul>
         <li>This operation is correct, i.e., it returns true iff there is a
           negative number present in s.</li>
@@ -116,7 +116,7 @@
       } // negativeNumberPresent</font></code></td>
   </tr>
   <tr>
-    <td width="50%"><b>Problem: unexpected&nbsp;</b>
+    <td width="50%"><b>Example 4: better, but still unexpected</b>
       <ul>
         <li>This operation is correct, i.e., it returns true iff there is a
           negative number present in s.</li>
@@ -143,7 +143,7 @@
       } // negativeNumberPresent</font></code></td>
   </tr>
 </table>
-<hr>
+<h3>Root Cause</h3>
 <p><b>What is the Root Cause of the Problems Listed Above?</b></p>
 <ul>
   <li>A definite loop was used when the situation called for an indefinite loop.</li>
@@ -177,9 +177,10 @@
     </ul>
   </li>
 </ul>
+<h3>Two Examples of Quality Loops</h3>
 <table border="1" width="100%">
   <tr>
-    <td width="50%"><b>Solution: not unexpected</b>
+    <td width="50%"><b>Example 1: not unexpected</b>
       <ul>
         <li>Software developers see while loops (or do-while loops) and they expect
           them to continue executing based on some condition staying true.</li>
@@ -213,7 +214,7 @@
       } // negativeNumberPresent</font></code></td>
   </tr>
   <tr>
-    <td width="50%"><b>Solution: not unexpected</b>
+    <td width="50%"><b>Example 2: not unexpected</b>
       <ul>
         <li>Often the Boolean object can be eliminated from the loop by placing
           a form of the test right in the loop's conditional part.</li>
@@ -248,5 +249,42 @@
       } // negativeNumberPresent</font></code></td>
   </tr>
 </table>
+<h3>Analyze Loop's Quality for Better Engineering</h3>
+<p><strong>First - Write an initial draft of the loop</strong></p>
+<ul>
+  <li>This first draft has been called any number of names: <em>bad</em>, <em>terrible</em>, <em>horrible</em>,<em> no good</em>, or worse</li>
+  <li>You cannot analyze a loop’s quality if the loop does not exist</li>
+</ul>
+<p><strong>Second - Analyze your first draft using these approaches/questions:</strong></p>
+<ul>
+<li><strong>Short-circuit code</strong><br>
+  Does the loop body contain short-circuit code, e.g., a <strong>return</strong> or <strong>break</strong> statement?
+<ul>
+    <li>If “yes”, then if a <em>definite</em> loop is being used, then consider rewriting using an <em>indefinite</em> loop</li>
+    <li>If “yes”, but <em>indefinite</em> loop is being used, then can the loop’s control be modified so as to eliminate the if in the loop body that guards the short-circuit?</li>
+  </ul>
+</li>
+	<li><strong>Definite or indefinite loop</strong><br>
+  Is it known at the outset of the loop, i.e., the at the loop&rsquo;s first encounter, that a fixed number of executions of the loop body are required?
+  <ul>
+    <li>If &ldquo;yes&rdquo;, then more than likely a <em>definite</em> loop is a good choice</li>
+    <li>If &ldquo;no&rdquo;, then an <em>indefinite </em>loop is a good choice</li>
+  </ul>
+</li>
+<li><strong>For indefinite loop situations</strong><br>
+  Is it possible to execute zero trips through the loop body?
+  <ul>
+    <li>If &ldquo;yes&rdquo;, then use a while loop construct</li>
+    <li>If &ldquo;no&rdquo;, then at least 1 (or more trips) are required, so use a do-while loop</li>
+  </ul>
+</li>
+<li><strong>Squeeze the loop body</strong><br>
+  Attempt to squeeze as much code out of the loop body as possible – smaller loop bodies are generally easier to understand and easier to get correct
+  <ul>
+    <li>Can some of loop body be pulled out of the body and moved <em>after</em> the loop terminates</li>
+    <li>Can some be pulled out and moved <em>before</em> the loop begins</li>
+  </ul>
+</li>
+</ul>
 </body>
 </html>
