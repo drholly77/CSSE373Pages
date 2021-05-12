@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Project Part 2</title>
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Project Part 2</h1>
+<hr />
+<h3>0. Reference material</h3>
+<ul>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/MapTemplate.html" target="_blank">Map Spec</a></li>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/BinaryTreeTemplate.html" target="_blank">BinaryTree Spec</a></li>
+</ul>
+<hr>
+<h3>1. Getting Setup For ProjP2</h3>
+<h4>1.1 Get the ProjP2Starter Download</h4>
+<ul>
+  <li>Download <em>ProjP2Starter.zip</em> to your machine - to be used on a subsequent steps</li>
+</ul>
+<h4>1.2 Copy Map3.hpp from the ProjP2Starter.zip</h4>
+<ul>
+  <li>Inside ProjP2Starter.zip is a file named Map3.hpp
+    <ul>
+      <li>For this assignment you will be making changes to this file</li>
+    </ul>
+  </li>
+  <li>Copy Map3.hpp to the following folder on in your local repo: <em>CppDevSp21/components/include/Map </em></li>
+</ul>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><h4>1.3 Create ProjP2</h4>
+        <ul>
+          <li>Use VS2019 to create a project named <em>ProjP2</em> in your local <em>CppDevSp21</em> repo, make it a <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">console project</a>, don't forget to make the appropriate changes to the project's settings</li>
+          <li>From the ProjP2Starter.zip copy the following files:
+            <ol>
+              <li><em>driver.cpp</em> to the folder CppDevsp21/ProjP2 folder (just created by VS2019 on previous step)</li>
+              <li><em>AirportData</em> (a folder) to the CppDevsp21/ProjP2 folder (you'll use this for testing)</li>
+            </ol>
+          </li>
+          <li> The driver.cpp from the starter .zip contains a driver program for Map3. This driver program works similarly to the driver used for Sequence from L1</li>
+          <li>When you are finished, your project should look like the one to the right</li>
+          <li>Note: This project will build <em>with</em> build errors up until the point where you have performed a number of edits in Map3.hpp (outlined in Part 2 below)</li>
+        </ul></td>
+      <td width="295"><img src="ProjP2Solution.png" width="291" height="297" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h3>2. ProjP2 Statement of Work</h3>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><h4>2.1 Primary Objectives</h4>
+        <p>The primary objective of this assignment is to provide you experience  with:</p>
+        <ul>
+          <li>Layering a component (e.g., Map) on an  already existing component (e.g., BinaryTree)</li>
+          <li>An abstract math model for Binary Trees</li>
+          <li>Investigate formal methods concepts related recursion</li>
+          <li>Revisit binary search tree (BST) in an implementation of Map</li>
+        </ul>
+        <h4>2.2 Specifics</h4>
+        <p><span style="text-decoration: underline;"><strong>Part1 - Initial Configuration of Map3.hpp</strong></span></p>
+        <p>The member functions in Map3 have been <em>stubbed out</em> which means that each member function body has no code, just the header and a set of open and closed curly braces for a body</p>
+        <p>Map3.hpp will not build correctly until you have made a few initial edits</p></td>
+      <td width="310"><img src="MapLayeringBST.png" width="306" height="251" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong><span style="text-decoration: underline;">Part 2 - Layering a Component</span></strong></p>
+<p>Open VS2019 and begin working on Map3.hpp by first finding comments that begin with <em>Step X</em> (where X is a number from 1 to 5). Start with <em>Step 0</em> and work your way through to <em>Step 5</em>, carefully following the instructions of each Step.</p>
+<p>Step 6 recommends an ordering for implementing and testing the operations of Map3</p>
+<p>Run the driver by choosing from <em>Debug </em>from the Menu Bar, and then choosing either <em>Start Debugging</em> or <em>Start Without Debugging</em></p>
+<p><em><img src="startWithoutDebugging.png" width="403" height="147" alt=""/></em></p>
+<p>All Map3 specific operations must call a private recursive helper operation. These operations have been stubbed and specified in Map3.hpp. The table below indicates that the Standard Operations will use<em> call throughs</em> to BinaryTree component operations, while the Map3 Specific Operations call a corresponding recursive helper operation.</p>
+<table border="1" width="75%">
+  <tr>
+    <th>Exported Map Operation</th>
+    <th>&nbsp;</th>
+    <th>Private Map Operation</th>
+  </tr>
+  <tr>
+    <td><i>the constructor</i></td>
+    <td><em>doesn't call</em></td>
+    <td><i>BinaryTree's constructor automatically called</i></td>
+  </tr>
+  <tr>
+    <td><i>the destructor</i></td>
+    <td><em>doesn't call</em></td>
+    <td><i>BinaryTree's destructor automatically called</i></td>
+  </tr>
+  <tr>
+    <td><code>transferFrom</code></td>
+    <td><em style="font-style: normal">calls</em></td>
+    <td><code>call through to BinaryTree</code></td>
+  </tr>
+  <tr>
+    <td><code>operator = </code></td>
+    <td>calls</td>
+    <td><code>call through to BinaryTree</code></td>
+  </tr>
+  <tr>
+    <td><code>clear</code></td>
+    <td><em style="font-style: normal">calls</em></td>
+    <td><code>call through to BinaryTree</code></td>
+  </tr>
+  <tr>
+    <td><code><font color="#0000FF">add</font></code></td>
+    <td><font color="#0000FF">calls</font></td>
+    <td><code><font color="#0000FF">insertInTree (see supplied code in Map3.hpp)</font></code></td>
+  </tr>
+  <tr>
+    <td><code>size</code></td>
+    <td>calls</td>
+    <td><code>countNodes <br>
+      (until you get this working, have it call BinaryTree's <em>size</em> operation)</code></td>
+  </tr>
+  <tr>
+    <td><code>hasKey</code></td>
+    <td>calls</td>
+    <td><code>inTree</code></td>
+  </tr>
+  <tr>
+    <td><code>removeAny</code></td>
+    <td>calls</td>
+    <td><code>removeDeepestFromTree</code></td>
+  </tr>
+  <tr>
+    <td><code>remove</code></td>
+    <td>calls</td>
+    <td><code>extractFromTree</code></td>
+  </tr>
+  <tr>
+    <td><code>value</code></td>
+    <td>calls</td>
+    <td><code>treeAccessor</code></td>
+  </tr>
+</table>
+<p><i>Important Restrictions</i>:</p>
+<ol>
+  <li><strong>Use KCompare's operations</strong> - use KCompare's <em>areEqual </em>operation for comparing two Key values for being equal and <em>areOrdered</em> for determining &lt;= between two Key values. These are call back operations to  client supplied code. Only the client, who supplied the Key and Value data types knows how to implement these operations that compare two Key values.</li>
+  <li><strong>BST</strong> - The supplied <em>insertInTree</em> operation will build a BST. All other operations must take advantage of this BST property and maintain the BST property</li>
+  <li><strong>No cross calling - </strong>None of Map's member functions are permitted to make calls to any of the other public Map member functions, i.e., no cross calling</li>
+  <li><strong>No iteration</strong> - None of Map's private helper member functions are permitted to use iteration, they must use recursion</li>
+  <li><strong>Use Design by Contract</strong> - No defensive programming of Map's operations. </li>
+  <li><strong>Making copies</strong> - Move (transfer) data, do not unnecessarily copy it. The only operation where a call to BinaryTree's assignment operator is permitted is in the Map3's <em>operator =</em>. Do not call operator = to make a copy of a binary tree for any other reason. Do not call operator = to make a copy of a variable of type K or V in any implementation of the other Map3 member functions. <br>
+    If you think you need to call operator = to make a copy in any Map operation (other than Map's operator =), then rethink your algorithm until you figure out a way to not make a copy.</li>
+  <li><strong>Binary search</strong> -When searching the BST for a specific Key value, your search must take advantage BST property and navigate to the searched for Key. No brute force traversing the tree to find a specific Key </li>
+</ol>
+<hr />
+<h3>3. Testing</h3>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><ul>
+          <li>To the right is a numbered checklist identifying all the work that needs to be done</li>
+          <li>Supplied in the starter .zip download is a folder named <em>airportData</em></li>
+          <li>Search in <em>airportData</em> for .txt files whose filenames end with the word <em>script</em></li>
+          <li>When running the MapDriver program, you can copy and paste the contents of these <em>script </em>files into the command interpreter. This will save you quite a bit of typing</li>
+        </ul>
+        <p><em>AirportDataSize7 Folder</em></p>
+        <ul>
+          <li><em>airport7AbstractMapView.txt</em> - contains a Map abstract value of 7 airports:<br>
+            m1 = {(&quot;CLE&quot;,791),(&quot;DFW&quot;,603),(&quot;MAD&quot;,2000),(&quot;DOG&quot;,773),(&quot;ORD&quot;,668),(&quot;VLV&quot;,2060),(&quot;YET&quot;,3041)}</li>
+          <li><em>airport7BalancedScript.txt</em> - contains a <em>script</em> for the command interpreter that inserts the 7 airports in an order so the the provided <em>insertInTree</em> will build a balanced BST</li>
+          <li><em>airport7AbstractBinaryTreeView.txt</em> - shows the 7 airports displayed as an abstract Binary Tree. See the math model defined at the top of <a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/BinaryTreeTemplate.html" target="_blank">BinaryTree Spec</a></li>
+          <li><em>airport7BalancedTextbookTreeView.txt</em> - displays the 7 airports using a textbook binary tree view</li>
+        </ul>
+        <p>&nbsp;</p></td>
+      <td valign="top"><img src="ProjP2CheckList.png" width="563" height="511" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td>airport7AbstractMapView<br>
+        When you Build in <em>Release</em> configuration, this will be displayed</td>
+      <td>airport7AbstractBinaryTreeView</td>
+      <td>airport7BalancedTextbookTreeView<br>
+        When you Build in <em>Debug</em> configuration, this will be displayed</td>
+    </tr>
+    <tr>
+      <td><pre>m1 = {
+      ("VLV",2060),("DFW",603),
+      ("MAD",2000),("DOG",773),
+      ("ORD",668),("CLE",791),
+      ("YET",3041)
+     }</pre>
+        <p>Set of 2-tuples, sets are not ordered</p></td>
+      <td><pre>m1 = 
+      (("MAD",2000),
+        (("DFW",603),
+          (("CLE",791),E,E),
+          (("DOG",773),E,E)),
+        (("VLV",2060),
+          (("ORD",668),E,E),
+          (("YET",3041),E,E)))</pre>
+        <p>("MAD",2000) is the root's label<br>
+          3-tuples = (label, left-subtree, right-subtree)</p></td>
+      <td><pre>m1 =
+ H: 1 ("CLE",791)
+ H: 2  ("DFW",603)
+ H: 1 ("DOG",773)
+ H: 3   ("MAD",2000)
+ H: 1 ("ORD",668)
+ H: 2  ("VLV",2060)
+ H: 1 ("YET",3041)</pre>
+        <p>H = Height of node<br>
+          MAD is root</p></td>
+    </tr>
+  </tbody>
+</table>
+<p><em>The Grader's test cases</em>:</p>
+<p>Grading will be done running a more complete set of test scripts which will systematically stress your member function implementations</p>
+<p><em>Recommended Testing:</em></p>
+<ul>
+  <li>I recommend that you develop additional MapDriver test scripts for the other Map operations </li>
+  <li>Use the supplied <em>script</em> files (found in folder <em>airportData</em>) for quickly building trees of size 7, 15, and 53</li>
+  <li>In the 15-tree below:<br>
+    the H = 1 nodes are leaves<br>
+    the root is at height 5 with label (&quot;MCO&quot;,96)<br>
+    the root's left subtree is at height 4 with label (&quot;DFW&quot;,503)</li>
+  <li>Test scripts for <em>hasKey</em> might include: <br>
+    (1) search for a Key not in the tree in MCO's left subtree and right subtree;<br>
+    (2) search for &quot;MCO&quot;, &quot;DFW&quot;, &quot;OAX&quot;,&quot;FLL&quot;,&quot;ABQ&quot;,&quot;ZTH&quot;</li>
+  <li>Test scripts for <em>remove</em> might include:<br>
+    (1)
+    removing the same listed for<em> hasKey's</em> #2 above. Be sure to display the tree after a removal and validate that it is still a BST and all the correct nodes remain<br>
+    (2) removing all nodes leaving the tree empty, then validate that you can successfully add 1 airport back in to this empty tree</li>
+  <li>Test scripts for <em>removeAny</em>:<br>
+    (1)
+    remove 1 at a time and  display the tree after a removal and validate that it is still a BST and all the correct nodes remain<br>
+    (2)
+    removing all nodes leaving the tree empty, then validate that you can successfully add 1 airport back in to this empty tree</li>
+</ul>
+<p><img src="SemiBalancedTree15RotatedLeft.png" width="572" height="444" alt="Tree of 15 nodes"/></p>
+<hr />
+<h3>4. Submitting the Assignment for Grading</h3>
+<ul>
+  <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2019 instructions</a> for <em>committing and pushing</em> your <em>ProjP2</em> project to your GitHub Education CSSE373 repo</li>
+  <li>Use the commit message &quot;ProjP2 final commit, ready for grading&quot;</li>
+</ul>
+</body>
+</html>
