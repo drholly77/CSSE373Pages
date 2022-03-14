@@ -146,36 +146,36 @@ namespace L2
 <tbody>
 <tr>
 <td valign="top">
-<pre>UT01ConstructorV1: Sequence4();
+<pre>UT01Constructor: Sequence4();
 	outgoing: s1 = &lt;&gt;
-UT02ClearV1: s1.clear();
+UT02Clear: s1.clear();
 	incoming: s1 = &lt;&gt;
 	outgoing: s1 = &lt;&gt;
-UT03TransferFromV1: s1.transferFrom(s2);
+UT03TransferFrom: s1.transferFrom(s2);
 	incoming: s1 = &lt;&gt; and s2 = &lt;&gt;
 	outgoing: s1 = &lt;&gt; and s2 = &lt;&gt;
-UT04AssignmentV1: s1 = s2;
+UT04Assignment: s1 = s2;
 	incoming: s1 = &lt;&gt; and s2 = &lt;&gt;
 	outgoing: s1 = &lt;&gt; and s2 = &lt;&gt;
-UT05AddV1: s1.add(pos, k);
+UT05Add: s1.add(pos, k);
 	incoming: s1 = &lt;&gt; and pos = 0 and k = 15
 	outgoing: s1 = &lt;15&gt; and pos = 0 and k = 0
-UT06RemoveV1: s1.remove(pos, k);
+UT06Remove: s1.remove(pos, k);
 	incoming: s1 = &lt;10,20,30&gt; and pos = 1 and k = 0
 	outgoing: s1 = &lt;10,30&gt; and pos = 1 and k = 20
-UT07ReplaceEntryV1: s1.replaceEntry(pos, k);
+UT07ReplaceEntry: s1.replaceEntry(pos, k);
 	incoming: s1 = &lt;10,20,30&gt; and pos = 2 and k = -30
 	outgoing: s1 = &lt;10,20,-30&gt; and pos = 2 and k = 30
-UT08EntryV1: s1.entry(pos);
+UT08Entry: s1.entry(pos);
 	incoming: s1 = &lt;10,20,30&gt; and pos = 2
 	outgoing: s1 = &lt;10,20,30&gt; and pos = 2
-UT09AppendV1: s2.append(s1);
+UT09Append: s2.append(s1);
 	incoming: s1 = &lt;30,40&gt; and s2 = &lt;10,20&gt;
 	outgoing: s1 = &lt;&gt; and s2 = &lt;10,20,30,40&gt;
-UT10SplitV1: s2.split(pos, s1);
+UT10Split: s2.split(pos, s1);
 	incoming: s1 = &lt;-30&gt; and pos = 1 and s2 = &lt;10,20,30,40&gt;
 	outgoing: s1 = &lt;20,30,40&gt; and pos = 1 and s2 = &lt;10&gt;
-UT11LengthV1: s1.length();
+UT11Length: s1.length();
 	incoming: s1 = &lt;&gt;
 	outgoing: s1 = &lt;&gt;</pre>
 	</td>
@@ -189,9 +189,9 @@ UT11LengthV1: s1.length();
 <p>First open the Test Explorer Window</p>
 <p><img src="ShowUnitTestWindowVS2019.png" width="747" height="416" alt=""/></p>
 <p>From the Test Explorer Window, click the Run All link</p>
-<p><img src="L2Sp21TestExplorer.png" width="307" height="453" alt=""/></p>
+<p><img src="L2Sp22TestExplorer.png" width="252" height="359" alt=""/></p>
 <p>To see output from running unit tests</p>
-<p><img src="VS2019OutputWindow.png" width="900" height="600" alt=""/></p>
+<p><img src="VS2022OutputWindow.png" width="900" height="600" alt=""/></p>
 <hr />
 
 	
@@ -240,7 +240,7 @@ UT11LengthV1: s1.length();
 	  This batch file will capture the output in: <em>FCdiffs-Release.txt</em> </li>
 	  <li>Inspect <em>FCdiffs-Release.txt</em> if you find any differences, then modify your L2 project (in Release configuration) to eliminate these differences</li>
 			  <li>Note: you do not have to eliminate differences due to timing or differences that look like the following:<br>
-      <em>Passed UT02ClearV1 [&lt; 1 ms]</em> <br>
+      <em>Passed UT02Clear [&lt; 1 ms]</em> <br>
       These <em>Passed</em> differences, if they happen, occur because the test scripts sometimes get executed in different order</li>
 	  <li>Repeat running the <em>02- and 03- batch files</em> as necessary</li>
 </ul>
@@ -272,7 +272,7 @@ UT11LengthV1: s1.length();
 	  This batch file will capture the output in: <em>FCdiffs-Debug.txt</em> </li>
 	  <li>Inspect <em>FCdiffs-Debug.txt</em> if you find any differences  then modify your L2 project (in Debug configuration)  to eliminate these differences</li>
 	  <li>Note: you do not have to eliminate differences due to timing or differences that look like the following:<br>
-      <em>Passed UT02ClearV1 [&lt; 1 ms]</em> <br>
+      <em>Passed UT02Clear [&lt; 1 ms]</em> <br>
       These <em>Passed</em> differences, if they happen, occur because the test scripts sometimes get executed in different order</li>
 	  <li>Repeat running the <em>04- and 05- batch files</em> as necessary</li>
 </ul>
