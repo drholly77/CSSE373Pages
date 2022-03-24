@@ -26,71 +26,66 @@
     //!   exemplar self
 {
 <strong>public</strong>:
-    Mystery1();
-    //! replaces self
-    //! ensures: self = &lt;&gt;
 
-    ~Mystery1();
+        Mystery1();
+        //! replaces self
+        //! ensures: self = &lt;&gt;
+        ~Mystery1();
+        void op1(Mystery1& x);
+        //! replaces self
+        //! replaces x
+        //! ensures: self = #x and x = #self
+        Mystery1& op2(Mystery1& x);
+        //! replaces self
+        //! restores x
+        //! ensures: self = x
+        Boolean op3(void);
+        //! restores self
+        //! ensures: empty = (0 = |self|)
+        void op4(Mystery1& x);
+        //! replaces self
+        //! clears x
+        //! ensures: self = #x
 
-    <strong>void</strong> op1(Mystery1&amp; x);
-    //! replaces self
-    //! replaces x
-    //! ensures: self = #x and x = #self
-
-    Mystery1&amp; op2 (Mystery1&amp; x);
-    //! replaces self
-    //! restores x
-    //! ensures: self = x
-
-    Boolean op3(<strong>void</strong>);
-    //! restores self
-    //! ensures: op3 = (0 = |self|)
-
-    <strong>void</strong> op4(Mystery1&amp; x);
-    //! replaces self
-    //! clears x
-    //! ensures: self = #x
-
-    <strong>void</strong> op5(Mystery1&amp; x);
-    //! updates x
-    //! restores self
-    //! ensures: x = #self * #x
-
-    <strong>void</strong> op6(T&amp; x, Integer z);
-    //! updates self
-    //! clears x
-    //! restores z
-    //! requires: |self| &gt;= z &gt;= 0
-    //! ensures: self = #self[0, z) * &lt;#x&gt; * #self[z, |#self|)
-
-    T&amp; op7(Integer z);
-    //! restores self, z
-    //! requires: |self| &gt; z &gt;= 0
-    //! ensures: &lt;op7&gt; = self[z,z+1)
-
-    <strong>void</strong> op8(<strong>void</strong>);
-    //! clears self
-
-    Integer op9(<strong>void</strong>);
-    //! restores self
-    //! ensures: op9 = |self|
-
-    <strong>void</strong> op10(T&amp; x, Integer z);
-    //! updates self
-    //! replaces x
-    //! restores z
-    //! requires: |self| &gt; z &gt;= 0
-    //! ensures: self = #self[0, z) * #self[z+1, |#self|) and &lt;x&gt; = #self[z, z+1)
-
-    <strong>void</strong> op11(T&amp; x);
-    //! updates self, x
-    //! requires: 0 &lt; |self|
-    //! ensures: &lt;x&gt; is suffix of #self  and  self = #self[0, |#self|-1) * &lt;#x&gt;
-
-    T&amp; op12(<strong>void</strong>);
-    //! restores self
-    //! requires: 0 &lt; |self|
-    //! ensures: &lt;op12&gt; is suffix of self
+     // Mystery1 Specific Operations
+        void op5(Mystery1& x);
+        //! updates x
+        //! restores self
+        //! ensures: x = #self * #x
+        void op6(T& x, Integer z);
+        //! updates self
+        //! restores z
+        //! clears x
+        //! requires: |self| &gt;= z &gt;= 0
+        //! ensures: self = #self[0, z) * &lt;#x&gt; * #self[z, |#self|)
+        T& op7(Integer z);
+        //! restores self
+        //! requires: self /= &lt;&gt;
+        //! ensures: &lt;front&gt; = self[z,z+1)
+        Integer op8(void);
+        //! restores self
+        //! ensures: length = |self|
+        void op9(void);
+        //! clears self
+        void op10(T& x, Integer z);
+        //! updates self
+        //! restores z
+        //! replaces x
+        //! requires: |self| &gt; z &gt;= 0
+        //! ensures: self = #self[0, z) * #self[z+1, |#self|) and &lt;x&gt; = #self[z, z+1)  
+        void op11(T& x);
+        //! updates self, x
+        //! requires: 0 &lt; |self|
+        //! ensures: &lt;x&gt; = #self[|#self|-1, |#self|)  and  self = #self[0, |#self|-1) * &lt;#x&gt;
+        T& op12(void);
+        //! restores self
+        //! requires: 0 &lt; |self|
+        //! ensures: &lt;rear&gt; is suffix of self
+        void op13(T& x);
+        //! updates self
+        //! clears x
+        //! requires: self /= &lt;&gt;
+        //! ensures: self = &lt;#x&gt; * #self[1, |#self|)
       
 <strong>private</strong>: // Representation
 }</pre>
