@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Layering a Component</title>
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Layering a Component</h1>
+<h3>0. Reference material</h3>
+<ul>
+  <ul>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/SequenceTemplate.html" target="_blank">Sequence Specification</a></li>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/Slides/SequenceSpec/" target="_blank">Sequence Detail Explanation Slides</a></li>
+    <li><a href="https://moodle.rose-hulman.edu/course/view.php?id=82729#section-4" target="_blank">Week #3 Instructional Materials on Layering</a></li>
+  </ul>
+</ul>
+<hr>
+<h3>1. Setup</h3>
+<h4>1.1 Get the L5Starter Download</h4>
+        <ul>
+          <li>Download <em>L5Starter.zip</em>&nbsp;to your machine - to be used on a subsequent steps</li>
+        </ul>
+
+<h4>1.2 Copy Sequence2.hpp from the L5Starter.zip</h4>
+        <ul>
+          <li>Inside L5Starter.zip is a file named Sequence2.hpp
+            <ul>
+              <li>For this assignment you will be making changes to this file</li>
+            </ul>
+          </li>
+          <li>Copy this file to the following folder on in your local repo: <em> csse373devenv202230-yourID/components/include/Sequence </em></li>
+        </ul>
+	
+<hr>
+<h3>2. L5 Statement of Work</h3>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><h4>2.1 Primary Objectives</h4>
+        <p>The primary objective of this lab is to provide you experience  with:</p>
+        <ul>
+          <li>Layering a component (e.g., Sequence) on another already existing component (e.g., Stack)<br>
+            <br>
+          </li>
+          <li>Where <em>you choose</em> the underlying component upon which to do the layering<br>
+            Your choice of underlying component must come from those shown in the screen shot below
+              <br>
+              <br>
+          </li>
+          <li>Where <em>you choose</em> the correspondence between the component being developed (Sequence in this case) and the underlying data structures</li>
+        </ul></td>
+      <td width="310"><img src="SequenceLayering.png" width="310" height="264" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><h4>2.2 Specifics</h4>
+        <p><em>Steps</em>:</p>
+        <ol>
+          <li>Start Visual Studio</li>
+          <li>Create an L5R unit test project (<a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">Instructions Here</a>)</li>
+          <li>Copy from you L2 project (this is the one where you developed unit tests for Sequence):</li>
+			<ul>
+			  <li>IntegerSeq.h - put this in <em> csse373devenv202230-yourID\LR5</em> folder (just created in step 2 above)</li>
+			<li> All of the unit tests you developed for L2 (found in L2.cpp) - put these test cases in LR5.cpp</li></ul>
+          <li>Modify LR5's IntegerSeq.h (just copied in step 3) to #include and use Sequence2.hpp</li>
+          <li>Begin working on Sequence2.hpp<br>
+          </li>
+        </ol>
+        <p><em>Hints</em>:</p>
+        <ul>
+          <li>Reread the Component Layering slides from Week #3 on the CSSE373 Moodle site</li>
+          <li>Reference the Sequence specifications</li>
+          <li>Implement all of Sequence2's stubbed out member functions</li>
+          <li>Look for the TODO comments in Sequence2.hpp</li>
+        </ul></td>
+      <td width="310"><p><strong>Choose from these components:</strong></p>
+      <p><img src="LayeredOnComponentChoices.png" width="222" height="350" alt=""/></p></td>
+    </tr>
+  </tbody>
+</table>
+<p><em>Important Restrictions</em>:</p>
+<ol>
+  <li><strong>Obey the correspondence </strong>- When implementing the member functions you must obey the correspondence internal contract<br>
+    That means: </li>
+  <ul>
+    <li>assume that the correspondence holds when the member function is called</li>
+    <li>guarantee that the correspondence holds when the member function exits</li>
+  </ul>
+  <li><strong>Use Design by Contract</strong> - No defensive programming of Sequence's operations</li>
+  <ul>
+    <li>What this means is that the implementation of a Sequence operation must not contain code that checks to make sure that the Sequence operation was called correctly by the client</li>
+  </ul>
+  <li><strong>No Cross Calling - </strong>None of Sequence's member functions are permitted to make calls to any of the other <em>public</em> Sequence member functions, i.e., no cross calling
+    <ul>
+      <li>All Sequence operations should directly manipulate Sequence's data members </li>
+    </ul>
+  </li>
+  <li><strong>Calling Down</strong> - is encouraged (but not required) by creating private member functions that capture code that starts to appear in multiple different places in your Sequence2 implementation. Do this to avoid the duplication of  code</li>
+  <li><strong>No Recursion</strong> - None of Sequence's member functions are permitted to be recursive</li>
+  <li><strong>About Making Copies</strong> -
+    <ul>
+      <li>When implementing Sequence2's <em>operator =</em> you must use the internal component's <em>operator =</em> to make a copy of the data members.</li>
+      <li>Otherwise do not call <em>operator =</em> with the Sequence2 data members or with variables of type T.</li>
+    </ul>
+  </li>
+</ol>
+<hr>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><h3>3. Testing</h3>
+<ul>
+  <li>L5R testing 
+    <ul>
+      <li>L5R contains the test scripts that you developed for L2</li>
+      <li>Examine the section below on <em>Boundary Condition Testing</em></li>
+      <li>Evaluate your test scripts to see how well they compare to what is stated about &quot;good boundary condition testing&quot;</li>
+      <li>Develop more test cases to achieve good boundary condition testing</li>
+      <li>This kind of systematic test case development is what  a quality software engineer does. It's tedious and time consuming, but if you want to deliver quality software to your clients, this is what you do</li>
+    </ul>
+  </li>
+  <li>L5D  testing
+    <ul>
+      <li>Since you are choosing your own internal representation, you will have to create your own unit tests that test against the internal representation</li>
+      <li>If you decide to do this kind of testing, create an L5D  unit test project and configure it to run in Debug configuration</li>
+      <li>You will need to modify Sequence2's <em>operation &lt;&lt;</em> so that it outputs the values of your internal data structures when in Debug configuration - see List2.hpp or List3.hpp for an example</li>
+      <li>Then take the  test scripts from L5R and modify them so that the assert statements test against Sequence2's internal representation values</li>
+      <li>Testing both at the L5R and 5D levels will not guarantee that Sequence2.hpp has not defects, but it will drive the number of lurking defects closer to zero</li>
+    </ul>
+  </li>
+</ul></td>
+      <td valign="top" width="415"><img src="Seq2CheckList.png" width="412" height="417" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p><em>Develop Test Cases for Boundary Condition Testing</em>:</p>
+
+	<p>1) Boundaries that are at an "end" or "edge" of a non-empty container </p>
+<ul>
+  <li>Good boundary condition testing in this case:
+    <ul>
+      <li>Forces an insertion/deletion/lookup/etc. at all the edges</li>
+      <li>Force an insertion/deletion/lookup/etc. 1 away from the edge</li>
+      <li>Forces an insertion/deletion/lookup/etc. at least once somewhere "in the middle", i.e., not at an edge<br>
+        Although this is not testing a boundary, a test for "in the middle" needs to be done, this is a <em>steady state</em> location<br>
+        <img src="BoundaryTestSequence.gif" width="234" height="88" alt=""/></li>
+    </ul>
+  </li>
+  <li>Sequence <em>add</em> Example - let seq1 be the name of the sequence under test
+    <ul>
+      <li>Add at position 0 of a non-empty sequence</li>
+      <li>Add at position 1 of a non-empty sequence, where |seq1| &gt;= 3</li>
+      <li>Add at position |seq1| of a non-empty sequence</li>
+      <li>Add at position |seq1| - 1 of a non-empty sequence, where |seq1| &gt;= 3</li>
+      <li>Add at position |seq1| / 2 of a non-empty sequence where |seq1| &gt;= 2</li>
+    </ul>
+  <li>Do this kind of testing for all Sequence operations: <em>add</em>, <em>remove</em>, <em>replaceEntry</em>, <em>entry</em>, <em>append</em>, <em>split</em>, <em>length</em></li>
+  </li>
+</ul>
+
+<p>2) Empty and non-empty containers </p>
+<ul>
+<li>Good boundary condition testing in this case:
+    <ul>
+      <li>Forces an insertion/deletion/etc. that causes the container to go from empty to non-empty and back to empty from non-empty</li>
+      <li>Additionally, operations that have no requirement about the container's size must be able to handle both empty and non-empty container variables, e.g., <em>append</em> and <em>split</em> should work with both empty and non-empty sequence variables</li>
+    </ul>
+  </li>
+	<li>Do testing that exercises operations w.r.t. empty and non-empty containers for the Sequence operations: <em>add</em>, <em>remove</em>, <em>append</em>, <em>split</em></li>
+</ul>
+	
+	
+<p><em>The Grader's test cases</em>:</p>
+<p>Grading will be done running a more complete set of unit tests which will systematically stress your member function implementations</p>
+<hr>
+	
+	
+<h3>4. Submitting the Assignment for Grading</h3>
+<ul>
+	<li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your L5 project to your GitHub Education CSSE373 repo</li>
+	<li>Use the commit message &quot;L5 final commit, ready for grading&quot;</li>
+	</ul>
+</body>
+</html>
