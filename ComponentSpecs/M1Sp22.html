@@ -59,9 +59,9 @@
         //! requires: |self| &gt;= z &gt;= 0
         //! ensures: self = #self[0, z) * &lt;#x&gt; * #self[z, |#self|)
         T& op7(Integer z);
-        //! restores self
-        //! requires: self /= &lt;&gt;
-        //! ensures: &lt;front&gt; = self[z,z+1)
+        //! restores self, z
+        //! requires: 0 <= z < |self|
+        //! ensures: &lt;op7&gt; = self[z,z+1)
         Integer op8(void);
         //! restores self
         //! ensures: length = |self|
