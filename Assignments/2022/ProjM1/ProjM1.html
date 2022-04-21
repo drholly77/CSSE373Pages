@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="utf-8">
+<title>Project M1</title>
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Project M1</h1>
+<hr />
+
+<h3>1. ProjM1 Statement of Work</h3>
+<h4>1.1 Create a new folder subordinate to components\include</h4>
+<ul>
+  <li>In the folder csse373devenv202230-yourUserID\components\include create a new folder called: <em>UnlabeledUndirectedGraph</em></li>
+  <li>Copy the file <em>QueueOfText.hpp</em> from components\include\Queue\ to UnlabeledUndirectedGraph folder you just created</li>
+  <li>Rename this copied file to <em>UnlabeledUndirectedGraph1.hpp</em></li>
+  <li><b>Note:</b> Alternatively you could start with a blank .hpp file and do this assignment. 
+    <br>But the recommended approach is to start with
+    a syntactically correct .hpp (e.g., <em>QueueOfText.hpp</em>) and morph it to a completed syntactically correct <em>UnlabeledUndirectedGraph1.hpp</em>
+  </li>
+</ul>
+<h4>1.2 Initial edits to UnlabeledUndirectedGraph1.hpp</h4>
+<ul>
+  <li>Delete code in the 'private: // Representation' part</li>
+  <li>Delete code in the 'private: // Local Operations' part</li>
+  <li>Comment out the code in the 'private: // Disallowed QueueOfText Operations' part</li>
+  <li>Comment out all the operation implementations starting with the first one <em>QueueOfText::countNodes</em> and proceeding to the end of the file</li>
+</ul>
+
+<h4>1.3 Continue editing UnlabeledUndirectedGraph1.hpp</h4>
+<ul>
+  <li>Use the UML diagram (shown below) for UnlabeledUndirectedGraph1 to create the C++ headers for all of UnlabeledUndirectedGraph1's operations</li>
+  <li>That is, provide syntactically correct headers for all the:</li>
+  <ul>
+    <li>Standard Operations</li>
+    <li>Specific Operations</li>
+  </ul>
+  <li>For M1 do not provide:</li>
+  <ul>
+  <li>an internal representation</li>
+  <li>any operation implementations</li>
+</ul>
+</ul>
+
+<img src="UnlabeledUndirectedGraph.svg"  alt="UnlabeledUndirectedGraph UML Diagram"/>
+
+<h3>2. UnlabeledUndirectedGraph1.hpp Must Be</h3>
+<ul>
+  <li><em>#include'able</em> - When a client program #include's your <em>UnlabeledUndirectedGraph1.hpp</em> the preprocessor must find it in the correct components\include folder</li>
+  <li><em>Buildable</em> - a client program that correctly #includes <em>UnlabeledUndirectedGraph1.hpp</em>, delcares variables from class UnlabeledUndirectedGraph1,
+  and calls any/all public operations from the class must build correctly in both Release and Debug configurations </li>
+</ul>
+<hr />
+<h3>4. Submitting the Assignment for Grading</h3>
+<ul>
+  <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2020 instructions</a> for <em>committing and pushing</em> your completed <em>UnlabeledUndirectedGraph1.hpp</em> and its containing folder to your GitHub Education CSSE373 repo</li>
+  <li>Use the commit message &quot;ProjM1, ready for grading&quot;</li>
+</ul>
+</body>
+</html>
