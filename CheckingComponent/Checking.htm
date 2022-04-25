@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Dr. Holly">
+<title>Checking Components - Overview</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<table border="0" width="100%">
+	<tr>
+		<td width="679">
+		<p align="center"><b>Checking Components - Overview</b></td>
+		
+	</tr>
+</table>
+<hr>
+<p><b>Overview:</b></p>
+<ul>
+  <li>Checking Component&nbsp;
+    <ul>
+      <li>wraps a service providing component</li>
+      <li>has the exact same syntactic interface as the service providing component,
+        i.e., from the outside they are indistinguishable</li>
+      <li>provides the exact same functionality for client programs who
+        correctly use the component</li>
+      <li>varies in functionality only for clients who incorrectly use the
+        component, i.e., for clients that violate the service provider's
+        preconditions</li>
+    </ul>
+  </li>
+  <li><i>Reminder</i> - Design-By-Contract gives us:
+    <ul>
+      <li>Service providing components:
+        <ul>
+          <li>that export operations with requires (specifying preconditions) and ensures clauses (specifying post conditions)</li>
+          <li>have clean implementations whose operations don't waste time
+            checking their own preconditions</li>
+          <li>that also export other operations which permit checking of
+            preconditions</li>
+        </ul>
+      </li>
+      <li>Client programs that:
+        <ul>
+          <li>are responsible for guaranteeing a precondition holds prior to
+            calling an operation with a precondition</li>
+        </ul>
+      </li>
+      <li>Contractual agreement:
+        <ul>
+          <li>Service provider will provide a service if preconditions are met</li>
+          <li>Client will enjoy benefits of provided services if it satisfies
+            the preconditions for getting those services</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<p><b>Example:</b></p>
+<table border="1" width="100%">
+  <tr>
+    <td width="50%">
+      <p align="center"><b>Queue<br>
+      A Service Providing Component</b></td>
+    <td width="50%">
+      <p align="center"><b>display<br>
+      A Client of Queue</b></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <p align="center"><img border="0" src="queiface.jpg" width="294" height="175"></p>
+      <p><b>The Component's Interface:</b></p>
+      <ul>
+        <li>The component's public (exported) interface is represented by the
+          squares on the oval's boundary.</li>
+        <li>The public interface has two parts:
+          <ul>
+            <li>the syntactic interface, i.e., names of operations;</li>
+            <li>the semantic interface, i.e., the behavior of the operations
+              based on the component's model and pre &amp; post conditions.</li>
+          </ul>
+        </li>
+      </ul>
+    </td>
+    <td width="50%" valign="top"><code><font size="2"><b>void</b> display (preserves IQ&amp; q)<br>
+      {<br>
+      &nbsp;&nbsp; IQ temp;<br>
+      <br>
+      &nbsp;&nbsp; <b>for</b> (int i = 0, z = q.length(); i &lt; z; i++) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Item x;<br>
+	<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; q.dequeue(x);<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; x;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp.enqueue(x);<br>
+      &nbsp;&nbsp; } // end for<br>
+	<br>
+      &nbsp;&nbsp; q.transferFrom(temp);<br>
+	<br>
+      } // display</font></code>
+      <p><b>Client must abide by:</b></p>
+      <ol>
+        <li>The component's syntactic interface, i.e., call exported operations
+          with correct parameters, etc.&nbsp; The compiler checks for
+          conformance to the syntactic interface.</li>
+        <li>The component's semantic interface, i.e., the client must understand
+          the abstract model, and must guarantee preconditions are met.&nbsp; A
+          human must check this for conformance by using formal and informal
+          proofs and testing.</li>
+      </ol>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table border="1" width="100%">
+  <tr>
+    <td width="100%">
+      <p align="center"><b>Client Connection to Queue's Interface</b></td>
+  </tr>
+  <tr>
+    <td width="100%">
+      <p align="center">
+		<img border="0" src="queclnt.jpg" width="648" height="329"></p>
+      <ul>
+        <li>
+          <p align="left">The arrows represent a client's call to a component's
+          exported operation.</li>
+        <li>
+          <p align="left">Checking for a syntactically correct call is machine
+          checkable, is performed by the compiler.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table border="1" width="100%">
+  <tr>
+    <td width="100%">
+      <p align="center"><b>Queue Component Wrapped by QueueChecking Component</b></td>
+  </tr>
+  <tr>
+    <td width="100%">
+      <p align="center"><img border="0" src="quechck.jpg" width="472" height="282"></p>
+      <ul>
+        <li>
+          <p align="left">The checking component has the exact same syntactic
+          interface as the component it wraps.</li>
+        <li>
+          <p align="left">The checking component has the exact same semantic
+          interface for clients that use it correctly, i.e., abide by its semantic
+          interface and don't violate preconditions.</li>
+        <li>
+          <p align="left">The checking component does not &quot;know&quot; how
+          to implement the component it wraps, it uses the wrapped component for
+          that functionality by making &quot;call-throughs&quot; to the wrapped
+          component's exported operations.</li>
+        <li>
+          <p align="left">A call-through is represented by an arrow from the
+          checking component's square to the corresponding wrapped component's
+          square, e.g., see Clear in the diagram above.</li>
+        <li>
+          <p align="left">The checking component does &quot;know&quot; how to
+          check preconditions of those operations which have non-trivial
+          preconditions.&nbsp; This checking code is represented by the yellow
+          rectangles in the diagram above.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table border="1" width="100%">
+  <tr>
+    <td width="100%">
+      <p align="center"><b>Client Connection to Checked Queue's Interface</b></td>
+  </tr>
+  <tr>
+    <td width="100%">
+      <p align="center"><img border="0" src="quecclnt.jpg" width="609" height="584"></p>
+      <ul>
+        <li>
+          <p align="left">No changes have been made to the client program's
+          executable code in order for it to use the checking component.</li>
+        <li>
+          <p align="left">If the client does not violate the component's
+          preconditions, then the checking component behaves exactly as the
+          wrapped component.&nbsp; That's because the checking component makes
+          call-throughs to the wrapped component.</li>
+        <li>
+          <p align="left">After software developer is convinced that the client
+          program does not violate any preconditions (e.g., after extensive
+          testing and debugging, and code-walkthroughs have been performed), the
+          checking component can be removed.&nbsp; Again, with no change to the
+          client's executable code.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+<hr>
+<p align="left"><b>Creating and Using:</b></p>
+<ul>
+  <li>
+    <p align="left">Instance creation has to slightly altered in order to enjoy
+    the benefits of checking components.</li>
+  <li>
+    <p align="left">Visual Studio provides two configurations:
+    <ul>
+      <li>
+        <p align="left">debug configuration - <code>NDEBUG</code> <i> is not</i>
+        automatically defined by using #define, the 'N' in NDEBUG stands for Not
+        debugging</li>
+      <li>
+        <p align="left">release configuration - <code>NDEBUG</code> <i> is</i>
+        automatically defined</li>
+    </ul>
+  </li>
+  <li>
+    <p align="left">We can use the C Preprocessor #ifdef directive to test for <code>NDEBUG</code>
+    being defined.</li>
+  <li>
+    <p align="left">If <code>NDEBUG</code> <i>is not</i> defined, then we can
+    provide declarations that make use of the checking components to wrap the
+    service providing components that we need to use.</li>
+  <li>
+    <p align="left">If <code>NDEBUG</code> <i>is</i> defined, then we can
+    provide declarations that use the unwrapped/unchecked component</li>
+</ul>
+<p align="left"><i>Example: instance creation that is <u>unaware</u> of
+debug/release configurations</i></p>
+<table border="1" width="100%">
+  <tr>
+    <td width="50%" align="center">IntQue.h</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top"><code><font size="2">#<b>pragma once</b><br>
+        #<b>include</b> &quot;Queue\Queue1.hpp&quot;<br>
+      <br>
+        <br>
+      <b>typedef</b> Queue1 &lt;Integer&gt; IQ;</font></code></td>
+  </tr>
+</table>
+<p align="left"><i>Example: instance creation that is <u>aware</u> of
+debug/release configurations</i></p>
+<table border="1" width="100%">
+  <tr>
+    <td width="50%" align="center">IntQue.h</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top"><code><font size="2">#<b>pragma once</b><br>
+        #<b>include</b> &quot;Queue\Queue1.hpp&quot;<br>
+      <br>
+      <br>
+        #<b>ifdef</b>  NDEBUG<br>
+      // Release Configuration
+        <br>
+      <b>typedef</b> Queue1 &lt;Integer&gt; IQ;<br>
+      <br>
+        #<b>else<br>
+      <br>
+        </b>
+        #<b>include</b> &quot;Queue\QueueChecking1.hpp&quot;<br>
+      // Debug Configuration<br>
+        <br>
+      <b>typedef</b> QueueChecking1 &lt;Queue1, Integer&gt; IQ;<br>
+        <br>
+        #<b>endif</b></font></code></td>
+  </tr>
+</table>
+<p align="left"><i>Points to Notice about Example:</i></p>
+<ul>
+  <li>
+    <p align="left"><code>QueueChecking1</code> requires two template
+    parameters
+    <ul>
+      <li>
+        <p align="left">1st template parameter:
+        <ul>
+          <li>
+            <p align="left">Is any queue <i>template</i> that has the same
+            public interface as the Queue1 template found in the 'components\include\Queue'
+            folder.</li>
+        </ul>
+      </li>
+      <li>
+        <p align="left">2nd template parameter:
+        <ul>
+          <li>
+            <p align="left">Is the type Item that is to be plugged into the
+            queue template.</li>
+          <li>
+            <p align="left">The checking component needs to know what type of
+            item is being stored in the queue.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+</body>
+
+</html>
