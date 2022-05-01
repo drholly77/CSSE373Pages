@@ -76,7 +76,8 @@ If your <em>operator &lt;&lt;</em> fails to follow the requirements outlined abo
   <li><strong>Use Design by Contract</strong> </li>
   <li><strong>No Cross Calling </strong></li>
   <li><strong>Calling Down</strong></li>
-	<li><strong><span style="background-color: #FFFF00">***New***</span> Use Call-Throughs Appropriately</strong> - For example, your implementation of <em>clear</em> should be a call-through(s)</li>
+	<li><strong><span style="background-color: #FFFF00">***New***</span> Use Call-Throughs Appropriately</strong> - For example, your implementation of <em>clear</em> should be a call-through(s)
+	<br>That is, no doing work at the UnlabeledUndirectedGraph1 level that can more easily be done at the CeramicArray1 level</li>
   <li><strong>No Recursion</strong> </li>
   <li><strong>No Making Unnecessary Copies</strong>  </li>
 </ol>
