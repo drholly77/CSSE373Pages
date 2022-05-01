@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="Author" content="Dr. Holly">
+   <title>Advanced Ceramic Array Usage</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<h2>Advanced Ceramic Array Usage</h2>
+
+
+<h3>CeramicArray1's Specification</h3>
+<ul>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/CeramicArrayTemplate.html" target="new">CeramicArray Spec</a><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/StaticArrayTemplate.html" target="_blank"></a></li>
+</ul>
+
+<h3>Creating A Two-Dimensional Matrix of a Record</h3>
+
+<table border="1" width="100%">
+  <tr>
+    <td width="100%"><code>// SRMatrix.h<b><br>
+      </b>#<b>pragma</b> <b>once</b><br>
+      #<b>include</b> &quot;wrapper.h&quot;
+      <br>
+      #<b>include</b>  &quot;CeramicArray\CeramicArray1.hpp&quot;<br>
+      <br>
+      <br>
+      // ----------------------------------------------<br>
+      // Create StudentRecord<br>
+      // ----------------------------------------------<br>
+      <br>
+      <b>class</b> StudentRecord {<br>
+      <b>public</b>:<br>
+&nbsp;&nbsp;&nbsp; Text name;<br>
+&nbsp;&nbsp;&nbsp; Text major;<br>
+&nbsp;&nbsp;&nbsp; Text studentId;<br>
+&nbsp;&nbsp;&nbsp; Integer age;<br><br>
+&nbsp;&nbsp;&nbsp; StudentRecord() {}<br>
+&nbsp;&nbsp;&nbsp; ~StudentRecord() {}<br><br>
+&nbsp;&nbsp;&nbsp; <b>void</b> clear(<b>void</b>)
+      {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name.clear();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; major.clear();
+         <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; studentID.clear();
+      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; age.clear();
+         <br>
+&nbsp;&nbsp;&nbsp; } // clear <br>
+      <br>
+&nbsp;&nbsp; StudentRecord& operator = (StudentRecord& rhs)
+      {
+         <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name = rhs.name;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; major = rhs.major;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; studentID = rhs.studentID;
+
+         <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; age = rhs.age;
+
+         <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>return</b> *this; <br>
+&nbsp;&nbsp; } // operator = <br>
+      <br>
+&nbsp;&nbsp; <b>void</b> transferFrom(StudentRecord&amp; source) 
+		{ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name.transferFrom(source.name);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; major.transferFrom(source.major);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; studentId.transferFrom(source.studentId);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; age.transferFrom(source.age);<br>
+&nbsp;&nbsp; }; <br><br>
+&nbsp;&nbsp; <b>friend</b> wostream&amp; operator &lt;&lt; (wostream&amp; os, StudentRecord&amp; r)
+		{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; os &lt;&lt; "(" &lt;&lt; r.name &lt;&lt; "," &lt;&lt; r.major &lt;&lt; "," &lt;&lt; r.studentId &lt;&lt; "," &lt;&lt; r.age &lt;&lt; ")";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>return</b> os;<br>
+&nbsp;&nbsp; }; <br>
+	};<br><br>
+      // ----------------------------------------------<br>
+      // Create Two Dimensional Matrix of StudentRecord<br>
+      // ----------------------------------------------<br><br>
+      <b>enum</b> columnBounds {columnLower = 0, columnUpper = 9, maxColumns = 10};<br>
+      <b>enum</b> rowBounds {rowLower = 0, rowUpper = 14, maxRows = 15};<br><br>
+      // 1st Create Columns&nbsp;<br>
+      <b>typedef</b> CeramicArray1&lt;StudentRecord&gt; ColumnArray;<br>
+      <br>
+      // 2nd Create Rows by plugging ColumnArray into StaticArray<br>
+      <b>typedef</b> CeramicArray1&lt;ColumnArray&gt; MatrixOfStudents;<br>
+      </code>
+	</td>
+  </tr>
+</table>
+
+<div align="center">
+  <center><table BORDER="1" WIDTH="95%" >
+<tr>
+<td WIDTH="100%">
+	<p align="center"><b>Using MatrixOfStudents</b></p></td></tr><tr>
+<td WIDTH="100%"><pre>
+// main.cpp
+#include "wrapper.h"
+#include "SRMatrix.h"
+int main (int argc, char* argv[]) 
+{
+   MatrixOfStudents sa;
+   
+   // Set up rows and columns
+   sa.setBounds(rowBounds::rowLower, rowBounds::rowUpper);
+   for (int row = rowBounds::rowLower; row &lt; rowBounds::maxRows; row++) {
+      sa.setBounds(columnBounds::columnLower, columnBounds::columnUpper);
+   } // end for
+
+   cout &lt;&lt; "Student Names" &lt;&lt; endl;
+   for (int row = rowBounds::rowLower; row &lt;= rowBounds::rowUpper; row++) {
+      for (int col = columnBounds::columnLower; col &lt;= columnBounds::columnUpper; col++) {
+         cout &lt;&lt; sa[row][col].name &lt;&lt; endl;
+      } // end for
+   } // end for
+   cout &lt;&lt; endl;
+
+   return 0;
+} // end main</pre></td></tr></table></center></div>
+
+</body>
+</html>

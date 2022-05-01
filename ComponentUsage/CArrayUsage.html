@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="Author" content="Dr. Holly">
+   <title>Using Ceramic Array Component</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+
+			<h2>Creating an Instance of the CeramicArray Component</h2>
+
+	<h3>CeramicArray1's Specification</h3>
+<ul>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/CeramicArrayTemplate.html" target="new">CeramicArray Spec</a><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/StaticArrayTemplate.html" target="_blank"></a></li>
+</ul>
+
+	
+	<h3>Creating Named Instances</h3>
+  <ul>
+    <li>Creating One-Dimensional Integer Array</li>
+    <li>Indexed from 0 to 9, i.e., so its size is 10</li>
+  </ul>
+<table border="1" width="100%">
+  <tr>
+    <td width="100%"><pre>// File IntArray.h
+#ifdef _DEBUG
+   typedef CeramicArrayChecking1&lt;CeramicArray1, Integer&gt; ArrayOfInteger;
+#else
+   typedef CeramicArray1&lt;Integer&gt; ArrayOfInteger;
+#endif</pre></td>
+  </tr>
+</table>
+
+	
+<center>
+<div align="center">
+  <center><table BORDER="1" WIDTH="95%" >
+<tr>
+<td WIDTH="100%">
+	<p align="center"><b>Using ArrayOfIntger</b></p></td>
+</tr>
+
+<tr>
+<td WIDTH="100%"><pre>// main.cpp
+#<strong>include</strong> "wrapper.h"
+#<strong>include</strong> "IntArray.h"
+
+<strong>enum</strong> arrayBounds {lowerBound = 0, upperBound = 9, arraySize = 10};
+
+int main (int argc, char* argv[])
+{
+   Integer lower, upper;
+   ArrayOfInteger a1;
+
+   // What makes this 'ceramic' is:
+   //   that the lower and upper bounds are set at runtime
+   //   and not at compile time
+   a1.setBounds(lowerBound, upperBound);
+   cout &lt;&lt; "a1 = [";
+   <strong>for</strong> (int k = lowerBound; k &lt;= upperBound; i++) {
+      cout &lt;&lt; a1[k] &lt;&lt; " ";
+   } // end for
+   cout &lt;&lt; "]" &lt;&lt; endl;
+
+   <strong>return</strong> 0;
+} // end main</pre></td>
+</tr>
+</table></center>
+</div>
+</center>
+
+
+<h3>Declaring and using a 2-D Matrix using CeramicArray component</h3>
+<table border="1" width="100%">
+  <tr>
+    <td width="100%"><pre>
+// IntMatrix.h
+#pragma once
+#include "wrapper.h"
+#include "CeramicArray\CeramicArray1.hpp"
+
+
+// ----------------------------------------------
+// Create Two Dimensional Matrix of Integer
+// ----------------------------------------------
+
+
+   // 1st Create Columns 
+   // 2nd Create Rows by plugging ColumnArray into another instance of CeramicArray
+#ifdef _DEBUG
+   typedef CeramicArrayChecking1&lt;CeramicArray1, Integer&gt; ColumnArray;
+   typedef CeramicArrayChecking1&lt;CeramicArray1, ColumnArray&gt; MatrixOfInt;
+#else
+   typedef CeramicArray1&lt;Integer&gt; ColumnArray;
+   typedef CeramicArray1&lt;ColumnArray&gt; MatrixOfInt;
+#endif</pre>
+	</td>
+  </tr>
+</table>
+
+<div align="center">
+  <center><table BORDER="1" WIDTH="95%" >
+<tr>
+<td WIDTH="100%">
+	<p align="center"><b>Using IntMatrix.h</b></p></td></tr>
+<tr>
+<td WIDTH="100%"><pre>
+// main.cpp
+#include "wrapper.h"
+#include "IntMatrix.h"
+
+enum columnBounds {columnLower = 0, columnUpper = 9, maxColumns = 10};
+enum rowBounds {rowLower = 0, rowUpper = 14, maxRows = 15};
+
+int main (int argc, char* argv[]) 
+{
+   MatrixOfStudents sa;
+   
+   // Set up rows and columns
+   sa.setBounds(rowBounds::rowLower, rowBounds::rowUpper);
+   for (int row = rowBounds::rowLower; row &lt; rowBounds::maxRows; row++) {
+      sa.setBounds(columnBounds::columnLower, columnBounds::columnUpper);
+   } // end for
+
+   cout &lt;&lt; "Load matrix with random integers" &lt;&lt; endl;
+   for (int row = rowBounds::rowLower; row &lt;= rowBounds::rowUpper; row++) {
+      for (int col = columnBounds::columnLower; col &lt;= columnBounds::columnUpper; col++) {
+	     sa[row][col] = (rand() % 99);
+      } // end for
+   } // end for
+   
+   
+   cout &lt;&lt; "Display contents for matrix" &lt;&lt; endl;
+   for (int row = rowBounds::rowLower; row &lt;= rowBounds::rowUpper; row++) {
+      for (int col = columnBounds::columnLower; col &lt;= columnBounds::columnUpper; col++) {
+         cout &lt;&lt; sa[row][col] &lt;&lt; " " &lt;&lt; endl;
+      } // end for
+      cout &lt;&lt; endl;
+   } // end for
+   cout &lt;&lt; endl;
+
+   return 0;
+} // end main</pre></td></tr></table></center></div>
+
+</body>
+</html>

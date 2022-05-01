@@ -1,0 +1,61 @@
+<!doctype html >
+<html>
+<head>
+
+	<meta name="Author" content="Dr. Holly">
+   <title>Simulating a 2-D Matrix with a 1-D Array</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<h2>Simulating a 2-D Matrix with a 1-D Array</h2>
+<h4>The Conversion Formula</h4>
+<ul>
+	<li>A 2-D matrix is never required, you can simulate two (or more) 
+	dimensions with a one dimensional array.</li>
+	<li>For example, # of columns = 10, and the # of rows = 15.
+	<ul>
+		<li>Declare an array &quot;a&quot; of size 10 x 15 or 150.</li>
+	</ul>
+	</li>
+	<li>Then use the following formula to convert from (row, col): <br>
+	Integer arrayIndex = (row * 10) + col;</li>
+	</ul>
+	
+<h4>Examples</h4>
+	<ul>
+	<li>Indexing into the simulated 2-D matrix &quot;m&quot; using (row, 
+	column) pairs:<ul>
+		<li>Integer row = 5, col = 3;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; m[row][col];&nbsp; // if &quot;m&quot; 
+		existed in 2-D format, this is how indexing into (row, col) would go.<br>
+		Integer arrayIndex = (row * 10) + col;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a[arrayIndex];<br>
+&nbsp;</li>
+		<li>Integer row = 0, col = 9;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; m[row][col];&nbsp; // if &quot;m&quot; 
+		existed in 2-D format, this is how indexing into (row, col) would go.<br>
+		Integer arrayIndex = (row * 10) + col;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a[arrayIndex];<br>
+&nbsp;</li>
+		<li>Integer row = 14, col = 0;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; m[row][col];&nbsp; // if 
+		&quot;m&quot; existed in 2-D format, this is how indexing into (row, col) would 
+		go.<br>
+		Integer arrayIndex = (row * 10) + col;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a[arrayIndex];<br>
+&nbsp;</li>
+	</ul>
+	</li>
+	</ul>
+
+<h4>No Magic Numbers</h4>
+<ul>
+	<li>Of course it is never wise to engineer your software so that it has 
+	magic numbers appearing everywhere. So define and use in your code constants 
+	for your array upper and lower bounds, and sizes:<ul>
+		<li><code>
+      <b>enum</b> columnBounds {columnLower = 0, columnUpper = 9, maxColumns = 10};<br>
+      <b>enum</b> rowBounds {rowLower = 0, rowUpper = 14, maxRows = 15};<br>
+		<b>enum</b> matrixCells {maxCells = 150};</code> </li>
+		<li>So the computation of arrayIndex becomes: <code>Integer arrayIndex = 
+		(row * columnBounds::maxColumns) + col;</code> </li>
+	</ul>
+	</li>
+</ul>
+</body>
+</html>
