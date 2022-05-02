@@ -39,6 +39,7 @@
   <li>Important requirements on implementing <em>operator &lt;&lt;</em>
 	<ul>
 	  <li>A graph variable must be displayed using its abstract mathematical model</li>
+		<li><em>operator &lt;&lt;</em> must be a client of UnlabeledUndirectedGraph1 and call only its operations; it is not allowed to call CeramicArray1's operations</li>
 		<li>The vertex set must be displayed in increasing order</li>
 		<li>Each edge (which is a set) must be displayed so that the leftmost vertex of the set is &lt;= to the rightmost vertex</li>
 		<li>The edge set must be displayed in nondecreasing order based on the leftmost vertex in the set</li>
