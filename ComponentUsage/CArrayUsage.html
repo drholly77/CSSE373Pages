@@ -120,7 +120,7 @@ int main (int argc, char* argv[])
    // Set up rows and columns
    sa.setBounds(rowBounds::rowLower, rowBounds::rowUpper);
    for (int row = rowBounds::rowLower; row &lt; rowBounds::maxRows; row++) {
-      sa.setBounds(columnBounds::columnLower, columnBounds::columnUpper);
+      sa[row].setBounds(columnBounds::columnLower, columnBounds::columnUpper);
    } // end for
 
    cout &lt;&lt; "Load matrix with random integers" &lt;&lt; endl;
