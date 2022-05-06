@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Project M3</title>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Project M3</h1>
+<hr />
+	
+<h3>0. References</h3>
+<ul>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/CeramicArrayTemplate.html" target="new">CeramicArray Spec</a></li>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentUsage/CArrayUsage.html" target="_blank">CeramicArray Usage</a></li>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentUsage/Simulating2DArray.html" target="_blank">Simulating a 2-D Matrix with a 1-D Array</a></li>
+</ul>
+
+<h3>1. ProjM3 Statement of Work</h3>
+	<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td><ul>
+  <li>Implement UnlabeledUndirectedGraph1 using an adjacency matrix</li>
+  
+  <li>You must: 
+	<ul><li>Use a layered implementation by layering on the CeramicArray1 component and its corresponding CeramicArrayChecking1 component</li>
+		<li>Use C++'s conditional compiliation and use CeramicArrayChecking1 in Debug Mode and only CeramicArray1 when in Release mode</li>
+	  <li>Define the correspondence as a comment in the<br>'private: // Representation' part </li>
+	  <li>Uncomment the<br>'private: // Disallowed QueueOfText Operations' part and change the code found there 
+      so that it works with UnlabeledUndirectedGraph1</li>
+		<li>Implement UnlabeledUndirectedGraph1's <em>operator &lt;&lt;</em> </li>
+	  </ul>
+
+	</li>
+  
+  <li>Important requirements on implementing <em>operator &lt;&lt;</em>
+	<ul>
+	  <li>A graph variable must be displayed using its abstract mathematical model</li>
+		<li><em>operator &lt;&lt;</em> must be a client of UnlabeledUndirectedGraph1 and call only its operations; it is not allowed to call CeramicArray1's operations</li>
+		<li>The vertex set must be displayed in increasing order</li>
+		<li>Each edge (which is a set) must be displayed so that the leftmost vertex of the set is &lt;= to the rightmost vertex</li>
+		<li>The edge set must be displayed in nondecreasing order based on the leftmost vertex in the set</li>
+		<li>When there are two or more edges with the same leftmost vertex, then those edges must be displayed in nondecreasing order by the rightmost vertex</li>
+		<li>Include no extra spaces in the displayed value</li>
+		<li>An example is shown to the right</li>
+	  </ul>
+	</li>
+  <li>You may want to use ProjM2's unit tests to test your implementation</li>
+</ul></td>
+      <td width="570"><img src="ExampleGraph.png" width="567" height="368" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3>2. Grading of ProjM3</h3>
+<ul>
+  <li>Your UnlabeledUndirectedGraph1.hpp will be compiled/built/tested in Release Mode against Dr. Holly's private set of 
+      specification-based test cases
+  </li>
+	<li>These test cases will utilize your <em>operator &lt;&lt;</em> in order to convert a graph variable into a Text object.<br>
+If your <em>operator &lt;&lt;</em> fails to follow the requirements outlined above, then the test will fail</li>
+	  <li>If your UnlabeledUndirectedGraph1 fails test cases (i.e., when/if those test cases reveal defects, or <em>operator &lt;&lt;</em> does not work as is required) your submission will 
+      earn less than 100% for this milestone
+  </li>
+  <li>Your UnlabeledUndirectedGraph1 fails to compile/build your submission will earn zero credit for this milestone</li>
+
+</ul>
+
+
+<p><em>Important Restrictions</em>:</p>
+<ol>
+  <li><strong>Obey the correspondence </strong>- When implementing the member functions you must obey the correspondence internal contract </li>
+  <li><strong>Use Design by Contract</strong> </li>
+  <li><strong>No Cross Calling </strong></li>
+  <li><strong>Calling Down</strong></li>
+	<li><strong><span style="background-color: #FFFF00">***New***</span> Use Call-Throughs Appropriately</strong> - For example, your implementation of <em>clear</em> should be a call-through(s)
+	<br>That is, no doing work at the UnlabeledUndirectedGraph1 level that can more easily be done at the CeramicArray1 level</li>
+  <li><strong>No Recursion</strong> </li>
+  <li><strong>No Making Unnecessary Copies</strong>  </li>
+</ol>
+
+<hr />
+<h3>3. Submitting the Assignment for Grading</h3>
+<ul>
+  <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your 
+    completed <em>UnlabeledUndirectedGraph1.hpp</em> project to your GitHub Education CSSE373 repo</li>
+  <li>Use the commit message &quot;ProjM3, ready for grading&quot;</li>
+</ul>
+</body>
+</html>
