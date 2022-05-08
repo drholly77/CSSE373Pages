@@ -3,57 +3,87 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Project M4</title>
+<title>Project M5</title>
 <link href="../../../css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<h1>Project M4</h1>
+<h1>Project M5</h1>
 <hr />
 	
 <h3>0. References</h3>
 <ul>
-  <li><a href="https://drholly77.github.io/CSSE373Pages/CheckingComponent/CheckingComponentReview.pdf" target="new">Checking Component Review</a><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/CeramicArrayTemplate.html" target="new"></a></li>
-  <li><a href="https://drholly77.github.io/CSSE373Pages/CheckingComponent/CheckingComponentConstruction.pdf" target="new">Checking Component Construction</a><a href="https://drholly77.github.io/CSSE373Pages/ComponentUsage/CArrayUsage.html" target="_blank"></a></li>
-  <li><a href="https://moodle.rose-hulman.edu/mod/page/view.php?id=3336478" target="new">Graph Driver</a></li>
+  <li><a href="https://moodle.rose-hulman.edu/mod/folder/view.php?id=3338008" target="new">Dictionary Resources for Project</a><a href="https://drholly77.github.io/CSSE373Pages/CheckingComponent/CheckingComponentReview.pdf" target="new"></a></li>
+  <li><a href="https://moodle.rose-hulman.edu/mod/folder/view.php?id=3338041&forceview=1" target="new">Graph Data for Project</a><a href="https://drholly77.github.io/CSSE373Pages/CheckingComponent/CheckingComponentConstruction.pdf" target="new"></a><a href="https://drholly77.github.io/CSSE373Pages/ComponentUsage/CArrayUsage.html" target="_blank"></a></li>
+  <li><a href="https://moodle.rose-hulman.edu/mod/folder/view.php?id=3340096" target="new">ProjM5 Starter Files</a><a href="https://moodle.rose-hulman.edu/mod/page/view.php?id=3336478" target="new"></a></li>
 </ul>
 
-<h3>1. ProjM4 Statement of Work</h3>
-<ul>
-  <li>Implement <em>UnlabeledUndirectedGraphChecking1</em></li>
+<h3>1. ProjM5 Statement of Work</h3>
+	<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td valign="top">
+		  
+  <h4>Solve the Six For a Spell Puzzle</h4>
+	    <ul>
+  <li>As your starting place, use the <em>driver.cpp</em> found in &quot;ProjM5 Starter Files&quot; (see References above)</li>
+  <li>Modify this <em>driver.cpp</em> by adding free standing operations that use one (or more) common graph algorithms to solve the Six For a Spell puzzle</li>
   
-  <li>It must: 
-	<ul>
-	  <li>be implemented as shown in the <em>Checking Component Construction</em> instructional materials (see References in Section 0 above)</li>
-	  <li>be stored in the folder: components\include\UnlabeledUndirectedGraph</li>
-	  </ul>
-
-	</li>
-  
-  <li>You may want to use the Graph Driver and your UnlabeledUndirectedGraph1.hpp to test your checking component</li>
-  <li> Note: 
-	  <ul>
-  <li>The Graph Driver is implemented so as to stop a keyboard user  from violating some (possibly all) of 
-    UnlabeledUndirectedGraph1's operation's preconditions</li>
-  <li>You may need to alter Graph Driver's code so that it allows the keyboard user to deliberately violate a precondition - you might consider creating an entire new project called <em>NakedGraphDriver</em>, where this driver has had all protection stripped from it, allowing  a malicious keyboard user to execute commands that violate the UnlabeledUndirectedGraph1's operation's preconditions</li>
-  <li>This will allow you to test your implementation of <em>UnlabeledUndirectedGraphChecking1</em></li>
-		 
-	  </ul>
+  <li>Your implementation must: 
+    <ol>
+      <li>Be in a Visual Studio project called ProjM5 and be stored in your repository</li>
+      <li>The <em>driver.cpp</em> must use the provided <em>loadGraph()</em> operation unchanged to load data into your graph variable</li>
+      <li>Use  one (or more) common graph algorithm(s) to compute a list of 6 letter English words from the graph provided in the image to the right</li>
+	<li>Must first output the number of words your algorithm finds and then the list of words it finds</li>
+      <li>Use the <em>dictionary.dat</em> file to check the legitimacy of a computed word (see &quot;Dictionary Resources for Project&quot; in Reference above)</li>
+      <li>Be layered on either your <em>UnlabeledUndirectedGraph1</em> implementation or <em>UnlabeledUndirectedGraph0</em> implemention (which can be found in &quot;ProjM5 Starter Files&quot;)</li>
+      <li>Leverage other already existing appropriate components from  the <a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/" target="new">component list</a> whose implementations can be found in the folder: components\include - in the diagram to the right this is represented by the arrow to the <em>Other Concepts</em> oval</li>
+      <li> By <em>leverage</em> (in #5 above) we mean, for example:
+		  <ul>
+      <li>If you need searching or sorting, then find a component that already has that functionality, i.e., do not reimplement these algorithms</li>
+      <li>If you need a container to temporarily store things, then find a component that provides that functionality</li>
+      <li>Use the <em>minimalization principle</em>, i.e., attempt to find a component that provides the minimal functionality required</li>
+		  </ul>
+      </li>
+      </ol>
+  </li>
+  <li> Recommended: 
+    <ul>
+      <li>Test and debug with a smaller data set - see the <em>driver.cpp </em>in the &quot;ProjM5 Starter Files&quot;</li>
+      <li>Use checking components when in Debug Mode</li>
+      <li>To improve performance, focus your use of the data in <em>dictionary.dat</em> because it contains a lot of words that you will not need</li>
+      
+    </ul>
   </li>
       </ul>
-
-
-
-<h3>2. Grading of ProjM4</h3>
+		
+		
+<h3>2. Grading of ProjM5</h3>
 <ul>
-  <li>Your <em>UnlabeledUndirectedGraphChecking1</em>.<em>hpp</em> will be compiled/built/tested in Debug Mode with Dr. Holly's private set of tests or a modified Graph Driver</li>
-  <li>These tests will attempt to call an UnlabeledUndirectedGraph1 operation with a call that violates its non-trivial precondition</li>
+  <li>Your <em>driver</em>.<em>cpp</em> from the folder ProjM5 will be compiled/built/tested </li>
+  <li>Your program will be tested/executed at a minimum using the graph data provided in the supplied <em>driver.cpp</em></li>
+  <li>It is possible that we might also substitute a different graph for additional testing </li>
+  <li>We will be assessing not only on the number of words and the actual words found, but also on the &quot;Your implementation must&quot; list of items found above</li>
 </ul>
-<h3>3. Submitting the Assignment for Grading</h3>
+		  
+		  <h3>3. Submitting the Assignment for Grading</h3>
 <ul>
   <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your 
-    completed <em>UnlabeledUndirectedGraphChecking1.hpp</em> project to your GitHub Education CSSE373 repo</li>
-  <li>Use the commit message &quot;ProjM4, ready for grading&quot;</li>
+    completed <em>ProjM5</em> project to your GitHub Education CSSE373 repo</li>
+  <li>Use the commit message &quot;ProjM5, ready for grading&quot;</li>
 </ul>
+		  
+	  </td>
+      <td><img src="ProjM5Diagram.png" width="600" height="278" alt=""/>
+		  <br><img src="SixForSpellPuzzle-Sp2022.png" width="600" height="528" alt=""/>
+	  </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
 </body>
 </html>
