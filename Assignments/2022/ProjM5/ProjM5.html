@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Project M4</title>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Project M4</h1>
+<hr />
+	
+<h3>0. References</h3>
+<ul>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/CheckingComponent/CheckingComponentReview.pdf" target="new">Checking Component Review</a><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/CeramicArrayTemplate.html" target="new"></a></li>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/CheckingComponent/CheckingComponentConstruction.pdf" target="new">Checking Component Construction</a><a href="https://drholly77.github.io/CSSE373Pages/ComponentUsage/CArrayUsage.html" target="_blank"></a></li>
+  <li><a href="https://moodle.rose-hulman.edu/mod/page/view.php?id=3336478" target="new">Graph Driver</a></li>
+</ul>
+
+<h3>1. ProjM4 Statement of Work</h3>
+<ul>
+  <li>Implement <em>UnlabeledUndirectedGraphChecking1</em></li>
+  
+  <li>It must: 
+	<ul>
+	  <li>be implemented as shown in the <em>Checking Component Construction</em> instructional materials (see References in Section 0 above)</li>
+	  <li>be stored in the folder: components\include\UnlabeledUndirectedGraph</li>
+	  </ul>
+
+	</li>
+  
+  <li>You may want to use the Graph Driver and your UnlabeledUndirectedGraph1.hpp to test your checking component</li>
+  <li> Note: 
+	  <ul>
+  <li>The Graph Driver is implemented so as to stop a keyboard user  from violating some (possibly all) of 
+    UnlabeledUndirectedGraph1's operation's preconditions</li>
+  <li>You may need to alter Graph Driver's code so that it allows the keyboard user to deliberately violate a precondition - you might consider creating an entire new project called <em>NakedGraphDriver</em>, where this driver has had all protection stripped from it, allowing  a malicious keyboard user to execute commands that violate the UnlabeledUndirectedGraph1's operation's preconditions</li>
+  <li>This will allow you to test your implementation of <em>UnlabeledUndirectedGraphChecking1</em></li>
+		 
+	  </ul>
+  </li>
+      </ul>
+
+
+
+<h3>2. Grading of ProjM4</h3>
+<ul>
+  <li>Your <em>UnlabeledUndirectedGraphChecking1</em>.<em>hpp</em> will be compiled/built/tested in Debug Mode with Dr. Holly's private set of tests or a modified Graph Driver</li>
+  <li>These tests will attempt to call an UnlabeledUndirectedGraph1 operation with a call that violates its non-trivial precondition</li>
+</ul>
+<h3>3. Submitting the Assignment for Grading</h3>
+<ul>
+  <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your 
+    completed <em>UnlabeledUndirectedGraphChecking1.hpp</em> project to your GitHub Education CSSE373 repo</li>
+  <li>Use the commit message &quot;ProjM4, ready for grading&quot;</li>
+</ul>
+</body>
+</html>
