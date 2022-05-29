@@ -109,8 +109,7 @@
     <li>guarantee that the correspondence holds when the member function exits</li>
   </ul>
   <li><strong>Use Design by Contract</strong> - No defensive programming of List's operations (see design-by-contract example below) </li>
-</ol>
-<ol>
+
   <ul>
     <li>What this means is that the implementation of a List operation must not contain code that checks to make sure that the List operation was called correctly by the client</li>
     <li>Therefore, for all List operations that have a <em>requires</em> clause, you must program them with the assumption that their <em>requires</em> clause holds at the time the operation is called (like rightFront, in the example below)</li>
