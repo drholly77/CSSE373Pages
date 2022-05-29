@@ -49,8 +49,8 @@
 
      // Mystery1 Specific Operations
         void op5(Mystery1& x);
-        //! updates x
         //! restores self
+        //! updates x
         //! ensures: x = #x * #self
         void op6(T& x, Integer z);
         //! updates self
@@ -60,7 +60,7 @@
         //! ensures: self = #self[0, z) * &lt;#x&gt; * #self[z, |#self|)
         T& op7(Integer z);
         //! restores self, z
-        //! requires: 0 <= z < |self|
+        //! requires: 0 &lt;= z &lt; |self|
         //! ensures: &lt;op7&gt; = self[z,z+1)
         Integer op8(void);
         //! restores self
