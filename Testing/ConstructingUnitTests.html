@@ -22,7 +22,7 @@
 	  <td align="center">
 		<h2>Constructing Unit Tests</h2></td>
 		<td width="218">
-			<p align="right"><i>Last Updated: 03/3/2022</i></p></td>
+			<p align="right"><i>Last Updated: 06/9/2022</i></p></td>
 	</tr>
 </table>
 
@@ -64,7 +64,7 @@ TEST_METHOD(<span class="yellowColor">UT01Constructor</span>)
 
    // Verify ensures: self = &lt;&gt;
    toText(q1, x1);
-   Assert::IsTrue(x1 == "&lt;&gt;", L"q1 = &lt;&gt;");
+   Assert::AreEqual(L"&lt;&gt;", x1);
 } // UT01Constructor</pre></td>
     <td width="50%" valign="top">
     <p class="yellowColor"><em>Explanation of the Unit Test Name - UT01Constructor: </em></p>
@@ -112,7 +112,7 @@ TEST_METHOD(UT02Clear)
 
    // Verify parameter mode clears: clears self
    toText(q1, x1);
-   Assert::IsTrue(x1 == "&lt;&gt;", L"q1 = &lt;&gt;");
+   Assert::AreEqual(L"&lt;&gt;", x1);
 } // UT02Clear
 </pre></td>
     <td width="50%" valign="top">
@@ -162,7 +162,7 @@ TEST_METHOD(UT02Clear)
 
    // Verify clears parameter mode: clears self
    toText(q1, x1);
-   Assert::IsTrue(x1 == "&lt;&gt;", L"q1 = &lt;&gt;");
+   Assert::AreEqual(L"&lt;&gt;", x1);
 } // UT03Clear</pre></td>
     <td valign="top">
 <p class="yellowColor"><em>Explanation of the Test Set Up section</em>: </p>
@@ -207,11 +207,11 @@ TEST_METHOD(UT04TransferFrom)
 
    // Verify ensures: self = #source
    toText(q1, x1);
-   Assert::IsTrue(x1 == "&lt;&gt;", L"q1 = &lt;&gt;");
+   Assert::AreEqual(L"&lt;&gt;", x1);
 
    // Verify clears parameter mode: clears source
    toText(q2, x2);
-   Assert::IsTrue(x2 == "&lt;&gt;", L"q2 = &lt;&gt;");
+   Assert::AreEqual(L&quot;&lt;&gt;&quot;, x2);
 } // UT04TransferFrom</pre></td>
     <td width="50%" valign="top"><p class="yellowColor"><em>Explanation of the Execute Operation section</em>:</p>
       <ul>
@@ -245,11 +245,11 @@ TEST_METHOD(UT04TransferFrom)
 
 <span class="yellowColor">   // Verify ensures: self = #source
    toText(q1, x1);
-   Assert::IsTrue(x1 == "&lt;17&gt;", L"q1 = &lt;17&gt;");</span>
+   Assert::AreEqual(L&quot;&lt;17&gt;&quot;, x1);</span>
 
    // Verify clears parameter mode: clears source
    toText(q2, x2);
-   Assert::IsTrue(x2 == "&lt;&gt;", L"q2 = &lt;&gt;");
+   Assert::AreEqual(L&quot;&lt;&gt;&quot;, x2);
 } // UT05TransferFrom</pre></td>
     <td valign="top"><p class="yellowColor"><em>Explanation of the Verify Ensures section</em>: </p>
       <ul>
@@ -306,11 +306,11 @@ TEST_METHOD(UT04TransferFrom)
 
    // Verify ensures: self = #source
    toText(q1, x1);
-   Assert::IsTrue(x1 == "&lt;25&gt;", L"q1 = &lt;25&gt;");
+   Assert::AreEqual(L&quot;&lt;25&gt;&quot;, x1);
 
 <span class="yellowColor">   // Verify clears parameter mode: clears source
    toText(q2, x2);
-   Assert::IsTrue(x2 == "&lt;&gt;", L"q2 = &lt;&gt;");</span>
+   Assert::AreEqual(L&quot;&lt;&gt;&quot;, x2);</span>
 } // UT06TransferFrom</pre></td>
     <td valign="top"><p class="yellowColor"><em>Explanation of the Clears Parameter Mode section</em>: </p>
       <ul>
@@ -362,7 +362,7 @@ TEST_METHOD(UT07Assignment)
 
 <span class="yellowColor">   // Verify restores parameter mode: restores rhs
    toText(q2, x2);
-   Assert::IsTrue(x2 == "&lt;27&gt;", L"q2 = &lt;27&gt;");</span>
+   Assert::AreEqual(L&quot;&lt;27&gt;&quot;, x2);</span>
 } // UT07Assignment</pre></td>
     <td width="50%" valign="top">
     <p class="yellowColor"><em>Explanation of the Restores Parameter Mode section</em>: </p>
@@ -423,7 +423,7 @@ TEST_METHOD(UT08Dequeue)
 
    // Verify ensures: self = #self[1, |#self|)
    toText(q1, x1);
-   Assert::IsTrue(x1 == "&lt;30&gt;", L"q1 = &lt;30&gt;");</span>
+   Assert::AreEqual(L&quot;&lt;30&gt;&quot;, x1);</span>
 } // UT08Dequeue
 </pre></td>
     <td width="50%" valign="top">
