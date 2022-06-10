@@ -397,7 +397,7 @@ TEST_METHOD(UT07Assignment)
 //! updates self
 //! replaces x
 //! requires: self /= &lt;&gt;
-//! ensures: &lt;x&gt; is prefix of #self  and  self = #self[1, |#self|)
+//! ensures: &lt;x&gt; = #self[0,1)  and  self = #self[1, |#self|)
 // -----------------------------------------------------
 TEST_METHOD(UT08Dequeue)
 {
@@ -418,7 +418,7 @@ TEST_METHOD(UT08Dequeue)
    // Execute operation: dequeue
    q1.dequeue(k);
 
-<span class="yellowColor">   // Verify ensures: &lt;x&gt; is prefix of #self
+<span class="yellowColor">   // Verify ensures: &lt;x&gt; = #self[0,1)
    Assert::IsTrue(k == 25, L"k = 25");
 
    // Verify ensures: self = #self[1, |#self|)
@@ -431,7 +431,7 @@ TEST_METHOD(UT08Dequeue)
     <p><em>In this unit test:</em></p>
     <ul>
       <li>There are two conjuncts to the ensures clause</li>
-      <li><em>Conjunct #1</em>: x is prefix of #self</li>
+      <li><em>Conjunct #1</em>: x = #self[0,1)</li>
       <li><em>Conjunct #2</em>: self = #self[1, |#self|]</li>
       <li>Both conjuncts must be verified, so there are 2 sections of the Verify ensures</li>
       </ul>

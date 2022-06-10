@@ -150,7 +150,7 @@
 T&amp; List2&lt;T&gt;::rightFront(<strong>void</strong>)
 //! restores self
 //! requires: self.right /= &lt;&gt;
-//! ensures: &lt;rightFront&gt; is prefix of self.right
+//! ensures: &lt;rightFront&gt; = self.right[0,1)
 {
    // assumes client has met the requires clause 
    // assumes the correspondence holds
@@ -161,7 +161,7 @@ T&amp; List2&lt;T&gt;::rightFront(<strong>void</strong>)
 T&amp; List2&lt;T&gt;::rightFront(<strong>void</strong>)
 //! restores self
 //! requires: self.right /= &lt;&gt;
-//! ensures: &lt;rightFront&gt; is prefix of self.right
+//! ensures: &lt;rightFront&gt; = self.right[0,1)
 {
    // fails to assume client has met the requires clause
    <strong>if</strong> (rightQ.length() &gt; 0) {
