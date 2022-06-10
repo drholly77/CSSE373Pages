@@ -72,17 +72,17 @@ public: // Standard Operations
       //! replaces x
       //! requires: self.right /= &lt;&gt;
       //! ensures: self.left = #self.left  and
-      //!          &lt;x&gt; is prefix of #self.right  and 
+      //!          &lt;x&gt; = #self.right[0,1)  and 
       //!          self.right = #self.right[1,|#self.right|)
    T&amp; rightFront (void);
       //! restores self
       //! requires: self.right /= &lt;&gt;
-      //! ensures: &lt;rightFront&gt; is prefix of self.right
+      //! ensures: &lt;rightFront&gt; = self.right[0,1)
    void replaceRightFront (T&amp; x);
       //! updates self.right, x
       //! requires: self.right /= &lt;&gt;
       //! ensures: self.left = #self.left  and  
-      //!          &lt;x&gt; is prefix of #self.right and 
+      //!          &lt;x&gt; = #self.right[0,1) and 
       //!          self.right = &lt;#x&gt; * #self.right[1,|#self.right|)
    void swapRights (BoundedList1&amp; otherS);
       //! updates self.right, otherS.right
