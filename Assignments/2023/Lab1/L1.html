@@ -46,17 +46,18 @@
   <tbody>
     <tr>
       <td valign="top">
-	    <p>For Steps 1 - 5 (below) reference the following web page <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">Creating and building console projects</a></p>
+	    <p>For Steps 1 - 5 (below) reference the following web page <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">Creating and building empty projects</a></p>
 		  <ol>
-          <li><strong>Create</strong> a new Visual Studio Console Project, name the project <em>L1</em> and make it subordinate to the CppDevSp23 repo folder</li>
-          <li><strong>Copy</strong> (don't move) the <em>driver.cpp</em> from the CppDevSp23/SeqDriver folder to the newly created
+          <li><strong>Create</strong> a new Visual Studio Empty Project, name the project <em>L1</em> and make it subordinate to the csse373devenv202330-YourUserID repo folder</li>
+          <li><strong>Copy</strong> (don't move) two files: (1) the <em>driver.cpp</em> and (2) <em>TextSeq.h</em> from the <u>csse373devenv202330-YourUserID/SeqDriver</u> folder to the newly created
             L1 folder (VS created the L1  in Step 1)</li>
           <li><strong>Add</strong> .cpp files to your project's Source Files folder. First add the <em>driver.cpp</em> (that you copied) to the project's Source Files folder, then add the wrapper folder (VS calls it a filter) and its subordinate .cpp files. When finished with this step, your project should look like the screen shot to the right.</li>
+          <li><strong>Add</strong> the <em>TextSeq.h</em> file to your project's Header Files folder.</li>
           <li><strong>Change</strong> the project settings</li>
           <li><strong>Build</strong> the project. If all steps up to this point were done correctly, it should build without any errors&nbsp;</li>
           <li>To run this program click: <em>Debug | Start Debugging</em> from the menu bar in Visual Studio</li>
         </ol></td>
-      <td width="295"><img src="L1Solution.png" width="293" height="381" alt=""/>&nbsp;</td>
+      <td width="295"><img src="L1Solution.png" width="339" height="512" alt=""/>&nbsp;</td>
     </tr>
   </tbody>
 </table>
@@ -77,7 +78,7 @@
 </ol>
 <h2>2. Code Examples</h2>
 <h3>2.1 - Creating a StaticArray of Sequences of Text</h3>
-<p>Use the following example as a guide to creating an Array of Sequences</p>
+<p>Use the following example as a guide to creating an Array of Sequences, make these changes in  <em>TextSeq.h</em></p>
 <div align="center">
   <center>
     <table border="1" width="55%">
@@ -169,7 +170,7 @@
         <p>You can test the program at least&nbsp; 3 different ways:</p>
         <ol>
           <li>Run the program and type in commands at the command prompt to exercise each of the<em> </em>operations that were modified</li>
-          <li>In the folder <em>CppDevSp23/SeqDriver</em> there is a sub-folder called <em>TestScripts</em> which contains .txt files. Each .txt contains a sequence of command interpreter commands for the original SeqDriver implementation (which uses only two Sequences). If you utilize these test scripts, you'll need to first study them to understand what they are asking the command interpreter to do, and then modify them slightly to work with your command interpreter that uses an array of sequences. Instead of running and retyping commands, you can run your command interpreter and then copy and paste modified tests scripts into your command interpreter while its running. </li>
+          <li>In the folder <em>csse373devenv202330-YourUserID/SeqDriver</em> there is a sub-folder called <em>TestScripts</em> which contains .txt files. Each .txt contains a sequence of command interpreter commands for the original SeqDriver implementation (which uses only two Sequences). If you utilize these test scripts, you'll need to first study them to understand what they are asking the command interpreter to do, and then modify them slightly to work with your command interpreter that uses an array of sequences. Instead of running and retyping commands, you can run your command interpreter and then copy and paste modified tests scripts into your command interpreter while its running. </li>
           <li>You can place them in  either the <em>L1/Debug</em> folder and run the command interpreter from a command prompt and use file redirection to feed your test scripts into your L1.exe. See the <em>Testing - With a Test Script</em> reference page.</li>
         </ol></td>
       <td width="360" align="right"><img src="L1Running.png" width="355" height="382" alt=""/></td>
@@ -177,7 +178,7 @@
   </tbody>
 </table>
 <h2>4. Grading</h2>
-<p>In the folder CppDevSp23/SeqDriver/TestFolder is <em>L1Sol.exe</em>. This executable is my solution to L1.</p>
+<p>In the folder csse373devenv202330-YourUserID/SeqDriver/TestFolder is <em>L1Sol.exe</em>. This executable is my solution to L1.</p>
 <p>Your submission will be graded by running various test scripts against your <em>L1.exe</em> and then using FC (a File Compare tool) to compare the output from your <em>L1.exe</em> against the output from <em>L1Sol.exe</em>. FC does a character by character comparison.</p>
 <p>It's highly recommend that you do not try to use the <em>eyeball method</em> compare your <em>L1.exe</em>'s output with the output from <em>L1Sol.exe</em> because FC detects all character differences, even whitespace differences. I recommend that you run both L1.exe and L1Sol.exe on the test scripts found in SeqDriver/Testscripts, and compare the two outputs against each other using FC. You are finished when FC reports &quot;no differences found&quot;.</p>
 <p>See the Grading Rubric associated with the L1 Moodle assignment</p>
