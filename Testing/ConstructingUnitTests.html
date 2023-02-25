@@ -22,7 +22,7 @@
 	  <td align="center">
 		<h2>Constructing Unit Tests</h2></td>
 		<td width="218">
-			<p align="right"><i>Last Updated: 06/9/2022</i></p></td>
+			<p align="right"><i>Last Updated: 02/25/2023</i></p></td>
 	</tr>
 </table>
 
@@ -34,9 +34,9 @@
   <li>Logger::WriteMessage</li>
   <li>Test Setup</li>
   <li>Execute Operation</li>
-  <li>Verify Ensures</li>
-  <li>Verify Clears Parameter Mode</li>
-  <li>Verify Restores Parameter Mode </li>
+  <li>Validate Ensures</li>
+  <li>Validate Clears Parameter Mode</li>
+  <li>Validate Restores Parameter Mode </li>
 </ol>
 <p>The 8 sections listed above must appear in each unit test, in the order listed, with the following exceptions</p>
 <ul>
@@ -62,7 +62,7 @@ TEST_METHOD(<span class="yellowColor">UT01Constructor</span>)
    Logger::WriteMessage(L"UT01Constructor: Queue1();");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;&gt;");
 
-   // Verify ensures: self = &lt;&gt;
+   // Validate ensures: self = &lt;&gt;
    toText(q1, x1);
    Assert::AreEqual(L"&lt;&gt;", x1);
 } // UT01Constructor</pre></td>
@@ -110,7 +110,7 @@ TEST_METHOD(UT02Clear)
    // Execute operation: clear
    q1.clear();
 
-   // Verify parameter mode clears: clears self
+   // Validate parameter mode clears: clears self
    toText(q1, x1);
    Assert::AreEqual(L"&lt;&gt;", x1);
 } // UT02Clear
@@ -160,7 +160,7 @@ TEST_METHOD(UT02Clear)
    // Execute operation: clear
    q1.clear();
 
-   // Verify clears parameter mode: clears self
+   // Validate clears parameter mode: clears self
    toText(q1, x1);
    Assert::AreEqual(L"&lt;&gt;", x1);
 } // UT03Clear</pre></td>
@@ -205,11 +205,11 @@ TEST_METHOD(UT04TransferFrom)
 <span class="yellowColor">   // Execute operation: transferFrom
    q1.transferFrom(q2);</span>
 
-   // Verify ensures: self = #source
+   // Validate ensures: self = #source
    toText(q1, x1);
    Assert::AreEqual(L"&lt;&gt;", x1);
 
-   // Verify clears parameter mode: clears source
+   // Validate clears parameter mode: clears source
    toText(q2, x2);
    Assert::AreEqual(L&quot;&lt;&gt;&quot;, x2);
 } // UT04TransferFrom</pre></td>
@@ -243,15 +243,15 @@ TEST_METHOD(UT04TransferFrom)
    // Execute operation: transferFrom
    q1.transferFrom(q2);
 
-<span class="yellowColor">   // Verify ensures: self = #source
+<span class="yellowColor">   // Validate ensures: self = #source
    toText(q1, x1);
    Assert::AreEqual(L&quot;&lt;17&gt;&quot;, x1);</span>
 
-   // Verify clears parameter mode: clears source
+   // Validate clears parameter mode: clears source
    toText(q2, x2);
    Assert::AreEqual(L&quot;&lt;&gt;&quot;, x2);
 } // UT05TransferFrom</pre></td>
-    <td valign="top"><p class="yellowColor"><em>Explanation of the Verify Ensures section</em>: </p>
+    <td valign="top"><p class="yellowColor"><em>Explanation of the Validate Ensures section</em>: </p>
       <ul>
         <li>The purpose of this section is to verify that that the tested operation actually did the right thing, i.e., it satisfied its own ensures clause</li>
         <li>When writing the unit test, we must know what the outgoing values are from the tested operation, we use this section to verify that actual outgoing values match our expectations</li>
@@ -304,11 +304,11 @@ TEST_METHOD(UT04TransferFrom)
    // Execute operation: transferFrom
    q1.transferFrom(q2);
 
-   // Verify ensures: self = #source
+   // Validate ensures: self = #source
    toText(q1, x1);
    Assert::AreEqual(L&quot;&lt;25&gt;&quot;, x1);
 
-<span class="yellowColor">   // Verify clears parameter mode: clears source
+<span class="yellowColor">   // Validate clears parameter mode: clears source
    toText(q2, x2);
    Assert::AreEqual(L&quot;&lt;&gt;&quot;, x2);</span>
 } // UT06TransferFrom</pre></td>
@@ -355,12 +355,12 @@ TEST_METHOD(UT07Assignment)
    // Execute operation: operator =
    q1 = q2;
 
-   // Verify ensures: self = rhs
+   // Validate ensures: self = rhs
    toText(q1, x1);
    toText(q2, x2);
    Assert::IsTrue(x1 == x2, L"q1 = q2");
 
-<span class="yellowColor">   // Verify restores parameter mode: restores rhs
+<span class="yellowColor">   // Validate restores parameter mode: restores rhs
    toText(q2, x2);
    Assert::AreEqual(L&quot;&lt;27&gt;&quot;, x2);</span>
 } // UT07Assignment</pre></td>
@@ -418,22 +418,22 @@ TEST_METHOD(UT08Dequeue)
    // Execute operation: dequeue
    q1.dequeue(k);
 
-<span class="yellowColor">   // Verify ensures: &lt;x&gt; = #self[0,1)
-   Assert::IsTrue(k == 25, L"k = 25");
+<span class="yellowColor">   // Validate ensures: &lt;x&gt; = #self[0,1)
+   Assert::AreEqual((int)k, 25);
 
-   // Verify ensures: self = #self[1, |#self|)
+   // Validate ensures: self = #self[1, |#self|)
    toText(q1, x1);
    Assert::AreEqual(L&quot;&lt;30&gt;&quot;, x1);</span>
 } // UT08Dequeue
 </pre></td>
     <td width="50%" valign="top">
-    <p class="yellowColor"><em>Explanation of the Verify Ensures section - when there are multiple conjuncts</em>: </p>
+    <p class="yellowColor"><em>Explanation of the Validate Ensures section - when there are multiple conjuncts</em>: </p>
     <p><em>In this unit test:</em></p>
     <ul>
       <li>There are two conjuncts to the ensures clause</li>
       <li><em>Conjunct #1</em>: x = #self[0,1)</li>
       <li><em>Conjunct #2</em>: self = #self[1, |#self|]</li>
-      <li>Both conjuncts must be verified, so there are 2 sections of the Verify ensures</li>
+      <li>Both conjuncts must be validated, so there are 2 asserts to validate the ensures clause</li>
       </ul>
     <p>&nbsp;</p>
     <hr />
