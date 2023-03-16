@@ -25,7 +25,7 @@ class StaticArray1
    //! is modeled by function from integer to T
    //! constraint: &forall; i: integer
    //!    ((i &lt; lowerBound) or (i &gt; upperBound) 
-   //!       &rarr; (self(i) = T.init))
+   //!       &rarr; T.init(self(i)))
    //! exemplar self
 {
 public: // Standard Operations
@@ -33,7 +33,7 @@ public: // Standard Operations
       //! replaces self
       //! ensures: &forall; i: integer
       //!    ((i &ge; lowerBound) and (i &le; upperBound) 
-      //!       &rarr; (self(i) = T.init))
+      //!       &rarr; T.init(self(i)))
    ~StaticArray1 ();
    void clear (void);
       //! clears self
