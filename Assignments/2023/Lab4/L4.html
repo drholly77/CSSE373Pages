@@ -107,13 +107,13 @@
     <li>guarantee that the correspondence holds when the member function exits</li>
   </ul>
   <li><strong>Use Design by Contract</strong> - That is, no defensive programming of List's operations</li>
-</ol>
-<ol>
+
   <ul>
     <li>What this means is that the implementation of a List operation must not contain code that checks to make sure that the List operation was called correctly by the client</li>
     <li>Therefore, for all List operations that have a nontrivial <em>requires</em> clause, you must program them with the assumption that their <em>requires</em> clause holds at the time the operation is called</li>
     <li>Operations with non-trivial <em>requires</em> clauses include: <em>advance</em>, <em>removeRightFront</em>, <em>rightFront</em>, and <em>replaceRightFront</em></li>
   </ul>
+  <li><strong>Write elegant client code</strong> - In this case it means: in your implementation of List, you must leverage the power of the layered upon (Queue's) component's operations</li>
   <li><strong>No Cross Calling - </strong>None of List's member functions are permitted to make calls to any of the other <em>public</em> List member functions, i.e., no cross calling
     <ul>
       <li>For example, under this rule it is illegal for the <em>swapRights</em> operation to call any other List operation, e.g., <em>addRightFront</em></li>
