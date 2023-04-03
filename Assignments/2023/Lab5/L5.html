@@ -56,7 +56,12 @@
           <li>You must used C++'s nodes and pointer types similar to how it is done in Queue0.hpp</li>
           <li>Your internal representation is up to you, just so long as your implementation meets the following performance requirements:</li>
 			<ul>
-          <li>All <em>List Standard Operations</em> must work in constant time, i.e., &theta;(1), except <em>operator =, </em>it may work in &theta;(N) time, where N = length of the list</li>
+          <li>All <em>List Standard Operations</em> must work in constant time, i.e., &theta;(1)<br>
+            Except for the following which will work in &theta;(N) time, where N = length of the list:<br>
+            <em>operator = </em> in order to deallocate the left hand side list, and to copy the right hand side list<br>
+            <em>transferFrom</em> in order to deallocate the list that receives the transfer, but for no other reason<br>
+            ~<em>List0()</em> in order to deallocate the list when it goes out of scope <br>
+          </li>
           <li>All <em>List Specific Operations</em> must work in constant time, i.e., &theta;(1)</li>
           <li>If you fail to meet these performance requirements, then the operation will be deemed incorrect</li>
 		    </ul>
