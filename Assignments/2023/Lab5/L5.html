@@ -58,9 +58,10 @@
 			<ul>
           <li>All <em>List Standard Operations</em> must work in constant time, i.e., &theta;(1)<br>
             Except for the following which will work in &theta;(N) time, where N = length of the list:<br>
-            <em>operator = </em> in order to deallocate the left hand side list, and to copy the right hand side list<br>
-            <em>transferFrom</em> in order to deallocate the list that receives the transfer, but for no other reason<br>
-            ~<em>List0()</em> in order to deallocate the list when it goes out of scope <br>
+            (1) <em>operator = </em> in order to deallocate the left hand side list, and to copy the right hand side list<br>
+            (2) <em>transferFrom</em> in order to deallocate the list that receives the transfer, but for no other reason<br>
+            (3) <em>clear</em> in order to deallocate all the controlling variable list<br>
+            (4) ~<em>List0()</em> in order to deallocate the list when it goes out of scope <br>
           </li>
           <li>All <em>List Specific Operations</em> must work in constant time, i.e., &theta;(1)</li>
           <li>If you fail to meet these performance requirements, then the operation will be deemed incorrect</li>
