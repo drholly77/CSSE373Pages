@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Layering an Operation</title>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Layering an Operation</h1>
+<h3>0. Reference Material</h3>
+<ul>
+  <ul>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/TracingTables/injectAtFrontTTSp23.pdf" target="_blank">injectAtFrontTTSp23.pdf contains an implementation of InjectCapability</a></li>
+  </ul>
+</ul>
+
+	
+<h3>1. Setup</h3>
+<table border="0" width="100%">
+  <tbody>
+    <tr>
+      <td valign="top"><h4>1.1 Get the L6Starter Download</h4>
+        <ul>
+          <li>Download <em>L6Starter.zip</em>&nbsp;to your machine - to be used on a subsequent steps</li>
+        </ul></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top"><h4>1.2 Copy List2.hpp from the L6Starter.zip</h4>
+        <ul>
+          <li>Inside L6Starter.zip is a file named AppendCapabilitiy1.hpp
+            <ul>
+              <li>Copy this file into your: <em>csse373devenv202330-yourID\components\include\Queue</em></li>
+				<li>AppendCapabilitiy1.hpp contains a fully functional Queue <em>append</em> operation and uses C++ template syntax that allows layering of this operation onto the Queue component</li>
+            </ul>
+          </li>
+         
+        </ul>
+        <h4>1.3 Copy the L6 Folder from the L6Starter.zip</h4>
+        <ul>
+          <li>Inside L6Starter.zip is a two  named L6 </li>
+			    <ul>
+          <li>Copy the L6 folder to your <em>csse373devenv202330-yourID</em> folder as shown in the screen shot to the right</li>
+          <li>Once you have copied this folder you can use VS2022 to open the L6 project by double clicking on L6.sln  </li>
+			</ul>
+        </ul>
+        <h4>1.4 About Project L6</h4>
+        <ul>
+          <li>It contains a Visual Studio 2022 unit test project</li>
+          <li>It can be opened with VS2022 by double clicking on the file L6.sln</li>
+          <li>It will build correctly if you have followed the instructions in 1.1 - 1.3 (above)</li>
+          <li>L6 contains unit tests for Queue's AppendCapability, InjectCapability, and EqualCapability
+    
+          </li>
+        </ul></td>
+      <td valign="top"><img src="L6FolderView.png" width="245" height="377" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+
+	
+<h3>2. L6 Statement of Work</h3>
+<h4>2.1 Primary Objectives</h4>
+<p>The primary objective of this lab is to provide you experience working with:</p>
+<ul>
+  <li>Layering an operation (e.g., InjectCapability) on another already existing component (e.g., Queue)</li>
+  <li>Adding new functionality to an already existing component</li>
+  <li>The inheritance syntax used by C++ when layering a new operation</li>
+  <li>C++ syntax used by the client program when adding additional capabilities to an already existing component </li>
+</ul>
+<h4>2.2 Specifics</h4>
+<p><em>Steps</em>:</p>
+        <ol>
+          <li>Start Visual Studio</li>
+          <li>Open project L6</li>
+          <li>Find and open L6.cpp </li>
+          <li>Follow the four TODO's found near the top of L6.cpp<br>
+          </li>
+        </ol>
+        <p><em>Hints</em>:</p>
+        <ul>
+          <li>AppendCapabilitiy1.hpp contains comments to explain the C++ syntax and how inheritance is working</li>
+          <li>The <em>Reference Material</em> section above has a link to a document containing an implementation for an <em>inject</em> operation</li>
+        </ul>
+	
+<p><em>Important Restrictions</em>:</p>
+<ol>
+  
+  <li><strong>Use Design by Contract</strong> - No defensive programming for any of these operations </li>
+
+<li><strong>Write elegant client code</strong> - Eliminate code duplication, have no unused variables, leverage Queue's public operations, etc.</li>
+  <li><strong>About Making Copies</strong> - There should be no reason to make copies of any Queue or variable of type T, so don't</li>
+
+</ol>
+
+	
+<h3>3. Testing</h3>
+<ul>
+  <li>L6 testing
+    <ul>
+      <li>These tests are minimal</li>
+    </ul>
+  </li>
+  <li>If you want to earn full credit for this assignment it is recommended that you add additional unit tests</li>
+</ul>
+<p><em>The Grader's test cases</em>:</p>
+<p>Grading will be done running a more complete set of unit tests which will systematically stress your implementations of InjectCapability and EqualCapability</p>
+
+<h3>4. Submitting the Assignment for Grading</h3>
+	<ul>
+	<li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your L6 project to your GitHub Education CSSE373 repo</li>
+	<li>Use the commit message &quot;L6 final commit, ready for grading&quot;</li>
+	</ul>
+		
+
+
+
+<hr>
+
+
+
+	
+</body>
+</html>
