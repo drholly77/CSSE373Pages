@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Project M3</title>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Project M3</h1>
+<hr />
+	
+<h3>0. References</h3>
+<ul>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/CeramicArrayTemplate.html" target="new">CeramicArray Spec</a></li>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentUsage/CArrayUsage.html" target="_blank">CeramicArray Usage</a></li>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentUsage/Simulating2DArray.html" target="_blank">Simulating a 2-D Matrix with a 1-D Array</a></li>
+</ul>
+
+<h3>1. PM3 Statement of Work</h3>
+	<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td><ul>
+  <li>1) In the folder <em>csse373devenv202330-yourID/components/include/UnlabeledUndirectedGraph</em> create UnlabeledUndirectedGraph2.hpp </li>
+		  <li>2) In UnlabeledUndirectedGraph2.hpp implement class UnlabeledUndirectedGraph2</li>
+  
+  <li>3) You must: 
+	<ul>
+		<li>Implement UnlabeledUndirectedGraph2 using an adjacency matrix - see Figure 1 for an example</li>
+		
+		<li>Use a layered implementation by layering on the CeramicArray1 component and its corresponding CeramicArrayChecking1 component</li>
+		<li>Implement all 15 methods - see Figure 2</li>
+		<li>Use C++'s conditional compiliation and use CeramicArrayChecking1 in Debug Mode and only CeramicArray1 when in Release mode</li>
+	  <li>Define the correspondence as a comment in the<br>'private: // Representation' part </li>
+	  <li>Uncomment the<br>'private: // Disallowed QueueOfText Operations' part and change the code found there 
+      so that it works with UnlabeledUndirectedGraph1</li>
+		<li>For your implementation of UnlabeledUndirectedGraph2's <em>operator &lt;&lt;</em>, <br>
+            I recommend that you use the implementation found in UnlabeledUndirectedGraph1.hpp  </li>
+	  </ul>
+
+	</li>
+  
+
+  <li>You may want to use ProjM2's unit tests to test your implementation</li>
+</ul>
+		  <p align="center">
+			  <img src="UUGV2.png" width="500" height="325" alt=""/><br>
+	    <strong>Figure 2</strong></p>
+	  </td>
+      <td width="570"><p align="center"><img src="PM2React.png" width="374" height="418" alt=""/><br>
+		  <img src="reactAdjMatrix.png" width="307" height="147" alt=""/><br>
+		  <strong>Figure 1</strong> - Graph <strong><em>g</em></strong> and its adjaceny matrix</p>
+		</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3>2. Grading of PM3</h3>
+<ul>
+  <li>Your UnlabeledUndirectedGraph1.hpp will be compiled/built/tested in Release Mode against Dr. Holly's private set of 
+      specification-based test cases
+  </li>
+	<li>These test cases will utilize your <em>operator &lt;&lt;</em> in order to convert a graph variable into a Text object.<br>
+If your <em>operator &lt;&lt;</em> fails to follow the requirements outlined above, then the test will fail</li>
+	  <li>If your UnlabeledUndirectedGraph1 fails test cases (i.e., when/if those test cases reveal defects, or <em>operator &lt;&lt;</em> does not work as is required) your submission will 
+      earn less than 100% for this milestone
+  </li>
+  <li>Your UnlabeledUndirectedGraph1 fails to compile/build your submission will earn zero credit for this milestone</li>
+
+</ul>
+
+
+<p><em>Important Restrictions</em>:</p>
+<ol>
+  <li><strong>Obey the correspondence </strong>- When implementing the member functions you must obey the correspondence internal contract </li>
+  <li><strong>Use Design by Contract</strong> </li>
+  <li><strong>No Cross Calling </strong></li>
+  <li><strong>Calling Down</strong></li>
+	<li><strong><span style="background-color: #FFFF00">***New***</span> Use Call-Throughs Appropriately</strong> - For example, your implementation of <em>clear</em> should be a call-through(s)
+	<br>That is, no doing work at the UnlabeledUndirectedGraph1 level that can more easily be done at the CeramicArray1 level</li>
+  <li><strong>No Recursion</strong> </li>
+  <li><strong>No Making Unnecessary Copies</strong>  </li>
+</ol>
+
+<hr />
+<h3>3. Submitting the Assignment for Grading</h3>
+<ul>
+  <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your 
+    completed <em>UnlabeledUndirectedGraph1.hpp</em> project to your GitHub Education CSSE373 repo</li>
+  <li>Use the commit message &quot;PM3, ready for grading&quot;</li>
+</ul>
+</body>
+</html>
