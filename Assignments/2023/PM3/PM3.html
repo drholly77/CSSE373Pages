@@ -28,30 +28,45 @@
   
   <li>3) You must: 
 	<ul>
-		<li>Implement UnlabeledUndirectedGraph2 using an adjacency matrix - see Figure 1 for an example</li>
+		<li>Implement UnlabeledUndirectedGraph2 using an adjacency matrix - see Figure 1 for an example<br>
+		You may also add additional representation variables in order to achieve better performance for some of the exported operations, i.e., a space for time trade-off</li>
 		
 		<li>Use a layered implementation by layering on the CeramicArray1 component and its corresponding CeramicArrayChecking1 component</li>
 		<li>Implement all 15 methods - see Figure 2</li>
-		<li>Use C++'s conditional compiliation and use CeramicArrayChecking1 in Debug Mode and only CeramicArray1 when in Release mode</li>
-	  <li>Define the correspondence as a comment in the<br>'private: // Representation' part </li>
-	  <li>Uncomment the<br>'private: // Disallowed QueueOfText Operations' part and change the code found there 
-      so that it works with UnlabeledUndirectedGraph1</li>
-		<li>For your implementation of UnlabeledUndirectedGraph2's <em>operator &lt;&lt;</em>, <br>
-            I recommend that you use the implementation found in UnlabeledUndirectedGraph1.hpp  </li>
+		<li>Use C++'s conditional compilation and use CeramicArrayChecking1 in Debug Mode and only CeramicArray1 when in Release mode</li>
+	  <li>Define the correspondence as a comment in the<br>'private: // Representation' part <br>
+		This will be visually inspected during grading</li>
 	  </ul>
 
 	</li>
   
+  <li>Important requirements on implementing <em>operator &lt;&lt;</em>
+	  <br>
+	  I recommend that you <em>start with</em> the implementation found in UnlabeledUndirectedGraph1.hpp<br><br>
+	  Then make sure <em>operator &lt;&lt;</em> meets the following criteria:
+	<ul>
+		
+	  <li>A graph variable must be displayed using its abstract mathematical model</li>
+		<li><em>operator &lt;&lt;</em> must be a client of UnlabeledUndirectedGraph and call only its operations; it is not allowed to call CeramicArray1's operations</li>
+		<li>The vertex set must be displayed in increasing order</li>
+		<li>Each edge (which is a set) must be displayed so that the leftmost vertex of the set is &lt;= to the rightmost vertex</li>
+		<li>The edge set must be displayed in nondecreasing order based on the leftmost vertex in the set</li>
+		<li>When there are two or more edges with the same leftmost vertex, then those edges must be displayed in nondecreasing order by the rightmost vertex</li>
+		<li>Include no extra spaces in the displayed value</li>
+		<li>For the graph shown in Figure 1, <em>operator &lt;&lt;</em> would produce:<br>
+         ({1,2,3,4,5},{{1,2},{1,3},{2,3},{2,4},{2,5},{3,4},{3,5}})</li>
+	  </ul>
+	</li>
 
-  <li>You may want to use ProjM2's unit tests to test your implementation</li>
+  <li>To test your implementation you might want to use the driver.cpp or the PM3.cpp found in PM3Starter.zip</li>
 </ul>
 		  <p align="center">
 			  <img src="UUGV2.png" width="500" height="325" alt=""/><br>
 	    <strong>Figure 2</strong></p>
 	  </td>
-      <td width="570"><p align="center"><img src="PM2React.png" width="374" height="418" alt=""/><br>
+      <td width="570"><p align="center"><img src="PM2React.png" width="377" height="342" alt=""/><br>
 		  <img src="reactAdjMatrix.png" width="307" height="147" alt=""/><br>
-		  <strong>Figure 1</strong> - Graph <strong><em>g</em></strong> and its adjaceny matrix</p>
+		  <strong>Figure 1</strong> - Graph <strong><em>g</em></strong> and its adjacency matrix</p>
 		</td>
     </tr>
   </tbody>
@@ -60,27 +75,26 @@
 
 <h3>2. Grading of PM3</h3>
 <ul>
-  <li>Your UnlabeledUndirectedGraph1.hpp will be compiled/built/tested in Release Mode against Dr. Holly's private set of 
+  <li>Your UnlabeledUndirectedGraph2.hpp will be compiled/built/tested in Release Mode against Dr. Holly's private set of 
       specification-based test cases
   </li>
 	<li>These test cases will utilize your <em>operator &lt;&lt;</em> in order to convert a graph variable into a Text object.<br>
 If your <em>operator &lt;&lt;</em> fails to follow the requirements outlined above, then the test will fail</li>
-	  <li>If your UnlabeledUndirectedGraph1 fails test cases (i.e., when/if those test cases reveal defects, or <em>operator &lt;&lt;</em> does not work as is required) your submission will 
+	  <li>If your UnlabeledUndirectedGraph2 fails test cases (i.e., when/if those test cases reveal defects, or <em>operator &lt;&lt;</em> does not work as is required) your submission will 
       earn less than 100% for this milestone
   </li>
-  <li>Your UnlabeledUndirectedGraph1 fails to compile/build your submission will earn zero credit for this milestone</li>
+  <li>Your UnlabeledUndirectedGraph2 fails to compile/build your submission will earn zero credit for this milestone</li>
 
 </ul>
 
 
 <p><em>Important Restrictions</em>:</p>
 <ol>
-  <li><strong>Obey the correspondence </strong>- When implementing the member functions you must obey the correspondence internal contract </li>
+  <li><strong>Obey the correspondence </strong>- When implementing the member functions you must obey the correspondence internal contract - which you are required to write. This is the correspondence between an abstract graph value and the underlying concrete representation</li>
   <li><strong>Use Design by Contract</strong> </li>
   <li><strong>No Cross Calling </strong></li>
   <li><strong>Calling Down</strong></li>
-	<li><strong><span style="background-color: #FFFF00">***New***</span> Use Call-Throughs Appropriately</strong> - For example, your implementation of <em>clear</em> should be a call-through(s)
-	<br>That is, no doing work at the UnlabeledUndirectedGraph1 level that can more easily be done at the CeramicArray1 level</li>
+	<li><strong>Write elegant client code</strong> - Leverage the power of CeramicArray, and do space for time trade-offs in obvious places to reduce Big-O for some of UnlabeledUndirectedGraph2's exported operations</li>
   <li><strong>No Recursion</strong> </li>
   <li><strong>No Making Unnecessary Copies</strong>  </li>
 </ol>
@@ -89,7 +103,7 @@ If your <em>operator &lt;&lt;</em> fails to follow the requirements outlined abo
 <h3>3. Submitting the Assignment for Grading</h3>
 <ul>
   <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your 
-    completed <em>UnlabeledUndirectedGraph1.hpp</em> project to your GitHub Education CSSE373 repo</li>
+    completed <em>UnlabeledUndirectedGraph2.hpp</em> project to your GitHub Education CSSE373 repo</li>
   <li>Use the commit message &quot;PM3, ready for grading&quot;</li>
 </ul>
 </body>
