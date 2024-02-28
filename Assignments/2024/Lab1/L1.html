@@ -137,13 +137,14 @@
 
 	wcout &lt;&lt; "Add to ";
 	i = getIndex(aS);
+	wcout &lt;&lt; "At ";
 	p = getPosition(aS[i].length());
 	getText(x);
 	aS[i].add(p, x);
 
 	wcout &lt;&lt; endl &lt;&lt; "s[" &lt;&lt; i &lt;&lt; "].add(" &lt;&lt; p &lt;&lt; ", x); executed." &lt;&lt; endl;
 	wcout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; endl;
-}	// doAdd</pre></td>
+} // doAdd</pre></td>
       </tr>
     </table>
   </center>
@@ -170,7 +171,9 @@
         <p>You can test the program at least&nbsp; 3 different ways:</p>
         <ol>
           <li>Run the program and type in commands at the command prompt to exercise each of the<em> </em>operations that were modified</li>
-          <li>In the folder <em>csse373devenv202430-YourUserID/SeqDriver</em> there is a sub-folder called <em>TestScripts</em> which contains .txt files. Each .txt contains a sequence of command interpreter commands for the original SeqDriver implementation (which uses only two Sequences). If you utilize these test scripts, you'll need to first study them to understand what they are asking the command interpreter to do, and then modify them slightly to work with your command interpreter that uses an array of sequences. Instead of running and retyping commands, you can run your command interpreter and then copy and paste modified tests scripts into your command interpreter while its running. </li>
+          <li>In the folder <em>csse373devenv202430-YourUserID/SeqDriver</em> there is a sub-folder called <em>TestScripts</em> which contains .txt files. <br>
+This folder also contains <em>L1Sol.exe</em> which is a solution to this lab. You must make your <em>L1.exe</em> run exactly like <em>L1Sol.exe</em>. In the <b>Grading</b> section below you will find out what is meant by <i>exactly</i>.<br>
+Each .txt contains a sequence of command interpreter commands for the original SeqDriver implementation (which uses only two Sequences). If you utilize these test scripts, you'll need to first study them to understand what they are asking the command interpreter to do, and then modify them slightly to work with your command interpreter that uses an array of sequences. Instead of running and retyping commands, you can run your command interpreter and then copy and paste modified tests scripts into your command interpreter while its running. </li>
           <li>You can place them in  either the <em>L1/Debug</em> folder and run the command interpreter from a command prompt and use file redirection to feed your test scripts into your L1.exe. See the <em>Testing - With a Test Script</em> reference page.</li>
         </ol></td>
       <td width="360" align="right"><img src="L1Running.png" width="355" height="382" alt=""/></td>
