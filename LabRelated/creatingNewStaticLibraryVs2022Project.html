@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta NAME="Author" CONTENT="Dr. Holly">
+<title>Creating a New VS2022 Static Library Project</title>
+</head>
+
+<body>
+<h2>Creating a New VS2022 Static Library Project</h2>
+<hr>
+	<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><p>The screenshots below show the steps for creating what is known as a <em>static library</em>.</p>
+		  <p>All of the .cpp files in the Wrapper folder remain the same for each of our programming assignments. Rather than compiling them each time we start up a new project, we can compile them once and put their code into a static library. Then when we create a new project, we will modify the new project's linker settings to get the Wrapper .o code from this static library.</p>
+	<p>The screenshot (to the right) of the Wrapper folder shows results of creating two static libraries:
+		<ol><li><strong>WrapperD.lib</strong> is to be used in Debug configuration</li>
+		  <li><strong>WrapperR.lib</strong> is to be used in Release configuration</li></ol></p></td>
+      <td><img src="imagesVS22StaticLibrary/0-SL-FolderView.png" width="730" height="286" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+<p><img src="imagesVS19CreateProject/0-createNewProjectN1.png" width="663" height="166" alt=""/></p>
+<hr>
+<img src="imagesVS22StaticLibrary/1-NewSLProjectDialog.png" width="900" height="634" alt=""/> 
+<hr>
+<img src="imagesVS22StaticLibrary/2-NewSLProjectDialog.png" width="904" height="546" alt=""/> 
+<hr>
+	<h2>Change the WrapperLib Project Settings</h2>	
+<hr>
+	<h3>First make 3 changes to <i><b>All Configurations</b></i></h3>
+	<hr>
+<img src="imagesVS22StaticLibrary/3-SL-ProjectSettings.png" width="993" height="522" alt=""/>
+	<hr>
+<img src="imagesVS22StaticLibrary/4-SL-ProjectSettings.png" width="996" height="428" alt=""/>
+	<hr>
+<img src="imagesVS22StaticLibrary/5-SL-ProjectSettings.png" width="995" height="523" alt=""/>
+	
+	<hr>
+	<h3>Now make 1 change to <i><b>Debug Configuration</b></i></h3>
+	<hr>
+<img src="imagesVS22StaticLibrary/6-SL-ProjectSettings.png" width="994" height="456" alt=""/>
+	<hr>
+	<h3>Finally make 1 change to <i><b>Release Configuration</b></i></h3>
+	<hr>
+<img src="imagesVS22StaticLibrary/7-SL-ProjectSettings.png" width="998" height="455" alt=""/>
+<hr>
+<h2>The Build Steps</h2>
+<ol><li>Build the WrapperLib project in <strong>Debug</strong> configuration - this creates the WrapperD.lib file</li>
+<li>Build the WrapperLib project in <strong>Release</strong> configuration - this creates the WrapperR.lib file</li></ol>
+</body>
+</html>
