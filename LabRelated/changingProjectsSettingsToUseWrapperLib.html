@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta charset="utf-8">
+<meta NAME="Author" CONTENT="Dr. Holly">
+<title>Changing Project's Settings to use Wrapper Libraries</title>
+</head>
+
+<body>
+<h2>Changing Project's Settings to use Wrapper Libraries</h2>
+<hr />
+<p>There are two steps required when changing the project's settings to link to the WrapperD.lib and WrapperR.lib:</p>
+<ol>
+	<li>Tell linker to search an additional folder for .lib files</li>
+	<li>Tell the linker to link to <em>WrapperD.lib</em> in Debug mode and to <em>WrapperR.lib</em> in Release mode</li>
+</ol>
+<hr>
+	<h3>Step 1 - Tell linker to search an additional folder</h3>
+<hr>
+<p>From the Property Pages dialog do the following 7 steps shown in the next 3 screenshots:</p>
+<img src="imagesVS22UsingStaticLibrary/0-AddAdditionalLibraryFolder.png" width="750" height="504" alt=""/>
+<p>&nbsp;</p>
+<img src="imagesVS22UsingStaticLibrary/1-AddPathToFolder.png" width="756" height="587" alt=""/>
+<p>&nbsp;</p>
+<img src="imagesVS22UsingStaticLibrary/2-ApplyAddPathToFolder.png" width="695" height="463" alt=""/>
+
+<hr>
+	<h3>Step 2 - Tell the linker to link to <em>WrapperD.lib</em> and <em>WrapperR.lib</em></h3>
+<hr>
+<p>Continue working in the Property Pages dialog and do the following 13 steps shown in the next 6 screenshots:</p>
+<img src="imagesVS22UsingStaticLibrary/0-AddLibDependencies.png" width="787" height="523" alt=""/>
+<p>&nbsp;</p>
+	<img src="imagesVS22UsingStaticLibrary/1-AddWrapperDDependency.png" width="790" height="590" alt=""/>
+<p>&nbsp;</p>
+	<img src="imagesVS22UsingStaticLibrary/2-ApplyWrapperDDependency.png" width="791" height="523" alt=""/>
+<p>&nbsp;</p>
+	<img src="imagesVS22UsingStaticLibrary/3-AddLibDependencies.png" width="780" height="519" alt=""/>
+<p>&nbsp;</p>
+<img src="imagesVS22UsingStaticLibrary/4-AddWrapperRDependency.png" width="787" height="598" alt=""/>
+<p>&nbsp;</p>
+<img src="imagesVS22UsingStaticLibrary/5-FinishAddingDependencies.png" width="768" height="513" alt=""/>
+</body>
+
+</html>
