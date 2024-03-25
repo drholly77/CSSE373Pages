@@ -23,22 +23,25 @@
 <tr>
 <td><pre class="prettyprint">template &lt;class T&gt;
 class CeramicArray1
-   //! is modeled by (
-   //!      contents: function from integer to T
-   //!      lowerBound: integer
-   //!      upperBound: integer
-   //!   )
-   //! constraint: &forall; i: integer 
-   //!    ((i &lt; self.lowerBound) or (i &gt; self.upperBound)
-   //!       &rarr; (self.contents(i) = T.init))
-   //! exemplar self
+   //! definition INDEX_SET (low: integer, high: integer): finite set of integer
+   //!   is {k: integer where (low &lt;= k lt;= high)}
+   //! math subtype CERAMIC_ARRAY_MODEL 
+   //!   is (lowerBound: integer, upperBound: integer, contents: partial function from integer to T)
+   //!   exemplar a
+   //!   constraint a.lowerBound &lt;= a.upperBound and
+   //!     domain(a.contents) = INDEX_SET(a.lowerBound, a.upperBound)
+   
+   //! type CeramicArray1 is modeled by CERAMIC_ARRAY_MODEL
+   //!   exemplar self
+   //!   initialization ensures self.lowerBound = 0 and self.upperBound = 0 and
+   //!      T.init(a.contents(0))
 {
 
 public: // Standard Operations
    CeramicArray1 ();
-      //! alters self
+      //! replaces self
       //! ensures: self.lowerBound = 0  and  self.upperBound = 0  and
-      //!       self.contents(0) = T.init
+      //!       T.init(self.contents(0))
    ~CeramicArray1 ();
    void clear (void);
       //! clears self
@@ -57,9 +60,9 @@ public: // Standard Operations
       //! restores lower, upper
       //! requires: lower &lt;= upper
       //! ensures: self.lowerBound = lower  and  self.upperBound = upper  and
-      //!          &forall; i: integer
-      //!                 ((i &ge; self.lowerBound) and (i &le; self.upperBound) 
-      //!                 &rarr; (self.contents(i) = T.init))
+      //!          &forall; k: integer
+      //!                 ((k &gt;= self.lowerBound) and (k &lt;= self.upperBound) 
+      //!                 &rarr; T.init(self.contents(i))
    void getBounds (Integer&amp; lower, Integer&amp; upper);
       //! restores self
       //! replaces lower, upper

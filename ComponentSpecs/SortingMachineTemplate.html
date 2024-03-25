@@ -1,4 +1,4 @@
-<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+	<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
 <html>
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -21,33 +21,22 @@
 <tr>
 <td>
 <pre class="prettyprint">
-template &lt;class T, class TCallback&gt;
+template &lt;class T, Boolean(*areOrdered)(T&amp;, T&amp;)&gt;
 class SortingMachine1
-   //! is modeled by (
-   //!      contents: FiniteMultiSet of T
-   //!      inserting: boolean
-   //!   )
-   //! exemplar self
+   //! math subtype SORTING_MACHINE_MODEL 
+   //!   is (contents: finite multiset of T, inserting: boolean)
 
-   //! math operation IS_FIRST (s: FiniteMultiSet(T), x: T): boolean
-   //!      definition
-   //!          x &isin; s  and
-   //!          &forall; y: Item (y &isin; s &rarr; areOrdered (x, y))
+   //! type SortingMachine1 is modeled by SORTING_MACHINE_MODEL
+   //!   exemplar self
+   //!   initialization ensures self.contents = {} and self.inserting = true
 
-   //! TCallback required to have an areOrdered operation:
-   //! 
-   //! Boolean areOrdered (T&amp; lhs, T&amp; rhs)
-   //! restores lhs, rhs
-   //!   areOrdered returns true iff the two items compared
-   //!      are in order relative to each other.
-   //!   lhs stands for left hand side
-   //!   rhs stands for right hand side
-
+   //! definition IS_FIRST (s: finite multiset of T, x: T): boolean
+   //!   is x &isin; s  and  &forall; y: T (y &isin; s &rarr; areOrdered (x, y))
 {
 public: // Standard Operations
    SortingMachine1 ();
       //! replaces self
-      //! ensures: self = ({},true)
+      //! ensures: self = self.contents = {} and self.inserting = true
    ~SortingMachine1 ();
    void clear (void);
       //! clears self

@@ -20,21 +20,17 @@
 <table align="center" BORDER="1" width="85%">
 <tr>
 <td>
-<pre class="prettyprint">template &lt;class K, class V, class KCallback&gt;
+<pre class="prettyprint">template &lt;class K, class V&gt;
 class Map1
-   //! is modeled by PARTIAL_FUNCTION
-   //! math subtype PARTIAL_FUNCTION is finite set of
-   //!                  key: K
-   //!                  value: V
-   //!             exemplar m
-   //!             constraint
-   //!                &forall; key: K
-   //!                (&forall; r1, r2: V
-   //!                          (((key, r1) &isin; m and (key, r2) &isin; m) &rarr; (r1 = r2)))
+   //! math subtype MAP_MODEL is finite set of (key: K, value: V)
+   //!   exemplar m
+   //!   constraint &forall; key: K (&forall; r1, r2: V (((key, r1) &isin; m and (key, r2) &isin; m) &rarr; (r1 = r2)))
    //! 
-   //!          math operation DOMAIN(m: PARTIAL_FUNCTION): finite set of K satisfies 
-   //!               &forall; key: K (key &isin; DOMAIN(m) &harr; &exist; value: V ((key, value) &isin; m))
+   //! definition DOMAIN(m: MAP_MODEL): finite set of K  
+   //!   is &forall; key: K (key &isin; DOMAIN(m) &harr; &exist; value: V ((key, value) &isin; m))
+   //! type Map1 is modeled by MAP_MODEL
    //! exemplar self
+   //! initialization ensures self = {}
 {
 public: // Standard Operations
    Map1 ();

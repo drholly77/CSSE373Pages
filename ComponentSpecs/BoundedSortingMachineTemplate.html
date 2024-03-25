@@ -21,34 +21,23 @@
 <tr>
 <td>
 <pre class="prettyprint">
-template &lt;class T, class TCallback&gt;
+template &lt;class T, Boolean(*areOrdered)(T&amp;, T&amp;)&gt;
 class BoundedSortingMachine1
-   //! is modeled by (
-   //!      maxSize: integer
-   //!      contents: FiniteMultiSet of T
-   //!      inserting: boolean
-   //!   )
-   //! exemplar self
+   //! math subtype BOUNDED_SORTING_MACHINE_MODEL 
+   //!   is (maxSize: integer, contents: finite multiset of T, inserting: boolean)
 
-   //! math operation IS_FIRST (s: FiniteMultiSet(T), x: T): boolean
-   //!      definition
-   //!          x &isin; s  and
-   //!          &forall; y: Item (y &isin; s &rarr; areOrdered (x, y))
+   //! type BoundedSortingMachine1 is modeled by BOUNDED_SORTING_MACHINE_MODEL
+   //!   exemplar self
+   //!   initialization ensures self.maxSize = 0 and self.contents = {} and self.inserting = true
 
-   //! TCallback required to have an areOrdered operation:
-   //! 
-   //! Boolean areOrdered (T&amp; lhs, T&amp; rhs)
-   //! restores lhs, rhs
-   //!   areOrdered returns true iff the two items compared
-   //!      are in order relative to each other.
-   //!   lhs stands for left hand side
-   //!   rhs stands for right hand side
+   //! definition IS_FIRST (s: finite multiset of T, x: T): boolean
+   //!   is x &isin; s  and  &forall; y: T (y &isin; s &rarr; areOrdered (x, y))
 
 {
 public: // Standard Operations
    BoundedSortingMachine1 ();
       //! replaces self
-      //! ensures: self = (0,{},true)
+      //! ensures: self = self.maxSize = 0 and self.contents = {} and self.inserting = true
    ~BoundedSortingMachine1 ();
    void clear (void);
       //! clears self
@@ -65,7 +54,7 @@ public: // Standard Operations
    void setMaxSize (Integer maxSize);
       //! updates self.maxSize
       //! restores maxSize
-      //! requires: 0 < maxSize
+      //! requires: 0 &lt;= maxSize
       //! ensures: self = (maxSize,#self.contents, #self.inserting)
    Integer maxSize (void);
       //! restores self
@@ -73,7 +62,7 @@ public: // Standard Operations
    void add (T&amp; x);
       //! updates self.contents
       //! clears x
-      //! requires: self.inserting
+      //! requires: self.inserting and |self.contents| &lt; self.maxSize
       //! ensures: self = (#self.maxSize,#self.contents &cup; {#x},#self.inserting)
    void changeToExtractionMode (void);
       //! updates self.inserting
@@ -85,13 +74,16 @@ public: // Standard Operations
       //! requires: not self.inserting  and  |self.contents| &gt; 0
       //! ensures: IS_FIRST (#self.contents, x)  and
       //!          self = (#self.maxSize,#self.contents \ {x},#self.inserting)
-   Integer size (void);
-      //! restores self
-      //! ensures: size = |self.contents|
    Boolean isInInsertionMode (void);
       //! restores self
       //! ensures: isInInsertionMode = self.inserting
-         
+   Integer size (void);
+      //! restores self
+      //! ensures: size = |self.contents|
+   Integer remainingCapacity (void);
+      //! restores self
+      //! ensures: remainingCapacity = self.maxSize - |self.contents|
+
 private: // Representation
 };</pre>
 </td>

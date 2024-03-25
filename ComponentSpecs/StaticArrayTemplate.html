@@ -22,18 +22,25 @@
 <td>
 <pre class="prettyprint">template &lt;class T, int lowerBound, int upperBound&gt;
 class StaticArray1
-   //! is modeled by function from integer to T
-   //! constraint: &forall; i: integer
-   //!    ((i &lt; lowerBound) or (i &gt; upperBound) 
-   //!       &rarr; T.init(self(i)))
+   //! definition INDEX_SET (low: integer, high: integer): finite set of integer
+   //!   is {k: integer where (low &lt;= k &lt;= high)}
+   
+   //! math subtype STATIC_ARRAY_MODEL 
+   //!   is partial function from integer to T
+   //!   exemplar a
+   //!   constraint lowerBound &lt;= upperBound and
+   //!     domain(a) = INDEX_SET(lowerBound, upperBound)
+   
+   //! type StaticArray1 is modeled by STATIC_ARRAY_MODEL
    //! exemplar self
+   //! intialization ensures &forall; k: integer
+   //!    ((k &gt;= lowerBound) and (k &lt;= upperBound) &rarr; T.init(self(k)))
 {
 public: // Standard Operations
    StaticArray1 ();
       //! replaces self
-      //! ensures: &forall; i: integer
-      //!    ((i &ge; lowerBound) and (i &le; upperBound) 
-      //!       &rarr; T.init(self(i)))
+      //! ensures: &forall; k: integer
+      //!    ((k &gt;= lowerBound) and (k &lt;= upperBound) &rarr; T.init(self(k)))
    ~StaticArray1 ();
    void clear (void);
       //! clears self
@@ -53,7 +60,7 @@ public: // Standard Operations
       //! ensures: lower = lowerBound  and  upper = upperBound
    T&amp; operator [] (Integer index);
       //! restores self, index
-      //! requires: index &ge; lowerBound  and  index &le; upperBound
+      //! requires: index &gt;= lowerBound  and  index &lt;= upperBound
       //! ensures: operator [] = self(index)
 
 private: // Representation

@@ -1,0 +1,103 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+   <title>PartitionableArray Template</title>
+   
+	<meta name="Author" content="Dr. Holly">   
+    <!--   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert"></script> -->
+    <link href="../codePrettyPrint/src/C343-dark.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="../codePrettyPrint/src/run_prettify.js?skin=desert"></script>
+</head>
+<body>
+<table border="0" width="100%">
+   <tr>
+      <td>
+      <p align="center"><b>PartitionableArray Template</b></p></td>
+   </tr>
+</table>
+
+<hr>
+<table align="center" BORDER="1" width="85%">
+<tr>
+<td><pre class="prettyprint">template &lt;class T, Boolean(*isInteresting)(T&amp;)&gt;
+class PartitionableArray1
+   //! definition INDEX_SET (low: integer, high: integer): finite set of integer
+   //!   is {k: integer where (low &lt;= k &lt;= high)}
+   //! math subtype PARTITIONABLE_ARRAY_MODEL 
+   //!   is (lowerBound: integer, upperBound: integer, contents: partial function from integer to T)
+   //!   exemplar a
+   //!   constraint a.lowerBound &lt;= a.upperBound and
+   //!     domain(a.contents) = INDEX_SET(a.lowerBound, a.upperBound)
+   
+   //! type PartitionableArray1 is modeled by PARTITIONABLE_ARRAY_MODEL
+   //!   exemplar self
+   //!   initialization ensures self.lowerBound = 0 and self.upperBound = 0 and
+   //!      domain(self.contents) = {}
+   
+   //! definition IS_ALL_INITIAL (a: PARTITIONABLE_ARRAY_MODEL): boolean
+   //!   is &forall; k: integer where (a.lowerBound &lt;= k &lt;= a.upperBound)
+   //!   (T.init(a.contents(k)))   
+   //! definition INDICES_OF_INTERESTING_ENTRIES (a: PARTITIONABLE_ARRAY_MODEL): finite set of integer 
+   //!   is {k: integer where (isInteresting(a.contents(k)))}
+   //! definition SIZE(a: PARTITIONABLE_ARRAY_MODEL): integer
+   //!   is (a.upperBound - a.lowerBound + 1)
+{
+
+public: // Standard Operations
+   PartitionableArray1 ();
+      //! replaces self
+      //! ensures: self.lowerBound = 0  and  self.upperBound = 0  and
+      //!       domain(self.contents) = {}
+   ~PartitionableArray1 ();
+   void clear (void);
+      //! clears self
+   void transferFrom (PartitionableArray1&amp; source);
+      //! replaces self
+      //! clears source
+      //! ensures: self = #source
+   PartitionableArray1&amp; operator = (PartitionableArray1&amp; rhs);
+      //! replaces self
+      //! restores rhs
+      //! ensures: self = rhs
+
+   // PartitionableArray1 Specific Operations
+   void setBounds (Integer lower, Integer upper);
+      //! updates self
+      //! restores lower, upper
+      //! requires: lower &lt;= upper
+      //! ensures: self.lowerBound = lower  and  self.upperBound = upper  and  IS_ALL_INITIAL(self)
+   void getBounds (Integer&amp; lower, Integer&amp; upper);
+      //! restores self
+      //! replaces lower, upper
+      //! ensures: lower = self.lowerBound  and  upper = self.upperBound
+   T&amp; operator [] (Integer index);
+      //! restores self, index
+      //! requires: index &gt;= self.lowerBound  and  index &lt;= self.upperBound
+      //! ensures: operator [] = self.contents(index)
+   void giveIndexOfInterestingEntry(Integer&amp; interestingEntryIndex;
+      //! restores self
+      //! replaces interestingEntryIndex
+      //! requires: |INDICES_OF_INTERESTING_ENTRIES(self)| &gt; 0
+      //! ensures: isInteresting(self.contents(interestingEntryIndex))
+   void giveIndexOfUninterestingEntry(Integer&amp; uninterestingEntryIndex);
+      //! restores self
+      //! replaces uninterestingEntryIndex
+      //! requires: |INDICES_OF_INTERESTING_ENTRIES(self)| &lt; SIZE(self)
+      //! ensures: not isInteresting(self.contents(uninterestingEntryIndex))	  
+   Integer numberOfInterestingEntries(void);
+      //! restores self
+      //! ensures: numberOfInterestingEntries = |INDICES_OF_INTERESTING_ENTRIES(self)|
+   Integer numberOfUninterestingEntries(void);
+      //! restores self
+      //! ensures: numberOfUninterestingEntries = SIZE(self) - |INDICES_OF_INTERESTING_ENTRIES(self)|
+
+private: // Representation
+};</pre>
+</td>
+</tr>
+</table>
+
+</body>
+</html>
