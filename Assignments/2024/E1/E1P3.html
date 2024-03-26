@@ -35,12 +35,12 @@
               <li>For this assignment you will be making changes to this file</li>
             </ul>
           </li>
-          <li>Copy this file to the following folder on your machine <em>csse373devenv202330-yourUserID\components\include\List </em></li>
+          <li>Copy this file to the following folder on your machine <em>csse373devenv202x30-yourUserID\components\include\List </em></li>
         </ul>
         <h4>1.3 Copy Folder from the E1P3-Starter.zip</h4>
         <ul>
           <li>Inside E1P3-Starter.zip is one folder named E1P3D </li>
-          <li>Copy this folder to your <em>csse373devenv202330-yourUserID</em> folder as shown in the screen shot to the right</li>
+          <li>Copy this folder to your <em>csse373devenv202x30-yourUserID</em> folder as shown in the screen shot to the right</li>
           <li>Once you copy this folder you can use Visual Studio to open the E1P3D project by double clicking on E1P3D.sln </li>
         </ul>
         <h4>1.4 About Project E1P3D</h4>
@@ -55,6 +55,7 @@
               <li>E1P3D.cpp's unit tests test a List variable using the List's internal representation, not it's abstract value </li>
             </ul>
           </li>
+		  <li>E1P3D is configured to WrapperD.lib - if you have not set up the WrapperD.lib, then be sure to follow the "<a href="https://drholly77.github.io/CSSE373Pages/LabRelated/creatingNewStaticLibraryVs2022Project.html" target="_blank">Creating a New VS2022 Static Library Project</a>" instructions.</li>
         </ul></td>
       <td valign="top"><p><img src="E1P3FolderView.png" width="262" height="521" alt=""/></p></td>
     </tr>
@@ -89,7 +90,7 @@
           <ul>
             <li>What this means is that the implementation of a List operation must not contain code that checks to make sure that the List operation was called correctly by the client</li>
           </ul>
-			<li><strong>Write elegant client code</strong> - In this case it means: in your implementation of List, you must leverage the power of the layered upon (Queue's) component's operations</li>
+			<li><strong>Write elegant client code</strong> - In this case it means: in your implementation of List, you must leverage the power of the layered upon (PreemptableQueue's) component's operations. If you choose to "reinvent" functionality that is already provided by PreemptableQueue, then that will be considered inelegant code.</li>
           <li><strong>No Cross Calling - </strong>None of List's member functions are permitted to make calls to any of the other <em>public</em> List member functions, i.e., no cross calling
             <ul>
               <li>For example, under this rule it is illegal for the <em>moveToFinish</em> operation to call any other List operation, e.g., <em>advance</em></li>
