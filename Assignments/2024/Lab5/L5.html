@@ -11,10 +11,18 @@
 
 <hr>
 <h3>1. Setup</h3>
-<h4>1.1 Recommendation</h4>
+<h4>1.1 Create L5R</h4>
         <ul>
-          <li>Work in L3 project, but modify IntegerList.h so that it #includes "List\List0.hpp" (see below concerning creation of List0.hpp) and change IntegerList.h so that it makes the instance from List0 instead of List2</li>
-          <li>Alternatively, you may decide to start from scratch and make your own project for this lab, e.g., naming it L5</li>
+			<li>Use VS2022 to create a new Unit Test Project</li>
+			<li>Name it L5R and configure it for Release mode</li>
+			<li>Configure it use the WrapperR.lib static library</li>
+		</ul>
+<h4>1.2 Reuse by Copy/Paste L3R Stuff</h4>
+	<ul>
+			<li>Copy your L3R test cases to L5R and use those for L5 testing purposes</li>
+			<li>Copy the IntegerList.h from L3R to L5R and modify it 2 ways:
+				<br>1) change the #include so that it #includes "List\List0.hpp" (see below concerning creation of List0.hpp) and 
+				<br>2) change IntegerList.h so that it makes the instance from List0 instead of List2</li>
         </ul>
 
 
@@ -98,12 +106,28 @@
     <tr>
       <td valign="top"><h3>3. Testing</h3>
 <ul>
-  <li>Testing 
+  <li>Testing with unit tests
     <ul>
       <li>L3R contains the test scripts for testing a List in Release mode, you can use these</li>
       <li>Develop more test cases to achieve good boundary condition testing, or any other aspect you deem will help reveal defects</li>
     </ul>
   </li>
+  <li>Additional testing by instrumenting your List0.hpp code</li>
+	<ul>
+	<li>C++ uses <em>new</em> and <em>delete</em> commands to allocate and deallocate storage dynamically - you'll see their usage in Queue0.hpp</li>
+	<li>To aid in detecting the creation of garbage, you can set up an Integer field in List0.hpp, call it <em>nodeCount</em>
+		<br>-- everytime you have a line of code that uses <em>new</em> to allocate storage, increment <em>nodeCount</em>
+		<br>-- everytime you have a line of code that uses <em>delete</em> to dallocate storage, decrement <em>nodeCount</em>
+		<br>-- develop a method for inspecting the current value in <em>nodeCount</em> while your program is running a test case, see if it has the count you were expecting
+		<br>-- if your code successfully reclaims all nodes allocated to a list, then the <em>nodeCount</em> will go to zero, and of course, it should never go negative</li>
+		
+	</ul>
+<li>Create and test TextList</li>
+	<ul>
+	<li>Instantiate List0 as follows:<pre>   <strong>typedef</strong> List0&lt;Text&gt; TextList;</pre></li>
+	<li>Create test cases that use TextList instead of IntegerList</li>
+	<li>This will expose where you assumed type T is Integer while writing your List0.hpp code</li>
+	</ul>
 </ul></td>
       <td valign="top" width="415"><img src="List0CheckList.png" width="299" height="363" alt=""/></td>
     </tr>
@@ -112,7 +136,8 @@
 
 
 <p><em>The Grader's test cases</em>:</p>
-<p>Grading will be done running a more complete set of unit tests which will systematically stress your member function implementations</p>
+<p>Grading will be done running a more complete set of unit tests which will systematically stress your member function implementations. This may include tests where the template parameter is something other than Integer.</p>
+
 <hr>
 	
 	
