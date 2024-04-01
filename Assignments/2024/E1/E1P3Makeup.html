@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Exam 1 Part 3</title>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+	
+<body>
+<h1>Exam 1 Part 3 - Using Correspondence to Layer a Component</h1>
+<h3>0. Reference material</h3>
+<ul>
+  <ul>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/ListTemplate.html" target="_blank">List Specification</a></li>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/StackTemplateHidden.html" target="_blank">Stack Specification</a></li>
+  </ul>
+</ul>
+<hr>
+<h3>1. Setup</h3>
+<table border="0" width="100%">
+  <tbody>
+    <tr>
+      <td valign="top"><h4>1.1 Get the E1P3Makeup-Starter Download</h4>
+        <ul>
+          <li>Download <em>E1P3Makeup-Starter.zip</em>&nbsp;to your machine - to be used on a subsequent steps</li>
+        </ul></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top"><h4>1.2 Copy List7.hpp from the E1P3Makeup-Starter.zip</h4>
+        <ul>
+          <li>Inside E1P3Makeup-Starter.zip is a file named List7.hpp
+            <ul>
+              <li>For this assignment you will be making changes to this file</li>
+            </ul>
+          </li>
+          <li>Copy this file to the following folder on your machine <em>csse373devenv202x30-yourUserID\components\include\List </em></li>
+        </ul>
+        <h4>1.3 Copy Folder from the E1P3Makeup-Starter.zip</h4>
+        <ul>
+          <li>Inside E1P3Makeup-Starter.zip is one folder named E1P3DV2 </li>
+          <li>Copy this folder to your <em>csse373devenv202x30-yourUserID</em> folder as shown in the screen shot to the right</li>
+          <li>Once you copy this folder you can use Visual Studio to open the E1P3DV2 project by double clicking on E1P3DV2.sln </li>
+        </ul>
+        <h4>1.4 About Project E1P3DV2</h4>
+        <ul>
+          <li>Project E1P3DV2 contains a Visual Studio 2022 unit test project</li>
+          <li>A project can be opened with VS2022 by double clicking on the file E1P3DV2.sln  file </li>
+          <li>This project will build correctly if you have followed the instructions in 1.1 - 1.3 (above)</li>
+          <li>E1P3DV2
+            <ul>
+              <li>is to be used only in Debug mode - that's what the 'D' of E1P3DV2 stands for</li>
+              <li>E1P3DV2.cpp contains unit tests for List7.hpp</li>
+              <li>E1P3DV2.cpp's unit tests test a List variable using the List's internal representation, not it's abstract value </li>
+            </ul>
+          </li>
+		  <li>E1P3DV2 is configured to WrapperD.lib - if you have not set up the WrapperD.lib, then be sure to follow the "<a href="https://drholly77.github.io/CSSE373Pages/LabRelated/creatingNewStaticLibraryVs2022Project.html" target="_blank">Creating a New VS2022 Static Library Project</a>" instructions.</li>
+        </ul></td>
+      <td valign="top"><p><img src="E1P3FolderView.png" width="262" height="521" alt=""/></p></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h3>2. E1P3 Statement of Work</h3>
+<h4>2.1 Primary Objectives</h4>
+<p>The primary objective of this assessment is to determine how well you can layer a component by using a provided internal representation and correspondence contract.</p>
+<h4>2.2 Specifics</h4>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><p><em>Steps</em>:</p>
+        <ol>
+          <li>Start Visual Studio</li>
+          <li>Open project E1P3DV2</li>
+          <li>Find and open List7.hpp</li>
+          <li>Required: Implement the operations from List7 that correspond to the 24 test cases shown to the right. Your goal is to have all 24 test cases pass</li>
+			<li>Commit and Push your changes, which includes List7.hpp </li>
+          
+        </ol>
+        <p><em>Important Restrictions</em>:</p>
+        <ol>
+          <li><strong>Obey the correspondence </strong>- When implementing the member functions you must obey the correspondence internal contract<br>
+            That means: </li>
+          <ul>
+            <li>assume that the correspondence holds when the member function is called</li>
+            <li>guarantee that the correspondence holds when the member function exits</li>
+          </ul>
+          <li><strong>Use Design by Contract</strong> - No defensive programming of List's operations</li>
+          <ul>
+            <li>What this means is that the implementation of a List operation must not contain code that checks to make sure that the List operation was called correctly by the client</li>
+          </ul>
+			<li><strong>Write elegant client code</strong> - In this case it means: in your implementation of List, you must leverage the power of the layered upon (PreemptableQueue's) component's operations. If you choose to "reinvent" functionality that is already provided by PreemptableQueue, then that will be considered inelegant code.</li>
+          <li><strong>No Cross Calling - </strong>None of List's member functions are permitted to make calls to any of the other <em>public</em> List member functions, i.e., no cross calling
+            <ul>
+              <li>For example, under this rule it is illegal for the <em>moveToFinish</em> operation to call any other List operation, e.g., <em>advance</em></li>
+              <li>All List operations should directly manipulate List's data members </li>
+            </ul>
+          </li>
+          <li><strong>Calling Down</strong> - is encouraged (but not required) by creating private member functions that capture code that starts to appear in multiple different places in your List7 implementation. Do this to avoid the duplication of  code</li>
+          <li><strong>No Recursion</strong> - None of List's member functions are permitted to be recursive</li>
+          <li><strong>About Making Copies</strong> -
+            <ul>
+              <li>When implementing List7's <em>operator =</em> you must use PreemptableQueue's <em>operator =</em> to make a copy of the data members. Otherwise do not call <em>operator =</em> with the List7 data members or with variables of type T.</li>
+            </ul>
+          </li>
+        </ol></td>
+      <td width="350" valign="top"><p><img src="RequiredSuccsessfulTestCasespng.png" width="282" height="798" alt=""/></p></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h3>3. Testing</h3>
+<ul>
+  <li>E1P3DV2 testing
+    <ul>
+      <li>E1P3DV2's test cases test against the List's internal representation, so these unit tests will only work with this particular implementation</li>
+      <li>Look at these unit tests to better understand the correspondence between a List's abstract value and its internal representation</li>
+      <li>A number of the provided test cases are minimal, i.e., do not test edge cases (boundary conditions), or many steady-state cases, so you might want to augment this set of test cases with some of your own</li>
+    </ul>
+  </li>
+	<li>Release mode testing - Your L3R test cases should work with List7. To use them, I recommend creating an E1P3R Unit Test project, then copy the L3R.cpp and IntegerList.h files from L3R project to E1P3R project. Add these two copied files to your E1P3R project and then modify the IntegerList.h to #include List7.hpp. Finally, run the tests using E1P3R's Test Explorer.</li>
+</ul>
+<hr>
+<h3>4. Submitting the Assignment for Grading</h3>
+<ul>
+  <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your E1P3 project to your GitHub Education CSSE373 repo</li>
+  <li>Use the commit message &quot;E1P3 final commit, ready for grading&quot;</li>
+</ul>
+<p>&nbsp;</p>
+</body>
+</html>
