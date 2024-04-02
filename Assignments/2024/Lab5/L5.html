@@ -49,13 +49,14 @@
 
 
 <h4>2.2 Specifics</h4>
-        <p><em>Steps</em>:</p>
+        <p><em>Recommended Steps</em>:</p>
         <ol>
-          <li>Use Queue0.hpp as a guide for creating List0<br>
+			<li>Create a List0.hpp by: 1) duplicating List1.hpp and renaming the duplicate to List0.hpp; 2) modifying List0.hpp by changing List1 to List0 everywhere, deleting original representation and implementation code and replacing it with nodes and pointers declarations and code</li>
+          <li>Use Queue0.hpp as a guide for implementing List0<br>
             I recommend that
-          you copy Queue0.hpp (located in <code>components\include\Queue</code>) to List0.hpp </li>
+          you copy nodes and pointers related code from Queue0.hpp (located in <code>components\include\Queue</code>) to List0.hpp </li>
           <li>Place List0.hpp in <code>components\include\List</code> folder<br>
-			  Note: When grading, the grader will look for List0.hpp in <code>components\include\List</code>, if it is not found there, you will earn a zero</li>
+			  Note:<br>1) When grading, the grader will look for List0.hpp in <code>components\include\List</code>, if it is not found there, you will earn a zero<br>2) The class declared in List0.hpp must be named <em>List0</em></li>
           <li>Implement all of List's Standard and Specific methods in List0.hpp<br>
           </li>
         </ol>
