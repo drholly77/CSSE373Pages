@@ -11,7 +11,8 @@
 <h3>0. Reference Material</h3>
 <ul>
   <ul>
-    <li><a href="https://drholly77.github.io/CSSE373Pages/TracingTables/injectAtFrontTTSp23.pdf" target="_blank">injectAtFrontTTSp23.pdf contains an implementation of InjectCapability</a></li>
+    <li><a href="https://drholly77.github.io/CSSE373Pages/TracingTables/injectAtFrontTTSp23.pdf" target="_blank">injectAtFrontTTSp23.pdf </a>
+	  <br>It contains an implementation of InjectCapability</li>
   </ul>
 </ul>
 
@@ -20,37 +21,37 @@
 <table border="0" width="100%">
   <tbody>
     <tr>
-      <td valign="top"><h4>1.1 Get the L6Starter Download</h4>
+      <td valign="top"><h4>1.1 Get the L6RStarter Download</h4>
         <ul>
-          <li>Download <em>L6Starter.zip</em>&nbsp;to your machine - to be used in subsequent steps</li>
+          <li>Download <em>L6RStarter.zip</em>&nbsp;to your machine - to be used in subsequent steps</li>
         </ul></td>
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td valign="top"><h4>1.2 Copy List2.hpp from the L6Starter.zip</h4>
+      <td valign="top"><h4>1.2 Copy List2.hpp from the L6RStarter.zip</h4>
         <ul>
-          <li>Inside L6Starter.zip is a file named AppendCapabilitiy1.hpp
+          <li>Inside L6RStarter.zip is a file named AppendCapabilitiy1.hpp
             <ul>
-              <li>Copy this file into your: <em>csse373devenv202330-yourID\components\include\Queue</em></li>
+              <li>Copy this file into your: <em>csse373devenv202x30-yourID\components\include\Queue</em></li>
 				<li>AppendCapabilitiy1.hpp contains a fully functional Queue <em>append</em> operation and uses C++ template syntax that allows layering of this operation onto the Queue component</li>
             </ul>
           </li>
          
         </ul>
-        <h4>1.3 Copy the L6 Folder from the L6Starter.zip</h4>
+        <h4>1.3 Copy the L6R Folder from the L6RStarter.zip</h4>
         <ul>
-          <li>Inside L6Starter.zip is a folder named L6 </li>
+          <li>Inside L6RStarter.zip is a folder named L6R </li>
 			    <ul>
-          <li>Copy the L6 folder to your <em>csse373devenv202330-yourID</em> folder as shown in the screen shot to the right</li>
-          <li>Once you have copied this folder you can use VS2022 to open the L6 project by double clicking on L6.sln  </li>
+          <li>Copy the L6R folder to your <em>csse373devenv202x30-yourID</em> folder as shown in the screen shot to the right</li>
+          <li>Once you have copied this folder you can use VS2022 to open the L6R project by double clicking on L6R.sln  </li>
 			</ul>
         </ul>
-        <h4>1.4 About Project L6</h4>
+        <h4>1.4 About Project L6R</h4>
         <ul>
           <li>It contains a Visual Studio 2022 unit test project</li>
-          <li>It can be opened with VS2022 by double clicking on the file L6.sln</li>
+          <li>It can be opened with VS2022 by double clicking on the file L6R.sln</li>
           <li>It will build correctly if you have followed the instructions in 1.1 - 1.3 (above)</li>
-          <li>L6 contains unit tests for Queue's AppendCapability, InjectCapability, and EqualCapability
+          <li>L6R contains unit tests for Queue's AppendCapability, InjectCapability, FindLocOfXCapability, and EqualCapability
     
           </li>
         </ul></td>
@@ -64,18 +65,24 @@
 <h4>2.1 Primary Objectives</h4>
 <p>The primary objective of this lab is to provide you experience working with:</p>
 <ul>
-  <li>Layering an operation (e.g., InjectCapability) on another already existing component (e.g., Queue)</li>
+  <li>Layering an operation (e.g., InjectCapability) on another already existing component (e.g., Queue)<br>
+	Because these capabilities (enhancements to Queue) are layered, they will work with any Queue implementation that implements QueueKernel, i.e., Queue0, Queue1, etc.</li>
   <li>Adding new functionality to an already existing component</li>
   <li>The inheritance syntax used by C++ when layering a new operation</li>
-  <li>C++ syntax used by the client program when adding additional capabilities to an already existing component </li>
+  <li>C++ syntax used by the client program when adding additional capabilities to an already existing component
+	<br>The approach used in L6 is a form of decorator pattern where the decoration occurs through template instantation done at compile time </li>
 </ul>
 <h4>2.2 Specifics</h4>
 <p><em>Steps</em>:</p>
         <ol>
           <li>Start Visual Studio</li>
-          <li>Open project L6</li>
-          <li>Find and open L6.cpp </li>
-          <li>Follow the four TODO's found near the top of L6.cpp<br>
+          <li>Open project L6R</li>
+          <li>Find and open EnhancedIntQ.h </li>
+          <li>Read the comments found in <em>EnhancedIntQ.h</em>.
+			  <br>Begin from the top and follow the "To do" instructions as you find them.
+			  <br>If you get in a hurry and try to skip the reading, things will end up going slower as compared to taking your time and reading the comments from the top
+			  <br>This advice comes from the "Fast is slow, and slow is fast" principle
+			  
           </li>
         </ol>
         <p><em>Hints</em>:</p>
@@ -109,8 +116,8 @@
 
 <h3>4. Submitting the Assignment for Grading</h3>
 	<ul>
-	<li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your L6 project to your GitHub Education CSSE373 repo</li>
-	<li>Use the commit message &quot;L6 final commit, ready for grading&quot;</li>
+	<li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your L6R project to your GitHub Education CSSE373 repo</li>
+	<li>Use the commit message &quot;L6R final commit, ready for grading&quot;</li>
 	</ul>
 		
 
