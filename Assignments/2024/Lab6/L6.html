@@ -8,27 +8,20 @@
 
 <body>
 <h1>Layering an Operation</h1>
-<h3>0. Reference Material</h3>
-<ul>
-  <ul>
-    <li><a href="https://drholly77.github.io/CSSE373Pages/TracingTables/injectAtFrontTTSp23.pdf" target="_blank">injectAtFrontTTSp23.pdf </a>
-	  <br>It contains an implementation of InjectCapability</li>
-  </ul>
-</ul>
+
 
 	
 <h3>1. Setup</h3>
 <table border="0" width="100%">
   <tbody>
+    
     <tr>
-      <td valign="top"><h4>1.1 Get the L6RStarter Download</h4>
+      <td valign="top">
+		  <h4>1.1 Get the L6RStarter Download</h4>
         <ul>
           <li>Download <em>L6RStarter.zip</em>&nbsp;to your machine - to be used in subsequent steps</li>
-        </ul></td>
-      <td>&nbsp;</td>
-    </tr>
-    <tr>
-      <td valign="top"><h4>1.2 Copy List2.hpp from the L6RStarter.zip</h4>
+        </ul>
+		  <h4>1.2 Copy List2.hpp from the L6RStarter.zip</h4>
         <ul>
           <li>Inside L6RStarter.zip is a file named AppendCapabilitiy1.hpp
             <ul>
@@ -51,11 +44,16 @@
           <li>It contains a Visual Studio 2022 unit test project</li>
           <li>It can be opened with VS2022 by double clicking on the file L6R.sln</li>
           <li>It will build correctly if you have followed the instructions in 1.1 - 1.3 (above)</li>
-          <li>L6R contains unit tests for Queue's AppendCapability, InjectCapability, FindLocOfXCapability, and EqualCapability
-    
-          </li>
+			<li>After building, use Test Explorer to run the unit tests found in L6R.cpp</li>
+          <li>L6R contains unit tests for Queue's AppendCapability, InjectCapability, FindLocOfXCapability, and EqualCapability</li>
+			<li>The files you will be working in are: 
+			<ol><li>EnhancedIntQ.h - Contains "To do" instructions and typedefs for template instance creation</li>
+				<li>L6R.cpp - Contains 4 basic unit tests</li>
+				<li>FunctionHeaders.txt - Contains the function headers and external contracts for two of the new capabilities you will be creating</li></ol></li>
         </ul></td>
-      <td valign="top"><img src="L6FolderView.png" width="245" height="377" alt=""/></td>
+      <td valign="top"><img src="L6FolderView.png" width="245" height="377" alt=""/>
+		<hr>
+		<img src="L6ProjectView.png" width="244" height="265" alt=""/></td>
     </tr>
   </tbody>
 </table>
@@ -70,7 +68,8 @@
   <li>Adding new functionality to an already existing component</li>
   <li>The inheritance syntax used by C++ when layering a new operation</li>
   <li>C++ syntax used by the client program when adding additional capabilities to an already existing component
-	<br>The approach used in L6 is a form of decorator pattern where the decoration occurs through template instantation done at compile time </li>
+	<br>
+	The approach used in L6 is a form of decorator pattern where the decoration occurs through template instantiation done at compile time </li>
 </ul>
 <h4>2.2 Specifics</h4>
 <p><em>Steps</em>:</p>
@@ -88,7 +87,7 @@
         <p><em>Hints</em>:</p>
         <ul>
           <li>AppendCapabilitiy1.hpp contains comments to explain the C++ syntax and how inheritance is working</li>
-          <li>The <em>Reference Material</em> section above has a link to a document containing an implementation for an <em>inject</em> operation</li>
+          
         </ul>
 	
 <p><em>Important Restrictions</em>:</p>
@@ -107,12 +106,14 @@
   <li>L6 testing
     <ul>
       <li>These tests are minimal</li>
+		
     </ul>
   </li>
-  <li>If you want to earn full credit for this assignment it is recommended that you add additional unit tests</li>
+  <li>If you want to earn full credit for this assignment it is recommended that you add additional unit tests
+	<br> Add your new and more thorough unit tests to L6R.cpp</li>
 </ul>
 <p><em>The Grader's test cases</em>:</p>
-<p>Grading will be done running a more complete set of unit tests which will systematically stress your implementations of InjectCapability and EqualCapability</p>
+<p>Grading will be done running a more complete set of unit tests which will systematically stress your implementations of InjectCapability, FindLocOfXCapability, and EqualCapability</p>
 
 <h3>4. Submitting the Assignment for Grading</h3>
 	<ul>
