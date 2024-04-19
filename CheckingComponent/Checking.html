@@ -85,25 +85,23 @@
         </li>
       </ul>
     </td>
-    <td width="50%" valign="top"><code><font size="2"><b>void</b> display (IQ&amp; q)<br>
-		//! restores q<br>
-      {<br>
-      &nbsp;&nbsp; IQ temp;<br>
-      <br>
-      &nbsp;&nbsp; <b>while</b> (q.length() &gt; 0) {<br>
-	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//! updates q<br>
-	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//! maintains temp * q = #q<br>
-	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//! decreases |q|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Item x;<br>
-	<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; q.dequeue(x);<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; x;<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp.enqueue(x);<br>
-      &nbsp;&nbsp; }<br>
+    <td width="50%" valign="top"><code><font size="2"><pre><strong>void</strong> display (IQ& q)
+//! restores q
+{
+   IQ temp;
 
-      &nbsp;&nbsp; q.transferFrom(temp);<br>
+   <strong>while</strong> (q.length() &gt; 0) {
+     //! updates q
+     //! maintains temp * q = #q
+     //! decreases |q|
+      T y;
 
-      } // display</font></code>
+      q.dequeue(y);
+      cout &lt;&lt; y;
+      temp.enqueue(y);
+   }
+   q.transferFrom(temp);
+} // display</pre>
       <p><b>Client must abide by:</b></p>
       <ol>
         <li>The component's syntactic interface, i.e., call exported operations
@@ -211,28 +209,27 @@
     <p align="left">Visual Studio provides two configurations:</p>
     <ul>
       <li>
-        <p align="left">debug configuration - <code>NDEBUG</code> <i> is not</i>
-        automatically defined by using #define, the 'N' in NDEBUG stands for Not
-        debugging</p></li>
+        <p align="left">debug configuration - <code>_DEBUG</code> <i>is</i>
+        automatically defined by Visual Studio</p></li>
       <li>
-        <p align="left">release configuration - <code>NDEBUG</code> <i> is</i>
-        automatically defined</p></li>
+        <p align="left">release configuration - <code>_DEBUG</code> <i> is not</i>
+        automatically defined by Visual Studio</p></li>
     </ul>
   </li>
   <li>
-    <p align="left">We can use the C Preprocessor #ifdef directive to test for <code>NDEBUG</code>
+    <p align="left">We can use the C Preprocessor #ifdef directive to test for <code>_DEBUG</code>
     being defined.</p></li>
   <li>
-    <p align="left">If <code>NDEBUG</code> <i>is not</i> defined, then we can
+    <p align="left">If <code>_DEBUG</code> <i>is</i> defined, then we can
     provide declarations that make use of the checking components to wrap the
     service providing components that we need to use.</p></li>
   <li>
-    <p align="left">If <code>NDEBUG</code> <i>is</i> defined, then we can
+    <p align="left">If <code>_DEBUG</code> <i>is not</i> defined, then we can
     provide declarations that use the unwrapped/unchecked component</p></li>
 </ul>
 <p align="left"><i>Example: instance creation that is <u>unaware</u> of
 debug/release configurations</i></p>
-<table border="1" width="100%">
+<table border="1" width="50%">
   <tr>
     <td width="50%" align="center">IntQue.h</td>
   </tr>
@@ -246,30 +243,30 @@ debug/release configurations</i></p>
 </table>
 <p align="left"><i>Example: instance creation that is <u>aware</u> of
 debug/release configurations</i></p>
-<table border="1" width="100%">
+<table border="1" width="50%">
   <tr>
     <td width="50%" align="center">IntQue.h</td>
   </tr>
   <tr>
-    <td width="50%" valign="top"><code>#<b>pragma once</b><br>
-      #<b>include</b> &quot;Queue\Queue1.hpp&quot;<br>
-      <br>
-      <br>
-      #<b>ifdef</b>  NDEBUG<br>
-      // Release Configuration
-      <br>
-      <b>typedef</b> Queue1 &lt;Integer&gt; IQ;<br>
-      <br>
-      #<b>else<br>
-        <br>
-        </b>
-      #<b>include</b> &quot;Queue\QueueChecking1.hpp&quot;<br>
-      // Debug Configuration<br>
-      <br>
-      <b>typedef</b> Queue1 &lt;Integer&gt; IntegerQueueBase1;<br>
-      <b>typedef</b> QueueChecking1 &lt;Integer, IntegerQueueBase1&gt; IntegerQueueBase2;<br>
-      <b>typedef</b> IntegerQueueBase2 IQ;
-      #<b>endif</b></code></td>
+    <td width="50%" valign="top">
+	<pre>
+#<strong>pragma</strong> once
+#<strong>ifdef</strong> _DEBUG
+// Debug Configuration
+#<strong>include</strong> "Queue\Queue1.hpp"
+#<strong>include</strong> "Queue\QueueChecking1.hpp"
+
+<strong>typedef</strong> Queue1 &lt;Integer&gt; IntegerQueueBase1;
+<strong>typedef</strong> QueueChecking1 &lt;Integer, IntegerQueueBase1&gt; IntegerQueueBase2;
+<strong>typedef</strong> IntegerQueueBase2 IQ;
+
+#<strong>else</strong>
+// Release Configuration
+#<strong>include</strong> "Queue\Queue1.hpp"
+<strong>typedef</strong> Queue1 &lt;Integer&gt; IQ;
+#endif
+</pre>
+	  </td>
   </tr>
 </table>
 <p align="left"><i>Points to Notice about Example:</i></p>
