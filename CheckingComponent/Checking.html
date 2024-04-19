@@ -12,7 +12,7 @@
 <table border="0" width="100%">
 	<tr>
 		<td width="679">
-		<p align="center"><b>Checking Components - Overview</b></td>
+		<p align="center"><b>Checking Components - Overview</b></p></td>
 		
 	</tr>
 </table>
@@ -64,10 +64,10 @@
   <tr>
     <td width="50%">
       <p align="center"><b>Queue<br>
-      A Service Providing Component</b></td>
+      A Service Providing Component</b></p></td>
     <td width="50%">
       <p align="center"><b>display<br>
-      A Client of Queue</b></td>
+      A Client of Queue</b></p></td>
   </tr>
   <tr>
     <td width="50%" valign="top">
@@ -85,20 +85,24 @@
         </li>
       </ul>
     </td>
-    <td width="50%" valign="top"><code><font size="2"><b>void</b> display (preserves IQ&amp; q)<br>
+    <td width="50%" valign="top"><code><font size="2"><b>void</b> display (IQ&amp; q)<br>
+		//! restores q<br>
       {<br>
       &nbsp;&nbsp; IQ temp;<br>
       <br>
-      &nbsp;&nbsp; <b>for</b> (int i = 0, z = q.length(); i &lt; z; i++) {<br>
+      &nbsp;&nbsp; <b>while</b> (q.length() &gt; 0) {<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//! updates q<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//! maintains temp * q = #q<br>
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//! decreases |q|<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Item x;<br>
 	<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; q.dequeue(x);<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; x;<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; temp.enqueue(x);<br>
-      &nbsp;&nbsp; } // end for<br>
-	<br>
+      &nbsp;&nbsp; }<br>
+
       &nbsp;&nbsp; q.transferFrom(temp);<br>
-	<br>
+
       } // display</font></code>
       <p><b>Client must abide by:</b></p>
       <ol>
@@ -117,7 +121,7 @@
 <table border="1" width="100%">
   <tr>
     <td width="100%">
-      <p align="center"><b>Client Connection to Queue's Interface</b></td>
+      <p align="center"><b>Client Connection to Queue's Interface</b></p></td>
   </tr>
   <tr>
     <td width="100%">
@@ -126,10 +130,10 @@
       <ul>
         <li>
           <p align="left">The arrows represent a client's call to a component's
-          exported operation.</li>
+          exported operation.</p></li>
         <li>
           <p align="left">Checking for a syntactically correct call is machine
-          checkable, is performed by the compiler.</li>
+          checkable, is performed by the compiler.</p></li>
       </ul>
     </td>
   </tr>
@@ -138,7 +142,7 @@
 <table border="1" width="100%">
   <tr>
     <td width="100%">
-      <p align="center"><b>Queue Component Wrapped by QueueChecking Component</b></td>
+      <p align="center"><b>Queue Component Wrapped by QueueChecking Component</b></p></td>
   </tr>
   <tr>
     <td width="100%">
@@ -146,25 +150,25 @@
       <ul>
         <li>
           <p align="left">The checking component has the exact same syntactic
-          interface as the component it wraps.</li>
+          interface as the component it wraps.</p></li>
         <li>
           <p align="left">The checking component has the exact same semantic
           interface for clients that use it correctly, i.e., abide by its semantic
-          interface and don't violate preconditions.</li>
+          interface and don't violate preconditions.</p></li>
         <li>
           <p align="left">The checking component does not &quot;know&quot; how
           to implement the component it wraps, it uses the wrapped component for
           that functionality by making &quot;call-throughs&quot; to the wrapped
-          component's exported operations.</li>
+          component's exported operations.</p></li>
         <li>
           <p align="left">A call-through is represented by an arrow from the
           checking component's square to the corresponding wrapped component's
-          square, e.g., see Clear in the diagram above.</li>
+          square, e.g., see Clear in the diagram above.</p></li>
         <li>
           <p align="left">The checking component does &quot;know&quot; how to
           check preconditions of those operations which have non-trivial
           preconditions.&nbsp; This checking code is represented by the yellow
-          rectangles in the diagram above.</li>
+          rectangles in the diagram above.</p></li>
       </ul>
     </td>
   </tr>
@@ -173,7 +177,7 @@
 <table border="1" width="100%">
   <tr>
     <td width="100%">
-      <p align="center"><b>Client Connection to Checked Queue's Interface</b></td>
+      <p align="center"><b>Client Connection to Checked Queue's Interface</p></b></td>
   </tr>
   <tr>
     <td width="100%">
@@ -181,18 +185,18 @@
       <ul>
         <li>
           <p align="left">No changes have been made to the client program's
-          executable code in order for it to use the checking component.</li>
+          executable code in order for it to use the checking component.</p></li>
         <li>
           <p align="left">If the client does not violate the component's
           preconditions, then the checking component behaves exactly as the
           wrapped component.&nbsp; That's because the checking component makes
-          call-throughs to the wrapped component.</li>
+          call-throughs to the wrapped component.</p></li>
         <li>
           <p align="left">After software developer is convinced that the client
           program does not violate any preconditions (e.g., after extensive
           testing and debugging, and code-walkthroughs have been performed), the
           checking component can be removed.&nbsp; Again, with no change to the
-          client's executable code.</li>
+          client's executable code.</p></li>
       </ul>
     </td>
   </tr>
@@ -202,29 +206,29 @@
 <ul>
   <li>
     <p align="left">Instance creation has to slightly altered in order to enjoy
-    the benefits of checking components.</li>
+    the benefits of checking components.</p></li>
   <li>
-    <p align="left">Visual Studio provides two configurations:
+    <p align="left">Visual Studio provides two configurations:</p>
     <ul>
       <li>
         <p align="left">debug configuration - <code>NDEBUG</code> <i> is not</i>
         automatically defined by using #define, the 'N' in NDEBUG stands for Not
-        debugging</li>
+        debugging</p></li>
       <li>
         <p align="left">release configuration - <code>NDEBUG</code> <i> is</i>
-        automatically defined</li>
+        automatically defined</p></li>
     </ul>
   </li>
   <li>
     <p align="left">We can use the C Preprocessor #ifdef directive to test for <code>NDEBUG</code>
-    being defined.</li>
+    being defined.</p></li>
   <li>
     <p align="left">If <code>NDEBUG</code> <i>is not</i> defined, then we can
     provide declarations that make use of the checking components to wrap the
-    service providing components that we need to use.</li>
+    service providing components that we need to use.</p></li>
   <li>
     <p align="left">If <code>NDEBUG</code> <i>is</i> defined, then we can
-    provide declarations that use the unwrapped/unchecked component</li>
+    provide declarations that use the unwrapped/unchecked component</p></li>
 </ul>
 <p align="left"><i>Example: instance creation that is <u>unaware</u> of
 debug/release configurations</i></p>
@@ -247,50 +251,50 @@ debug/release configurations</i></p>
     <td width="50%" align="center">IntQue.h</td>
   </tr>
   <tr>
-    <td width="50%" valign="top"><code><font size="2">#<b>pragma once</b><br>
-        #<b>include</b> &quot;Queue\Queue1.hpp&quot;<br>
+    <td width="50%" valign="top"><code>#<b>pragma once</b><br>
+      #<b>include</b> &quot;Queue\Queue1.hpp&quot;<br>
       <br>
       <br>
-        #<b>ifdef</b>  NDEBUG<br>
+      #<b>ifdef</b>  NDEBUG<br>
       // Release Configuration
-        <br>
+      <br>
       <b>typedef</b> Queue1 &lt;Integer&gt; IQ;<br>
       <br>
-        #<b>else<br>
-      <br>
+      #<b>else<br>
+        <br>
         </b>
-        #<b>include</b> &quot;Queue\QueueChecking1.hpp&quot;<br>
+      #<b>include</b> &quot;Queue\QueueChecking1.hpp&quot;<br>
       // Debug Configuration<br>
-        <br>
-      <b>typedef</b> QueueChecking1 &lt;Queue1, Integer&gt; IQ;<br>
-        <br>
-        #<b>endif</b></font></code></td>
+      <br>
+      <b>typedef</b> Queue1 &lt;Integer&gt; IntegerQueueBase1;<br>
+      <b>typedef</b> QueueChecking1 &lt;Integer, IntegerQueueBase1&gt; IntegerQueueBase2;<br>
+      <b>typedef</b> IntegerQueueBase2 IQ;
+      #<b>endif</b></code></td>
   </tr>
 </table>
 <p align="left"><i>Points to Notice about Example:</i></p>
 <ul>
   <li>
     <p align="left"><code>QueueChecking1</code> requires two template
-    parameters
+    parameters</p>
     <ul>
       <li>
-        <p align="left">1st template parameter:
+        <p align="left">1st template parameter:</p>
         <ul>
+			          <li>
+            <p align="left">Is the type Item that has been to be plugged into any Queue 
+				 template, e.g., Queue1.</p></li>
           <li>
-            <p align="left">Is any queue <i>template</i> that has the same
-            public interface as the Queue1 template found in the 'components\include\Queue'
-            folder.</li>
+            <p align="left">The checking component needs to know what type of
+            item is being stored in the queue.</p></li>
+
         </ul>
       </li>
       <li>
-        <p align="left">2nd template parameter:
+        <p align="left">2nd template parameter:</p>
         <ul>
           <li>
-            <p align="left">Is the type Item that is to be plugged into the
-            queue template.</li>
-          <li>
-            <p align="left">The checking component needs to know what type of
-            item is being stored in the queue.</li>
+            <p align="left">Is any instantiated queue <i>template</i> that implements the StdOps and QueueKernel.</p></li>
         </ul>
       </li>
     </ul>
