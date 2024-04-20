@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Project M1</title>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Project M1</h1>
+<hr />
+<h3>0. References</h3>
+<ul>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/CheckingComponent/CheckingComponentReview.pdf" target="new">Checking Component Review</a></li>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/CheckingComponent/CheckingComponentConstruction.pdf" target="new">Checking Component Construction</a></li>
+</ul>
+	
+<h3>1. Setup</h3>
+<table border="0" width="100%">
+  <tbody>
+    <tr>
+      <td valign="top"><h4>1.1 Get the PM1Starter Download</h4>
+        <ul>
+          <li>Download <em>PM1Starter.zip</em>&nbsp;to your machine - to be used in subsequent steps</li>
+        </ul></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top">
+        <h4>1.2 Copy the UnlabeledGraphDriver Folder from the PM1Starter.zip</h4>
+        <ul>
+          <li>Inside PM1Starter.zip is a project named UnlabeledGraphDriver </li>
+			    <ul>
+          <li>Copy the UnlabeledGraphDriver folder to your <em>csse373devenv202330-yourID</em> folder as shown in the screen shot to the right</li>
+          <li>Once you have copied this folder you can use VS2022 to open the UnlabeledGraphDriver project by double clicking on GraphDriver.sln  </li>
+			</ul>
+        </ul>
+        <h4>1.3 About Project UnlabeledGraphDriver</h4>
+        <ul>
+          <li>It contains a Visual Studio 2022 command line project</li>
+          <li>It can be opened with VS2022 by double clicking on the file GraphDriver.sln</li>
+          <li>It will build correctly if you have followed the instructions in 1.1 - 1.2 (above)</li>
+          <li>UnlabeledGraphDriver contains a command interpreter for UnlabeledGraphDriver component which is in your repo's components folder
+    
+          </li>
+        </ul></td>
+      <td valign="top"><img src="PM1FolderView.png" width="246" height="376" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+	
+<h3>2. PM1 Statement of Work</h3>
+<ul>
+  <li>Implement <em>UnlabeledUndirectedGraphChecking1</em></li>
+  <li>It must be:
+    <ul>
+      <li>implemented as shown in the <em>Checking Component Construction</em> instructional materials (see References in Section 0 above)</li>
+      <li>stored in the folder: components\include\UnlabeledUndirectedGraph</li>
+      <li>a checking component for the class UnlabeledUndirectedGraph1 <br>
+        -- which is in the file UnlabeledUndirectedGraph1.hpp also found in the folder: components\include\UnlabeledUndirectedGraph<br>
+        -- here is a UML diagram for UnlabeledUndirectedGraph</li>
+    </ul>
+  </li>
+</ul>
+	<p align="center"><img src="UnlabeledUndirectedGraph.svg" alt=""/></p>
+
+<h3>3. Testing UnlabeledUndirectedGraphChecking1 </h3>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><ul>
+          <li>Use the Graph Driver provided in PM1starter.zip to test your checking component</li>
+          <li> Note:
+            <ul>
+              <li>The Graph Driver is implemented so as to stop a keyboard user  from violating some (possibly all) of 
+                UnlabeledUndirectedGraph1's operation's preconditions</li>
+              <li>You must slightly alter Graph Driver's code so that it allows the keyboard user to deliberately violate a precondition - you might consider creating an entire new project called <em>NakedGraphDriver</em>, where this driver has had all protection stripped from it, allowing  a malicious keyboard user to execute commands that violate the UnlabeledUndirectedGraph1's operation's preconditions</li>
+              <li>This altered version will allow you to test from the keyboard your implementation of <em>UnlabeledUndirectedGraphChecking1</em></li>
+            </ul>
+          </li>
+		  <li>The screen shot to the right shows how to start up the debugger in VisualStudio</li>
+		  <li>The screen shots below show the result of the checking component after transferring control to the debugger, which has occurred after a requires clause violation has been detected</li>
+        </ul></td>
+		
+      <td width="400"  valign="top><p align="center"><strong>Running the debugger in Visual Studio</strong></p>
+		  <img src="runDebugger.png" width="400" height="151" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+
+	<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td width="600" align="center"  valign="top><p align="center"><strong>In the debugger in Visual Studio</strong></p>
+		  
+		<p align="center">A violation of <em>removeAny</em>'s requires clause has occurred</p>
+		<img src="inDebuggerN01.png" width="600" height="438" alt=""/></td>
+      <td width="600"  align="center"  valign="top><p align="center"><strong>In the debugger in Visual Studio</strong></p>
+		  
+		<p align="center">After switching from <em>Call Stack</em> tab to <em>Output</em> tab<br>You see the output from the <em>OutputDebugString</em></p>
+		<img src="inDebuggerN02.png" width="600" height="157" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3>4. Grading of PM1</h3>
+<ul>
+  <li>Your <em>UnlabeledUndirectedGraphChecking1</em>.<em>hpp</em> will be compiled/built/tested in Debug Mode with Dr. Holly's private set of tests or an altered Graph Driver</li>
+  <li>These tests will act as defective clients of UnlabeledUndirectedGraph1 in the sense that they will violate the non-trivial preconditions of each
+    UnlabeledUndirectedGraph1</li>
+  <li>The expectation during grading is: control will be transferred to the Visual Studio debugger as shown above in the two screenshots.</li>
+  <li>Zero points will be earned if your submission fails to build</li>
+
+</ul>
+<h3>5. Submitting the Assignment for Grading</h3>
+<ul>
+  <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your 
+    completed <em>UnlabeledUndirectedGraphChecking1.hpp</em> project to your GitHub Education CSSE373 repo</li>
+  <li>Use the commit message &quot;PM1, ready for grading&quot;</li>
+</ul>
+</body>
+</html>

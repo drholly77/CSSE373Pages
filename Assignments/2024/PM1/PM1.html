@@ -10,115 +10,167 @@
 <body>
 <h1>Project M1</h1>
 <hr />
-<h3>0. References</h3>
-<ul>
-  <li><a href="https://drholly77.github.io/CSSE373Pages/CheckingComponent/CheckingComponentReview.pdf" target="new">Checking Component Review</a></li>
-  <li><a href="https://drholly77.github.io/CSSE373Pages/CheckingComponent/CheckingComponentConstruction.pdf" target="new">Checking Component Construction</a></li>
-</ul>
 	
+		
 <h3>1. Setup</h3>
 <table border="0" width="100%">
   <tbody>
     <tr>
-      <td valign="top"><h4>1.1 Get the PM1Starter Download</h4>
+      <td valign="top">
+		  <h4>1.1 Get the PM1Starter Download</h4>
         <ul>
           <li>Download <em>PM1Starter.zip</em>&nbsp;to your machine - to be used in subsequent steps</li>
-        </ul></td>
-      <td>&nbsp;</td>
+        </ul>
+		
+		
+        <h4>1.2 Copy the PM1 Folder from the PM1Starter.zip</h4>
+        <ul>
+          <li>Inside PM1Starter.zip is a folder named PM1 </li>
+			    <ul>
+          <li>Copy the PM1 folder to your <em>csse373devenv202330-yourID</em> folder as shown in the screen shot in Figure 1</li>
+          <li>Once you have copied this folder you can use VS2022 to open the PM1 project by double clicking on PM1.sln  </li>
+		  <li>The contents of this folder are shown in the screen shot in Figure 2</li>
+			</ul>
+        </ul>
+		<img src="PM1FileExplorer.png" width="336" height="409" alt=""/><br>
+		  <p align="left"><strong>Figure 2</strong></p></td>
+      <td><img src="PM1FolderView.png" width="247" height="397" alt=""/><br><p ><strong>Figure 1</strong></p></td>
     </tr>
     <tr>
       <td valign="top">
-        <h4>1.2 Copy the UnlabeledGraphDriver Folder from the PM1Starter.zip</h4>
+        <h4>1.3 About Project PM1</h4>
         <ul>
-          <li>Inside PM1Starter.zip is a project named UnlabeledGraphDriver </li>
-			    <ul>
-          <li>Copy the UnlabeledGraphDriver folder to your <em>csse373devenv202330-yourID</em> folder as shown in the screen shot to the right</li>
-          <li>Once you have copied this folder you can use VS2022 to open the UnlabeledGraphDriver project by double clicking on GraphDriver.sln  </li>
-			</ul>
-        </ul>
-        <h4>1.3 About Project UnlabeledGraphDriver</h4>
-        <ul>
-          <li>It contains a Visual Studio 2022 command line project</li>
-          <li>It can be opened with VS2022 by double clicking on the file GraphDriver.sln</li>
+          <li>It contains a Visual Studio 2022 project (see screen shot in Figure 3)</li>
+          <li>It can be opened with VS2022 by double clicking on the file PM1.sln</li>
           <li>It will build correctly if you have followed the instructions in 1.1 - 1.2 (above)</li>
-          <li>UnlabeledGraphDriver contains a command interpreter for UnlabeledGraphDriver component which is in your repo's components folder
-    
-          </li>
+          <li>PM1 contains .h files and driver.cpp files that you will work on to complete this part of the project<br>
+			  The <b>ToDos</b> are in operation <i>main</i>, see (4.4) below</li>
+			<ul>
+				<li>(1) <i>CharacterCArray.h</i> - creates an instance of CeramicArray; used to hold the puzzle word, e.g., the word "encyclopedia"; <i>No ToDo here</i></li>
+				<li>(2) <i>TextSet.h</i> - creates an instance of component Set; used to hold the dictionary words; <i>No ToDo here</i></li>
+				<li>(3) <i>UnlabeledUndirectedGraph.h</i> - creates instance of graph component; used to hold your graph data; <i>No ToDo here</i></li>
+				<li>(4) <i>driver.cpp</i> - driver program that loads the program's data and executes the DFS on the graph</li>
+				<li>(4.1) <i>initializeVertexLabelMap</i> - operation that puts the puzzle word into a ceramic array variable; <i>No ToDo here</i></li>
+				<li>(4.2) <i>loadDictionaryWords</i> - operation that loads the dictionary words from 'dataDictionary.dat' file (provided) into a variable of type TextSet; <i>No ToDo here</i></li>
+				<li>(4.3) <i>loadPuzzleData</i> - operation that loads the puzzle data into your graph and puzzle word variables; <i>No ToDo here</i></li>
+				<li>(4.4) <i>main</i> - main operation that declares variables and calls the operations listed above; <b><i>ToDos are here</i></b></li>
+			</ul>
         </ul></td>
-      <td valign="top"><img src="PM1FolderView.png" width="246" height="376" alt=""/></td>
+      <td valign="top"><img src="PM1ProjectView.png" width="450" height="434" alt=""/><br>
+		<p align="center"><strong>Figure 3</strong></p>
+		<hr></td>
     </tr>
+	  
+	  <tr>
+      <td valign="top">
+		  <h4>1.4 About Project PM1's Command Line Arguments</h4>
+	    <ul>
+		  <li><em>main</em> is programed to take command line arguments (see screen shot in Figure 5, below)</li>
+		  <li>When executing program from inside VS2022 using the Start Debugging command, you must provide the command line arguments in PM1's <em>Project Settings</em> (see screen shot in Figure 4)</li>
+		  <li>Edit the Project Settings (as shown in Figure 4) and change 2nd command line parameter (currently set to <em>dataReact.dat</em>) to <em>dataEncyclopedia.dat</em> when you are ready to test against the encyclopedia puzzle</li>
+		  </ul>
+	    <img src="PM1MainCommandLineArgs.png" width="800" height="200" alt=""/><br>
+		  <p align="left"><strong>Figure 5</strong></p></td>
+		  <td><img src="PM1CommandLineArgs.png" width="450" height="282" alt=""/><br>
+		<p align="center"><strong>Figure 4</strong></p>
+		</td>
+	  </tr>
   </tbody>
 </table>
-	
+
 <h3>2. PM1 Statement of Work</h3>
-<ul>
-  <li>Implement <em>UnlabeledUndirectedGraphChecking1</em></li>
-  <li>It must be:
-    <ul>
-      <li>implemented as shown in the <em>Checking Component Construction</em> instructional materials (see References in Section 0 above)</li>
-      <li>stored in the folder: components\include\UnlabeledUndirectedGraph</li>
-      <li>a checking component for the class UnlabeledUndirectedGraph1 <br>
-        -- which is in the file UnlabeledUndirectedGraph1.hpp also found in the folder: components\include\UnlabeledUndirectedGraph<br>
-        -- here is a UML diagram for UnlabeledUndirectedGraph</li>
-    </ul>
-  </li>
-</ul>
-	<p align="center"><img src="UnlabeledUndirectedGraph.svg" alt=""/></p>
-
-<h3>3. Testing UnlabeledUndirectedGraphChecking1 </h3>
-<table width="100%" border="0">
-  <tbody>
-    <tr>
-      <td valign="top"><ul>
-          <li>Use the Graph Driver provided in PM1starter.zip to test your checking component</li>
-          <li> Note:
-            <ul>
-              <li>The Graph Driver is implemented so as to stop a keyboard user  from violating some (possibly all) of 
-                UnlabeledUndirectedGraph1's operation's preconditions</li>
-              <li>You must slightly alter Graph Driver's code so that it allows the keyboard user to deliberately violate a precondition - you might consider creating an entire new project called <em>NakedGraphDriver</em>, where this driver has had all protection stripped from it, allowing  a malicious keyboard user to execute commands that violate the UnlabeledUndirectedGraph1's operation's preconditions</li>
-              <li>This altered version will allow you to test from the keyboard your implementation of <em>UnlabeledUndirectedGraphChecking1</em></li>
-            </ul>
-          </li>
-		  <li>The screen shot to the right shows how to start up the debugger in VisualStudio</li>
-		  <li>The screen shots below show the result of the checking component after transferring control to the debugger, which has occurred after a requires clause violation has been detected</li>
-        </ul></td>
-		
-      <td width="400"  valign="top><p align="center"><strong>Running the debugger in Visual Studio</strong></p>
-		  <img src="runDebugger.png" width="400" height="151" alt=""/></td>
-    </tr>
-  </tbody>
-</table>
-
 	<table width="100%" border="1">
   <tbody>
     <tr>
-      <td width="600" align="center"  valign="top><p align="center"><strong>In the debugger in Visual Studio</strong></p>
+      <td valign="top">
 		  
-		<p align="center">A violation of <em>removeAny</em>'s requires clause has occurred</p>
-		<img src="inDebuggerN01.png" width="600" height="438" alt=""/></td>
-      <td width="600"  align="center"  valign="top><p align="center"><strong>In the debugger in Visual Studio</strong></p>
+  <h4>Solve the Six for a Spell Puzzle (Figure 8)</h4>
+	    <ul>
+  <li>As your starting place, use the <em>driver.cpp</em> found in &quot;PM1 Starter Files&quot; (see References above)</li>
+  <li>Modify PM1's <em>driver.cpp</em> by finding the <strong>ToDos</strong> and completing them</li>
+  
+  <li>Your implementation must: 
+    <ol>
+      <li>Be in a Visual Studio project called PM1 and be stored in your repository</li>
+      <li>The <em>driver.cpp</em> must use the operations provided that load the dictionary and graph data (see 4.1 through 4.2 in Figure 3)</li>
+      <li>Use depth first search algorithm(s) search the puzzle for words of a specified length</li>
+	<li>First output the found words by completing <strong>ToDo</strong>'s 2 and 3 in driver.cpp's <em>main</em> operation</li>
+      <li>Use the words loaded in from the file <em>dataDictionary.dat</em> to check the legitimacy of a computed word</li>
+      <li>Be layered on <em>UnlabeledUndirectedGraph1</em> implementation </li>
+      <li>Leverage other already existing appropriate components from  the <a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/" target="new">component list</a> whose implementations can be found in the folder: components\include - in the diagram to the right this is represented by the arrow to the <em>Other Concepts</em> oval</li>
+      <li> By <em>leverage</em> (in #5 above) we mean, for example:
+		  <ul>
+      <li>If you need searching or sorting, then find a component that already has that functionality, i.e., do not reimplement these algorithms</li>
+      <li>If you need a container to temporarily store things, then find a component that provides that functionality</li>
+      <li>Use the <em>minimalization principle</em>, i.e., attempt to find a component that provides the minimal functionality required</li>
+		  </ul>
+      </li>
+      </ol>
+  </li>
+  <li> Recommended: 
+    <ul>
+      <li>Test and debug with <em>dataReact.dat</em>, a smaller data set based on puzzle word <em>react</em> - see data files listed in Figure 2<br>
+		Graph diagram for <em>react</em> is in Figure 7</li>
+		<li>The instructor's solution when run with the command line arguments found in Figure 4 found the following 24 words:<br>
+          "cat","car","eta","eat","ear","era","ere","rea","rec","ret","rat",<br>"are","ara","aer","aet","ace","ate","ata","ter","tea","tec","tar","tae","tat"</li>
+		<li>Then test with <em>dataSixForSpell.dat</em> (Figure 8)<br>
+		The instructor's solution working on <em>dataSixForSpell.dat</em> and <em>dataDictionary.dat</em> found<br>
+		143 words of length 5<br>
+		155 words of length 6<br>
+		98 words of length 7<br>
+		7 words of length 8</li>
+      <li>Use checking components when in Debug Mode</li>
+      
+    </ul>
+  </li>
+ </ul>
+		<p align="center"><img src="PM1React.png" width="374" height="418" alt=""/><br><strong>Figure 7</strong></p>
+<h3>3. Grading of PM1</h3>
+<ul>
+  <li>Your <em>driver.cpp</em> from the folder PM1 will be compiled/built/tested </li>
+  <li>Your program will be tested/executed against a graph data file and word search length of the instructor's choosing</li>
+  <li>Your output, i.e., the words found by your search program, will be redirected to an output file and compared against the instructor's solution</li>
+  <li>Assessment will be based on the actual words found and the code found in <em>driver.cpp</em></li>
+</ul>
 		  
-		<p align="center">After switching from <em>Call Stack</em> tab to <em>Output</em> tab<br>You see the output from the <em>OutputDebugString</em></p>
-		<img src="inDebuggerN02.png" width="600" height="157" alt=""/></td>
+		  <h3>4. Submitting the Assignment for Grading</h3>
+<ul>
+  <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your 
+    completed <em>PM1</em> project to your GitHub Education CSSE373 repo</li>
+  <li>Use the commit message &quot;PM1, ready for grading&quot;</li>
+</ul>
+		  
+	  </td>
+      <td width="600">
+		  <p align="center"><img src="PM1Diagram.png" width="600" height="278" alt=""/><br>
+			  <strong>Figure 6</strong></p>
+		  
+     <p align="center"> <img src="PM1SixForSpellPuzzle-Sp2024.png" width="600" height="528" alt=""/><br>
+		 <br><strong>Figure 8</strong><br><br></p>
+<pre>
+g = (
+   {1,2,3,4,5,6,7,8,9,10,11,12,13},
+   {{1,2},{1,6},{1,7},{1,8},{1,13}
+    {2,3},{2,8},{2,9},{2,13},
+    {3,4},{3,9},{3,10},{3,13}
+    {4,5},{4,10},{4,11},{4,13}
+    {5,6},{5,11},{5,12},{5,13}
+    {6,7},{6,12},{6,13},
+    {7,8},{7,12},{7,13},
+    {8,9},{8,13},
+    {9,10},{9,13},
+    {10,11},{11,13},
+    {11,12},{11,13},
+    {12,13}}
+)
+</pre></td>
     </tr>
   </tbody>
 </table>
 
 
-<h3>4. Grading of PM1</h3>
-<ul>
-  <li>Your <em>UnlabeledUndirectedGraphChecking1</em>.<em>hpp</em> will be compiled/built/tested in Debug Mode with Dr. Holly's private set of tests or an altered Graph Driver</li>
-  <li>These tests will act as defective clients of UnlabeledUndirectedGraph1 in the sense that they will violate the non-trivial preconditions of each
-    UnlabeledUndirectedGraph1</li>
-  <li>The expectation during grading is: control will be transferred to the Visual Studio debugger as shown above in the two screenshots.</li>
-  <li>Zero points will be earned if your submission fails to build</li>
 
-</ul>
-<h3>5. Submitting the Assignment for Grading</h3>
-<ul>
-  <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your 
-    completed <em>UnlabeledUndirectedGraphChecking1.hpp</em> project to your GitHub Education CSSE373 repo</li>
-  <li>Use the commit message &quot;PM1, ready for grading&quot;</li>
-</ul>
+
+
 </body>
 </html>
