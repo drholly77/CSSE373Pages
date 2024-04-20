@@ -44,16 +44,16 @@
           <li>It can be opened with VS2022 by double clicking on the file PM1.sln</li>
           <li>It will build correctly if you have followed the instructions in 1.1 - 1.2 (above)</li>
           <li>PM1 contains .h files and driver.cpp files that you will work on to complete this part of the project<br>
-			  The <b>ToDos</b> are in operation <i>main</i>, see (4.4) below</li>
+			  The <b>To Dos</b> are in operation <i>main</i>, see (4.4) below</li>
 			<ul>
-				<li>(1) <i>CharacterCArray.h</i> - creates an instance of CeramicArray; used to hold the puzzle word, e.g., the word "encyclopedia"; <i>No ToDo here</i></li>
-				<li>(2) <i>TextSet.h</i> - creates an instance of component Set; used to hold the dictionary words; <i>No ToDo here</i></li>
-				<li>(3) <i>UnlabeledUndirectedGraph.h</i> - creates instance of graph component; used to hold your graph data; <i>No ToDo here</i></li>
+				<li>(1) <i>CharacterCArray.h</i> - creates an instance of CeramicArray; used to hold the individual letters from the puzzle, e.g., if using the puzzle found in Figure 7, it would hold the letters ['r','e','a','c','t']; No <b><i>ToDos</i></b> here</li>
+				<li>(2) <i>TextSet.h</i> - creates an instance of component Set; used to hold the dictionary words; No <b><i>ToDos</i></b> here</li>
+				<li>(3) <i>UnlabeledUndirectedGraph.h</i> - creates instance of graph component; used to hold your graph data; No <b><i>ToDos</i></b> here</li>
 				<li>(4) <i>driver.cpp</i> - driver program that loads the program's data and executes the DFS on the graph</li>
-				<li>(4.1) <i>initializeVertexLabelMap</i> - operation that puts the puzzle word into a ceramic array variable; <i>No ToDo here</i></li>
-				<li>(4.2) <i>loadDictionaryWords</i> - operation that loads the dictionary words from 'dataDictionary.dat' file (provided) into a variable of type TextSet; <i>No ToDo here</i></li>
-				<li>(4.3) <i>loadPuzzleData</i> - operation that loads the puzzle data into your graph and puzzle word variables; <i>No ToDo here</i></li>
-				<li>(4.4) <i>main</i> - main operation that declares variables and calls the operations listed above; <b><i>ToDos are here</i></b></li>
+				<li>(4.1) <i>initializeVertexLabelMap</i> - operation that puts the puzzle word into a ceramic array variable; No <b><i>ToDos</i></b> here</li>
+				<li>(4.2) <i>loadDictionary</i> - operation that loads the dictionary words from 'dataDictionary.dat' file (provided) into a variable of type TextSet; No <b><i>ToDos</i></b> here</li>
+				<li>(4.3) <i>loadPuzzle</i> - operation that loads the puzzle data into your graph and puzzle word variables; No <b><i>ToDos</i></b> here</li>
+				<li>(4.4) <i>main</i> - main operation that declares variables and calls the operations listed above; <b><i>ToDos</i></b> are here</li>
 			</ul>
         </ul></td>
       <td valign="top"><img src="PM1ProjectView.png" width="450" height="434" alt=""/><br>
@@ -67,7 +67,7 @@
 	    <ul>
 		  <li><em>main</em> is programed to take command line arguments (see screen shot in Figure 5, below)</li>
 		  <li>When executing program from inside VS2022 using the Start Debugging command, you must provide the command line arguments in PM1's <em>Project Settings</em> (see screen shot in Figure 4)</li>
-		  <li>Edit the Project Settings (as shown in Figure 4) and change 2nd command line parameter (currently set to <em>dataReact.dat</em>) to <em>dataEncyclopedia.dat</em> when you are ready to test against the encyclopedia puzzle</li>
+		  <li>Edit the Project Settings (as shown in Figure 4) and change 2nd command line parameter (currently set to <em>dataReact.dat</em>) to <em>dataSixForSpell.dat</em> when you are ready to test against the Six For a Spell puzzle (found in Figure 8)</li>
 		  </ul>
 	    <img src="PM1MainCommandLineArgs.png" width="800" height="200" alt=""/><br>
 		  <p align="left"><strong>Figure 5</strong></p></td>
