@@ -3,12 +3,12 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Project M3</title>
+<title>PM2</title>
 <link href="../../../css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<h1>Project M3</h1>
+<h1>PM2</h1>
 <hr />
 	
 <h3>0. References</h3>
@@ -18,24 +18,27 @@
   <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentUsage/Simulating2DArray.html" target="_blank">Simulating a 2-D Matrix with a 1-D Array</a></li>
 </ul>
 
-<h3>1. PM3 Statement of Work</h3>
+<h3>1. PM2 Statement of Work</h3>
 	<table width="100%" border="0">
   <tbody>
     <tr>
       <td><ul>
-  <li>1) In the folder <em>csse373devenv202330-yourID/components/include/UnlabeledUndirectedGraph</em> create UnlabeledUndirectedGraph2.hpp </li>
+  <li>1) In the folder <em>csse373devenv202x30-yourID/components/include/UnlabeledUndirectedGraph</em> create UnlabeledUndirectedGraph2.hpp </li>
 		  <li>2) In UnlabeledUndirectedGraph2.hpp implement class UnlabeledUndirectedGraph2</li>
   
   <li>3) You must: 
 	<ul>
 		<li>Implement UnlabeledUndirectedGraph2 using an adjacency matrix - see Figure 1 for an example<br>
-		You may also add additional representation variables in order to achieve better performance for some of the exported operations, i.e., a space for time trade-off</li>
+		You may also add additional representation variables in order to achieve better performance for some of the exported operations, i.e., utilize the engineering technique "a space for time trade-off"</li>
 		
 		<li>Use a layered implementation by layering on the CeramicArray1 component and its corresponding CeramicArrayChecking1 component</li>
 		<li>Implement all 15 methods - see Figure 2</li>
 		<li>Use C++'s conditional compilation and use CeramicArrayChecking1 in Debug Mode and only CeramicArray1 when in Release mode</li>
 	  <li>Define the correspondence as a comment in the<br>'private: // Representation' part <br>
-		This will be visually inspected during grading</li>
+		This will be visually inspected during grading<br>
+		It might look something like:<pre>self = ...</pre><br>
+Where the "..." has something to do with the CeramicArray representation variable you have declared.<br>
+Use English if you have to when writing the correspondence </li>
 	  </ul>
 
 	</li>
@@ -58,7 +61,7 @@
 	  </ul>
 	</li>
 
-  <li>To test your implementation you might want to use the driver.cpp or the PM3.cpp found in PM3Starter.zip</li>
+  <li>To test your implementation you might want to use the driver.cpp found in the project named UUGraphDriver (which is in your repo)</li>
 </ul>
 		  <p align="center">
 			  <img src="UUGV2.png" width="500" height="325" alt=""/><br>
@@ -73,7 +76,7 @@
 </table>
 
 
-<h3>2. Grading of PM3</h3>
+<h3>2. Grading of PM2</h3>
 <ul>
   <li>Your UnlabeledUndirectedGraph2.hpp will be compiled/built/tested in Release Mode against Dr. Holly's private set of 
       specification-based test cases
@@ -90,13 +93,14 @@ If your <em>operator &lt;&lt;</em> fails to follow the requirements outlined abo
 
 <p><em>Important Restrictions</em>:</p>
 <ol>
-  <li><strong>Obey the correspondence </strong>- When implementing the member functions you must obey the correspondence internal contract - which you are required to write. This is the correspondence between an abstract graph value and the underlying concrete representation</li>
+  <li><strong>Obey the correspondence </strong>- When implementing the member functions you must obey the correspondence internal contract - which you are required to write. <br>
+This is the correspondence between an abstract graph value and the underlying concrete representation</li>
   <li><strong>Use Design by Contract</strong> </li>
   <li><strong>No Cross Calling </strong></li>
   <li><strong>Calling Down</strong></li>
 	<li><strong>Write elegant client code</strong> - Leverage the power of CeramicArray, and do space for time trade-offs in obvious places to reduce Big-O for some of UnlabeledUndirectedGraph2's exported operations</li>
   <li><strong>No Recursion</strong> </li>
-  <li><strong>No Making Unnecessary Copies</strong>  </li>
+  <li><strong>No Making Unnecessary Copies</strong> </li>
 </ol>
 
 <hr />
@@ -104,7 +108,7 @@ If your <em>operator &lt;&lt;</em> fails to follow the requirements outlined abo
 <ul>
   <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your 
     completed <em>UnlabeledUndirectedGraph2.hpp</em> project to your GitHub Education CSSE373 repo</li>
-  <li>Use the commit message &quot;PM3, ready for grading&quot;</li>
+  <li>Use the commit message &quot;PM2, ready for grading&quot;</li>
 </ul>
 </body>
 </html>
