@@ -24,11 +24,11 @@
 <table border="1" width="100%">
   <tr>
     <td width="100%"><pre>// File IntArray.h
-#ifdef _DEBUG
-   typedef CeramicArrayChecking1&lt;CeramicArray1, Integer&gt; ArrayOfInteger;
-#else
-   typedef CeramicArray1&lt;Integer&gt; ArrayOfInteger;
-#endif</pre></td>
+#<strong>ifdef</strong> _DEBUG
+   <strong>typedef</strong> CeramicArrayChecking1&lt;Integer, CeramicArray1&lt;Integer&gt;&gt; ArrayOfInteger;
+#<strong>else</strong>
+   <strong>typedef</strong> CeramicArray1&lt;Integer&gt; ArrayOfInteger;
+#<strong>endif</strong></pre></td>
   </tr>
 </table>
 
@@ -76,9 +76,9 @@ int main (int argc, char* argv[])
   <tr>
     <td width="100%"><pre>
 // IntMatrix.h
-#pragma once
-#include "wrapper.h"
-#include "CeramicArray\CeramicArray1.hpp"
+#<strong>pragma</strong> once
+#<strong>include</strong> "wrapper.h"
+#<strong>include</strong> "CeramicArray\CeramicArray1.hpp"
 
 
 // ----------------------------------------------
@@ -88,13 +88,13 @@ int main (int argc, char* argv[])
 
    // 1st Create Columns 
    // 2nd Create Rows by plugging ColumnArray into another instance of CeramicArray
-#ifdef _DEBUG
-   typedef CeramicArrayChecking1&lt;CeramicArray1, Integer&gt; ColumnArray;
-   typedef CeramicArrayChecking1&lt;CeramicArray1, ColumnArray&gt; MatrixOfInt;
-#else
-   typedef CeramicArray1&lt;Integer&gt; ColumnArray;
-   typedef CeramicArray1&lt;ColumnArray&gt; MatrixOfInt;
-#endif</pre>
+#<strong>ifdef</strong> _DEBUG
+   <strong>typedef</strong> CeramicArrayChecking1&lt;Integer, CeramicArray1&lt;Integer&gt;&gt; ColumnArray;
+   <strong>typedef</strong> CeramicArrayChecking1&lt;ColumnArray, CeramicArray1&lt;ColumnArray&gt;&gt; MatrixOfInt;
+#<strong>else</strong>
+   <strong>typedef</strong> CeramicArray1&lt;Integer&gt; ColumnArray;
+   <strong>typedef</strong> CeramicArray1&lt;ColumnArray&gt; MatrixOfInt;
+#<strong>endif</strong></pre>
 	</td>
   </tr>
 </table>
@@ -107,34 +107,34 @@ int main (int argc, char* argv[])
 <tr>
 <td WIDTH="100%"><pre>
 // main.cpp
-#include "wrapper.h"
-#include "IntMatrix.h"
+#<strong>include</strong> "wrapper.h"
+#<strong>include</strong> "IntMatrix.h"
 
-enum columnBounds {columnLower = 0, columnUpper = 9, maxColumns = 10};
-enum rowBounds {rowLower = 0, rowUpper = 14, maxRows = 15};
+<strong>enum</strong> columnBounds {columnLower = 0, columnUpper = 9, maxColumns = 10};
+<strong>enum</strong> rowBounds {rowLower = 0, rowUpper = 14, maxRows = 15};
 
 int main (int argc, char* argv[]) 
 {
-   MatrixOfStudents sa;
+   MatrixOfInt a1;
    
    // Set up rows and columns
-   sa.setBounds(rowBounds::rowLower, rowBounds::rowUpper);
-   for (int row = rowBounds::rowLower; row &lt; rowBounds::maxRows; row++) {
-      sa[row].setBounds(columnBounds::columnLower, columnBounds::columnUpper);
+   a1.setBounds(rowBounds::rowLower, rowBounds::rowUpper);
+   <strong>for</strong> (int row = rowBounds::rowLower; row &lt; rowBounds::maxRows; row++) {
+      a1[row].setBounds(columnBounds::columnLower, columnBounds::columnUpper);
    } // end for
 
    cout &lt;&lt; "Load matrix with random integers" &lt;&lt; endl;
-   for (int row = rowBounds::rowLower; row &lt;= rowBounds::rowUpper; row++) {
-      for (int col = columnBounds::columnLower; col &lt;= columnBounds::columnUpper; col++) {
-	     sa[row][col] = (rand() % 99);
+   <strong>for</strong> (int row = rowBounds::rowLower; row &lt;= rowBounds::rowUpper; row++) {
+      <strong>for</strong> (int col = columnBounds::columnLower; col &lt;= columnBounds::columnUpper; col++) {
+	     a1[row][col] = (rand() % 99);
       } // end for
    } // end for
    
    
    cout &lt;&lt; "Display contents for matrix" &lt;&lt; endl;
-   for (int row = rowBounds::rowLower; row &lt;= rowBounds::rowUpper; row++) {
-      for (int col = columnBounds::columnLower; col &lt;= columnBounds::columnUpper; col++) {
-         cout &lt;&lt; sa[row][col] &lt;&lt; " " &lt;&lt; endl;
+   <strong>for</strong> (int row = rowBounds::rowLower; row &lt;= rowBounds::rowUpper; row++) {
+      <strong>for</strong> (int col = columnBounds::columnLower; col &lt;= columnBounds::columnUpper; col++) {
+         cout &lt;&lt; a1[row][col] &lt;&lt; " " &lt;&lt; endl;
       } // end for
       cout &lt;&lt; endl;
    } // end for
