@@ -2,32 +2,67 @@
 <html>
 <head>
 	<meta name="Author" content="Dr. Holly">
-   <title>Using Ceramic Array Component</title>
+   <title>Using Partitionable Array Component</title>
 <link href="../css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
 
-			<h2>Creating an Instance of the CeramicArray Component</h2>
+<h2>Creating an Instance of the Partitionable Component</h2>
 
-	<h3>CeramicArray1's Specification</h3>
+<h3>PartitionableArray's Specification</h3>
 <ul>
-  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/CeramicArrayTemplate.html" target="new">CeramicArray Spec</a><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/StaticArrayTemplate.html" target="_blank"></a></li>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/PartitionableArrayTemplate.html" target="new">PartitionableArray Spec</a></li>
 </ul>
 
+<h3>PartitionableArray Overview</h3>
+	<ul>
+	<li>PartitionableArray's behavior is similar to CeramicArray's behavior in that a client program sets the upper and lower bounds of the array at run time through the <em>setBounds</em> operation</li>
+	<li>Also like CeramicArray, PartitionableArray has a template parameter (the first of two template parameters) that allows the client to specify the type T to be stored in the array</li>
+	<li>PartitionableArray requires a second template parameter which is a Boolean function parameterized by the type T (i.e., the type provided in the first template parameter)<br>
+The signature for this template parameter is: <code>Boolean(*isInteresting)(T&amp;);</code> <br>
+<em>isInteresting</em> is known a callback function</li>
+		<li><em>isInteresting</em> returns:
+			<ul>
+				<li>true for some values of type T, these are the "interesting" values</li>
+				<li>false for others, these are the "uninteresting" values</li>
+			</ul>
+		</li> 
+		<li><em>isInteresting</em> is used by PartitionableArray allowing it to keep track of where in the array the "interesting" values are stored, as well as where the "uninteresting" values are stored</li>
+		<li>It is the client programmer's responsibility to decide which values are "interesting" and which are "uninteresting" and to then implement <em>isInteresting</em> accordingly </li>
+		<li>Finally, PartitionableArray exports 4 additional O(1)  methods (that CeramicArray does not): 
+		<ol>
+		<li><code>Integer numberOfInterestingEntries(void)</code> - returns the number of locations in the array where the value stored causes <em>isInteresting</em> to return true</li>
+		<li><code>Integer numberOfUninterestingEntries(void)</code> - returns the number of locations in the array where the value stored causes <em>isInteresting</em> to return false </li>
+		<li><code><strong>void</strong> giveIndexOfInterestingEntry(Integer&amp; interestingEntryIndex)</code> - replaces interestingEntryIndex with an index into the array where the value stored has caused <em>isInteresting</em> to return true</li>
+		<li><code><strong>void</strong> giveIndexOfUninterestingEntry(Integer&amp; interestingEntryIndex)</code> - replaces interestingEntryIndex with an index into the array where the value stored has caused <em>isInteresting</em> to return false</li></ol></li>
+	</ul>
+
 	
-	<h3>Creating Named Instances</h3>
+<h3>Creating Named Instances</h3>
   <ul>
-    <li>Creating One-Dimensional Integer Array</li>
+    <li>Creating One-Dimensional Integer Array where values that are <em>odd</em> are deemed "interesting"</li>
     <li>Indexed from 0 to 9, i.e., so its size is 10</li>
   </ul>
 <table border="1" width="100%">
   <tr>
     <td width="100%"><pre>// File IntArray.h
 #<strong>ifdef</strong> _DEBUG
-   <strong>typedef</strong> CeramicArrayChecking1&lt;Integer, CeramicArray1&lt;Integer&gt;&gt; ArrayOfInteger;
+
+<strong>static</strong> Boolean isOdd (Integer&amp; x)
+// restores x
+// ensures isOdd = true iff there exists k: integer (2k + 1) = x
+{<strong>return</strong> ((x % 2) == 1);}
+<strong>typedef</strong> PartitionableArrayChecking1&lt;Integer, PartitionableArray1&lt;Integer, isOdd&gt;&gt; ArrayOfInteger;
+
 #<strong>else</strong>
-   <strong>typedef</strong> CeramicArray1&lt;Integer&gt; ArrayOfInteger;
+
+<strong>static</strong> Boolean isOdd (Integer&amp; x)
+// restores x
+// ensures isOdd = true iff there exists k: integer (2k + 1) = x
+{<strong>return</strong> ((x % 2) == 1);}
+<strong>typedef</strong> PartitionableArray1&lt;Integer, isOdd&gt; ArrayOfInteger;
+
 #<strong>endif</strong></pre></td>
   </tr>
 </table>
@@ -57,12 +92,21 @@ int main (int argc, char* argv[])
    //   that the lower and upper bounds are set at runtime
    //   and not at compile time
    a1.setBounds(lowerBound, upperBound);
+   
+   // Store an "interesting" value into location 2
+   a1[2] = 33;
+   
    cout &lt;&lt; "a1 = [";
    <strong>for</strong> (int k = lowerBound; k &lt;= upperBound; i++) {
       cout &lt;&lt; a1[k] &lt;&lt; " ";
    } // end for
    cout &lt;&lt; "]" &lt;&lt; endl;
-
+   
+   <strong>if</strong> (a1.numberOfInterestingEntries() &gt; 0) {
+	  Integer loc;
+	  a1.giveIndexOfInterestingEntry(loc);
+	  cout &lt;&lt; "Location of an interesting value is: " &lt;&lt;  loc &lt;&lt; endl;
+   }
    <strong>return</strong> 0;
 } // end main</pre></td>
 </tr>
@@ -71,14 +115,14 @@ int main (int argc, char* argv[])
 </center>
 
 
-<h3>Declaring and using a 2-D Matrix using CeramicArray component</h3>
+<h3>Declaring and using a 2-D Matrix using PartitionableArray component</h3>
 <table border="1" width="100%">
   <tr>
     <td width="100%"><pre>
 // IntMatrix.h
 #<strong>pragma</strong> once
 #<strong>include</strong> "wrapper.h"
-#<strong>include</strong> "CeramicArray\CeramicArray1.hpp"
+#<strong>include</strong> "PartitionableArray\PartitionableArray1.hpp"
 
 
 // ----------------------------------------------
@@ -89,11 +133,31 @@ int main (int argc, char* argv[])
    // 1st Create Columns 
    // 2nd Create Rows by plugging ColumnArray into another instance of CeramicArray
 #<strong>ifdef</strong> _DEBUG
-   <strong>typedef</strong> CeramicArrayChecking1&lt;Integer, CeramicArray1&lt;Integer&gt;&gt; ColumnArray;
-   <strong>typedef</strong> CeramicArrayChecking1&lt;ColumnArray, CeramicArray1&lt;ColumnArray&gt;&gt; MatrixOfInt;
+
+<strong>static</strong> Boolean isOdd (Integer&amp; x)
+// restores x
+// ensures isOdd = true iff there exists k: integer (2k + 1) = x
+{<strong>return</strong> ((x % 2) == 1);}
+<strong>typedef</strong> PartitionableArrayChecking1&lt;Integer, PartitionableArray1&lt;Integer, isOdd&gt;&gt; ColumnArray;
+
+<strong>static</strong> Boolean isInterestingRow(ColumnArray&amp; column) 
+{<strong>return</strong> column.numberOfInterestingEntries() &gt; 0;}
+<strong>typedef</strong> PartitionableArrayChecking1&lt;ColumnArray, PartitionableArray1&lt;ColumnArray, isInterestingRow&gt;&gt; MatrixOfInt;
+
 #<strong>else</strong>
-   <strong>typedef</strong> CeramicArray1&lt;Integer&gt; ColumnArray;
-   <strong>typedef</strong> CeramicArray1&lt;ColumnArray&gt; MatrixOfInt;
+
+<strong>static</strong> Boolean isOdd (Integer&amp; x)
+// restores x
+// ensures isOdd = true iff there exists k: integer (2k + 1) = x
+{<strong>return</strong> ((x % 2) == 1);}
+<strong>typedef</strong> PartitionableArray1&lt;Integer, isOdd&gt; ColumnArray;
+
+<strong>static</strong> Boolean isInterestingRow(ColumnArray&amp; column)
+// restores column
+// ensures true iff |PartitionableArray.INDICES_OF_INTERESTING_ENTRIES(column)| &amp; 0
+{<strong>return</strong> column.numberOfInterestingEntries() &gt; 0;}
+<strong>typedef</strong> PartitionableArray1&lt;ColumnArray, isInterestingRow&gt; MatrixOfInt;
+
 #<strong>endif</strong></pre>
 	</td>
   </tr>
@@ -131,7 +195,7 @@ int main (int argc, char* argv[])
    } // end for
    
    
-   cout &lt;&lt; "Display contents for matrix" &lt;&lt; endl;
+   cout &lt;&lt; "Display contents of matrix" &lt;&lt; endl;
    <strong>for</strong> (int row = rowBounds::rowLower; row &lt;= rowBounds::rowUpper; row++) {
       <strong>for</strong> (int col = columnBounds::columnLower; col &lt;= columnBounds::columnUpper; col++) {
          cout &lt;&lt; a1[row][col] &lt;&lt; " " &lt;&lt; endl;
@@ -139,6 +203,17 @@ int main (int argc, char* argv[])
       cout &lt;&lt; endl;
    } // end for
    cout &lt;&lt; endl;
+   
+   
+   cout &lt;&lt; "Display which rows have interesting values" &lt;&lt; endl;
+   <strong>for</strong> (int row = rowBounds::rowLower; row &lt;= rowBounds::rowUpper; row++) {
+      <strong>if</strong>(a1[row].numberOfInterestingEntries() &gt; 0) {
+         cout &lt;&lt; "row: " &lt;&lt; row &lt;&lt; " has interesting values" &lt;&lt; endl;
+         Integer col;
+         a1[row].giveIndexOfInterestingEntry(col);
+         cout &lt;&lt; "here is the column number of one: " &lt;&lt; col &lt;&lt; endl;
+      }
+   }
 
    return 0;
 } // end main</pre></td></tr></table></center></div>
