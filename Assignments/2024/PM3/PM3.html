@@ -41,9 +41,10 @@
   <li>Important requirements on implementing the following graph operations:
 <em>removeAnyIncidentEdge</em>, <em>removeAnyEdge</em>, and <em>degree</em><br>
 These operations must leverage the power of PartitionableArray1 in order to make all 3 execute in O(1) time</li>
+		  <li>Note: because you will reimplement <em>removeAnyIncidentEdge</em> and <em>removeAnyEdge</em> by leveraging PartitionableArray1 methods, that will have a good chance of making your <em>operator &lt;&lt;</em> display values of edges in a different order. So be sure to double check that it works according to the requirements set forth in the next bullet point</li>
   <li>Important requirements on implementing <em>operator &lt;&lt;</em>
 	  <br>
-	  I recommend that you <em>start with</em> the implementation found in UnlabeledUndirectedGraph1.hpp<br><br>
+	  I recommend that you <em>start with</em> the implementation found in UnlabeledUndirectedGraph2.hpp<br><br>
 	  Then make sure <em>operator &lt;&lt;</em> meets the following criteria:
 	<ul>
 		
@@ -64,7 +65,7 @@ These operations must leverage the power of PartitionableArray1 in order to make
   <li>To test your implementation you might want to use the driver.cpp found in the project named UUGraphDriver (which is in your repo)</li>
 </ul>
 		  <p align="center">
-			  <img src="UUGV2.png" width="500" height="325" alt=""/><br>
+			  <img src="UUGV3.png" width="500" height="325" alt=""/><br>
 	    <strong>Figure 2</strong></p>
 	  </td>
       <td width="570"><p align="center"><img src="PM3React.png" width="377" height="342" alt=""/><br>
