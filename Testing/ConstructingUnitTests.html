@@ -21,8 +21,7 @@
 	<tr>
 	  <td align="center">
 		<h2>Constructing Specification Based Unit Tests</h2></td>
-		<td width="218">
-			<p align="right"><i>Last Updated: 02/25/2023</i></p></td>
+
 	</tr>
 </table>
 
@@ -67,13 +66,13 @@ TEST_METHOD(<span class="yellowColor">UT01Constructor</span>)
 <span class="lightBlueColor">   IntegerQueue q1;
    Text x1;</span>
 
-   Logger::WriteMessage(L"UT01Constructor: Queue1();");
+   Logger::WriteMessage(L"Queue1();");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;&gt;");
 
    // Validate ensures: self = &lt;&gt;
    toText(q1, x1);
    Assert::AreEqual(L"&lt;&gt;", x1);
-} // UT01Constructor</pre></td>
+}</pre></td>
     <td width="50%" valign="top">
     <p class="yellowColor"><em>Explanation of the Unit Test Name - UT01Constructor: </em></p>
     <ul>
@@ -88,7 +87,7 @@ TEST_METHOD(<span class="yellowColor">UT01Constructor</span>)
     </ul>
     <hr />
         <p><em>UT01Constructor's Logger Output</em>:</p>
-    <pre class="lightGrayColor">UT01Constructor: Queue1();
+    <pre class="lightGrayColor">Queue1();
 	outgoing: q1 = &lt;&gt;</pre>
     </td>
   </tr>
@@ -111,7 +110,7 @@ TEST_METHOD(UT02Clear)
    IntegerQueue q1;
    Text x1;
 
-<span class="yellowColor">   Logger::WriteMessage(L"UT02Clear: q1.clear();");
+<span class="yellowColor">   Logger::WriteMessage(L"q1.clear();");
    Logger::WriteMessage(L"\tincoming: q1 = &lt;&gt;");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;&gt;");</span>
 
@@ -121,14 +120,14 @@ TEST_METHOD(UT02Clear)
    // Validate parameter mode clears: clears self
    toText(q1, x1);
    Assert::AreEqual(L"&lt;&gt;", x1);
-} // UT02Clear
+}
 </pre></td>
     <td width="50%" valign="top">
     <p class="yellowColor"><em>Explanation of the Logger::WriteMessage</em> <em>section</em>:</p>
     <ul>
-      <li><em>Message #1</em>: Must output the Unit Test name followed by a colon and an example of the call to the member function<br />
+      <li><em>Message #1</em>: Must output  an example of the call to the member function<br />
         <br />
-        In this unit test <em>UT02Clear</em> is output for the name, followed by <em>:</em> followed by <em>q1.clear();</em> for the member function to be called<br />
+        In this unit test <em>q1.clear();</em> for the member function to be called<br />
         <br />
       </li>
       <li><em>Message #2</em>: Must output the incoming values of all variables involved with the member function being called<br />
@@ -145,7 +144,7 @@ TEST_METHOD(UT02Clear)
     </ul>
     <hr />
     <p><em>UT02Clear's Logger Output</em>:</p>
-<pre class="lightGrayColor">UT02Clear: q1.clear();
+<pre class="lightGrayColor">q1.clear();
 	incoming: q1 = &lt;&gt;
 	outgoing: q1 = &lt;&gt;</pre>
 </td>
@@ -157,7 +156,7 @@ TEST_METHOD(UT02Clear)
    Text x1;
    Integer k;
 
-   Logger::WriteMessage(L"UT03Clear: q1.clear();");
+   Logger::WriteMessage(L"q1.clear();");
    Logger::WriteMessage(L"\tincoming: q1 = &lt;10&gt;");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;&gt;");
 
@@ -171,7 +170,7 @@ TEST_METHOD(UT02Clear)
    // Validate clears parameter mode: clears self
    toText(q1, x1);
    Assert::AreEqual(L"&lt;&gt;", x1);
-} // UT03Clear</pre></td>
+}</pre></td>
     <td valign="top">
 <p class="yellowColor"><em>Explanation of the Test Set Up section</em>: </p>
 <ul>
@@ -182,7 +181,7 @@ TEST_METHOD(UT02Clear)
 </ul>
 <hr />
     <p><em>UT03Clear's Logger Output</em>:</p>
-<pre>UT03Clear: q1.clear();
+<pre>q1.clear();
 	incoming: q1 = &lt;10&gt;
 	outgoing: q1 = &lt;&gt;
 </pre>
@@ -206,7 +205,7 @@ TEST_METHOD(UT04TransferFrom)
    IntegerQueue q1, q2;
    Text x1, x2;
 
-   Logger::WriteMessage(L"UT04TransferFrom: q1.transferFrom(q2);");
+   Logger::WriteMessage(L"q1.transferFrom(q2);");
    Logger::WriteMessage(L"\tincoming: q1 = &lt;&gt; and q2 = &lt;&gt;");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;&gt; and q2 = &lt;&gt;");
 
@@ -220,7 +219,7 @@ TEST_METHOD(UT04TransferFrom)
    // Validate clears parameter mode: clears source
    toText(q2, x2);
    Assert::AreEqual(L&quot;&lt;&gt;&quot;, x2);
-} // UT04TransferFrom</pre></td>
+}</pre></td>
     <td width="50%" valign="top"><p class="yellowColor"><em>Explanation of the Execute Operation section</em>:</p>
       <ul>
         <li>This section is for executing the operation under test</li>
@@ -229,7 +228,7 @@ TEST_METHOD(UT04TransferFrom)
       </ul>
       <hr />
       <p><em>UT04TransferFrom's Logger Output</em>:</p>
-      <pre class="lightGrayColor">UT04TransferFrom: q1.transferFrom(q2);
+      <pre class="lightGrayColor">q1.transferFrom(q2);
 	incoming: q1 = &lt;&gt; and q2 = &lt;&gt;
 	outgoing: q1 = &lt;&gt; and q2 = &lt;&gt;</pre></td>
   </tr>
@@ -240,7 +239,7 @@ TEST_METHOD(UT04TransferFrom)
    Text x1, x2;
    Integer k;
 
-   Logger::WriteMessage(L"UT05TransferFrom: q1.transferFrom(q2);");
+   Logger::WriteMessage(L"q1.transferFrom(q2);");
    Logger::WriteMessage(L"\tincoming: q1 = &lt;&gt; and q2 = &lt;17&gt;");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;17&gt; and q2 = &lt;&gt;");
 
@@ -258,7 +257,7 @@ TEST_METHOD(UT04TransferFrom)
    // Validate clears parameter mode: clears source
    toText(q2, x2);
    Assert::AreEqual(L&quot;&lt;&gt;&quot;, x2);
-} // UT05TransferFrom</pre></td>
+}</pre></td>
     <td valign="top"><p class="yellowColor"><em>Explanation of the Validate Ensures section</em>: </p>
       <ul>
         <li>The purpose of this section is to validate that that the tested operation actually did the right thing, i.e., it satisfied its own ensures clause</li>
@@ -287,7 +286,7 @@ TEST_METHOD(UT04TransferFrom)
       </ul>
       <hr />
       <p><em>UT05TransferFrom's Logger Output</em>:</p>
-      <pre class="lightGrayColor">UT05TransferFrom: q1.transferFrom(q2);
+      <pre class="lightGrayColor">q1.transferFrom(q2);
 	incoming: q1 = &lt;&gt; and q2 = &lt;17&gt;
 	outgoing: q1 = &lt;17&gt; and q2 = &lt;&gt;</pre></td>
   </tr>
@@ -299,7 +298,7 @@ TEST_METHOD(UT04TransferFrom)
    Text x1, x2;
    Integer k;
 
-   Logger::WriteMessage(L"UT06TransferFrom: q1.transferFrom(q2);");
+   Logger::WriteMessage(L"q1.transferFrom(q2);");
    Logger::WriteMessage(L"\tincoming: q1 = &lt;10&gt; and q2 = &lt;25&gt;");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;25&gt; and q2 = &lt;&gt;");
 
@@ -319,7 +318,7 @@ TEST_METHOD(UT04TransferFrom)
 <span class="yellowColor">   // Validate clears parameter mode: clears source
    toText(q2, x2);
    Assert::AreEqual(L&quot;&lt;&gt;&quot;, x2);</span>
-} // UT06TransferFrom</pre></td>
+}</pre></td>
     <td valign="top"><p class="yellowColor"><em>Explanation of the Clears Parameter Mode section</em>: </p>
       <ul>
         <li>This section appears in the unit test <em>only if</em> the tested operation has a <em>clears</em> parameter mode for one of its parameters</li>
@@ -332,7 +331,7 @@ TEST_METHOD(UT04TransferFrom)
       </ul>
       <hr />
       <p><em>UT06TransferFrom's Logger Output</em>:</p>
-    <pre class="lightGrayColor">UT06TransferFrom: q1.transferFrom(q2);
+    <pre class="lightGrayColor">q1.transferFrom(q2);
 	incoming: q1 = &lt;10&gt; and q2 = &lt;25&gt;
 	outgoing: q1 = &lt;25&gt; and q2 = &lt;&gt;</pre></td>
   </tr>
@@ -352,7 +351,7 @@ TEST_METHOD(UT07Assignment)
    Text x1, x2;
    Integer k;
 
-   Logger::WriteMessage(L"UT07Assignment: q1 = q2;");
+   Logger::WriteMessage(L"q1 = q2;");
    Logger::WriteMessage(L"\tincoming: q1 = &lt;&gt; and q2 = &lt;27&gt;");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;27&gt; and q2 = &lt;27&gt;");
 
@@ -371,7 +370,7 @@ TEST_METHOD(UT07Assignment)
 <span class="yellowColor">   // Validate restores parameter mode: restores rhs
    toText(q2, x2);
    Assert::AreEqual(L&quot;&lt;27&gt;&quot;, x2);</span>
-} // UT07Assignment</pre></td>
+}</pre></td>
     <td width="50%" valign="top">
     <p class="yellowColor"><em>Explanation of the Restores Parameter Mode section</em>: </p>
     <ul>
@@ -386,7 +385,7 @@ TEST_METHOD(UT07Assignment)
     </ul>
     <hr />
       <p><em>UT07Assignment's Logger Output</em>:</p>
-    <pre class="lightGrayColor">UT07Assignment: q1 = q2;
+    <pre class="lightGrayColor">q1 = q2;
 	incoming: q1 = &lt;&gt; and q2 = &lt;27&gt;
 	outgoing: q1 = &lt;27&gt; and q2 = &lt;27&gt;</pre>
     </td>
@@ -413,7 +412,7 @@ TEST_METHOD(UT08Dequeue)
    Text x1;
    Integer k;
 
-   Logger::WriteMessage(L"UT08Dequeue: q1.dequeue(k);");
+   Logger::WriteMessage(L"q1.dequeue(k);");
    Logger::WriteMessage(L"\tincoming: q1 = &lt;25,30&gt; and k = 0");
    Logger::WriteMessage(L"\toutgoing: q1 = &lt;30&gt; and k = 25");
 
@@ -432,7 +431,7 @@ TEST_METHOD(UT08Dequeue)
    // Validate ensures: self = #self[1, |#self|)
    toText(q1, x1);
    Assert::AreEqual(L&quot;&lt;30&gt;&quot;, x1);</span>
-} // UT08Dequeue
+}
 </pre></td>
     <td width="50%" valign="top">
     <p class="yellowColor"><em>Explanation of the Validate Ensures section - when there are multiple conjuncts</em>: </p>
@@ -446,7 +445,7 @@ TEST_METHOD(UT08Dequeue)
     <p>&nbsp;</p>
     <hr />
       <p><em>UT08Dequeue's Logger Output</em>:</p>
-    <pre class="lightGrayColor">UT08Dequeue: q1.dequeue(k);
+    <pre class="lightGrayColor">q1.dequeue(k);
 	incoming: q1 = &lt;25,30&gt; and k = 0
 	outgoing: q1 = &lt;30&gt; and k = 25</pre>
     </td>
