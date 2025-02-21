@@ -1,0 +1,49 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Dr. Holly">
+   <title>StdOps Abstract Class</title>
+	<!--   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert"></script> -->
+	<link href="../codePrettyPrint/src/C343-dark.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="../codePrettyPrint/src/run_prettify.js?skin=desert"></script>
+</head>
+<body>
+<table border="0" width="100%">
+	<tr>
+		<td>
+		<p align="center"><b>StdOps Abstract Class</b></p></td>
+	</tr>
+</table>
+
+<hr>
+<table align="center" BORDER="1" width="85%">
+<tr>
+<td>
+<pre class="prettyprint">
+template &lt;class T&gt;
+class StdOps
+{
+public: // Standard Operations
+	virtual void clear (void) = 0;
+		//! clears self
+	virtual void transferFrom (T&amp; source) = 0;
+		//! replaces self
+		//! clears source
+		//! ensures: self = #source
+	virtual T&amp; operator = (T&amp; rhs) = 0;
+		//! replaces self
+		//! restores rhs
+		//! ensures: self = rhs
+
+	T* operator &amp; (void) = delete;
+	const T * operator &amp; (void) const = delete;
+private:
+	// Note: Each subclass must delete T's copy constructor
+
+};</pre>
+</td>
+</tr>
+</table>
+</body>
+</html>
