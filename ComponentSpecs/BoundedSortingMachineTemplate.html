@@ -22,7 +22,7 @@
 <td>
 <pre class="prettyprint">
 template &lt;class T, Boolean(*areOrdered)(T&amp;, T&amp;)&gt;
-class BoundedSortingMachine1
+class BoundedSortingMachine1 : public StdOps&lt;BoundedSortingMachine1&lt;T, areOrdered&gt;&gt;, public BoundedSortingMachineKernel&lt;T&gt;
    //! math subtype BOUNDED_SORTING_MACHINE_MODEL 
    //!   is (maxSize: integer, contents: finite multiset of T, inserting: boolean)
 

@@ -22,7 +22,9 @@
 <table align="center" BORDER="1" width="85%">
 <tr>
 <td><pre class="prettyprint">template &lt;class T, Boolean(*isInteresting)(T&amp;)&gt;
-class PartitionableArray1
+class PartitionableArray1 : public StdOps&lt;PartitionableArray1&lt;T, isInteresting&gt;&gt;, 
+	public PartitionableArrayKernel&lt;T&gt;
+
    //! definition INDEX_SET (low: integer, high: integer): finite set of integer
    //!   is {k: integer where (low &lt;= k &lt;= high)}
    //! math subtype PARTITIONABLE_ARRAY_MODEL 

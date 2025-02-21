@@ -21,7 +21,9 @@
 <tr>
 <td>
 <pre class="prettyprint">template &lt;class T, int lowerBound, int upperBound&gt;
-class StaticArray1
+class StaticArray1 : public StdOps&lt;StaticArray1&lt;T, lowerBound, upperBound&gt;&gt;,
+	public StaticArrayKernel&lt;T, lowerBound, upperBound&gt;
+
    //! definition INDEX_SET (low: integer, high: integer): finite set of integer
    //!   is {k: integer where (low &lt;= k &lt;= high)}
    

@@ -21,7 +21,7 @@
 <td>
 <pre class="prettyprint">
 template &lt;class T&gt;
-class BinaryTree1
+class BinaryTree1 : public StdOps&lt;BinaryTree1&lt;T&gt;&gt;, public BinaryTreeKernel&lt;BinaryTree1&lt;T&gt;, T&gt;
 	//! BinaryTree1 is modeled by tuple of
 	//!      label: T
 	//!      leftSubtree: BinaryTree1

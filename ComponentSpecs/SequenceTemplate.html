@@ -22,7 +22,7 @@
 <td>
 <pre class="prettyprint">
 template &lt;class T&gt;
-class Sequence1
+class Sequence1 : public StdOps&lt;Sequence1&lt;T&gt;&gt;, public SequenceKernel&lt;Sequence1&lt;T&gt;, T&gt;
    //! is modeled by string of T
    //! exemplar self
 {

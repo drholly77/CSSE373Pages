@@ -22,7 +22,7 @@
 <td>
 <pre class="prettyprint">
 template &lt;class T, int maxLength&gt;
-class BoundedQueue1
+class BoundedQueue1 : public StdOps&lt;BoundedQueue1&lt;T, maxLength&gt;&gt;, public BoundedQueueKernel&lt;T, maxLength&gt;
    //! requires: 1 &le; maxLength
     
    //! is modeled by string of T

@@ -24,7 +24,7 @@
 
 <pre class="prettyprint">
 template &lt;class T&gt;
-class List1
+class List1 : public StdOps&lt;List1&lt;T&gt;&gt;, public ListKernel&lt;List1&lt;T&gt;, T&gt;
    //! is modeled by (
    //!      left: string of T
    //!      right: string of T
