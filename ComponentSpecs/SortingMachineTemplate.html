@@ -22,7 +22,7 @@
 <td>
 <pre class="prettyprint">
 template &lt;class T, Boolean(*areOrdered)(T&amp;, T&amp;)&gt;
-class SortingMachine1
+class SortingMachine1 : public StdOps&lt;SortingMachine1&lt;T, areOrdered&gt;&gt;, SortingMachineKernel&lt;T&gt;
    //! math subtype SORTING_MACHINE_MODEL 
    //!   is (contents: finite multiset of T, inserting: boolean)
 

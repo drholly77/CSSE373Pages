@@ -21,7 +21,7 @@
 <tr>
 <td>
 <pre class="prettyprint">template &lt;class K, class V&gt;
-class Map1
+class Map1 : public StdOps&lt;Map1&lt;K, V&gt;&gt;, public MapKernel&lt;K, V&gt;
    //! math subtype MAP_MODEL is finite set of (key: K, value: V)
    //!   exemplar m
    //!   constraint &forall; key: K (&forall; r1, r2: V (((key, r1) &isin; m and (key, r2) &isin; m) &rarr; (r1 = r2)))

@@ -22,7 +22,7 @@
 <td>
 <pre class="prettyprint">
 template &lt;class T&gt;
-class PreemptableQueue1
+class PreemptableQueue1 : public StdOps&lt;PreemptableQueue1&lt;T&gt;&gt;, public PreemptableQueueKernel&lt;T&gt;
    //! is modeled by string of T
    //! exemplar self
 {

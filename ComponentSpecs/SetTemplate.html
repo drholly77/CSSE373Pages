@@ -22,7 +22,7 @@
 <td>
 <pre class="prettyprint">
 template &lt;class T&gt;
-class Set1
+class Set1 : public StdOps&lt;Set1&lt;T&gt;&gt;, public SetKernel&lt;T&gt;
    //! is modeled by FiniteSet of T
    //! exemplar self
 {

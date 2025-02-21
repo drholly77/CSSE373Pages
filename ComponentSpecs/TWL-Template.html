@@ -22,7 +22,7 @@
 <tr>
 <td>
 <pre class="prettyprint">template &lt;class T&gt;
-class TwoWayList1
+class TwoWayList1 : public StdOps&lt;TwoWayList1&lt;T&gt;&gt;, public TwoWayListKernel&lt;TwoWayList1&lt;T&gt;, T&gt;
    //! is modeled by (
    //!      left: string of T
    //!      right: string of T
