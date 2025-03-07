@@ -41,6 +41,7 @@
 <p>Make a command interpreter that works with an array of Sequences instead of
   just two Sequences.&nbsp; This permits the user at the keyboard to work with more than two 
   Sequences, and it actually reduces the amount of code in our command interpreter.</p>
+	<p>Even in today's world of JUnit type testing, command interpreters come in quite handy for testing modules that are difficult to test using JUnit tests. Usually these modules are buried deep in a large application, and it is difficult to create JUnit tests that create the correct kind of test inputs.</p>
 <h4>Setup Steps:</h4>
 <table width="100%" border="0">
   <tbody>
@@ -49,14 +50,20 @@
 	    <p>For Steps 1 - 5 (below) reference the following web page <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">Creating and building empty projects</a></p>
 		  <ol>
           <li><strong>Create</strong> a new Visual Studio Empty Project, name the project <em>L1</em> and make it subordinate to the csse373devenv202530-YourUserID repo folder</li>
-          <li><strong>Copy</strong> (don't move) two files: (1) the <em>driver.cpp</em> and (2) <em>TextSeq.h</em> from the <u>csse373devenv202530-YourUserID/SeqDriver</u> folder to the newly created
-            L1 folder <br>
-            (VS created the L1  folder in Step 1)</li>
-          <li><strong>Add</strong> .cpp files to your project's Source Files folder. 
-			  <ol type="a"><li>First add the <em>driver.cpp</em> (that you copied) to the project's Source Files folder</li>
+          <li><strong>Copy</strong> (don't move) 4 items from the <u>csse373devenv202530-YourUserID/SeqDriver</u> folder to the newly created L1 folder (created by VisualStudio in Step 1):
+			  <ol><li><em>driver.cpp</em></li>
+				  <li><em>TextSeq.h</em></li>
+				  <li><em>TestFolder</em> - a folder</li>
+				  <li><em>TestScripts</em> - a folder</li>
+			  </ol></li>
+          <li><strong>Add</strong> .cpp files to your project's Source Files folder:
+		    <ol><li>First add the <em>driver.cpp</em> (that you copied) to the project's Source Files folder</li>
 				  <li>Then add the wrapper folder (VS calls it a filter) and its subordinate .cpp files.</li> 
-				  <li>When finished with this step, your project should look like the screen shot to the right.</li></ol></li>
-          <li><strong>Add</strong> the <em>TextSeq.h</em> file to your project's Header Files folder.</li>
+				  </ol></li>
+          <li><strong>Add</strong> a .h file to your project's Header Files folder:
+		    <ul><li><em>TextSeq.h</em></li>
+			  <li>When finished with this step, your project should look like the screen shot to the right.</li></ul>
+			  </li>
           <li><strong>Change</strong> the project settings</li>
           <li><strong>Build</strong> the project. If all steps up to this point were done correctly, it should build without any errors&nbsp;</li>
           <li>To run this program click: <em>Debug | Start Debugging</em> from the menu bar in Visual Studio</li>
@@ -75,10 +82,10 @@
 </ul>
 <h4>To Do Specifics:</h4>
 <ol>
-  <li>Start at the top of <em>driver.cpp</em> with the &quot;#include&quot;s and the typedefs to create an array of Sequence's - see Example 2.1 (below)</li>
-  <li>Then move on to <em>main</em> - see Example 2.2</li>
-  <li>Then change all operations that  end up being called by <em>main</em>, e.g., the commandController,  the <em>do</em> operations, the file input and output operations, etc. - see Example 2.3</li>
-  <li>Also, you must  modify <em>getIndex</em> - see Example 2.4 </li>
+  <li><em>driver.cpp</em> #include's <em>TextSeq.h</em>. You'll first modify TextSeq.h to make it create a StaticArray of Sequences (the code for this is below in Section 2.1)</li>
+  <li>Then move on to <em>main</em> - see Section 2.2</li>
+  <li>Then change all operations that end up being called by <em>main</em>, e.g., the <em>commandController</em>, <em>dispatchCommand</em>, the <em>do</em> operations, etc. - see Section 2.3</li>
+  <li>Also, you must  modify <em>getIndex</em> - see Section 2.4 </li>
 </ol>
 <h2>2. Code Examples</h2>
 <h3>2.1 - Creating a StaticArray of Sequences of Text</h3>
@@ -88,14 +95,14 @@
     <table border="1" width="55%">
       <tr>
         <td  valign="top"><code><font size="2">// Array of Sequence&lt;Text&gt;<br>
-          // Date: 3/2022<br>
+          // Date: 3/2025<br>
           <br>
           #<b>include</b> &quot;Sequence/Sequence4.hpp&quot;<br>
           #<b>include</b> &quot;StaticArray/StaticArray1.hpp&quot;<br>
           <br>
           // First create a named instance of Sequence that holds Text objects
 			<br>
-          <b>typedef</b> Sequence4 &lt;Text&gt; TextSequence;<br>
+          <b>typedef</b> Sequence4&lt;Text&gt; TextSequence;<br>
           <br>
 			// No Magic Numbers allowed
 			<br>
@@ -103,13 +110,13 @@
 		 <br>
 		  <strong>enum</strong> {lowerBound = 0, upperBound = 4, arraySize = 5};<br>
           // Create named instance called ArrayOfSequences, which is indexed from 0..4<br>
-          <b>typedef</b> StaticArray1 &lt;TextSequence, lowerBound, upperBound&gt; ArrayOfSequences;</font></code></td>
+          <b>typedef</b> StaticArray1&lt;TextSequence, lowerBound, upperBound&gt; ArrayOfSequences;</font></code></td>
    
       </tr>
     </table>
   </center>
 </div>
-<h3>2.2 - Changes to <em>main</em> - the <em>main</em> below has been completed, use it to replace L1's main in driver.cpp</h3>
+<h3>2.2 - Changes to <em>main</em> - the <em>main</em> below is ready to go, use it to replace L1's main in driver.cpp</h3>
 <div align="center">
   <center>
     <table border="1" width="90%">
@@ -129,12 +136,38 @@
     </table>
   </center>
 </div>
-<h3>2.3 - Changes to <em>do</em> operations - the <em>doAdd</em> is completed, use it and then modify all other <em>do</em> operations similarly</h3>
+<h3>2.3 - Changes to: commandController, dispatchCommand, and the <em>do</em> operations</h3>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><ul>
+        <li>Below is the code for <em>doAdd</em>,  replace driver.cpp's existing doAdd with the code below</li>
+        <li>Pay attention to doAdd's parameters, many of the other operations are parameterized similarly</li>
+        <li>The screenshot to the right shows the headers for all the operations including their parameters</li>
+        <li>The operations inscribed by the green rectangles in the screenshot to the right must be modified to work with the ArrayOfSequences</li>
+        <li>I recommend  taking an incremental approach to making these changes (i.e., not a <em>big bang</em> approach)
+			<ol>
+				<li>Use mutli-line comments, i.e., /* ... */, to comment out all the <em>do</em> operations except <em>doAdd</em></li>
+				<li>Change out the code for <em>doAdd</em> using the code below</li>
+				<li>Proceed with updating the <em>getIndex</em> operation</li>
+				<li>Then update the <em>commandController</em> operation</li>
+				<li>Followed by the <em>dispatchCommand</em> operation.<br>
+					When working on <em>dispatchCommand</em> comment out all the cases that make calls to the <em>do</em> operations that you commented out in #1 (above)</li>
+				<li>Get the project to build and run with just the new <em>doAdd</em></li>
+				<li>Then, one at a time, work on the remaining <em>do</em> operations, e.g., <em>doClear</em>, <em>doRemove</em>, etc.</li>
+			</ol><br>
+		</li>
+      </ul></td>
+      <td><img src="operationHeaders.png" width="507" height="491" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
 <div align="center">
   <center>
     <table border="2" width="95%">
       <tr>
-        <td width="100%"><pre><strong>void</strong> doAdd (ArrayOfSequences&amp; aS)   // Note: the '&amp;' after the type name means 'pass by reference' in C++
+        <td width="100%"><pre><strong>void</strong> doAdd (ArrayOfSequences&amp; aS)   
+// Note: the '&amp;' after the ArrayOfSequences type name means 'pass by reference' in C++
 {
 	Integer i, p;
 	Text x;
@@ -172,22 +205,33 @@
   <tbody>
     <tr>
       <td valign="top"><p>After a successful build, run your program by clicking <em>Debug | Start Debugging</em> from the menu bar in Visual Studio. This will bring up a window similar to the one to the right</p>
-        <p>You can test the program at least&nbsp; 3 different ways:</p>
+        <p>You can test the program at least 2 different ways:</p>
         <ol>
-          <li>Run the program and type in commands at the command prompt to exercise each of the<em> </em>operations that were modified</li>
-          <li>In the folder <em>csse373devenv202530-YourUserID/SeqDriver</em> there is a sub-folder called <em>TestScripts</em> which contains .txt files. <br>
-This folder also contains <em>L1Sol.exe</em> which is a solution to this lab. You must make your <em>L1.exe</em> run exactly like <em>L1Sol.exe</em>. In the <b>Grading</b> section below you will find out what is meant by <i>exactly</i>.<br>
-Each .txt contains a sequence of command interpreter commands for the original SeqDriver implementation (which uses only two Sequences). If you utilize these test scripts, you'll need to first study them to understand what they are asking the command interpreter to do, and then modify them slightly to work with your command interpreter that uses an array of sequences. Instead of running and retyping commands, you can run your command interpreter and then copy and paste modified tests scripts into your command interpreter while its running. </li>
-          <li>You can place them in  either the <em>L1/Debug</em> folder and run the command interpreter from a command prompt and use file redirection to feed your test scripts into your L1.exe. See the <em>Testing - With a Test Script</em> reference page.</li>
+          <li>Run the program and type in your commands at the command prompt to exercise each of the<em> </em>operations that were modified, e.g., <em>doAdd</em><br><br></li>
+          <li>The <em>TestScripts</em> folder contains numerous .txt files:
+			  <ul>
+			  <li>Each .txt contains commands to be input into your command interpreter. They all work for the original SeqDriver implementation (which uses only two Sequences, s1 and s2). </li>
+			  <li>Instead of retyping commands each time you run your command interpreter, you can run it and then copy and paste these tests scripts into your command interpreter while its running - it will execute all the commands that you paste in</li>
+			  <li>If you utilize these test scripts, you'll need to first study them to understand what they are asking the command interpreter to do, and then modify <em>some</em> of them slightly to work with your command interpreter that uses an <em>array</em> of sequences. The ones that require modifying are the ones that work on two sequences, e.g., append, split, etc.</li></ul>
+			<br>The <em>TestFolder</em> contains the following:
+			  <ul>
+				  <li><em>L1Sol.exe</em> which is a solution to this lab</li>
+				  <li><em>runScripts.bat</em> which is Windows batch file which will run all the test scripts (one after another) on either L1Sol.exe, or your L1.exe</li>
+				  <li>To learn how to use <em>runScripts.bat</em>, navigate to this folder and read the <em>AAAreadme.txt</em> file and the code comments in <em>runScripts.bat</em></li>
+				  <li><strong>Note</strong>: You must make your <em>L1.exe</em> run exactly like <em>L1Sol.exe</em>.
+				  <br>
+				  In the <b>Grading</b> section below you will find out what is meant by <i>exactly</i></li>
+			</ul>
+		  </li>
         </ol></td>
       <td width="360" align="right"><img src="L1Running.png" width="355" height="382" alt=""/></td>
     </tr>
   </tbody>
 </table>
 <h2>4. Grading</h2>
-<p>In the folder csse373devenv202530-YourUserID/SeqDriver/TestFolder is <em>L1Sol.exe</em>. This executable is my solution to L1.</p>
+<p>In the <em>TestFolder</em> folder  is <em>L1Sol.exe</em>. This executable is my solution to L1.</p>
 <p>Your submission will be graded by running various test scripts against your <em>L1.exe</em> and then using FC (a File Compare tool) to compare the output from your <em>L1.exe</em> against the output from <em>L1Sol.exe</em>. FC does a character by character comparison.</p>
-<p>It's highly recommend that you do not try to use the <em>eyeball method</em> compare your <em>L1.exe</em>'s output with the output from <em>L1Sol.exe</em> because FC detects all character differences, even whitespace differences. I recommend that you run both L1.exe and L1Sol.exe on the test scripts found in SeqDriver/Testscripts, and compare the two outputs against each other using FC. You are finished when FC reports &quot;no differences found&quot;.</p>
+<p>It's highly recommend that you do not try to use the <em>eyeball method</em> compare your <em>L1.exe</em>'s output with the output from <em>L1Sol.exe</em> because FC detects all character differences, even whitespace differences. I recommend that you run both L1.exe and L1Sol.exe on the test scripts found in <em>TestScripts</em>, and compare the two outputs against each other using FC. You are finished when FC reports &quot;no differences found&quot;.</p>
 <p>See the Grading Rubric associated with the L1 Moodle assignment</p>
 <p>&nbsp;</p>
 <h2>5. Submitting the Assignment for Grading</h2>
