@@ -1,0 +1,93 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Dr. Holly">
+   <title>SimpleQueue from CSSE230's StacksAndQueues Assignment</title>
+	<!--   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert"></script> -->
+	<link href="../codePrettyPrint/src/C343-dark.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="../codePrettyPrint/src/run_prettify.js?skin=desert"></script>
+</head>
+<body>
+<table border="0" width="100%">
+	<tr>
+		<td>
+		<p align="center"><b>SimpleQueue from CSSE230's StacksAndQueues Assignment</b></p></td>
+	</tr>
+</table>
+
+<hr>
+<table align="center" BORDER="1" width="85%">
+<tr>
+<td>
+<pre class="prettyprint">
+package queues;
+import java.util.NoSuchElementException;
+
+public interface SimpleQueue&lt;T&gt; {
+
+	/**
+	 * Removes all the items from this queue and everything back to the initial
+	 * state, including setting its capacity back to the initial capacity.
+	 */
+	public void clear();
+
+	/**
+	 * Adds the given item to the tail of the queue, resizing the internal array
+	 * if needed.
+	 * 
+	 * @param item
+	 */
+	public void enqueue(T item);
+
+	/**
+	 * Removes and returns the item at the head of the queue.
+	 * 
+	 * @return The item at the head of the queue.
+	 * @throws NoSuchElementException
+	 *             If the queue is empty.
+	 */
+	public T dequeue() throws NoSuchElementException;
+
+	/**
+	 * Returns the item at the head of the queue without mutating the queue.
+	 * 
+	 * @return The item at the head of the queue.
+	 * @throws NoSuchElementException
+	 *             If the queue is empty.
+	 */
+	public T peek() throws NoSuchElementException;
+
+	/**
+	 * @return True if and only if the queue contains no items.
+	 */
+	public boolean isEmpty();
+
+	/**
+	 * @return The number of items in this queue.
+	 */
+	public int size();
+
+	/**
+	 * Searches for the given item in this queue.
+	 * 
+	 * @param item
+	 * @return True if the item is contained within the queue.
+	 */
+	public boolean contains(T item);
+
+	/**
+	 * Displays the contents of the queue in insertion order, with the
+	 * most-recently inserted one last, regardless of the implementation. Each
+	 * adjacent pair will be separated by a comma and a space, and the whole
+	 * contents will be bounded by square brackets. See the unit tests for
+	 * examples.
+	 */
+	@Override
+	public String toString();	
+}</pre>
+</td>
+</tr>
+</table>
+</body>
+</html>
