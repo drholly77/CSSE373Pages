@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Unit Testing Sequence Component</title>
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<h1>Unit Testing Sequence Component</h1>
+<h3>0. Reference material</h3>
+	<ul>
+	<li><a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">Visual Studio Specific Topics</a></li>
+	<li><a href="https://drholly77.github.io/CSSE373Pages/Testing/ConstructingUnitTests.html" target="_blank">Constructing Unit Tests</a></li>
+	<li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/SequenceTemplate.html" target="_blank">Sequence Spec</a></li>
+	</ul>
+
+<hr>
+	
+<h3>1. Creating a unit test driver</h3>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td valign="top">
+  <h4>Setup Part 1) </h4>
+  <p>Create  a VS2022 <em>unit test </em>project called:<em> L2</em></p>
+  <ol>
+    <li>Navigate to the CSSE373 Moodle site, on the right hand side click on the Useful Link: <em>VS Studio Stuff</em></li>
+    <li>Follow the instructions in the two web pages under: <em>Creating unit test projects</em><br>
+      When you start up VS2022, be sure to open (and do all your work in) the 373 repo you created in L0</li>
+    <li>Set Up the Wrapper Folder by the instructions in the web page: <em>Adding .cpp Files to a Project</em> </li>
+</ol>
+  <p>When you are finished with the 3 steps above your L2 unit test project should:</p>
+  <ul>
+    <li>look like the screen shot to the right</li>
+    <li>and sucessfully Build</li>
+  </ul></td>
+<td width="250"><img src="L2Sp22SolExp.png" width="266" height="249" alt=""/></td>
+</tr>
+<tr>
+  <td valign="top">
+    <h4>Setup Part 2) </h4>
+    <p>Create  <em>IntegerSeq.h</em></p>
+    <ol>
+      <li>Find the folder csse373devenv202530-YourUserID\Queue1UTRV1 and copy a file named <em>IntegerQueue.h</em> from that folder to the folder csse373devenv202530-YourUserID\L2</li>
+      <li>Rename <em>IntegerQueue.h</em> to <em>IntegerSeq.h</em></li>
+    </ol></td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td valign="top"><h4>Setup Part 3) </h4>
+    <p>In Visual Studio, add the <em>IntegerSeq.h</em> file to the Header Files folder</p>
+    <ol>
+      <li>Right click the Header Files folder in the Solution</li>
+      <li>Click &quot;Add Existing Item&quot; to add the <em>IntegerSeq.h</em> file to the Header Files solution folder</li>
+    </ol>
+    <p>When you are finished with the 3 steps above your L2 unit test project should:</p>
+    <ul>
+      <li> look like the screen shot to the right</li>
+      <li>and still successfully Build</li>
+    </ul></td>
+  <td><img src="L2Sp22SolExpFinal.png" width="320" height="288" alt=""/></td>
+</tr>
+<tr>
+  <td valign="top"><h4>Setup Part 4) </h4>
+    <p>Edit the file <em>IntegerSeq.h </em></p>
+    <ol>
+      <li>While in Visual Studio, double click the IntegerSeq.h file name found in the Header Files folder</li>
+      <li>Edit this file by changing the following:
+        <ul>
+          <li>#include "Sequence\Sequence4.hpp" instead of Queue\Queue1</li>
+          <li>typedef <em>IntegerSeq</em> from <em>Sequence4</em> instead of IntegerQueue from Queue1</li>
+        </ul>
+      </li>
+      </ol></td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td valign="top"><h4>Setup Part 5) </h4>
+    <p>Edit the top of the file <em>L2.cpp</em> by adding the following 6 lines</p>
+<pre>#include "Wrapper.h"
+#include "IntegerSeq.h"</pre>
+
+    <p>When you are finished, the file should look like L2.cpp file should look like the following:</p></td>
+  <td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<table border="1" width="70%">
+<tbody>
+<tr>
+<td><pre>#<strong>include</strong> "pch.h"
+#<strong>include</strong> "CppUnitTest.h"
+#<strong>include</strong> "Wrapper.h"
+#<strong>include</strong> "IntegerSeq.h"
+
+<strong>using</strong> <strong>namespace</strong> Microsoft::VisualStudio::CppUnitTestFramework;
+
+namespace L2
+{      
+   TEST_CLASS(UnitTest1)
+   {
+   <strong>public</strong>:
+      
+      TEST_METHOD(TestMethod1)
+      {
+         // TODO: Your test code here
+      }
+
+   };
+}</pre></td>
+</tr>
+</tbody>
+</table>
+<h4>Setup Part 6)</h4>
+<p>Build your project</p>
+<ol>
+  <li>Click from the menu bar: Build | Build Solution</li>
+  <li>You should not have any build errors, if you do then one of the steps above was done incorrectly. You'll need to fix it before moving on</li>
+</ol>
+<hr />
+
+<h3>2. Create Test Cases For IntegerSeq</h3>
+<h4>2.1 Requirements for constructing a unit test procedure </h4>
+<ul>
+  <li>From the CSSE373 Moodle site, follow the  reference material <em>Constructing Unit Tests</em>  unit tests</li>
+  <li>It will help you to reference the examples of Queue unit tests which can be found in the file <em>Queue1UT.cpp</em> in the folder <u>csse373devenv202530-YourUserID\Queue1UT</u></li>
+</ul>
+<h4>2.2 Create the following unit test procedures for IntegerSeq</h4>
+<ul>
+  <li>Edit the <em>L2.cpp</em> file in your L2 project and create unit test procedures</li>
+  <li>Below is a Sequence of 11 unit tests that you must create for this lab</li>
+  <li>Use the name as given in each of the 11 unit tests</li>
+  <li>Make each test use the provided incoming values shown below</li>
+  <li>Make each unit test correctly verify that the operation performed its required function according to the operation's spec</li>
+  <ul>
+	<li><em>Constructing Unit Tests</em> lists 8 sections that a unit test can have</li>
+	<li>Each of your unit tests must have sections 1 - 3 and 5 - 6</li>
+	<li>Section 4 must appear if a test setup is required</li>
+	<li>Section 7 must appear if a <em>clears</em> parameter mode is used</li>
+	<li>Section 8 must appear if a <em>restores</em> parameter mode is used</li>
+  </ul>
+</ul>
+<table style="width: 50%;" border="1">
+<tbody>
+<tr>
+<td valign="top">
+
+<pre>UT01Constructor: Sequence4();
+	outgoing: s1 = &lt;&gt;
+UT02Clear: s1.clear();
+	incoming: s1 = &lt;&gt;
+	outgoing: s1 = &lt;&gt;
+UT03TransferFrom: s1.transferFrom(s2);
+	incoming: s1 = &lt;&gt; and s2 = &lt;&gt;
+	outgoing: s1 = &lt;&gt; and s2 = &lt;&gt;
+UT04Assignment: s1 = s2;
+	incoming: s1 = &lt;&gt; and s2 = &lt;&gt;
+	outgoing: s1 = &lt;&gt; and s2 = &lt;&gt;
+UT05Add: s1.add(pos, k);
+	incoming: s1 = &lt;&gt; and pos = 0 and k = 15
+	outgoing: s1 = &lt;15&gt; and pos = 0 and k = 0
+UT06Remove: s1.remove(pos, k);
+	incoming: s1 = &lt;10,20,30&gt; and pos = 1 and k = 0
+	outgoing: s1 = &lt;10,30&gt; and pos = 1 and k = 20
+UT07ReplaceEntry: s1.replaceEntry(pos, k);
+	incoming: s1 = &lt;10,20,30&gt; and pos = 2 and k = -30
+	outgoing: s1 = &lt;10,20,-30&gt; and pos = 2 and k = 30
+UT08Entry: s1.entry(pos);
+	incoming: s1 = &lt;10,20,30&gt; and pos = 2
+	outgoing: s1 = &lt;10,20,30&gt; and pos = 2
+UT09Append: s2.append(s1);
+	incoming: s1 = &lt;30,40&gt; and s2 = &lt;10,20&gt;
+	outgoing: s1 = &lt;&gt; and s2 = &lt;10,20,30,40&gt;
+UT10Split: s2.split(pos, s1);
+	incoming: s1 = &lt;-30&gt; and pos = 1 and s2 = &lt;10,20,30,40&gt;
+	outgoing: s1 = &lt;20,30,40&gt; and pos = 1 and s2 = &lt;10&gt;
+UT11Length: s1.length();
+	incoming: s1 = &lt;&gt;
+	outgoing: s1 = &lt;&gt;</pre>
+	</td>
+	</tr>
+	</tbody>
+	</table>
+    
+ 
+<h4>2.3 Running the Unit Tests</h4>
+
+<p>First open the Test Explorer Window</p>
+<p><img src="ShowUnitTestWindowVS2022.png" width="747" height="416" alt=""/></p>
+<p>From the Test Explorer Window, click the Run All link</p>
+<p><img src="L2Sp22TestExplorer.png" width="252" height="359" alt=""/></p>
+<p>To see output from running unit tests</p>
+<p><img src="VS2022OutputWindow.png" width="900" height="600" alt=""/></p>
+<hr />
+
+	
+<h3>3. Auto testing your test cases against instructor's solution</h3>
+	<table width="100%" border="0">
+	  <tbody>
+	    <tr>
+	      <td  valign="top"><h4>3.1) Install AutoTesting Folder</h4>
+			  <ol>
+			  <li>Return to the L2 Moodle assignment and download the AutoTesting.zip file</li>
+			  <li>Unzip it</li>
+			  <li>Use Windows File Explorer to place the unzipped AutoTesting folder in the csse373devenv202530-YourUserID\L2 folder</li>
+			  </ol>
+	       
+          <p>When finished and the next time you start up VS2022 your <i>Folder View</i> for L2 will look like the screen shot to the right.</p></td>
+	      <td width="325" valign="top"><img src="L2Sp22FolderView.png" width="320" height="415" alt=""/>  </td>
+        </tr>
+	    <tr>
+	      <td  valign="top"><h4>3.2)  Generating solution output </h4>
+            <ul>
+              <li>There are 2 L2Sol .dll files in AutoTesting (shown to the right) <br>
+              These contain the instructor's solution to L2<br>
+              One .dll is built in Release configuration, the other is built in Debug configuration<br>
+              <br>
+              </li>
+              <li>The <em>01- batch file</em> uses an MS supplied tool to run the test scripts found in both these L2Sol .dll files and captures their output to 2 separate text files</li>
+              <li>From Windows File Explorer, double click the <em>01- batch file</em> and it will create:<br>
+<em>solutionOutput-Debug.txt</em> and <em>solutionOutput-Release.txt</em></li>
+				<li>You only need to run <em>01- batch file</em> one time</li>
+          </ul></td>
+	      <td valign="top"><img src="L2Sp22AutoTestingFolder.png" width="321" height="283" alt=""/> </td>
+        </tr>
+      </tbody>
+</table>
+	
+<h4>3.3)  Generating your test script output </h4>
+	
+	<ul>
+	  <li>Return to VS2022 and build your project in both Release configuration and Debug configuration<br>
+      See <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">Visual Studio Specific Topics</a> for how to change from one configuration to the other </li>
+	</ul>
+	<p><strong>Work on differences in Release configuration</strong></p>
+	<ol>
+	  <li>Return to Windows File Explorer and double click the <em>02- batch file</em>, this will run the test scripts in  the Release configuration of your  L2.dll file and generate the file <em>yourOutput-Release.txt</em> </li>
+	  <li>Double click the <em>03- batch file</em> this will run FC to compare <em>solutionOutput-Release.txt</em> with <em>yourOutput-Release.txt</em><br>
+	  This batch file will capture the output in: <em>FCdiffs-Release.txt</em> </li>
+
+	  <li>Inspect <em>FCdiffs-Release.txt</em> if you find any differences, then modify your L2 project (in Release configuration) to eliminate these differences</li>
+	</ol>
+	<ul>
+			  <li>Note: you do not have to eliminate differences due to timing or differences that look like the following:<br>
+      <em>Passed UT02Clear [&lt; 1 ms]</em> <br>
+      These <em>Passed</em> differences, if they happen, occur because the test scripts sometimes get executed in different order</li>
+	  <li>Repeat running the <em>02- and 03- batch files</em> as necessary, i.e., redo steps 1 - 3 until you have eliminated the differences that show up in <em>FCdiffs-Release.txt</em></li>
+</ul>
+	
+<p><strong>Work on differences in Debug configuration</strong></p>
+	<ol>
+	  <li>Return to Windows File Explorer and double click the <em>04- batch file</em>, this will run the test scripts in the Debug configuration of your L2.dll file and generate the file <em>yourOutput-Debug.txt</em> </li>
+	  <li>Double click the <em>05- batch file</em> this will run FC to compare <em>solutionOutput-Debug.txt</em> with <em>yourOutput-Debug.txt</em><br>
+	  This batch file will capture the output in: <em>FCdiffs-Debug.txt</em> </li>
+	  <li>Inspect <em>FCdiffs-Debug.txt</em> if you find any differences  then modify your L2 project (in Debug configuration)  to eliminate these differences</li>
+	</ol>
+	<ul>
+	  <li>Note: you do not have to eliminate differences due to timing or differences that look like the following:<br>
+      <em>Passed UT02Clear [&lt; 1 ms]</em> <br>
+      These <em>Passed</em> differences, if they happen, occur because the test scripts sometimes get executed in different order</li>
+	  <li>Repeat running the <em>04- and 05- batch files</em> as necessary, i.e., redo steps 1 - 3 until you have eliminated the differences that show up in <em>FCdiffs-Debug.txt</em></li>
+</ul>
+
+	<hr />
+<h3>4. Submitting the Assignment for Grading</h3>
+	<ul>
+	<li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your L2 project to your GitHub Education CSSE373 repo</li>
+	<li>Use the commit message &quot;L2 final commit, ready for grading&quot;</li>
+	</ul>
+<p>&nbsp;</p>
+
+</body>
+</html>
