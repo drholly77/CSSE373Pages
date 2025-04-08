@@ -1,0 +1,80 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Dr. Holly">
+   <title>BoundedStack Template</title>
+	<!--   <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert"></script> -->
+	<link href="../codePrettyPrint/src/C343-dark.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="../codePrettyPrint/src/run_prettify.js?skin=desert"></script>
+</head>
+<body>
+<table border="0" width="100%">
+	<tr>
+		<td>
+		<p align="center"><b>BoundedStack Template</b></p></td>
+	</tr>
+</table>
+
+<hr>
+<table align="center" BORDER="1" width="85%">
+<tr>
+<td>
+<pre class="prettyprint">
+template &lt;class T, int maxLength&gt;
+class BoundedStack1
+   //! requires 1: &le; maxLength
+
+   //! is modeled by string of T
+   //! exemplar self
+   //! constraint |self| &le; maxLength
+{
+public: // Standard Operations
+   BoundedStack1 ();
+      //! replaces self
+      //! ensures: self = &lt;&gt;
+   ~BoundedStack1 ();
+   void clear (void);
+      //! clears self
+   void transferFrom (BoundedStack1&amp; source);
+      //! replaces self
+      //! clears source
+      //! ensures: self = #source
+   BoundedStack1&amp; operator = (BoundedStack1&amp; rhs);
+      //! replaces self
+      //! restores rhs
+      //! ensures: self = rhs
+
+   // BoundedStack1 Specific Operations
+   void push (T&amp; x);
+      //! updates self
+      //! clears x
+      //! requires |self| + 1 &le; maxLength
+      //! ensures: self = &lt;#x&gt; * #self
+   void pop (T&amp; x);
+      //! updates self
+      //! replaces x
+      //! requires: self /= &lt;&gt;
+      //! ensures: &lt;x&gt; = #self[0,1)  and  self = #self[1, |#self|)
+   void replaceTop (T&amp; x);
+      //! updates self, x
+      //! requires: self /= &lt;&gt;
+      //! ensures: &lt;x&gt; = #self[0,1)  and  self = &lt;#x&gt; * #self[1, |#self|)
+   T&amp; top (void);
+      //! restores self
+      //! requires: self /= &lt;&gt;
+      //! ensures: &lt;top&gt; = self[0,1)
+   Integer length (void);
+      //! restores self
+      //! ensures: length = |self|
+   Integer remainingCapacity (void);
+      //! restores self
+      //! ensures: remainingCapacity = maxLength - |self|
+      
+private: // Representation
+};</pre>
+</td>
+</tr>
+</table>
+</body>
+</html>
