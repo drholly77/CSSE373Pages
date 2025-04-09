@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Layering a Component</title>
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Implementing a Component in Raw C++</h1>
+<hr>
+<h3>1. Setup</h3>
+<table border="0" width="100%">
+  <tbody>
+    <tr>
+      <td valign="top"><h4>1.1 Get the L5Starter Download</h4>
+        <ul>
+          <li>Download <em>L5Starter.zip</em>&nbsp;to your machine - to be used on a subsequent steps</li>
+        </ul></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top"><h4>1.2 Copy List0.hpp from the L5Starter.zip</h4>
+        <ul>
+          <li>Inside L5Starter.zip is a file named List0.hpp
+            <ul>
+              <li>For this assignment you will be making changes to this file</li>
+            </ul>
+          </li>
+          <li>Use Windows' File Explorer to copy List0.hpp to the following folder in your repo: <em>csse373devenv202x30-yourID\components\include\List </em></li>
+        </ul>
+        <h4>1.3 Copy L5R folder from the L5Starter.zip</h4>
+        <ul>
+          <li>Inside L5Starter.zip is one  folder named L5R </li>
+          <li>Use Windows' File Explorer to copy this folder to your <em>csse373devenv202x30-yourID</em> folder as shown in the screen shot to the right</li>
+          <li>Once you copy this folder you can use VS2022 to open L5R by double clicking on L5R.sln</li>
+        </ul>
+        <h4>1.4 About Project L5R</h4>
+        <ul>
+          <li>It contains a Visual Studio 2022 unit test project</li>
+          <li>L5R will build correctly if you have followed the instructions in 1.1 - 1.3 (above) and have the static library WrapperR.lib is located in the Wrapper\lib folder</li>
+          <li>Is to be used only in Release mode - that's what the 'R' of L5R stands for<br>
+            Double check that it is in Release mode when you open up the L5R project</li>
+          <li>L5R.cpp contains unit tests for List0.hpp using the List's abstract value, not it's internal representation</li>
+        </ul></td>
+      <td valign="top"><img src="L5FolderView.png" width="243" height="315" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h3>2. L5 Statement of Work</h3>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><h4>2.1 Primary Objectives</h4>
+        <p>The primary objective of this lab is to provide you experience  with:</p>
+        <ul>
+          <li>Layering a component (e.g., List) in Raw C++</li>
+          <li>Creating an internal representation that supports specified performance requirements</li>
+          <li>Creating a component that is a good steward of heap allocated memory, i.e., your component does not create garbage</li>
+          <li>Experience first hand the creation of a deep copy of a variable's value<br>
+            <br>
+          </li>
+        </ul></td>
+      <td width="410" valign="top"><img src="ListLayeredOnRawCpp.png" width="407" height="211" alt=""/></td>
+    </tr>
+  </tbody>
+</table>
+<h4>2.2 Specifics</h4>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td valign="top"><p><em>Part 1</em>:</p>
+        <ul>
+          <li>Complete 13 List0's StdOps and Kernel methods using the provided internal representation (see screenshot)</li>
+          
+          <li>To help you get started, the operations <em>addRightFront</em> and <em>leftLength</em> have been completed for you</li>
+			
+          <li>There are 3 private helper operations which you may use (<em>countNodes</em>, <em>copyNodes</em>, <em>reclaimAllNodes</em>)<br>
+            These operations are implemented using recursion. You must reimplement them so that they use iteration.</li>
+			<li>List0 has two fields (<em>head</em>, <em>lengthOfLeft</em>) that make up its internal representation, for Part 1 you must use these fields "as is", you cannot add or remove fields</li>
+			<li>Reference Queue0.hpp for samples of code that use C++ nodes and pointers</li>
+			<li>When calling C++'s new and delete operations, make the call with parentheses around the arguement, e.g.,<br>
+<code>new(NodeRecord)</code> and <code>delete(p)</code></li>
+        </ul>
+		<p>Examples to help understand List0's represenation:</p>
+		  <table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td>s1 = (&lt;&gt;,&lt;&gt;), i.e., an empty list</td>
+      <td><img src="emptyList.png" width="100" height="50" alt="(<>,<>)"></td>
+    </tr>
+    <tr>
+      <td>s1 = (&lt;&gt;,&lt;23,10,47,5,58&gt;)</td>
+      <td><img src="fenceAtFront.png" width="340" height="50" alt="(<>,<23,10,47,5,58>)"/></td>
+    </tr>
+    <tr>
+      <td>s1 = (&lt;23&gt;,&lt;10,47,5,58&gt;)</td>
+      <td><img src="leftSizeOne.png" width="333" height="50" alt="(<23>,<10,47,5,58>)"/></td>
+    </tr>
+    <tr>
+      <td>s1 = (&lt;23,10&gt;,&lt;47,5,58&gt;)</td>
+      <td><img src="leftSizeTwo.png" width="323" height="50" alt="(<23,10>,<47,5,58>)"/></td>
+    </tr>
+    <tr>
+      <td>s1 = (&lt;23,10,47&gt;,&lt;5,58&gt;)</td>
+      <td><img src="leftSizeThree.png" width="339" height="50" alt="(<23,10,47>,<5,58>)"/></td>
+    </tr>
+    <tr>
+      <td>s1 = (&lt;23,10,47,5&gt;,&lt;58&gt;)</td>
+      <td><img src="leftSizeFour.png" width="324" height="50" alt="(<23,10,47,5>,<58>)"/></td>
+    </tr>
+    <tr>
+      <td>s1 = (&lt;23,10,47,5,58&gt;,&lt;&gt;)</td>
+      <td><img src="leftSizeFive.png" width="326" height="50" alt="(<23,10,47,5,58>,<>)"/></td>
+    </tr>
+  </tbody>
+</table>
+
+		
+		</td>
+		
+      <td valign="top"><img src="List0CheckList.png" width="395" height="418" alt="Checklist of operations to complete"/></td>
+    </tr>
+  </tbody>
+</table>
+<p><em>List specific requirements</em>:</p>
+<ul>
+  <li>You must used C++'s nodes and pointer types similar to how it is done in Queue0.hpp</li>
+  <li>Your internal representation is up to you, just so long as your implementation meets the following performance requirements:</li>
+  <li>Your implementation must deallocate all nodes that it allocates from heap (see Queue0 for examples of where and how)<br>
+    If your implementation fails to correctly deallocate nodes, then it will create garbage, and for each operation that fails to correctly deallocate nodes, those operations will be deemed incorrect</li>
+  <li>You must make a deep copy when implementing <em>operator =</em>. No shallow copies. If you create shallow copies, via aliasing, then your operation will be deemed incorrect.</li>
+
+
+	<li>All <em>List Standard Operations</em> must execute as follows:<br>
+	      (1) <em>operator = </em> in &theta;(N) time, in order to deallocate the left hand side list, and to copy the right hand side list<br>
+      (2) <em>transferFrom</em> in &theta;(N) time, in order to deallocate the list that receives the transfer, but for no other reason<br>
+      (3) <em>clear</em> in &theta;(N) time, in order to deallocate all the controlling variable list<br>
+      (4) ~<em>List0()</em> in &theta;(N) time, in order to deallocate the list when it goes out of scope <br>
+      (4) <em>List0()</em> in &theta;(1) time <br>
+	</li>
+
+
+	<li>All <em>List Kernel Operations</em> must be implemented and with reasonable performance<br>
+For example, the provided <em>addRightFront</em> executes in O(N) time, O(N) is reasonable for <em>addRightFront</em>, but an O(N<sup>2</sup>) would not be rasonable</li>
+</ul>
+<p><em>Part 2</em>:</p>
+  <ul>
+<li>After implementing all of the operations using just <em>head</em> and <em>lengthOfLeft</em> you must modify the internal represenation so that the following performance is achived:</li>
+	  <ul>
+    <li>All <em>List Kernel Operations</em> must execute in constant time, i.e., &theta;(1)</li>
+    <li>If you fail to meet these performance requirements, then the operation will be deemed incorrect</li>
+    <li>This means, for example, you must modify the internal representation in such a way to support having <em>addRightFront</em> execute in O(1) time</li>
+	  </ul>
+  </ul>
+	
+<p><em>Software Engineering Requirements</em>:</p>
+<ol>
+  <li><strong>Use Design by Contract</strong> - No defensive programming of List's operations</li>
+  <ul>
+    <li>What this means is that the implementation of a List operation must not contain code that checks to make sure that the List operation was called correctly by a client program</li>
+  </ul>
+  <li><strong>Write elegant client code</strong> - Eliminate code duplication, have no unused variables, no left over Queue0 code or comments, etc.</li>
+  <li><strong>No Cross Calling - </strong>None of List's member functions are permitted to make calls to any of the other <em>public</em> List member functions, i.e., no cross calling
+    <ul>
+      <li>All List operations should directly manipulate List's data members </li>
+    </ul>
+  </li>
+  <li><strong>Calling Down</strong> - is encouraged (but not required) by creating private member functions that capture code that starts to appear in multiple different places in your List0 implementation. Do this to avoid the duplication of  code</li>
+  <li><strong>No Recursion</strong> - None of List's member functions are permitted to be recursive</li>
+  <li><strong>About Making Copies</strong> - The only time you should be making a copy of anything is when you implement <em>operator =</em>.<br>
+    For this, you will need to create a duplicate linked list (see Queue0's implementation) and you will call template parameter T's <em>operator =</em> to make copies of the data </li>
+</ol>
+<hr>
+<h3>3. Testing</h3>
+        <ul>
+          <li>Testing with unit tests
+            <ul>
+              <li>L5R contains the test scripts for testing a List in Release mode, you can use these</li>
+              <li>Develop more test cases to achieve good boundary condition testing, or any other aspect you deem will help reveal defects</li>
+            </ul>
+          </li>
+          <li>Additional testing by instrumenting your List0.hpp code</li>
+          <ul>
+            <li>C++ uses <em>new</em> and <em>delete</em> commands to allocate and deallocate storage dynamically - you'll see their usage in Queue0.hpp</li>
+            <li>To aid in detecting the creation of garbage, I have set up an Integer field in List0.hpp, called <em>nodeCount</em> <br>
+              -- everytime your code calls <em>new</em> to allocate storage, <em>nodeCount</em> is incremented<br>
+              -- everytime your code calls <em>delete</em> to dallocate storage, <em>nodeCount</em> is decremented <br>
+              -- at the end of the unit tests in L5R there is an assert concerning how many nodes should still be alive in the List0 lists used by the unit test <br>
+              -- if your code successfully allocates and deallocates nodes used in your lists, then the assert statements using <em>nodeCount</em> will succeed, if your code misuses nodes (e.g., creates garbage) then these assert statments will fail, which means you have a defect in your code that needs to be fixed</li>
+          </ul>
+ 	
+        </ul>
+
+<p><em>The Grader's test cases</em>:</p>
+<p>Grading will be done running a more complete set of unit tests which will systematically stress your member function implementations. This may include tests where the template parameter is something other than Integer.</p>
+<hr>
+<h3>4. Submitting the Assignment for Grading</h3>
+<ul>
+  <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your  project which will include you List0.hpp, to your GitHub Education CSSE373 repo</li>
+  <li>Use the commit message &quot;List0.hpp final commit, ready for grading&quot;</li>
+</ul>
+</body>
+</html>
