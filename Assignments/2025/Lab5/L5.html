@@ -70,9 +70,9 @@
 <table width="100%" border="0">
   <tbody>
     <tr>
-      <td valign="top"><p><em>Part 1</em>:</p>
+      <td valign="top"><p><em>Part 1 - Implementing List0 with a simple internal representation</em>:</p>
         <ul>
-          <li>Complete 13 List0's StdOps and Kernel methods using the provided internal representation (see screenshot)</li>
+          <li>Complete 13 List0's StdOps and Kernel methods using the provided internal representation (see screenshot for a list of the 13)</li>
           
           <li>To help you get started, the operations <em>addRightFront</em> and <em>leftLength</em> have been completed for you</li>
 			
@@ -80,10 +80,10 @@
             These operations are implemented using recursion. You must reimplement them so that they use iteration.</li>
 			<li>List0 has two fields (<em>head</em>, <em>lengthOfLeft</em>) that make up its internal representation, for Part 1 you must use these fields "as is", you cannot add or remove fields</li>
 			<li>Reference Queue0.hpp for samples of code that use C++ nodes and pointers</li>
-			<li>When calling C++'s new and delete operations, make the call with parentheses around the arguement, e.g.,<br>
+			<li>When calling C++'s new and delete operations, make the call with parentheses around the argument, e.g.,<br>
 <code>new(NodeRecord)</code> and <code>delete(p)</code></li>
         </ul>
-		<p>Examples to help understand List0's represenation:</p>
+		<p>Examples to help understand List0's representation:</p>
 		  <table width="100%" border="1">
   <tbody>
     <tr>
@@ -143,15 +143,16 @@
 
 
 	<li>All <em>List Kernel Operations</em> must be implemented and with reasonable performance<br>
-For example, the provided <em>addRightFront</em> executes in O(N) time, O(N) is reasonable for <em>addRightFront</em>, but an O(N<sup>2</sup>) would not be rasonable</li>
+For example, the provided <em>addRightFront</em> executes in O(N) time, O(N) is reasonable for <em>addRightFront</em>, but an O(N<sup>2</sup>) would not be reasonable</li>
 </ul>
-<p><em>Part 2</em>:</p>
+<p><em>Part 2 - Implementing List0 with a more advanced internal representation</em>:</p>
   <ul>
-<li>After implementing all of the operations using just <em>head</em> and <em>lengthOfLeft</em> you must modify the internal represenation so that the following performance is achived:</li>
+<li>After implementing all of the operations using just <em>head</em> and <em>lengthOfLeft</em> you must modify the internal representation so that the following performance is achieved:</li>
 	  <ul>
-    <li>All <em>List Kernel Operations</em> must execute in constant time, i.e., &theta;(1)</li>
+    <li>All <em>List0's Kernel Operations</em> must execute in constant time, i.e., &theta;(1)</li>
+		 <li>List0's Standard Operations will continue to execute at the same performance levels achieved in Part 1</li>
     <li>If you fail to meet these performance requirements, then the operation will be deemed incorrect</li>
-    <li>This means, for example, you must modify the internal representation in such a way to support having <em>addRightFront</em> execute in O(1) time</li>
+    <li>This means, for example, you must modify the internal representation in such a way to support having <em>addRightFront</em> execute in O(1) time (in Part 1, it executed in O(N) time)</li>
 	  </ul>
   </ul>
 	
@@ -181,14 +182,14 @@ For example, the provided <em>addRightFront</em> executes in O(N) time, O(N) is 
               <li>Develop more test cases to achieve good boundary condition testing, or any other aspect you deem will help reveal defects</li>
             </ul>
           </li>
-          <li>Additional testing by instrumenting your List0.hpp code</li>
+          <li>Additional testing nodes and pointers based testing being done:</li>
           <ul>
             <li>C++ uses <em>new</em> and <em>delete</em> commands to allocate and deallocate storage dynamically - you'll see their usage in Queue0.hpp</li>
             <li>To aid in detecting the creation of garbage, I have set up an Integer field in List0.hpp, called <em>nodeCount</em> <br>
-              -- everytime your code calls <em>new</em> to allocate storage, <em>nodeCount</em> is incremented<br>
-              -- everytime your code calls <em>delete</em> to dallocate storage, <em>nodeCount</em> is decremented <br>
+              -- every time your code calls <em>new</em> to allocate storage, <em>nodeCount</em> is incremented<br>
+              -- every time your code calls <em>delete</em> to deallocate storage, <em>nodeCount</em> is decremented <br>
               -- at the end of the unit tests in L5R there is an assert concerning how many nodes should still be alive in the List0 lists used by the unit test <br>
-              -- if your code successfully allocates and deallocates nodes used in your lists, then the assert statements using <em>nodeCount</em> will succeed, if your code misuses nodes (e.g., creates garbage) then these assert statments will fail, which means you have a defect in your code that needs to be fixed</li>
+              -- if your code successfully allocates and deallocates nodes used in your lists, then the assert statements using <em>nodeCount</em> will succeed, if your code misuses nodes (e.g., creates garbage) then these assert statements will fail, which means you have a defect in your code that needs to be fixed</li>
           </ul>
  	
         </ul>
