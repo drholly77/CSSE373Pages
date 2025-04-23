@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Layering an Operation</title>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Layering an Operation</h1>
+
+
+	
+<h3>1. Setup</h3>
+<table border="0" width="100%">
+  <tbody>
+    
+    <tr>
+      <td valign="top">
+		  <h4>1.1 Get the L6RStarter Download</h4>
+        <ul>
+          <li>Download <em>L6Starter.zip</em>&nbsp;to your machine - to be used in subsequent steps</li>
+        </ul>
+		  <h4>1.2 Copy AppendCapabilitiy1.hpp from the L6Starter.zip</h4>
+        <ul>
+          <li>Inside L6Starter.zip is a file named AppendCapabilitiy1.hpp
+            <ul>
+              <li>Copy this file into your: <em>csse373devenv202x30-yourID\components\include\Queue</em></li>
+				<li>AppendCapabilitiy1.hpp contains a fully functional Queue <em>append</em> operation and uses C++ template syntax that allows layering of this operation onto the Queue component</li>
+            </ul>
+          </li>
+         
+        </ul>
+<h4>1.3 Copy SetEqCapability.hpp from the L6Starter.zip</h4>
+        <ul>
+          <li>Inside L6Starter.zip is a file named SetEqCapability.hpp
+            <ul>
+              <li>Copy this file into your: <em>csse373devenv202x30-yourID\components\include\Set</em></li>
+				<li>SetEqCapability.hpp will replace the already existing file found in the components\include\Set folder. This one coming from the .zip is an updated version.</li>
+				<li>SetEqCapability.hpp contains a fully functional Set <em>operator ==</em> operation that returns true iff the two compared sets are equal</li>
+				<li>You will be using SetEqCapability.hpp in Part 4 of this assignment</li>
+            </ul>
+          </li>
+         
+        </ul>
+        <h4>1.4 Copy the L6R Folder from the L6Starter.zip</h4>
+        <ul>
+          <li>Inside L6Starter.zip is a folder named L6R </li>
+			    <ul>
+          <li>Copy the L6R folder to your <em>csse373devenv202x30-yourID</em> folder as shown in the screen shot to the right</li>
+          <li>Once you have copied this folder you can use VS2022 to open the L6R project by double clicking on L6R.sln  </li>
+			</ul>
+        </ul>
+        <h4>1.5 About Project L6R</h4>
+        <ul>
+          <li>It contains a Visual Studio 2022 unit test project</li>
+          <li>It can be opened with VS2022 by double clicking on the file L6R.sln</li>
+          <li>It will build correctly if you have followed the instructions in 1.1 - 1.4 (above)</li>
+			<li>After building, use Test Explorer to run the unit tests found in L6R.cpp</li>
+          <li>L6R contains unit tests in the following files:
+			  <ol>
+				  <li><em>L6RPart1Append.cpp</em> - unit tests for AppendCapability (in file <em>AppendCapabilitiy1.hpp</em>)</li>
+				  <li><em>L6RPart2Inject.cpp</em> - unit tests for InjectCapability (you will create and implement this operation in <em>InjectCapability1.hpp</em>)</li>
+				  <li><em>L6RPart3FindLoc.cpp</em> - unit tests for FindLocOfXCapability (you will create and implement this operation in <em>FindLocOfXCapability1.hpp</em>)</li>
+				  <li><em>L6RPart4Equal.cpp</em> - unit tests for QueueEqCapability (you will create and implement this operation in <em>QueueEqCapability1.hpp</em>)</li>
+			  </ol>
+</li>
+			<li>There is one additional file you will need to reference: 
+			<ol>
+				<li><em>FunctionHeaders.txt</em> - Contains the function headers and external contracts for the InjectCapability and FindLocOfXCapability, and instructions for how to create the QueueEqCapability .hpp file</li></ol></li>
+        </ul></td>
+      <td valign="top"><img src="L6FolderView.png" width="245" height="377" alt="Repo view showing L6R"/>
+		<hr>
+	    <img src="L6ProjectView.png" width="245" height="270" alt="L6R project view"/> </td>
+    </tr>
+  </tbody>
+</table>
+
+	
+<h3>2. L6 Statement of Work</h3>
+<h4>2.1 Primary Objectives</h4>
+<p>The primary objective of this lab is to provide you experience working with:</p>
+<ul>
+  <li>Layering an operation (e.g., InjectCapability) on another already existing component (e.g., Queue)<br>
+	Because these capabilities (enhancements to Queue) are layered, they will work with any Queue implementation that implements QueueKernel, i.e., Queue0, Queue1, etc.</li>
+  <li>Adding new functionality to an already existing component</li>
+  <li>The inheritance syntax used by C++ when layering a new operation</li>
+  <li>C++ syntax used by the client program when adding additional capabilities to an already existing component
+	<br>
+	The approach used in L6 is a form of decorator pattern where the decoration occurs through template instantiation done at compile time </li>
+</ul>
+<h4>2.2 Specifics</h4>
+<p><em>Steps</em>:</p>
+        <ol>
+          <li>Start Visual Studio</li>
+          <li>Open project L6R - it should open up in Release configuration, but double check this</li>
+          <li>Read and complete the "to do" tasks found at the top of each of the .cpp files listed below: 
+<ol>
+				  <li><em>L6RPart1Append.cpp</em> - Start here and work your way through the parts in order</li>
+				  <li><em>L6RPart2Inject.cpp</em></li>
+				  <li><em>L6RPart3FindLoc.cpp</em></li>
+				  <li><em>L6RPart4Equal.cpp</em></li>
+			  </ol>
+			  
+          </li>
+        </ol>
+	
+<p><em>Software Engineering Requirements</em>:</p>
+<ol>
+  
+  <li><strong>Use Design by Contract</strong> - No defensive programming for any of these operations </li>
+
+<li><strong>Write elegant client code</strong> - Eliminate code duplication, have no unused variables, leverage Queue's public operations, etc.</li>
+  <li><strong>About Making Copies</strong> - There should be no reason to make copies of any Queue or variable of type T, so don't</li>
+
+</ol>
+
+	
+<h3>3. Testing</h3>
+<ul>
+  <li>L6 testing
+    <ul>
+      <li>The provided tests (in each of the L6R project's .cpp files) are minimal</li>
+      <li>Each .cpp has a comment recommending additional tests in order to do a more thorough job of testing you implementations</li>
+		
+    </ul>
+  </li>
+</ul>
+<p><em>The Grader's test cases</em>:</p>
+<p>Grading will be done running a more complete set of unit tests which will systematically stress your implementations of InjectCapability, FindLocOfXCapability, and EqualCapability</p>
+
+<h3>4. Submitting the Assignment for Grading</h3>
+	<ul>
+	<li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your L6R project to your GitHub Education CSSE373 repo</li>
+	<li>Use the commit message &quot;L6R final commit, ready for grading&quot;</li>
+	</ul>
+		
+
+
+
+<hr>
+
+
+
+	
+</body>
+</html>
