@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Project M1</title>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Project M1</h1>
+<hr />
+	
+		
+<h3>1. Setup</h3>
+<table border="0" width="100%">
+  <tbody>
+    <tr>
+      <td valign="top">
+		  <h4>1.1 Get the PM1Starter Download</h4>
+        <ul>
+          <li>Download <em>PM1Starter.zip</em>&nbsp;to your machine - to be used in subsequent steps</li>
+        </ul>
+		
+		
+        <h4>1.2 Copy the PM1 Folder from the PM1Starter.zip</h4>
+        <ul>
+          <li>Inside PM1Starter.zip is a folder named PM1 </li>
+			    <ul>
+          <li>Copy the PM1 folder to your <em>csse373devenv202330-yourID</em> folder as shown in the screen shot in Figure 1</li>
+          <li>Once you have copied this folder you can use VS2022 to open the PM1 project by double clicking on PM1.sln  </li>
+		  <li>The contents of this folder are shown in the screen shot in Figure 2</li>
+			</ul>
+        </ul>
+		<img src="PMFileExplorer.png" width="336" height="409" alt=""/><br>
+		  <p align="left"><strong>Figure 2</strong></p></td>
+      <td><img src="PMFolderView.png" width="247" height="397" alt=""/><br><p ><strong>Figure 1</strong></p></td>
+    </tr>
+    <tr>
+      <td valign="top">
+        <h4>1.3 About Project PM1</h4>
+        <ul>
+          <li>It contains a Visual Studio 2022 project (see screen shot in Figure 3)</li>
+          <li>It can be opened with VS2022 by double clicking on the file PM1.sln</li>
+          <li>It will build correctly if you have followed the instructions in 1.1 - 1.2 (above)</li>
+          <li>PM1 contains .h files and driver.cpp files that you will work on to complete this part of the project<br>
+			  The <b>ToDos</b> are in operation <i>main</i>, see (4.4) below</li>
+			<ul>
+				<li>(1) <i>CharacterCArray.h</i> - creates an instance of CeramicArray; used to hold the puzzle word, e.g., the word "encyclopedia"; <i>No ToDo here</i></li>
+				<li>(2) <i>TextSet.h</i> - creates an instance of component Set; used to hold the dictionary words; <i>No ToDo here</i></li>
+				<li>(3) <i>UnlabeledUndirectedGraph.h</i> - creates instance of graph component; used to hold your graph data; <i>No ToDo here</i></li>
+				<li>(4) <i>driver.cpp</i> - driver program that loads the program's data and executes the DFS on the graph</li>
+				<li>(4.1) <i>initializeVertexLabelMap</i> - operation that puts the puzzle word into a ceramic array variable; <i>No ToDo here</i></li>
+				<li>(4.2) <i>loadDictionaryWords</i> - operation that loads the dictionary words from 'dataDictionary.dat' file (provided) into a variable of type TextSet; <i>No ToDo here</i></li>
+				<li>(4.3) <i>loadPuzzleData</i> - operation that loads the puzzle data into your graph and puzzle word variables; <i>No ToDo here</i></li>
+				<li>(4.4) <i>main</i> - main operation that declares variables and calls the operations listed above; <b><i>ToDos are here</i></b></li>
+			</ul>
+        </ul></td>
+      <td valign="top"><img src="PMProjectView.png" width="450" height="434" alt=""/><br>
+		<p align="center"><strong>Figure 3</strong></p>
+		<hr></td>
+    </tr>
+	  
+	  <tr>
+      <td valign="top">
+		  <h4>1.4 About Project PM1's Command Line Arguments</h4>
+	    <ul>
+		  <li><em>main</em> is programed to take command line arguments (see screen shot in Figure 5, below)</li>
+		  <li>When executing program from inside VS2022 using the Start Debugging command, you must provide the command line arguments in PM1's <em>Project Settings</em> (see screen shot in Figure 4)</li>
+		  <li>Edit the Project Settings (as shown in Figure 4) and change 2nd command line parameter (currently set to <em>dataReact.dat</em>) to <em>dataEncyclopedia.dat</em> when you are ready to test against the encyclopedia puzzle</li>
+		  </ul>
+	    <img src="PMMainCommandLineArgspng.png" width="800" height="200" alt=""/><br>
+		  <p align="left"><strong>Figure 5</strong></p></td>
+		  <td><img src="PMCommandLineArgs.png" width="450" height="282" alt=""/><br>
+		<p align="center"><strong>Figure 4</strong></p>
+		</td>
+	  </tr>
+  </tbody>
+</table>
+
+<h3>2. PM1 Statement of Work</h3>
+	<table width="100%" border="1">
+  <tbody>
+    <tr>
+      <td valign="top">
+		  
+  <h4>Solve the Encyclopedia Search Puzzle (Figure 6)</h4>
+	    <ul>
+  <li>As your starting place, use the <em>driver.cpp</em> found in &quot;PM1 Starter Files&quot; (see References above)</li>
+  <li>Modify PM1's <em>driver.cpp</em> by finding the <strong>ToDos</strong> and completing them</li>
+  
+  <li>Your implementation must: 
+    <ol>
+      <li>Be in a Visual Studio project called PM1 and be stored in your repository</li>
+      <li>The <em>driver.cpp</em> must use the operations provided that load the dictionary and graph data (see 4.1 through 4.2 in Figure 3)</li>
+      <li>Use depth first search algorithm(s) search the puzzle for words of a specified length</li>
+	<li>Must first output the found words by completing <strong>ToDo</strong>'s 2 and 3 in driver.cpp's <em>main</em> operation</li>
+      <li>Use the words loaded in from the file <em>dataDictionary.dat</em> to check the legitimacy of a computed word</li>
+      <li>Be layered on <em>UnlabeledUndirectedGraph0</em> implementation </li>
+      <li>Leverage other already existing appropriate components from  the <a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/" target="new">component list</a> whose implementations can be found in the folder: components\include - in the diagram to the right this is represented by the arrow to the <em>Other Concepts</em> oval</li>
+      <li> By <em>leverage</em> (in #5 above) we mean, for example:
+		  <ul>
+      <li>If you need searching or sorting, then find a component that already has that functionality, i.e., do not reimplement these algorithms</li>
+      <li>If you need a container to temporarily store things, then find a component that provides that functionality</li>
+      <li>Use the <em>minimalization principle</em>, i.e., attempt to find a component that provides the minimal functionality required</li>
+		  </ul>
+      </li>
+      </ol>
+  </li>
+  <li> Recommended: 
+    <ul>
+      <li>Test and debug with <em>dataReact.dat</em>, a smaller data set based on puzzle word <em>react</em> - see data files listed in Figure 2<br>
+		Graph diagram for <em>react</em> is in Figure 7</li>
+		<li>The instructor's solution when run with the command line arguments found in Figure 4 found the following words:<br>
+          "tea", "tet", "cat", "car", "ate", "aer", "eat", "ear", "ret", "rat"</li>
+		<li>Then test with <em>dataEncyclopedia.dat</em> (Figure 8)<br>
+		The instructor's solution working on <em>dataEncyclopedia.dat</em> and <em>dataDictionary.dat</em> found<br>
+		53 words of length 5<br>
+		34 words of length 6<br>
+		21 words of length 7<br>
+		7 words of length 8</li>
+      <li>Use checking components when in Debug Mode</li>
+      
+    </ul>
+  </li>
+ </ul>
+		<p align="center"><img src="PMReact.png" width="374" height="418" alt=""/><br><strong>Figure 7</strong></p>
+<h3>3. Grading of PM1</h3>
+<ul>
+  <li>Your <em>driver.cpp</em> from the folder PM1 will be compiled/built/tested </li>
+  <li>Your program will be tested/executed against a graph data file and word search length of the instructor's choosing</li>
+  <li>Your output, i.e., the words found by your search program, will be redirected to an output file and compared against the instructor's solution</li>
+  <li>Assessment will be based on the actual words found and the code found in <em>driver.cpp</em></li>
+</ul>
+		  
+		  <h3>4. Submitting the Assignment for Grading</h3>
+<ul>
+  <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your 
+    completed <em>PM1</em> project to your GitHub Education CSSE373 repo</li>
+  <li>Use the commit message &quot;PM1, ready for grading&quot;</li>
+</ul>
+		  
+	  </td>
+      <td width="600">
+		  <p align="center"><img src="PMDiagram.png" width="600" height="278" alt=""/><br>
+			  <strong>Figure 6</strong></p>
+		  
+     <p align="center"> <img src="PMPuzzleDescription.png" width="600" height="1019" alt=""/><br>
+		 <br><strong>Figure 8</strong></p></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+</body>
+</html>
