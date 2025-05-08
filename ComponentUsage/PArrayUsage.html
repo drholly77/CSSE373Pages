@@ -17,8 +17,8 @@
 
 <h3>PartitionableArray Overview</h3>
 	<ul>
-	<li>PartitionableArray's behavior is similar to CeramicArray's behavior in that a client program sets the upper and lower bounds of the array at run time through the <em>setBounds</em> operation</li>
-	<li>Also like CeramicArray, PartitionableArray has a template parameter (the first of two template parameters) that allows the client to specify the type T to be stored in the array</li>
+	<li>PartitionableArray's requires that a client program set the upper and lower bounds of the array at run time through the <em>setBounds</em> operation</li>
+	<li>PartitionableArray has a template parameter (the first of two template parameters) that allows the client to specify the type T to be stored in the array</li>
 	<li>PartitionableArray requires a second template parameter which is a Boolean function parameterized by the type T (i.e., the type provided in the first template parameter)<br>
 The signature for this template parameter is: <code>Boolean(*isInteresting)(T&amp;);</code> <br>
 <em>isInteresting</em> is known a callback function</li>
@@ -30,9 +30,9 @@ The signature for this template parameter is: <code>Boolean(*isInteresting)(T&am
 		</li> 
 		<li><em>isInteresting</em> is used by PartitionableArray allowing it to keep track of where in the array the "interesting" values are stored, as well as where the "uninteresting" values are stored</li>
 		<li>It is the client programmer's responsibility to decide which values are "interesting" and which are "uninteresting" and to then implement <em>isInteresting</em> accordingly </li>
-		<li>Finally, PartitionableArray exports 4 additional O(1)  methods (that CeramicArray does not): 
-		<ol>
-		<li><code>Integer numberOfInterestingEntries(void)</code> - returns the number of locations in the array where the value stored causes <em>isInteresting</em> to return true</li>
+		<li>Finally, PartitionableArray exports 4 O(1)  methods that utilize  the <em>isInteresting</em> callback function:
+          <ol>
+	  <li><code>Integer numberOfInterestingEntries(void)</code> - returns the number of locations in the array where the value stored causes <em>isInteresting</em> to return true</li>
 		<li><code>Integer numberOfUninterestingEntries(void)</code> - returns the number of locations in the array where the value stored causes <em>isInteresting</em> to return false </li>
 		<li><code><strong>void</strong> giveIndexOfInterestingEntry(Integer&amp; interestingEntryIndex)</code> - replaces interestingEntryIndex with an index into the array where the value stored has caused <em>isInteresting</em> to return true</li>
 		<li><code><strong>void</strong> giveIndexOfUninterestingEntry(Integer&amp; interestingEntryIndex)</code> - replaces interestingEntryIndex with an index into the array where the value stored has caused <em>isInteresting</em> to return false</li></ol></li>
@@ -88,9 +88,7 @@ int main (int argc, char* argv[])
    Integer lower, upper;
    ArrayOfInteger a1;
 
-   // What makes this 'ceramic' is:
-   //   that the lower and upper bounds are set at runtime
-   //   and not at compile time
+   // The lower and upper bounds are set at runtime and not at compile time
    a1.setBounds(lowerBound, upperBound);
    
    // Store an "interesting" value into location 2
