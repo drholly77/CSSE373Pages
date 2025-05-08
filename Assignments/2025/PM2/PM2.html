@@ -30,9 +30,7 @@
               <li>Use a layered implementation by layering on the PartitionableArray1 component and its corresponding PartitionableArrayChecking1 component</li>
               <li>Implement all 15 methods - see Figure 2</li>
               <li>Use C++'s conditional compilation and use PartitionableArrayChecking1 in Debug Mode and only PartitionableArray1 when in Release mode</li>
-            </ul>
-          </li>
-          <li>Big-O requirements on implementing the following graph operations: <em>removeAnyIncidentEdge</em>, <em>removeAnyEdge</em>, and <em>degree</em><br>
+				<li>Big-O requirements on implementing the following graph operations: <em>removeAnyIncidentEdge</em>, <em>removeAnyEdge</em>, and <em>degree</em><br>
             <ul>
               <li>These 3 graph operations must leverage the power of PartitionableArray1 in order to make all 3 execute in O(1) time</li>
               <li>The PartitionableArray operations that will make O(1) performance possible are:<br>
@@ -41,9 +39,22 @@
             </ul>
           </li>
           <li>Note: you will implement <em>removeAnyIncidentEdge</em> and <em>removeAnyEdge</em> by leveraging PartitionableArray1 methods, that will have a good chance of making your <em>operator &lt;&lt;</em> display values of edges in a different order than you expect. So be sure to double check that <em>operator &lt;&lt;</em> works according to the requirements set forth in the next bullet point</li>
-          <li>Requirements on implementing <em>operator &lt;&lt;</em> <br>
+            </ul>
+          </li>
+          
+
+        </ul>
+</td>
+      <td width="570"><p align="center"><img src="PM2React.png" width="377" height="342" alt=""/><br>
+          <img src="reactAdjMatrix.png" width="307" height="147" alt=""/><br>
+          <strong>Figure 1</strong> - Graph <strong><em>g</em></strong> and its adjacency matrix<br>
+          Note: row #1 has no "interesting" cells<br>
+          where "interesting" means there exists an edge {row#,col#}</p></td>
+    </tr>
+	  <tr><td><strong>Requirements on implementing <em>operator &lt;&lt;</em></strong> <br>
             I recommend that you <em>start with</em> the implementation found in UnlabeledUndirectedGraph1.hpp<br>
             <br>
+		  
             Then make sure <em>operator &lt;&lt;</em> meets the following criteria:
             <ul>
               <li>A graph variable must be displayed using its abstract mathematical model. If you are unsure how an abstract value looks, in your repo is a project called <em>UUGraphDriver</em>, open it up in VS2022, build it and run it, use it to build a graph and then display it.</li>
@@ -56,17 +67,10 @@
               <li>For the graph shown in Figure 1, <em>operator &lt;&lt;</em> would produce:<br>
                 ({1,2,3,4,5},{{1,2},{1,3},{2,3},{2,4},{2,5},{3,4},{3,5}})</li>
             </ul>
-          </li>
-          <li>To test your implementation you might want to use the driver.cpp found in the project named UUGraphDriver (which is in your repo)</li>
-        </ul>
-        <p align="center"> <img src="UUGV2.png" width="500" height="325" alt=""/><br>
-          <strong>Figure 2</strong></p></td>
-      <td width="570"><p align="center"><img src="PM2React.png" width="377" height="342" alt=""/><br>
-          <img src="reactAdjMatrix.png" width="307" height="147" alt=""/><br>
-          <strong>Figure 1</strong> - Graph <strong><em>g</em></strong> and its adjacency matrix<br>
-          Note: row #1 has no "interesting" cells<br>
-          where "interesting" means there exists an edge {row#,col#}</p></td>
-    </tr>
+          
+          <strong>To test your implementation</strong> Use the driver.cpp found in the project named UUGraphDriver (which is in your repo)</td>
+	  <td>        <p align="center"> <img src="UUGV2.png" width="500" height="325" alt=""/><br>
+          <strong>Figure 2</strong></p></td></tr>
   </tbody>
 </table>
 <h3>2. Grading of PM2</h3>
