@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>PM2</title>
+<link href="../../../css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>PM2</h1>
+<hr />
+<h3>0. References</h3>
+<ul>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentSpecs/PartitionableArrayTemplate.html" target="new">PartitionableArray Spec</a></li>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentUsage/PArrayUsage.html" target="_blank">PartitionableArray Usage</a></li>
+  <li><a href="https://drholly77.github.io/CSSE373Pages/ComponentUsage/Simulating2DArray.html" target="_blank">Simulating a 2-D Matrix with a 1-D Array</a></li>
+</ul>
+<h3>1. PM2 Statement of Work</h3>
+<table width="100%" border="0">
+  <tbody>
+    <tr>
+      <td><ul>
+          <li>1) In the folder <em>csse373devenv202x30-yourID/components/include/UnlabeledUndirectedGraph</em> create UnlabeledUndirectedGraph2.hpp </li>
+          <li>2) In UnlabeledUndirectedGraph2.hpp implement class UnlabeledUndirectedGraph2</li>
+          <li>3) You must:
+            <ul>
+              <li>Implement UnlabeledUndirectedGraph2 using an adjacency matrix - see Figure 1 for an example<br>
+                You may also add additional representation variables in order to achieve better performance for some of the exported operations, i.e., utilize the engineering technique "a space for time trade-off"</li>
+              <li>Use a layered implementation by layering on the PartitionableArray1 component and its corresponding PartitionableArrayChecking1 component</li>
+              <li>Implement all 15 methods - see Figure 2</li>
+              <li>Use C++'s conditional compilation and use PartitionableArrayChecking1 in Debug Mode and only PartitionableArray1 when in Release mode</li>
+            </ul>
+          </li>
+          <li>Big-O requirements on implementing the following graph operations: <em>removeAnyIncidentEdge</em>, <em>removeAnyEdge</em>, and <em>degree</em><br>
+            <ul>
+              <li>These 3 graph operations must leverage the power of PartitionableArray1 in order to make all 3 execute in O(1) time</li>
+              <li>The PartitionableArray operations that will make O(1) performance possible are:<br>
+                <em>numberOfInterestingEntries</em>, <em>giveIndexOfInterestingEntry</em>, <em>numberOfUninterestingEntries</em>, <em>giveIndexOfUninterestingEntry</em></li>
+              <li>See the <em>PartitionableArray Usage</em> link above for details</li>
+            </ul>
+          </li>
+          <li>Note: you will implement <em>removeAnyIncidentEdge</em> and <em>removeAnyEdge</em> by leveraging PartitionableArray1 methods, that will have a good chance of making your <em>operator &lt;&lt;</em> display values of edges in a different order than you expect. So be sure to double check that <em>operator &lt;&lt;</em> works according to the requirements set forth in the next bullet point</li>
+          <li>Requirements on implementing <em>operator &lt;&lt;</em> <br>
+            I recommend that you <em>start with</em> the implementation found in UnlabeledUndirectedGraph1.hpp<br>
+            <br>
+            Then make sure <em>operator &lt;&lt;</em> meets the following criteria:
+            <ul>
+              <li>A graph variable must be displayed using its abstract mathematical model. If you are unsure how an abstract value looks, in your repo is a project called <em>UUGraphDriver</em>, open it up in VS2022, build it and run it, use it to build a graph and then display it.</li>
+              <li><em>operator &lt;&lt;</em> must be a client of UnlabeledUndirectedGraph and call only its operations; it is not allowed to call PartitionableArray's operations</li>
+              <li>The vertex set must be displayed in increasing order</li>
+              <li>Each edge (which is a set) must be displayed so that the leftmost vertex of the set is &lt;= to the rightmost vertex</li>
+              <li>The edge set must be displayed in nondecreasing order based on the leftmost vertex in the set</li>
+              <li>When there are two or more edges with the same leftmost vertex, then those edges must be displayed in nondecreasing order by the rightmost vertex</li>
+              <li>Include no extra spaces in the displayed value</li>
+              <li>For the graph shown in Figure 1, <em>operator &lt;&lt;</em> would produce:<br>
+                ({1,2,3,4,5},{{1,2},{1,3},{2,3},{2,4},{2,5},{3,4},{3,5}})</li>
+            </ul>
+          </li>
+          <li>To test your implementation you might want to use the driver.cpp found in the project named UUGraphDriver (which is in your repo)</li>
+        </ul>
+        <p align="center"> <img src="UUGV2.png" width="500" height="325" alt=""/><br>
+          <strong>Figure 2</strong></p></td>
+      <td width="570"><p align="center"><img src="PM2React.png" width="377" height="342" alt=""/><br>
+          <img src="reactAdjMatrix.png" width="307" height="147" alt=""/><br>
+          <strong>Figure 1</strong> - Graph <strong><em>g</em></strong> and its adjacency matrix<br>
+          Note: row #1 has no "interesting" cells<br>
+          where "interesting" means there exists an edge {row#,col#}</p></td>
+    </tr>
+  </tbody>
+</table>
+<h3>2. Grading of PM2</h3>
+<ul>
+  <li>Your UnlabeledUndirectedGraph2.hpp will be compiled/built/tested in Release Mode against Dr. Holly's private set of 
+    specification-based test cases </li>
+  <li>These test cases will utilize your <em>operator &lt;&lt;</em> in order to convert a graph variable into a Text object.<br>
+    If your <em>operator &lt;&lt;</em> fails to follow the requirements outlined above, then the test will fail</li>
+  <li>If your UnlabeledUndirectedGraph2 fails test cases (i.e., when/if those test cases reveal defects, or <em>operator &lt;&lt;</em> does not work as is required) your submission will 
+    earn less than 100% for this milestone </li>
+  <li>Your UnlabeledUndirectedGraph2 fails to compile/build your submission will earn zero credit for this milestone</li>
+  <li>Your UnlabeledUndirectedGraph2.hpp will be visually inspected to check that it uses PartitionableArray1 in a way so that <em>removeAnyIncidentEdge</em>, <em>removeAnyEdge</em>, and <em>degree</em> execute in O(1) time </li>
+</ul>
+<p><em>Software Engineering Requirements</em>:</p>
+<ol>
+  <li><strong>Use Design by Contract</strong> </li>
+  <li><strong>No Cross Calling </strong></li>
+  <li><strong>Use Calling Down</strong> to private helper operations</li>
+  <li><strong>Write elegant client code</strong> - Leverage the power of PartitionableArray</li>
+  <li><strong>No Recursion</strong> </li>
+  <li><strong>No Making Unnecessary Copies</strong> of an array or values of type T</li>
+</ol>
+<hr />
+<h3>3. Submitting the Assignment for Grading</h3>
+<ul>
+  <li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your 
+    completed <em>UnlabeledUndirectedGraph2.hpp</em> project to your GitHub Education CSSE373 repo</li>
+  <li>Use the commit message &quot;PM2, ready for grading&quot;</li>
+</ul>
+</body>
+</html>
