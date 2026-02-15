@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta NAME="Author" CONTENT="Dr. Holly">
+<title>Get a Project Up And Running</title>
+</head>
+
+<body>
+	
+<h2>Three steps to getting your project up and running</h2>
+<hr>
+
+<p>This file contains instructions (below) for following 3 steps:</p>
+	<ol><li><a href="#step1">Create a new VS2026 project</a></li>
+		<li><a href="#step2">Add .cpp files to your project</a></li>
+		<li><a href="#step3">Update the project's settings</a></li>
+	</ol>
+<hr>	
+	<h2><a id="step1">Step 1: Create a New VS2026 Project</a></h2>
+<hr>
+<p><img src="imagesVS22CreateProject/0-createNewProjectN1.png" width="663" height="166" alt=""/></p>
+<hr>
+<img src="imagesVS22CreateProject/1-NewProjectDialog.png" width="902" height="385" alt=""/>
+<hr>
+<img src="imagesVS22CreateProject/2-NewProjectDialog.png" width="903" height="631" alt=""/>
+<hr>
+	
+	<h2><a id="step2">Step 2: Add .cpp Files to Your Project</a></h2>
+<hr />
+<h3>Part 1. Adding the Lab's .cpp files to the Workspace</h3>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td width="72%" valign="top">Any time after a Project Solution has been created, you may add source code files.<ol>
+<li>Right click on the <strong>Source Files</strong> folder icon and choose Add | Add Existing Item ...
+<ul>
+<li>Add the desired .cpp files.<br />For example, if you're working on Lab 1, add <em>all</em> the .cpp files from the C:\CppDev\L1 folder.&nbsp; Do not add .H files, only .cpp files.<br>
+  <br>
+</li>
+</ul>
+</li>
+<li>Most labs will not require additional header files (i.e., .H or .HPP files), but if a lab does require them, do the following:
+<ul>
+<li>Right click the <strong>Header Files</strong> icon and choose Add | Add Existing Item ...</li>
+<li>Add the desired .H and/or .HPP files.</li>
+</ul>
+</li>
+</ol></td>
+<td width="28%"><img src="AddSourceFilesN01.png" width="238" height="227" alt=""/></td>
+</tr>
+</tbody>
+</table>
+
+<h4>Part 2. Creating a Wrapper Filter for holding C++ Wrapper Classes Types</h4>
+<p>After a project has been created, you must add a <em>filter</em> subordinate to the "Source Files" folder.&nbsp;&nbsp; The <em>filter</em> folder will initially be empty, however, you will then add .cpp files for the Standard C++ Wrapper Classes (Boolean, Character, File, Integer, Long, and Text). You must do this only once for each project you create, and you must add these before trying to compile your project.</p>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td width="72%" valign="top"><ol>
+<li>Right click the <strong>Source Files</strong> folder icon and choose Add | New Filter ... <img src="AddSourceFilesN02.png" width="94" height="20" alt=""/></li>
+<li>Name the new filter <span style="text-decoration: underline;">wrapper</span></li>
+<li>Now, right click the wrapper filter (looks like a folder) and choose Add | Add Existing Item ...<br /> We're going to add files to the wrapper filter.</li>
+</ol></td>
+<td width="28%"><img src="AddSourceFilesN03.png" width="236" height="241" alt=""/></td>
+</tr>
+</tbody>
+</table>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td width="58%" valign="top"><ol start="4">
+<li>From the "Add Existing Item" dialog you must navigate to the C:\CppDev\wrapper\class folder <br /> (see screen shot to right).</li>
+<li>Select all the .cpp files that appear in the C:\CppDev\wrapper\class folder, then click OK</li>
+</ol>
+<p>&nbsp;</p>
+</td>
+<td width="41%"><img src="AddSourceFilesN04.png" width="429" height="363" alt=""/></td>
+</tr>
+</tbody>
+</table>
+<h4>Part 3. When you are finished</h4>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td valign="top" width="58%">Your project solution window should look <em>similar</em> to the screen shot to the right:</td>
+<td width="41%"><img src="AddSourceFilesN05.png" width="236" height="363" alt=""/></td>
+</tr>
+</tbody>
+</table>
+<hr>
+	<h2><a id="step3">Step 3: Update the Project's Settings</a></h2>
+<hr />
+<p>Each time a new project is created, you must change its specific settings. You only need to do this once for each project you create. Failure to successfully change the settings will usually cause <em>millions</em> of compiler errors to be generated.</p>
+<p>To change a project's settings, do the following:</p>
+<table style="width: 100%;" border="0">
+<tbody>
+<tr>
+<td width="72%" valign="top">From Visual Studio Solution Explorer, with your project open, <span style="background-color: yellow">right click</span>  <strong>L1 </strong>(or LX, depending on the project - See the screen shot to the right) and from the context menu choose Properties, this will cause the "Property Pages" dialog to appear. </td>
+<td width="28%"><img src="ChangeProjSettingsN01.png" width="240" height="218" alt=""/></td>
+</tr>
+<tr>
+<td colspan="2" width="100%"><p>While working in the Property Pages dialog make the following  change</p>
+<p>You can copy and paste this path for <em>Additional Include Directories</em>:&nbsp; <code>../wrapper/include;../components/include</code>&nbsp;</p>
+<p><img src="CreateConsoleProjN02.png" width="829" height="558" alt=""/></p>
+<p>&nbsp;</p></td>
+</tr>
+
+</tbody>
+</table>	
+</body>
+</html>
