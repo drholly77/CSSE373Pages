@@ -236,31 +236,28 @@ UT11Length: s1.length();
 	</ul>
 	<p><strong>Work on differences in Release configuration</strong></p>
 	<ol>
-	  <li>Return to Windows File Explorer and double click the <em>02- batch file</em>, this will run the test scripts in  the Release configuration of your  L2.dll file and generate the file <em>yourOutput-Release.txt</em> </li>
+	  <li>Return to Windows File Explorer and double click the <em>02- batch file</em>
+       <br>This will run the test scripts in  the Release configuration of your  L2.dll file and generate the file <em>yourOutput-Release.txt</em> </li>
 	  <li>Double click the <em>03- batch file</em> this will run FC to compare <em>solutionOutput-Release.txt</em> with <em>yourOutput-Release.txt</em><br>
 	  This batch file will capture the output in: <em>FCdiffs-Release.txt</em> </li>
 
 	  <li>Inspect <em>FCdiffs-Release.txt</em> if you find any differences, then modify your L2 project (in Release configuration) to eliminate these differences</li>
 	</ol>
 	<ul>
-			  <li>Note: you do not have to eliminate differences due to timing or differences that look like the following:<br>
-      <em>Passed UT02Clear [&lt; 1 ms]</em> <br>
-      These <em>Passed</em> differences, if they happen, occur because the test scripts sometimes get executed in different order</li>
 	  <li>Repeat running the <em>02- and 03- batch files</em> as necessary, i.e., redo steps 1 - 3 until you have eliminated the differences that show up in <em>FCdiffs-Release.txt</em></li>
 </ul>
 	
 <p><strong>Work on differences in Debug configuration</strong></p>
 	<ol>
-	  <li>Return to Windows File Explorer and double click the <em>04- batch file</em>, this will run the test scripts in the Debug configuration of your L2.dll file and generate the file <em>yourOutput-Debug.txt</em> </li>
+	  <li>Return to Windows File Explorer and double click the <em>04- batch file</em>
+      <br>This will run the test scripts in the Debug configuration of your L2.dll file and generate the file <em>yourOutput-Debug.txt</em> </li>
 	  <li>Double click the <em>05- batch file</em> this will run FC to compare <em>solutionOutput-Debug.txt</em> with <em>yourOutput-Debug.txt</em><br>
 	  This batch file will capture the output in: <em>FCdiffs-Debug.txt</em> </li>
 	  <li>Inspect <em>FCdiffs-Debug.txt</em> if you find any differences  then modify your L2 project (in Debug configuration)  to eliminate these differences</li>
 	</ol>
 	<ul>
-	  <li>Note: you do not have to eliminate differences due to timing or differences that look like the following:<br>
-      <em>Passed UT02Clear [&lt; 1 ms]</em> <br>
-      These <em>Passed</em> differences, if they happen, occur because the test scripts sometimes get executed in different order</li>
-	  <li>Repeat running the <em>04- and 05- batch files</em> as necessary, i.e., redo steps 1 - 3 until you have eliminated the differences that show up in <em>FCdiffs-Debug.txt</em></li>
+     <li>Repeat running the <em>04- and 05- batch files</em> as necessary, i.e., redo steps 1 - 3 until you have eliminated the differences that show up in <em>FCdiffs-Debug.txt</em>
+    </li>
 </ul>
 
 	<hr />
