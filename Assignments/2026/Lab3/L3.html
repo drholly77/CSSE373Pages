@@ -41,12 +41,12 @@
         <ul>
           <li>Inside L3Starter.zip are two folders named L3D and L3R </li>
           <li>Use Windows' File Explorer to copy both folders to your <em>csse373devenv202x30-yourID</em> folder as shown in the screen shot to the right</li>
-          <li>Once you copy these folders you can use VS2022 to open these projects by double clicking on L3D.sln (for the L3D project) and L3R.sln (for the L3R project) </li>
+          <li>Once you copy these folders you can use VS2026 to open these projects by double clicking on L3D.sln (for the L3D project) and L3R.sln (for the L3R project) </li>
         </ul>
         <h4>1.4 About Project L3D and L3R</h4>
         <ul>
-          <li>Each contain a Visual Studio 2022 unit test project</li>
-          <li>Both projects can be opened with VS2022 by double clicking on the file L3D.sln (inside L3D folder) or the file L3R.sln (inside the L3R folder)</li>
+          <li>Each contain a Visual Studio 2026 unit test project</li>
+          <li>Both projects can be opened with VS2026 by double clicking on the file L3D.sln (inside L3D folder) or the file L3R.sln (inside the L3R folder)</li>
           <li>Both projects will build correctly if you have followed the instructions in 1.1 - 1.3 (above)</li>
           <li>L3D
             <ul>
@@ -189,7 +189,8 @@ T&amp; List2&lt;T&gt;::rightFront(<strong>void</strong>)
   <li>L3R testing second
     <ul>
       <li>These test at the abstract level only and would work for any List implementation</li>
-      <li>List2's <em>operator &lt;&lt;</em> which outputs a list's abstract value (similar to Java's <em>toString</em> operation) is layered on top of the List2 class and it calls the List2 member functions: <em>advance</em>, <em>moveToStart</em>, <em>rightLength</em>, and <em>rightFront</em>, Therefore <em>operator &lt;&lt;</em> will not work correctly until all these List2 operations are implemented correctly</li>
+      <li>List2's <em>operator &lt;&lt;</em> which outputs a list's abstract value (similar to Java's <em>toString</em> operation) is layered on top of the List2 class and it calls the List2 member functions: <em>advance</em>, <em>moveToStart</em>, <em>leftLength</em>, <em>rightLength</em>,and <em>rightFront</em> <br>
+        Therefore <em>operator &lt;&lt;</em> will not work correctly until all these List2 operations are implemented correctly</li>
     </ul>
   </li>
   <li>Unfortunately the unit tests in L3D and L3R do not thoroughly test the List2.hpp member functions</li>
@@ -219,7 +220,7 @@ T&amp; List2&lt;T&gt;::rightFront(<strong>void</strong>)
 
 <h3>4. Submitting the Assignment for Grading</h3>
 	<ul>
-	<li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2022 instructions</a> for <em>committing and pushing</em> your L3 project to your GitHub Education CSSE373 repo</li>
+	<li>Follow <a href="https://drholly77.github.io/CSSE373Pages/LabRelated/" target="_blank">VS2026 instructions</a> for <em>committing and pushing</em> your L3 project to your GitHub Education CSSE373 repo</li>
 	<li>Use the commit message &quot;L3 final commit, ready for grading&quot;</li>
 	</ul>
 		
