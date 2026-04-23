@@ -21,57 +21,33 @@
         <ul>
           <li>Download <em>L6Starter.zip</em>&nbsp;to your machine - to be used in subsequent steps</li>
         </ul>
-		  <h4>1.2 Copy AppendCapabilitiy1.hpp from the L6Starter.zip</h4>
+		  <h4>1.2 Copy the 3 projects from L6Starter.zip</h4>
         <ul>
-          <li>Inside L6Starter.zip is a file named AppendCapabilitiy1.hpp
+          <li>Inside L6Starter.zip are 3 VS2026 Test projects named:
             <ul>
-              <li>Copy this file into your: <em>csse373devenv202x30-yourID\components\include\Queue</em></li>
-				<li>AppendCapabilitiy1.hpp contains a fully functional Queue <em>append</em> operation and uses C++ template syntax that allows layering of this operation onto the Queue component</li>
+              <li>L6RP1</li>
+              <li>L6RP2</li>
+              <li>L6RP3</li>
+              <li><i>P1</i> stands for Part 1, <i>P2</i> stands for Part 2, <i>P3</i> stands for Part 3</li>
             </ul>
           </li>
+          <li>Copy these 3 projects into your: <em>csse373devenv202x30-yourID</em> folder</li>
          
         </ul>
-<h4>1.3 Copy SetEqCapability.hpp from the L6Starter.zip</h4>
+
+        <h4>1.3 About the L6RPx Projects</h4>
         <ul>
-          <li>Inside L6Starter.zip is a file named SetEqCapability.hpp
-            <ul>
-              <li>Copy this file into your: <em>csse373devenv202x30-yourID\components\include\Set</em></li>
-				<li>SetEqCapability.hpp will replace the already existing file found in the components\include\Set folder. This one coming from the .zip is an updated version.</li>
-				<li>SetEqCapability.hpp contains a fully functional Set <em>operator ==</em> operation that returns true iff the two compared sets are equal</li>
-				<li>You will be using SetEqCapability.hpp in Part 4 of this assignment</li>
-            </ul>
-          </li>
-         
-        </ul>
-        <h4>1.4 Copy the L6R Folder from the L6Starter.zip</h4>
-        <ul>
-          <li>Inside L6Starter.zip is a folder named L6R </li>
-			    <ul>
-          <li>Copy the L6R folder to your <em>csse373devenv202x30-yourID</em> folder as shown in the screen shot to the right</li>
-          <li>Once you have copied this folder you can use VS2026 to open the L6R project by double clicking on L6R.sln  </li>
-			</ul>
-        </ul>
-        <h4>1.5 About Project L6R</h4>
-        <ul>
-          <li>It contains a Visual Studio 2026 unit test project</li>
-          <li>It can be opened with VS2026 by double clicking on the file L6R.sln</li>
-          <li>It will build correctly if you have followed the instructions in 1.1 - 1.4 (above)</li>
-			<li>After building, use Test Explorer to run the unit tests found in L6R.cpp</li>
-          <li>L6R contains unit tests in the following files:
-			  <ol>
-				  <li><em>L6RPart1Append.cpp</em> - unit tests for AppendCapability (in file <em>AppendCapabilitiy1.hpp</em>)</li>
-				  <li><em>L6RPart2Inject.cpp</em> - unit tests for InjectCapability (you will create and implement this operation in <em>InjectCapability1.hpp</em>)</li>
-				  <li><em>L6RPart3FindLoc.cpp</em> - unit tests for FindLocOfXCapability (you will create and implement this operation in <em>FindLocOfXCapability1.hpp</em>)</li>
-				  <li><em>L6RPart4Equal.cpp</em> - unit tests for QueueEqCapability (you will create and implement this operation in <em>QueueEqCapability1.hpp</em>)</li>
-			  </ol>
-</li>
-			<li>There is one additional file you will need to reference: 
-			<ol>
-				<li><em>FunctionHeaders.txt</em> - Contains the function headers and external contracts for the InjectCapability and FindLocOfXCapability, and instructions for how to create the QueueEqCapability .hpp file</li></ol></li>
-        </ul></td>
-      <td valign="top"><img src="L6FolderView.png" width="245" height="377" alt="Repo view showing L6R"/>
-		<hr>
-	    <img src="L6ProjectView.png" width="245" height="270" alt="L6R project view"/> </td>
+              <li>L6RP1 - is a unit test project for RemoveLastCapability. This capability is layered on top of the Queue component, is already implemented and can be
+                found in your components/Queue folder. You will be using this capability as a model for how to implement the capabilities in L6RP2 and L6RP3.<br><br>
+              </li>
+              <li>L6RP2 - is a unit test project for InjectCapability. Your task will be to implement this capability, by layering it on top of 
+                the Queue component. Your implementation must pass the provided tests in L6RP2.cpp.<br><br> </li>
+              <li>L6RP3 - is a unit test project for FindLocOfXCapability. Your task will be to implement this capability, by layering it on top of 
+                the Queue component. Your implementation must pass the provided tests in L6RP3.cpp. </li>
+			
+			 </ul></td>
+      <td valign="top"><img src="L6FolderView.png" width="378" height="441" alt="Repo view showing L6R"/>
+	 </td>
     </tr>
   </tbody>
 </table>
@@ -93,16 +69,12 @@
 <p><em>Steps</em>:</p>
         <ol>
           <li>Start Visual Studio</li>
-          <li>Open project L6R - it should open up in Release configuration, but double check this</li>
-          <li>Read and complete the "to do" tasks found at the top of each of the .cpp files listed below: 
-<ol>
-				  <li><em>L6RPart1Append.cpp</em> - Start here and work your way through the parts in order</li>
-				  <li><em>L6RPart2Inject.cpp</em></li>
-				  <li><em>L6RPart3FindLoc.cpp</em></li>
-				  <li><em>L6RPart4Equal.cpp</em></li>
-			  </ol>
-			  
-          </li>
+      
+          <li>Start with L6RP1, read and follow the instructions in the file L6RP1.cpp, there is a "to do" list near the top of the file</li>
+          <li>Then complete L6RP2's "to do" list, found in L6RP2.cpp</li>
+          <li>Finally complete L6RP3's "to do" list, found in L6RP3.cpp</li>
+			
+		
         </ol>
 	
 <p><em>Software Engineering Requirements</em>:</p>
@@ -120,7 +92,7 @@
 <ul>
   <li>L6 testing
     <ul>
-      <li>The provided tests (in each of the L6R project's .cpp files) are minimal</li>
+      <li>The provided tests (in each of the L6RPx project's .cpp files) are minimal</li>
       <li>Each .cpp has a comment recommending additional tests in order to do a more thorough job of testing you implementations</li>
 		
     </ul>
